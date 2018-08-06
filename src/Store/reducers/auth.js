@@ -71,9 +71,9 @@ const authSuccess = (state, action) => {
     }});
 };
 
-const logoutInit = (state = initState) => {
+const logoutInit = (state) => {
     console.log('Logout Initiated');
-    return state;
+    return updateObject(state, initState);
     // return updateObject(state, {
     //     token: null, 
     //     user: null, 

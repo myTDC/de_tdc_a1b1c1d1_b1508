@@ -77,7 +77,7 @@ const mapDispactchToProps = dispatch => {
     return{
         //onTest: () => dispatch(reduxTest()),
         onAuth: () => dispatch(acts.fbSignIn()),
-        onLogOut: () => dispatch(acts.fbSignIn())
+        onLogOut: () => dispatch(acts.logout())
     };
 };
 
