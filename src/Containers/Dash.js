@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import * as acts from './Store/actions';
+import * as acts from '../Store/actions';
 import { connect } from 'react-redux';
 
 class Dash extends Component {
@@ -8,51 +8,76 @@ class Dash extends Component {
         
     }
 
-    const dash_base = (
-        <header className="App-header">
-              <img src={logo} className="App-logo" alt="logo" />
-              <h1 className="App-title">Welcome to React</h1>
-            </header>
-            <p className="App-intro">
-              To get started, edit <code>src/App.js</code> and save to reload.
-            </p>
-            <button onClick={this.props.onTest}>
-            test now
-            </button>
-    
-            <h1>{this.props.count}</h1>
-    
-            <button onClick={this.props.onAuth}>
-            Login
-            </button>
-    
-            <section>
-              
-              <br/>
-              <h2>{this.props.userNamer}</h2>
-            </section>
-    )
     render() {
+
+        // let asyncTester = (
+        //     <button onClick={this.props.onTest}>
+        //         test now
+        //     </button>
+        //     <h1>{this.props.count}</h1>
+        // );
+
+        
+
+        
+
+        
+
+        let authorizer = (
+            <button onClick={this.props.onAuth}>
+                Login
+            </button>
+        );
+
+        if(this.props.userNameGiven){
+            authorizer = (
+            <section>
+                <button onClick={this.props.onLogOut}>
+                    Logout
+                </button>
+                <h2>{this.props.userNameGiven}</h2>
+                <h3>{this.props.userNameFamily}</h3>
+                <img src={this.props.userPic} alt="Users DP" />
+                <h4>{this.props.userEmail}</h4>
+                <h4>{this.props.userPhone}</h4>
+            </section>
+            );
+        }
+
+        const dash_base = (
+            <section> 
+                {authorizer} 
+                <br/> 
+            </section>
+        );
+        //Beginning DomRender
         return (
             <div className="App">
-                {this.dash_base}
+                {dash_base}
             </div>
         );
       }
     }
     
 const mapStateToProps = state => {
+            //count: state.test.count,
+            //No need to access state variables as in the reducer files
+            //Refer to Redux Dev Tools chart to get a better idea of heirarchy post
     return{
-        count: state.test.count,
-        userNamer: state.auth.userName,
-        userInfo: state.auth.userInfo
+        userId: state.auth.user.Id,
+        userNameGiven: state.auth.user.GivenName,
+        userNameFamily: state.auth.user.FamilyName,
+        userPic: state.auth.user.PicUrl,
+        userEmail: state.auth.user.Email,
+        userPhone: state.auth.user.PhoneNumber,
     };
 };
 
 const mapDispactchToProps = dispatch => {
     return{
-        onTest: () => dispatch(reduxTest()),
-        onAuth: () => dispatch(acts.fbSignIn())
+        //onTest: () => dispatch(reduxTest()),
+        onAuth: () => dispatch(acts.fbSignIn()),
+        onLogOut: () => dispatch(acts.fbSignIn())
     };
 };
 

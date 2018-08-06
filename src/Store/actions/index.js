@@ -1,1 +1,1 @@
-export { fbSignIn } from './auth';
+export { fbSignIn, logout } from './auth';

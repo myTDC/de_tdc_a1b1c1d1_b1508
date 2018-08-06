@@ -8,13 +8,16 @@ export const fbSignIn = (/*Takes Payload of the associated Action*/) => {
             const token = result.credential.accessToken;
             // The signed-in user info.
             const user = result.user;
-
-            const userInfo = result.additionalUserInfo;
+            const userId = result.user.uid;
+            const uInfo = result.additionalUserInfo;
+            
 
             localStorage.setItem('token', token);
             localStorage.setItem('user', user);
-            localStorage.setItem('userInfo', userInfo);
-            dispatch(logIn(token, user, userInfo));
+            localStorage.setItem('userInfo', uInfo);
+            localStorage.setItem('userID', userId);
+
+            dispatch(logIn(token, user, uInfo, userId));
             // ...
           }).catch(error => {
             // Handle Errors here.
@@ -29,12 +32,13 @@ export const fbSignIn = (/*Takes Payload of the associated Action*/) => {
         });
 }};
 
-export const logIn = (token, user, uInfo) => {
+export const logIn = (token, user, uInfo, userID) => {
     return { /*Retunrs an action*/
         type: actionTypes.AUTH_LOGIN,
         authToken: token,
         authUser: user,
-        authUserInfo: uInfo
+        authUserInfo: uInfo,
+        userId: userID
     };
 };
 
@@ -43,6 +47,17 @@ export const logInError = (code, message) => {
         type: actionTypes.AUTH_ERROR,
         errorCode: code,
         errorMessage: message
+    };
+};
+
+
+export const logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    localStorage.removeItem('userInfo');
+    localStorage.removeItem('userId');
+    return {
+        type: actionTypes.AUTH_LOGOUT
     };
 };
 
@@ -122,14 +137,6 @@ export const logInError = (code, message) => {
 //     };
 // };
 
-// export const logout = () => {
-//     localStorage.removeItem('token');
-//     localStorage.removeItem('expirationDate');
-//     localStorage.removeItem('userId');
-//     return {
-//         type: actionTypes.AUTH_LOGOUT
-//     };
-// };
 
 // export const checkAuthTimeout = (expirationTime) => {
 //     return dispatch => {

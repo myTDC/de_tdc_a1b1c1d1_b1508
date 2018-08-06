@@ -11,14 +11,16 @@ import { Provider } from 'react-redux';
 import reduxThunk from 'redux-thunk';
 
 //Components
-import testred from './Store/reducers/authExp';
+
+// Reducers
+// import testred from './Store/reducers/authExp';
 import authRed from './Store/reducers/auth';
 // import contentRed from '../src/store/reducers/content';
 
 const rootReducer = combineReducers({
-    auth: authRed,
+    auth: authRed//,
     // content: contentRed,
-    test: testred
+    // test: testred
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
