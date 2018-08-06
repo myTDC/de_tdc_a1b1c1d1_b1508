@@ -1,0 +1,104 @@
+:root{
+    --app-back-color: #1C2936;
+    --app-fore-color: #273549;
+
+    --app-container-first-width: 40%;
+    --app-container-back-height: 64vh;
+    --app-container-fore-height: 70%;
+    --app-container-rest-width: 20%;
+
+    --app-container-margin: 2px;
+    --app-container-padding: 4%;
+
+    --app-herobtn-back: linear-gradient(#16df82, #82fd61, 45deg);
+
+    --app-text-button-size: 1em;
+    --app-text-btnhelper-size: 0.4em;
+    --app-text-heading-size: 1em;
+    --app-text-description-size: 0.6em;
+
+    --app-text-heading-color: #FEFEFE;
+    --app-text-description-color: #F1F1F1;
+
+    --app-fore-container-corner-radius: 4px;
+    --app-fore-container-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.1); /* box-shadow: offset-x | offset-y | blur-radius | spread-radius | color */
+    --app-back-container-shadow: 1px 1px 4px 1px rgb(40, 40, 40, 0.1);
+}
+
+body{
+    text-align: justify;
+    align-items: center;
+    
+}
+
+.container{
+    display: flex;
+    align-items: flex-end;
+    height: var(--app-container-back-height);
+    background-color: var(--app-back-color);
+}
+.containerFirst{
+    width: var(--app-container-first-width);
+    max-width: var(--app-container-first-width);
+    height: var(--app-container-fore-height);
+    background-color: var(--app-back-color);
+    margin-left: var(--app-container-margin);
+    margin-right: var(--app-container-margin);
+    padding: var(--app-container-padding);
+    border-radius: var(--app-fore-container-corner-radius);
+    box-shadow: var(--app-fore-container-shadow);
+    align-content: center;
+}
+
+.containerRest{
+    width: var(--app-container-rest-width);
+    max-width: var(--app-container-rest-width);
+    height: var(--app-container-fore-height);
+    background-color: var(--app-fore-color);
+    box-shadow: var(--app-fore-container-shadow);
+    padding: var(--app-container-padding);
+    margin-left: var(--app-container-margin);
+    margin-right: var(--app-container-margin);
+    border-radius: var(--app-fore-container-corner-radius);
+    align-content: center;
+}
+
+.container :hover{
+    background-color: var(--app-fore-color);
+}
+
+.heroButton{
+    
+    padding: 4%;
+    flex: 1 1 auto;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    background-image: linear-gradient(to right, #16df82 0%, #28df16 51%, #82fd61 100%);
+    color: var(--app-text-heading-color);
+    font-size: var(--app-text-button-size);
+    /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+    box-shadow: 2px 2px 4px 0 rgba(160, 160, 160, 0.1);
+    border-radius: 4%;
+}
+.heroButton:hover {
+    background-position: right center;
+    color: #1C2936;
+}
+
+.heroBtnHelper{
+    color: var(--app-text-heading-color);
+    font-size: var(--app-text-btnhelper-size);
+}
+
+
+.sectionDescription{
+    color: var(--app-text-description-color);
+    font-size: var(--app-text-description-size);
+}
+
+.sectionHead{
+    color: var(--app-text-heading-color);
+    font-size: var(--app-text-heading-size);
+}

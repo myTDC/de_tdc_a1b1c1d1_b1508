@@ -5,6 +5,7 @@
   "dependencies": {
     "firebase": "^5.3.1",
     "react": "^16.4.2",
+    "react-chartjs": "^1.2.0",
     "react-dom": "^16.4.2",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",

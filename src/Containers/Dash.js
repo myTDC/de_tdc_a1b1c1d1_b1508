@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import * as acts from '../Store/actions';
 import { connect } from 'react-redux';
+import SignUpHero from '../Components/SignupHero';
 
 class Dash extends Component {
 
     state = {
         
+    }
+
+    componentDidUpdate() {
+        console.log('Components Updated', localStorage.getItem('userID'));
     }
 
     render() {
@@ -23,29 +28,37 @@ class Dash extends Component {
 
         
 
+        
+        
         let authorizer = (
             <button onClick={this.props.onAuth}>
                 Login
             </button>
         );
 
-        if(this.props.userNameGiven){
-            authorizer = (
-            <section>
-                <button onClick={this.props.onLogOut}>
-                    Logout
-                </button>
-                <h2>{this.props.userNameGiven}</h2>
-                <h3>{this.props.userNameFamily}</h3>
-                <img src={this.props.userPic} alt="Users DP" />
-                <h4>{this.props.userEmail}</h4>
-                <h4>{this.props.userPhone}</h4>
-            </section>
-            );
-        }
+        let signup = (
+            <SignUpHero clicked={this.props.onAuth} heroAction="Lift Off"/>
+        )
 
+        if(this.props.userId){
+                signup = (null);
+                authorizer = (
+                    <section>
+                        <button onClick={this.props.onLogOut}>
+                            Logout
+                        </button>
+                        <h2>{this.props.userNameGiven}</h2>
+                        <h3>{this.props.userNameFamily}</h3>
+                        <img src={this.props.userPic} alt="Users DP" />
+                        <h4>{this.props.userEmail}</h4>
+                        <h4>{this.props.userPhone}</h4>
+                    </section>
+                );
+        }
         const dash_base = (
             <section> 
+                {signup}
+                <br/> 
                 {authorizer} 
                 <br/> 
             </section>
