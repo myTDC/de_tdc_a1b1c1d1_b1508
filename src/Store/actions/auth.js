@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes';
 import {authRef, provider} from '../config/fb';
+// import localforage from 'localforage';
 
 export const fbSignIn = (/*Takes Payload of the associated Action*/) => {
     return dispatch => {
@@ -50,6 +51,7 @@ export const logInError = (code, message) => {
 
 
 export const logout = () => {
+    localStorage.removeItem('authState');
     localStorage.removeItem('token');
     localStorage.removeItem('userID');
     return {

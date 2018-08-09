@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
-import * as acts from '../Store/actions';
+import './Layout.css';
+import logo from '../plane_grad.svg';
+
+//Libraries
 import { connect } from 'react-redux';
+
+//Components
 import SignUpHero from '../Components/SignupHero';
 
+//Actions
+import * as acts from '../Store/actions';
 class Layout extends Component {
 
     state = {
@@ -10,7 +17,7 @@ class Layout extends Component {
     }
 
     componentDidUpdate() {
-        console.log('[Comp/Layout] Components Updated', localStorage.getItem('userID'));
+        console.log('[Comp/Layout] Components Updated | Current UserID is: ', localStorage.getItem('userID'));
     }
 
     render() {
@@ -66,6 +73,10 @@ class Layout extends Component {
         //Beginning DomRender
         return (
             <div className="App">
+            <header className="App-header">
+                <img src={logo} className="App-logo" alt="logo" />
+                <h1 className="App-title">Welcome to TDC|DE</h1>
+            </header>
                 {dash_base}
             </div>
         );
