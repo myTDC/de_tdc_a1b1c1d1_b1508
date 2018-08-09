@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import './Learn.css';
+import './CS.css';
 
 //Libraries
 import { connect } from 'react-redux';
 
-class Learn extends Component {
+class CS extends Component {
 
 }
 const mapStateToProps = state => {
@@ -19,4 +19,4 @@ const mapDispactchToProps = dispatch => {
     };
 };
 
-export default connect( mapStateToProps, mapDispactchToProps )( Learn );
+export default connect( mapStateToProps, mapDispactchToProps )( CS );

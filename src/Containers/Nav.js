@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import './Learn.css';
+import './Nav.css';
+import logo from '../plane_grad.svg';
 
 //Libraries
 import { connect } from 'react-redux';
 
-class Learn extends Component {
+class Nav extends Component {
 
 }
 const mapStateToProps = state => {
@@ -19,4 +20,4 @@ const mapDispactchToProps = dispatch => {
     };
 };
 
-export default connect( mapStateToProps, mapDispactchToProps )( Learn );
+export default connect( mapStateToProps, mapDispactchToProps )( Nav );
