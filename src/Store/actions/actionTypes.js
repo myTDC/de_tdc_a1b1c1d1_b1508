@@ -3,6 +3,8 @@ export const AUTH_ERROR = 'ERROR';
 export const AUTH_LOGIN = 'LOGIN';
 export const AUTH_LOGOUT = 'LOGOUT';
 export const AUTH_FETCH_USER = 'FETCH_USER';
+export const AUTH_AUTO_LOGIN = 'AUTO_LOGIN_INIT';
+export const AUTH_AUTO_LOGIN_PREP = 'AUTO_LOGIN_SETUP';
 
 export const AUTH_FAIL = 'AUTH_FAIL';
 export const AUTH_START = 'AUTH_START';
@@ -17,4 +19,7 @@ export const PROF_UPDATE_PROGRESS = 'UPDATE_PROGRESS';
 export const CONT_SET_FAV = 'SET_FAV';
 export const CONT_SET_FILTER = 'SET_FILTER';
 export const CONT_FETCH_ARTICLES = 'FETCH_ARTICLES';
+export const CONT_COMMIT_ARTICLES = 'COMMIT_ARTICLES';
 export const CONT_TOGGLE_READ_FLAG = 'TOGGLE_READ_FLAG';
+
+

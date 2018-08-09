@@ -3,17 +3,29 @@ import * as acts from '../Store/actions';
 import { connect } from 'react-redux';
 import SignUpHero from '../Components/SignupHero';
 
-class Dash extends Component {
+class Layout extends Component {
 
     state = {
         
     }
 
-    componentDidUpdate() {
-        console.log('Components Updated', localStorage.getItem('userID'));
+    componentDidUpdate(){
+        const uID = localStorage.getItem('userID');
+        if(!uID) console.log("User Hasn't logged in");
+        else console.log('Logged In User is:', uID);
+        console.log('Components Updated');
     }
 
-    render() {
+    componentDidMount(){
+        // console.log( 'Raw User Data', this.props.userRAW);
+        // console.log( 'Raw User Info Data', this.props.userinfoRAW);
+        // console.log(new Date());
+        // //console.log(new Date(new Date().getTime()+3600000));
+        // const today = new Date();
+        // console.log('0'+today.getUTCDate()+'/0'+(today.getUTCMonth()+1));
+    }
+
+    render(){
 
         // let asyncTester = (
         //     <button onClick={this.props.onTest}>
@@ -67,32 +79,32 @@ class Dash extends Component {
         return (
             <div className="App">
                 {dash_base}
+
+                <button onClick={this.props.onLogOut}>Hard Logout</button>
             </div>
         );
       }
     }
     
-const mapStateToProps = state => {
+const mapStateToProps = state => {  //Refer to Redux Dev Tools chart to get a better idea of heirarchy post
             //count: state.test.count,
-            //No need to access state variables as in the reducer files
-            //Refer to Redux Dev Tools chart to get a better idea of heirarchy post
     return{
         userId: state.auth.user.Id,
         userNameGiven: state.auth.user.GivenName,
         userNameFamily: state.auth.user.FamilyName,
         userPic: state.auth.user.PicUrl,
         userEmail: state.auth.user.Email,
-        userPhone: state.auth.user.PhoneNumber,
-    };
-};
+        userPhone: state.auth.user.PhoneNumber
+
+        // userRAW:state.auth.user.TEST_USER_RAW,
+        // userinfoRAW:state.auth.user.TEST_USERINFO_RAW
+};};
 
 const mapDispactchToProps = dispatch => {
     return{
         //onTest: () => dispatch(reduxTest()),
         onAuth: () => dispatch(acts.fbSignIn()),
         onLogOut: () => dispatch(acts.logout())
-    };
-};
+};};
 
-export default connect( mapStateToProps, mapDispactchToProps )( Dash );
-    
+export default connect( mapStateToProps, mapDispactchToProps )( Layout );    
