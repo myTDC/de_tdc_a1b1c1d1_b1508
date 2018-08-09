@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './plane_grad.svg';
 import './App.css';
-import Dash from './Containers/Dash';
+import Layout from './Containers/Layout';
 
 // import { reduxTest } from './Store/actions/authExp';
 // import * as acts from './Store/actions';
@@ -21,12 +21,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to TDC|DE</h1>
         </header>
-        <p className="App-intro">
-          <a href='blank' >React:</a> To get started, edit <code>src/App.js</code> and save to reload. 
-          <br />
-          <a href='blank' >Me:</a> Been There Done That!
-        </p>
-        <Dash />
+        <Layout />
       </div>
     );
   }

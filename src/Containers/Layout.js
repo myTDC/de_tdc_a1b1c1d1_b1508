@@ -3,14 +3,14 @@ import * as acts from '../Store/actions';
 import { connect } from 'react-redux';
 import SignUpHero from '../Components/SignupHero';
 
-class Dash extends Component {
+class Layout extends Component {
 
     state = {
         
     }
 
     componentDidUpdate() {
-        console.log('Components Updated', localStorage.getItem('userID'));
+        console.log('[Comp/Layout] Components Updated', localStorage.getItem('userID'));
     }
 
     render() {
@@ -94,5 +94,5 @@ const mapDispactchToProps = dispatch => {
     };
 };
 
-export default connect( mapStateToProps, mapDispactchToProps )( Dash );
+export default connect( mapStateToProps, mapDispactchToProps )( Layout );
     
