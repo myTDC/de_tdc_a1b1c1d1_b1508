@@ -2,7 +2,6 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initState = {
     user: {
-        isAuth: false,
         token: null,
         Id: null,
         GivenName: null,
@@ -10,7 +9,7 @@ const initState = {
         PicUrl: null,
         Email: null,
         PhoneNumber: null,
-        test: 'TESTER IS ON'
+        TEST: 'TESTER IS ON'
     },
     error: null,
     loading: false,
@@ -20,7 +19,7 @@ const initState = {
 const updateObject = (baseObject, updater) => { return{...baseObject ,...updater}; };
 
 const authSuccess = (state, action) => {
-    console.log('Authentication Successful');
+    console.log('[Red/Auth] Authentication Successful');
     // //Extracting Values from User Object
     // const uPhNum = action.authUser.phoneNumber;
     // //Extracting Values from UserInfo Object
@@ -33,10 +32,10 @@ const authSuccess = (state, action) => {
 
     //const oldState = {...state}
 
-    console.log('User Initial State', state);
+    // console.log('User Initial State', state);
 
     const user = {...state.user};
-    console.log('Initial User', user);
+    // console.log('Initial User', user);
 
     // const newState = { user: {
     //     ...user,
@@ -60,7 +59,6 @@ const authSuccess = (state, action) => {
     // return updateObject(state, newState);
     return updateObject(state, { user: {
         ...user,
-        isAuth: true,
         token: action.authToken,
         Id: action.userId,
         GivenName: action.authUserInfo.profile.given_name,
@@ -72,7 +70,7 @@ const authSuccess = (state, action) => {
 };
 
 const logoutInit = (state) => {
-    console.log('Logout Initiated');
+    console.log('[Red/Auth] Logout Initiated');
     return updateObject(state, initState);
     // return updateObject(state, {
     //     token: null, 

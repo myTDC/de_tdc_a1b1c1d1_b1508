@@ -12,6 +12,7 @@ import reduxThunk from 'redux-thunk';
 
 //Components
 
+//import { loadState, saveState } from './'
 // Reducers
 // import testred from './Store/reducers/authExp';
 import authRed from './Store/reducers/auth';
@@ -22,10 +23,14 @@ const rootReducer = combineReducers({
     // content: contentRed,
     // test: testred
 });
-
+const persistedState = {};//loadState();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const de_tdc_store = createStore(rootReducer, composeEnhancers(applyMiddleware(reduxThunk)));
+const de_tdc_store = createStore(rootReducer, persistedState, composeEnhancers(applyMiddleware(reduxThunk)));
+
+de_tdc_store.subscribe(() => {
+    //Call SaveStore
+});
 
 const app = (
     <Provider store={de_tdc_store}>

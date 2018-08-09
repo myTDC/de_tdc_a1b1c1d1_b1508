@@ -13,8 +13,6 @@ export const fbSignIn = (/*Takes Payload of the associated Action*/) => {
             
 
             localStorage.setItem('token', token);
-            localStorage.setItem('user', user);
-            localStorage.setItem('userInfo', uInfo);
             localStorage.setItem('userID', userId);
 
             dispatch(logIn(token, user, uInfo, userId));
@@ -53,8 +51,6 @@ export const logInError = (code, message) => {
 
 export const logout = () => {
     localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    localStorage.removeItem('userInfo');
     localStorage.removeItem('userID');
     return {
         type: actionTypes.AUTH_LOGOUT
