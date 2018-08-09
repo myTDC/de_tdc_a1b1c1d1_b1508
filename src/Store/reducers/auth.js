@@ -1,6 +1,4 @@
 import * as actionTypes from '../actions/actionTypes';
-import localforage from 'localforage';
-import _ from 'lodash';
 
 const initState = {
     user: {
@@ -30,11 +28,11 @@ const authStart = ( state ) => {
 };
 
 const authSuccess = (state, action) => {
-    console.log('Authentication Successful');
-    console.log('User Initial State', state);
+    console.log('[Red/auth] -> [authSuccess] Authentication Successful');
+    //console.log('User Initial State', state);
 
     const user = {...state.user};
-    console.log('Initial User', user);
+    //console.log('Initial User', user);
 
     return updateObject(state, { 
         error: null,
@@ -59,48 +57,58 @@ const authFail = (state, action) => {
 };
 
 const logoutInit = (state) => {
-    console.log('Logout Initiated');
+    console.log('[Red/auth] -> Logout Initiated');
     return updateObject(state, initState);
 };
 
 const autoLoginSetup = (state, action) => {
     if(state.user.token){
-        console.log('Autologin is being Set Up');
-        localStorage.setItem('accessToken', state.user.token);
-        localStorage.setItem('userID', state.user.Id);
-        localStorage.setItem('userGivenName', state.user.GivenName);
-        localStorage.setItem('userFamilyName', state.user.FamilyName);
-        localStorage.setItem('userPicUrl', state.user.PicUrl);
-        localStorage.setItem('userEmail', state.user.Email);
-        localStorage.setItem('userPhoneNumber', state.user.PhoneNumber);
+        // console.log('Autologin is being Set Up');
+        // localStorage.setItem('accessToken', state.user.token);
+        // localStorage.setItem('userID', state.user.Id);
+        // localStorage.setItem('userGivenName', state.user.GivenName);
+        // localStorage.setItem('userFamilyName', state.user.FamilyName);
+        // localStorage.setItem('userPicUrl', state.user.PicUrl);
+        // localStorage.setItem('userEmail', state.user.Email);
+        // localStorage.setItem('userPhoneNumber', state.user.PhoneNumber);
         //console.log("Login Data:" , user.metadata);
         return updateObject(state, { autoLoginSetup: true });
     }
     else {
-        console.log('User Needs to Login before Autologin can be Set Up')
+        console.log('[Red/auth] -> User Needs to Login before Autologin can be Set Up')
         return updateObject(state, { autoLoginSetup: false });
     }
 }
 
 const autoLoginInit = (state, action) => {
     if(state.user.autoLoginSetup){
-        console.log('Autologin Initiated');
+        console.log('[Red/auth] -> Autologin Initiated');
         const user = {...state.user};
         return updateObject(state, { 
             autoLoginInit: true,
             user: {
                 ...user,
-                token: localStorage.getItem('accessToken'),
-                Id: localStorage.getItem('userID'),
-                GivenName: localStorage.getItem('userGivenName'),
-                FamilyName: localStorage.getItem('userFamilyName'),
-                PicUrl: localStorage.getItem('userPicUrl'),
-                Email: localStorage.getItem('userEmail'),
-                PhoneNumber: localStorage.getItem('userPhoneNumber'),
+                token: action.token,
+                Id: action.uId,
+                GivenName: action.gname,
+                FamilyName: action.fname,
+                PicUrl: action.pic,
+                Email: action.email,
+                PhoneNumber: action.num
         }});
+
+        /* 
+        token: localStorage.getItem('accessToken'),
+        Id: localStorage.getItem('userID'),
+        GivenName: localStorage.getItem('userGivenName'),
+        FamilyName: localStorage.getItem('userFamilyName'),
+        PicUrl: localStorage.getItem('userPicUrl'),
+        Email: localStorage.getItem('userEmail'),
+        PhoneNumber: localStorage.getItem('userPhoneNumber'),
+        */
     }
     else {
-        console.log("User Hasn't Logged In Even Once");
+        console.log("[Red/auth] -> [autoLoginInit] User Hasn't Logged In Even Once");
         return state;
     }
 }

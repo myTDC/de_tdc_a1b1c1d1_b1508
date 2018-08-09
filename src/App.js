@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './plane_grad.svg';
 import './App.css';
+import _ from 'lodash';
 
 //Libraries
 import { Router, Switch, withRouter } from 'react-router-dom';
@@ -22,12 +23,7 @@ class App extends Component {
   }
   
   componentDidMount () {
-    // if(this.props.isAuthenticated) {
-    //   console.log('[App.js] Attempting Auto Login');
-    //   this.props.onTryAutoSignup();
-    // }
-    console.log('[App.js] Attempting Auto Login');
-    this.props.onTryAutoSignup();
+    this.props.isAuthenticated();
   }
   
   componentDidUpdate () {
@@ -49,15 +45,14 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    isAuthenticated: state.auth.user.Id !== null,
-    authToken: state.auth.user.token
+
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSetupAutoLogin: () => dispatch(acts.setupAutoLogin()),
-    onTryAutoSignup: () => dispatch(acts.checkAuthState())
+    onSetupAutoLogin: () => dispatch(acts.setupAutoLogin()), //Called when the components updates after login
+    isAuthenticated: ()  => dispatch(acts.checkAuthState()) //Called when te component reloads
   };
 };
 

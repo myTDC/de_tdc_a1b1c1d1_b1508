@@ -10,10 +10,10 @@ class Layout extends Component {
     }
 
     componentDidUpdate(){
-        const uID = localStorage.getItem('userID');
-        if(!uID) console.log("User Hasn't logged in");
-        else console.log('Logged In User is:', uID);
-        console.log('Components Updated');
+        // const uID = localStorage.getItem('userID');
+        // if(!uID) console.log("User Hasn't logged in");
+        // else console.log('Logged In User is:', uID);
+        // console.log('Components Updated');
     }
 
     componentDidMount(){
