@@ -4,6 +4,10 @@ import './Learn.css';
 //Libraries
 import { connect } from 'react-redux';
 
+//Components
+
+//Actions
+import * as acts from '../Store/actions';
 class Learn extends Component {
 
 }

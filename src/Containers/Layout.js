@@ -18,10 +18,10 @@ class Layout extends Component {
 
     componentDidUpdate() {
         console.log('[Comp/Layout] Components Updated | Current UserID is: ', localStorage.getItem('userID'));
+        console.log('[Comp/Layout] Components Updated | Current ArtList is: ', this.props.articles);
     }
 
     render() {
-
         // let asyncTester = (
         //     <button onClick={this.props.onTest}>
         //         test now
@@ -29,14 +29,19 @@ class Layout extends Component {
         //     <h1>{this.props.count}</h1>
         // );
 
-        
+        let articlePublisher = (
+            <div>
+                <button onClick={this.props.Log}> Log Current Art List </button>
+                <button onClick={this.props.Commit}> Commit Current ArtList to FB </button>
+            </div>            
+        );
 
-        
+        let articleFetcher = (
+            <div>
+                <button onClick={this.props.Read}> Read ArtList from FB </button>
+            </div>
+        );
 
-        
-
-        
-        
         let authorizer = (
             <button onClick={this.props.onAuth}>
                 Login
@@ -78,6 +83,10 @@ class Layout extends Component {
                 <h1 className="App-title">Welcome to TDC|DE</h1>
             </header>
                 {dash_base}
+
+                {articlePublisher}
+
+                {articleFetcher}
             </div>
         );
       }
@@ -94,6 +103,7 @@ const mapStateToProps = state => {
         userPic: state.auth.user.PicUrl,
         userEmail: state.auth.user.Email,
         userPhone: state.auth.user.PhoneNumber,
+        articles: state.content.articles3p
     };
 };
 
@@ -101,7 +111,13 @@ const mapDispactchToProps = dispatch => {
     return{
         //onTest: () => dispatch(reduxTest()),
         onAuth: () => dispatch(acts.fbSignIn()),
-        onLogOut: () => dispatch(acts.logout())
+        onLogOut: () => dispatch(acts.logout()),
+        
+        // Actions from Content
+        Log: () => dispatch(acts.logArtList()),
+        Commit: () => dispatch(acts.writeToFB()),
+        Read: () => dispatch(acts.readfromFB())
+        //Read: () => dispatch(acts.reader())
     };
 };
 
