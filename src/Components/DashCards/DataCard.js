@@ -1,5 +1,5 @@
 import React from 'react';
-import LineChart from 'react-chartjs/lib/line';
+import Charter from '../Charter';
 
 const DataCard = (props) => {
 

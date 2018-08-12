@@ -58,6 +58,7 @@ class Dashboard extends Component {
             <div className="card participate">
                 <p className="cardTitle">TDC PARTICIPATION</p>
                 <AnalCard charterType={chartType.DOUGHNUT_CHART} />
+                <AnalCard charterType={chartType.RADAR_CHART} />
             </div>
         );
 
