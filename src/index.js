@@ -17,11 +17,13 @@ import { loadState, setState } from './Store/actions';
 // import testred from './Store/reducers/authExp';
 import authRed from './Store/reducers/auth';
 import contentRed from './Store/reducers/content';
+import userRed from './Store/reducers/user';
 // import contentRed from '../src/store/reducers/content';
 
 const rootReducer = combineReducers({
     auth: authRed,
-    content: contentRed//,
+    content: contentRed,
+    user: userRed//,
     // test: testred
 });
 const persistedState = loadState();

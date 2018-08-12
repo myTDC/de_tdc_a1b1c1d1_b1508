@@ -1,0 +1,152 @@
+:root {
+    --app-dash-width: 55%;
+    --app-dash-height: 80vh;
+    --app-dash-margin-top: 10vh;
+    --app-dash-margin-left: 20%;
+    --app-dash-margin-right: 20%;
+    
+
+    --app-container-width: 91%;
+    --app-container-margin-bottom: 4%;
+    --app-container-back-color:#FAFAFA;
+    --app-container-back-shadow:2px 2px 8px 1px rgba(55, 71, 79, 0.18);;
+    --app-container-padding: 4vh;
+
+    --app-card-height: 30vh;
+    --app-card-width: 96%;
+    --app-card-margin: 2%;
+    --app-card-margin-top: 2%;
+    --app-card-back-color:#FDFDFD;
+    
+    --app-card-shadow:2px 2px 8px 1px rgba(55, 71, 79, 0.20);
+
+    --app-card-height-user: 40vh;
+    --app-card-width-user: 100%;
+    --app-card-margin-top-user: 0vh;
+    --app-card-back-color-user:rgba(55, 71, 79, 1);
+    --app-card-shadow-user:2px 4px 8px 1px rgba(55, 71, 79, 0.20);
+}
+
+@media (max-width: 1023px) { 
+    :root {
+        --app-dash-width: 55%;
+        --app-dash-margin-top: 10vh;
+        --app-dash-margin-left: 4%;
+        --app-dash-margin-right: 4%;
+    }
+}
+
+.dashboard{
+    width: var(--app-dash-width);
+    height: var(--app-dash-height);
+    margin-left: var(--app-dash-margin-left);
+    margin-right: var(--app-dash-margin-right);
+    margin-top: var(--app-dash-margin-top);
+    overflow-y: scroll;
+    position: relative;
+}
+
+.cardContainer{
+    width: var(--app-container-width);
+    background-color: var(--app-container-back-color);
+    margin-bottom: var(--app-container-margin-bottom);
+    /* box-shadow: var(--app-container-back-shadow); */
+}
+
+.cardContainer ::-webkit-scrollbar {
+    display: none;
+    width: 5px;
+    height: 8px;
+    background-color: #aaa; /* or add it to the track */
+}
+
+
+.cardContainer ::-webkit-scrollbar-thumb {
+    width: 5px;
+    height: 8px;
+    background-color: #a0a; /* or add it to the track */
+}
+
+.card {
+    display: block;
+    width: var(--app-card-width);
+    height: var(--app-card-height);
+    background-color: var(--app-card-back-color);
+    margin: var(--app-card-margin);
+    margin-top: var(--app-card-margin-top);
+    box-shadow: var(--app-card-shadow);
+}
+
+.cardTitle {
+    font-family: 'Raleway';
+    font-size: 0.8em;
+    font-variant: small-caps;
+    transform: rotate(270deg);
+}
+
+.user{
+    width: var(--app-card-width-user);
+    height: var(--app-card-height-user);
+    margin: 0;
+    margin-top: var(--app-card-margin-top-user);
+    background-color: var(--app-card-back-color-user);
+    box-shadow: var(--app-card-shadow-user);
+}
+
+.userCard{
+    position: relative;
+}
+
+.topActs{
+    display: block;
+    background-color: #324a5c;
+}
+
+.midDisplay{
+    display: flex;
+    justify-content: space-between;
+}
+
+.midDisplay:nth-child(odd){
+    width: 30%;
+    height: 10vh;
+}
+.midDisplay:nth-child(even){
+    width: 40%;
+    height: 10vh;
+}
+/* .midDisplay::.user{
+    width: 30%;
+    height: 10vh;
+}
+
+.midDisplay::.org{
+    width: 30%;
+    height: 10vh;
+}
+.midDisplay::.relation{
+    width: 40%;
+    height: 10vh;
+} */
+
+.botTags{
+    background-color: #324a5c;
+    display: flex;
+    justify-content: space-between;
+}
+.botTags > a{
+    align: left;
+
+    margin: 1%;
+}
+
+.botTags > a > img{
+    width: 40px;
+    height: 40px;
+}
+/* .smm-profile{
+    margin-bottom: 10px;
+    font-size: 0.8em;
+} */
+
+/* <h3 className="smm-profile"></h3> */

@@ -5,6 +5,9 @@ import logo from '../plane_grad.svg';
 //Libraries
 import { connect } from 'react-redux';
 
+//Containers
+import Dash from './Dashboard';
+
 //Components
 import SignUpHero from '../Components/SignupHero';
 
@@ -87,6 +90,8 @@ class Layout extends Component {
                 {articlePublisher}
 
                 {articleFetcher}
+
+                <Dash />
             </div>
         );
       }
