@@ -19,8 +19,14 @@ class Dashboard extends Component {
         
     }
 
+    
+
     componentDidUpdate() {
         console.log('[Cont/Dash] Components Updated | Current UserID is: ', localStorage.getItem('userID'));
+    }
+
+    componentDidMount(){
+        this.props.onLoad();
     }
 
     render() {
@@ -53,11 +59,11 @@ class Dashboard extends Component {
                 <AnalCard charterType={chartType.LINE_CHART}/>
             </div>
         );
-
+        
         let participateCard = (
+            //<AnalCard charterType={chartType.DOUGHNUT_CHART} />
             <div className="card participate">
                 <p className="cardTitle">TDC PARTICIPATION</p>
-                <AnalCard charterType={chartType.DOUGHNUT_CHART} />
                 <AnalCard charterType={chartType.RADAR_CHART} />
             </div>
         );
@@ -82,6 +88,9 @@ class Dashboard extends Component {
             </div>
         )
 
+        const writetofb = () => {
+            this.props.writeTest(this.props.userId, this.props.userNameGiven);
+        }
         // if(this.props.){
         //         signup = (null);
         //         authorizer = (
@@ -101,7 +110,7 @@ class Dashboard extends Component {
         return (
             <div className="dashboard">
                 <div className="cardContainer">
-                <h1>Welcome to your Dashboard. The heart of DE.</h1>
+                <h1 onClick={writetofb}>Welcome to your Dashboard. The heart of DE.</h1>
                     {userCard}
                     {todoCard}
                     {learnCard}
@@ -130,6 +139,8 @@ const mapStateToProps = state => {
 const mapDispactchToProps = dispatch => {
     return{
         // onAuth: () => dispatch(acts.fbSignIn()),
+        onLoad: () => dispatch(acts.setupAnal()),
+        writeTest: (uID, uGName) => dispatch(acts.writeUserPersonalInfo(uID, uGName))//,
     };
 };
 

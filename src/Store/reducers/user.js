@@ -1,4 +1,4 @@
-import { CONT_COMMIT_ARTICLES, CONT_FETCH_ARTICLES, CONT_SET_FILTER, CONT_READ_COUNT } from '../actions/actionTypes';
+import { CONT_COMMIT_ARTICLES, CONT_FETCH_ARTICLES, CONT_SET_FILTER, DASH_FETCH_DAILY_COUNT } from '../actions/actionTypes';
 import _ from 'lodash';
 // console.log('[Red/User] [userCommiter] ->  Initial State Val is', state);
 //let seq = 0;
@@ -24,6 +24,27 @@ const articlesCommiter = (state, action) => {
     return updateObject(state, {count: state.count + action.pay})
 }
 
+const getJulianDay = () => {
+    let julDay = null;
+    switch(new Date().getDay()){
+        case 0: return julDay = 'Sunday';
+        case 1: return julDay = 'Monday';
+        case 2: return julDay = 'Tuesday';
+        case 3: return julDay = 'Wednesday';
+        case 4: return julDay = 'Thursday';
+        case 5: return julDay = 'Friday';
+        case 6: return julDay = 'Saturday';
+        default: return null;
+    }
+}
+
+const setupCharts = (state, action) => {
+    let today = getJulianDay();
+    console.log("Today's Day is:", today);
+
+    return updateObject(state, null);
+}
+
 const setStateonFetch = (state, action) => {
     const articles3p = {...state.articles3p}
 
@@ -36,20 +57,15 @@ const setStateonFetch = (state, action) => {
 const reducer = ( state = initState, action ) => {
     switch ( action.type ) {
         case CONT_COMMIT_ARTICLES:  return articlesCommiter(state, action);
-        case CONT_FETCH_ARTICLES:   {
-            console.log('[Red/Switch]');
-            return setStateonFetch(state, action);}
+        case CONT_FETCH_ARTICLES: { console.log('[Red/Switch]'); return setStateonFetch(state, action);}
         case CONT_SET_FILTER: {
             console.log('Inside Reducer. State Val is', state);
             console.log('Inside Reducer. Action has Value is', action.pay);
-            return updateObject(state, {count: state.count + action.pay})
+            return updateObject(state, {count: state.count + action.pay});
         }
-        case CONT_READ_COUNT: {
-            console.log('Inside Reducer. State Val is', state);
-            console.log('Inside Reducer. Action has Value is', action.pay);
-            return updateObject(state, {count: state.count + action.pay})
-        }
-        default: return state;
+        case DASH_FETCH_DAILY_COUNT: return setupCharts(state, action);
+        default: { console.log('[Red/Users] [Defaulter] Reducer Triggered');
+            return state;}
     }
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import Charter from '../Charter';
+//import Charter from '../Charter';
 
 const DataCard = (props) => {
 

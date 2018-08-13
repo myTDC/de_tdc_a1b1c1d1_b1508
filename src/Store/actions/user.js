@@ -1,10 +1,10 @@
 import * as actionType from './actionTypes';
-import {    articlesRef_3P//, 
-            // profileRef, 
+import {    articlesRef_3P, 
+            usersRef//, 
             // usrTodoRef 
 } from '../config/fb';
 
-let cVer = "b1008";
+let contentUpdateVer = "b1008";
 /*let artInit = [
     {"ver": cVer, "id": 1, "title": "10 Resources to Help You Grow a Lean Startup", "url": "https://blog.producthunt.com/10-resources-to-help-you-grow-a-lean-startup-aad02b2354c" ,"image": "https://cdn-images-1.medium.com/max/2000/1*BXkkZ9d5IasXYsFZendl3Q.jpeg", "category": "Best Practices", "length": "7 Mins", "read": 0, "author": null, "publisher": null},
     {"ver": cVer, "id": 2, "title": "The psychology of selling", "url": "https://medium.com/swlh/the-psychology-of-selling-1bfea4cd127" ,"image": "https://cdn-images-1.medium.com/max/2000/1*1B7PMGNM-V9h_9BODEIupw.jpeg", "category": "Best Practices", "length": "10 Mins", "read": 0, "author": null, "publisher": null},
@@ -39,7 +39,7 @@ let cVer = "b1008";
 ];
 */
 let artStored = [
-    {"ver": cVer, 
+    {"ver": contentUpdateVer, 
     "id": 31, 
     "title": "How We Decided To Split Equity As Co-Founders", 
     "url": "https://entrepreneurshandbook.co/how-we-decided-to-split-equity-as-co-founders-of-digital-press-cffd464232dd",
@@ -112,10 +112,27 @@ export const readSuccess = (result) => {
 // }
 
 const readFailure = (error) => {
-    console.log('[Act/Content] [readFailure] -> Read from FB Failed with Error:', error);
+    console.log('[Act/User] [readFailure] -> Read from FB Failed with Error:', error);
     return{type: null};
 }
 
 // const listenToFB = () => {
     
 // };
+
+export const setupAnal = () => {
+    console.log('[Act/User] [setupAnal] -> ');
+    return {
+        type: actionType.DASH_FETCH_DAILY_COUNT
+    }
+}
+
+export const writeUserPersonalInfo = (uID, uName) => {
+    console.log('[Act/User] [writeUserPersonalInfo]');
+    usersRef.set({[uID]: {
+        'Given_Name': uName
+    }});
+    return{
+        type: null
+    }
+}

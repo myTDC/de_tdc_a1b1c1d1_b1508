@@ -9,9 +9,10 @@ export const AUTH_START = 'AUTH_START';
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 
 //from profile actions
-export const PROF_SET_USERDATA = 'SET_USERDATA';
-export const PROF_FETCH_USERDATA = 'FETCH_USERDATA';
-export const PROF_UPDATE_PROGRESS = 'UPDATE_PROGRESS';
+export const DASH_SET_USERDATA = 'SET_USERDATA';
+export const DASH_FETCH_USERDATA = 'FETCH_USERDATA';
+export const DASH_UPDATE_PROGRESS = 'UPDATE_PROGRESS';
+export const DASH_FETCH_DAILY_COUNT = 'FETCH_DAILY_COUNT';
 
 //from article actions
 export const CONT_SET_FAV = 'SET_FAV';
