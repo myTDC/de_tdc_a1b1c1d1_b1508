@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
-import './Participate.css';
+import './Nav.css';
+import logo from '../plane_grad.svg';
 
 //Libraries
 import { connect } from 'react-redux';
 
-//Components
-
-//Actions
-import * as acts from '../Store/actions';
-
-class Participate extends Component {
+class Nav extends Component {
 
 }
 const mapStateToProps = state => {
@@ -24,4 +20,4 @@ const mapDispactchToProps = dispatch => {
     };
 };
 
-export default connect( mapStateToProps, mapDispactchToProps )( Participate );
+export default connect( mapStateToProps, mapDispactchToProps )( Nav );

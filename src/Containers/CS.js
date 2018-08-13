@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Participate.css';
+import './CS.css';
 
 //Libraries
 import { connect } from 'react-redux';
@@ -9,12 +9,12 @@ import { connect } from 'react-redux';
 //Actions
 import * as acts from '../Store/actions';
 
-class Participate extends Component {
+class CS extends Component {
 
 }
 const mapStateToProps = state => {
     return{
-
+        
     };
 };
 
@@ -24,4 +24,4 @@ const mapDispactchToProps = dispatch => {
     };
 };
 
-export default connect( mapStateToProps, mapDispactchToProps )( Participate );
+export default connect( mapStateToProps, mapDispactchToProps )( CS );
