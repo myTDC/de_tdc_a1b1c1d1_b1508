@@ -129,7 +129,7 @@ export const setupAnal = () => {
 
 export const writeUserPersonalInfo = (uID, uName) => {
     console.log('[Act/User] [writeUserPersonalInfo]');
-    usersRef.set({[uID]: {
+    usersRef.push({[uID]: {
         'Given_Name': uName
     }});
     return{
