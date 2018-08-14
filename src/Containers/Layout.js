@@ -85,6 +85,7 @@ class Layout extends Component {
                 <img src={logo} className="App-logo" alt="logo" />
                 <h1 className="App-title">Welcome to TDC|DE</h1>
             </header>
+
                 {dash_base}
 
                 {articlePublisher}

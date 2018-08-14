@@ -6,7 +6,7 @@ import Layout from './Containers/Layout';
 // import * as acts from './Store/actions';
 
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { Router, Switch, withRouter } from 'react-router-dom';
 
 class App extends Component {
 

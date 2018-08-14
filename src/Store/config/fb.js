@@ -4,7 +4,7 @@ import { FirebaseConfig } from "./keys.js";
 
 firebase.initializeApp(FirebaseConfig);
 
-const dbRef = firebase.database().ref();
+export const dbRef = firebase.database().ref();
 
 //System related database references
 export const articlesRef_3P = dbRef.child("articles-by3p");
