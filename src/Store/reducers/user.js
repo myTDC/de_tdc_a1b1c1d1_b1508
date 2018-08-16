@@ -1,4 +1,4 @@
-import { CONT_COMMIT_ARTICLES, CONT_FETCH_ARTICLES, CONT_SET_FILTER, DASH_FETCH_DAILY_COUNT } from '../actions/actionTypes';
+import { CONT_COMMIT_ARTICLES, CONT_FETCH_ARTICLES, DASH_FETCH_DAILY_COUNT } from '../actions/actionTypes';
 import _ from 'lodash';
 // console.log('[Red/User] [userCommiter] ->  Initial State Val is', state);
 //let seq = 0;
@@ -25,15 +25,15 @@ const articlesCommiter = (state, action) => {
 }
 
 const getJulianDay = () => {
-    let julDay = null;
+    //let julDay = null;
     switch(new Date().getDay()){
-        case 0: return julDay = 'Sunday';
-        case 1: return julDay = 'Monday';
-        case 2: return julDay = 'Tuesday';
-        case 3: return julDay = 'Wednesday';
-        case 4: return julDay = 'Thursday';
-        case 5: return julDay = 'Friday';
-        case 6: return julDay = 'Saturday';
+        case 0: return 'Sunday';
+        case 1: return 'Monday';
+        case 2: return 'Tuesday';
+        case 3: return 'Wednesday';
+        case 4: return 'Thursday';
+        case 5: return 'Friday';
+        case 6: return 'Saturday';
         default: return null;
     }
 }

@@ -89,7 +89,7 @@ class Dashboard extends Component {
         )
 
         const writetofb = () => {
-            this.props.writeTest(this.props.userId, this.props.userNameGiven);
+            this.props.writeTest(this.props.userId, this.props.userNameGiven, this.props.userNameFamily, this.props.userEmail, this.props.userPic, this.props.userPhone);
         }
         // if(this.props.){
         //         signup = (null);
@@ -140,7 +140,7 @@ const mapDispactchToProps = dispatch => {
     return{
         // onAuth: () => dispatch(acts.fbSignIn()),
         onLoad: () => dispatch(acts.setupAnal()),
-        writeTest: (uID, uGName) => dispatch(acts.writeUserPersonalInfo(uID, uGName))//,
+        writeTest: (uID, uGname, uFname, uEmail, uPic, uPhone) => dispatch(acts.writeUserPersonalInfo(uID, uGname, uFname, uEmail, uPic, uPhone))//,
     };
 };
 

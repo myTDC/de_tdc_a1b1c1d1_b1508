@@ -24,7 +24,7 @@ class Layout extends Component {
         console.log('[Comp/Layout] Components Updated | Current ArtList is: ', this.props.articles);
     }
 
-    render() {
+    render(props) {
         // let asyncTester = (
         //     <button onClick={this.props.onTest}>
         //         test now
@@ -86,6 +86,7 @@ class Layout extends Component {
                 <h1 className="App-title">Welcome to TDC|DE</h1>
             </header>
 
+                {this.props.children}
                 {dash_base}
 
                 {articlePublisher}
