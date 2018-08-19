@@ -6,15 +6,17 @@ const ToDo = (props) => {
     //let lister = null;
 
     return(
-        <div className="Container">
-            <a href={props.url}>
-                <em>{props.id}</em>    
-                <strong>{props.title}</strong>
-                <sup>{props.added}</sup>
-                <mark>{props.enddate}</mark>
-                <img src={props.logo} />
-            </a>
+        <a href={props.url}>
+        <div href={props.url} className="Container">
+
+                <p>{props.myid}</p>    
+                <strong>{props.mytitle}</strong>
+                <p>{props.added}</p>
+                <p>{props.enddate}</p>
+                <img src={props.logo} alt="ToDo type icon for the different origins of todo items" />
+            
         </div>
+        </a>
     );
 };
 

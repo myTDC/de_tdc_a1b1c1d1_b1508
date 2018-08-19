@@ -38,40 +38,38 @@ class Dashboard extends Component {
         // );
 
         let userCard = (
-            <div className="card user">
-                <UserCard />
+            <div className="cardholder user">
+                <UserCard className="card user"/>
             </div>            
         );
 
         let todoCard = ( //Also has notifications, last read and 
-            <div className="card todo">
-                <p className="cardTitle">TO-DOs</p>
-                <DataCard 
-                    chartData={this.props.chartData} 
-                    chartOptions={this.props.chartOpts} 
-                />
+            <div className="cardholder">
+                <strong className="cardTitle">TO-DOs</strong>
+                <DataCard className="card todo"/>
             </div>
         );
 
         let learnCard = (
-            <div className="card learn">
-                <p className="cardTitle">LEARNING CURVE</p>
-                <AnalCard charterType={chartType.LINE_CHART}/>
+            <div className="cardholder">
+                <strong className="cardTitle">LEARNING CURVE</strong>
+                <AnalCard className="card learn" charterType={chartType.LINE_CHART}/>
             </div>
         );
         
         let participateCard = (
             //<AnalCard charterType={chartType.DOUGHNUT_CHART} />
-            <div className="card participate">
-                <p className="cardTitle">TDC PARTICIPATION</p>
-                <AnalCard charterType={chartType.RADAR_CHART} />
+            <div className="cardholder">
+                <strong className="cardTitle">TDC PARTICIPATION</strong>
+                <AnalCard className="card participate" charterType={chartType.RADAR_CHART} />
             </div>
         );
 
         let bookmarksCard = (
-            <div className="card bookmarks">
-                <p className="cardTitle">FAV READLIST</p>
+            <div className="cardholder">
+                <strong className="cardTitle">FAV READLIST</strong>
                 <DataCard 
+                    className="card bookmarks"
                     chartData={this.props.chartData} 
                     chartOptions={this.props.chartOpts} 
                 />
@@ -79,9 +77,10 @@ class Dashboard extends Component {
         )
 
         let readHistoryCard = (
-            <div className="card readHistory">
-                <p className="cardTitle">USER JOURNEY</p>
+            <div className="cardholder">
+                <strong className="cardTitle">USER JOURNEY</strong>
                 <DataCard 
+                    className="card readHistory"
                     chartData={this.props.chartData} 
                     chartOptions={this.props.chartOpts} 
                 />
@@ -110,7 +109,6 @@ class Dashboard extends Component {
         return (
             <div className="dashboard">
                 <div className="cardContainer">
-                <h1 onClick={writetofb}>Welcome to your Dashboard. The heart of DE.</h1>
                     {userCard}
                     {todoCard}
                     {learnCard}
@@ -118,6 +116,7 @@ class Dashboard extends Component {
                     {bookmarksCard}
                     {readHistoryCard}
                 </div>
+                <h1 onClick={writetofb}>Welcome to your Dashboard. The heart of DE.</h1>
             </div>
         );
       }

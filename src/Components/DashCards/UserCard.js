@@ -1,4 +1,5 @@
 import React from 'react';
+import './UserCard.css';
 import tdcLogo from '../../plane_grad.svg';
 import fbLogo from '../../logo.svg';
 import instaLogo from '../../logo.svg';
@@ -44,10 +45,12 @@ const UserCard = (props) => {
             <div className="midDisplay">
                 <div className="mDuser">
                     <img src={tdcLogo} alt="User's Profile Shot" />
+                    TDC '18
                 </div>
-                <div className="mDrelation"> <p>{user_relation}</p></div>
+                <div className="mDrelation"> recognizes user as a potential disruptor.</div>
                 <div className="mDorg">
                     <img src={tdcLogo} alt="Organization's Logo" />
+                    <p>{user_relation}</p>
                 </div>
             </div>
             <div className="botTags">

@@ -1,4 +1,5 @@
 import React from 'react';
+import './DataCard.css';
 //import Charter from '../Charter';
 
 //Components - Stateless
@@ -18,12 +19,13 @@ const DataCard = (props) => {
     // ];
 
 
+    //let t3dl = new Date(new Date().getTime() + 24*3600*3);
     //let lister = null;
 
-    let todolister = (<div className="todo_Container">
-        <div className="todo_overview"><strong>12</strong></div>
+    let todolister = (<div className="todo_container">
+        <div className="todo_overview"><p>COMPLETED</p><strong>04</strong><p>OF 6 TODOs</p></div>
         <div className="todo_list">
-            <ToDo id="01" title="Continue Where you left off" url="https:dash.mytdc.io/" logo={org_logo} added="3 days ago" enddate={new Date(new Date().getTime() + 24*3600*3)}/>
+            <ToDo myid={"01"} mytitle={"Continue Where you left off"} url={"https:dash.mytdc.io/"} logo={org_logo} added={"3 days ago"} enddate={"t3dl"} />
         </div>
         </div>);
     

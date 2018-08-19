@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Layout.css';
-import logo from '../plane_grad.svg';
+// import logo from '../plane_grad.svg';
 
 //Libraries
 import { connect } from 'react-redux';
@@ -70,22 +70,17 @@ class Layout extends Component {
                     </section>
                 );
         }
-        const dash_base = (
-            <section> 
-                {signup}
-                <br/> 
-                {authorizer} 
-                <br/> 
-            </section>
+        const dash_base = ( null
+            // <section> 
+            //     {signup}
+            //     <br/> 
+            //     {authorizer} 
+            //     <br/> 
+            // </section>
         );
         //Beginning DomRender
         return (
             <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <h1 className="App-title">Welcome to TDC|DE</h1>
-            </header>
-
                 {this.props.children}
                 {dash_base}
 

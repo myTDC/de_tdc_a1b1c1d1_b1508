@@ -1,0 +1,37 @@
+:root{
+    --app-card-height: 100%;
+}
+
+.todo_container{
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    height: var(--app-card-height);
+    padding: 4%;
+    background-color: #FFF;
+}
+
+.todo_overview{
+    width: 30%;
+    height: 100;
+    background-color: #FFF;
+    text-transform: capitalize;
+    text-align: end;
+    padding: 16px;
+}
+.todo_overview > p{
+    font-size: 0.8em;
+    font-family: "Open Sans", Montserrat, sans-serif;
+}
+
+.todo_overview > strong{
+    font-size: 4em;
+    font-family: "Open Sans", Montserrat, sans-serif;
+}
+
+.todo_list{
+    width: 60%;
+    height: 20vh;
+    padding: 8px;
+    background-color: rgb(212, 212, 212);
+}

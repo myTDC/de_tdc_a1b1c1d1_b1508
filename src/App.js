@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
 import Layout from './Containers/Layout';
+import logo from './plane_grad.svg';
 
 // import { reduxTest } from './Store/actions/authExp';
 // import * as acts from './Store/actions';
 
+//Libraries
 import { connect } from 'react-redux';
-import { Router, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
+
+//Containers
+import Dash from './Containers/Dashboard';
 
 class App extends Component {
 
@@ -18,7 +23,14 @@ class App extends Component {
     return (
       <div>
         <Layout>
-        <h1>hiiiiiiiii</h1>
+            <header className="App-header">
+              <img src={logo} className="App-logo" alt="logo" />
+              <h1 className="App-title">Welcome to TDC|DE</h1>
+                
+            </header>
+          <Switch>
+                  <Route path="/" to={Dash} />
+                </Switch>
         </Layout>
       </div>
     );
@@ -33,7 +45,7 @@ const mapStateToProps = state => {
 
 const mapDispactchToProps = dispatch => {
   return{
-
+    
   };
 };
 

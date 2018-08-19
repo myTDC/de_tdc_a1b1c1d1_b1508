@@ -1,0 +1,58 @@
+:root{
+    --usercard-div-padding: 16px;
+}
+
+.userCard {
+    width: 100%;
+    height: 100%;
+}
+
+.topActs{
+    display: flex;
+    align-items: stretch;
+    justify-content: right;
+    padding: var(--usercard-div-padding);
+}
+
+.midDisplay{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+    padding: var(--usercard-div-padding);
+}
+
+/* .midDisplay::.user{
+    width: 30%;
+    height: 10vh;
+}
+
+.midDisplay::.org{
+    width: 30%;
+    height: 10vh;
+}
+.midDisplay::.relation{
+    width: 40%;
+    height: 10vh;
+} */
+
+.botTags{
+    display: flex;
+    align-self: flex-end;
+    justify-content: space-between;
+    padding: var(--usercard-div-padding);
+}
+.botTags > a{
+    align: left;
+
+    margin: 1%;
+}
+
+.botTags > a > img{
+    width: 32px;
+    height: 32px;
+}
+/* .smm-profile{
+    margin-bottom: 10px;
+    font-size: 0.8em;
+} */

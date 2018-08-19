@@ -1,6 +1,7 @@
 import * as actionType from './actionTypes';
 import {    //articlesRef_3P, 
-            dbRef//, 
+            dbRef,
+            pushRef//, 
             // usrTodoRef 
 } from '../config/fb';
 
@@ -40,4 +41,19 @@ export const writeUserPersonalInfo = (uID, uGname, uFname, uEmail, uPic, uPhone)
     return{
         type: null
     }
+}
+
+export const setupPushNotifications = () =>{
+    pushRef.requestPermission()//Returns a Promise
+    .then(()=>{
+        console.log('[Act/User] [setupPushNotifications] [Promise Lvl1] User Gave Permission');
+        return pushRef.getToken();
+    })
+    .then((token)=>{
+        console.log("[Act/User] [setupPushNotifications] [Promise Lvl2] User's Token is:", token);
+    })
+    .catch(() => {
+        console.log("[Act/User] [setupPushNotifications] [Promise Lvl1] User Didn't Give Permission");
+        //Add Logic to prompt again. Add snackbar to ask not now or never. Add trigger in settings to toggle permission if user chooses to.
+    })
 }

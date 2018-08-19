@@ -16,3 +16,5 @@ export const usersRef = dbRef.child("users");
 
 export const authRef = firebase.auth();
 export const provider = new firebase.auth.GoogleAuthProvider();
+
+export const pushRef = firebase.messaging();
