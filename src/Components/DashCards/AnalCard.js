@@ -1,4 +1,4 @@
-/* import React from 'react';
+import React from 'react';
 import Charter from '../Charter';
 
 const AnalCard = (props) => {
@@ -9,4 +9,4 @@ const AnalCard = (props) => {
     );
 };
 
-export default AnalCard; */
+export default AnalCard;

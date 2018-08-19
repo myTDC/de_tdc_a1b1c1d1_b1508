@@ -1,4 +1,4 @@
-/* import React from 'react';
+import React from 'react';
 import LineChart from 'react-chartjs/lib/line';
 
 const DataCard = (props) => {
@@ -14,4 +14,4 @@ const DataCard = (props) => {
     );
 };
 
-export default DataCard; */
+export default DataCard;
