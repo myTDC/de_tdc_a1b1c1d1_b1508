@@ -23,7 +23,7 @@ class Learn extends Component{
         return(
             <div className="learnSection">
              {articleArray.map(artList =>(
-                <ArtCard onClick = {() => this.props.storeArt(artList)} key={artList.id} 
+                <ArtCard key={artList.id} 
                         title={artList.title} 
                         image={artList.image} 
                         url={artList.url} 
@@ -43,7 +43,6 @@ const mapStateToProps = state => {
 const mapDispactchToProps = dispatch => {
     return{
         readArticlesFB: () => dispatch(acts.readfromFB()),
-        storeArt: (arts) => dispatch(acts.articleReadProgress(arts)),
     };
 };
 

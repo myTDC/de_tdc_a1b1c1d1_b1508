@@ -6,7 +6,7 @@ import logo from '../plane_grad.svg';
 import { connect } from 'react-redux';
 
 //Containers
-
+import Dash from './Dashboard';
 
 //Components
 import SignUpHero from '../Components/SignupHero';
@@ -99,7 +99,7 @@ class Layout extends Component {
                 {dash_base}
                 </div>
                 </div>
-                
+                <Dash/>
               {/*   {articlePublisher}
 
                 {articleFetcher} */}

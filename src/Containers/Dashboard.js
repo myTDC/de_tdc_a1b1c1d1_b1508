@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import UserCard from '../Components/DashCards/UserCard';
 import DataCard from '../Components/DashCards/DataCard';
 import AnalCard from '../Components/DashCards/AnalCard';
+import CardTitle from '../Components/DashCards/CardTitle';
 import * as chartType from '../Components/Charter';
 
 //Actions
@@ -16,7 +17,7 @@ import * as acts from '../Store/actions';
 
 class Dashboard extends Component {
 	state = {
-
+        
 	}
 
 
@@ -37,7 +38,7 @@ class Dashboard extends Component {
 		//     <h1>{this.props.count}</h1>
 		// );
 
-		let userCard = (
+/* 		let userCard = (
 			<div className="cardholder user">
 				<UserCard className="card user" />
 			</div>
@@ -70,8 +71,8 @@ class Dashboard extends Component {
 				<strong className="cardTitle">FAV READLIST</strong>
 				<DataCard
 					className="card bookmarks"
-					chartData={this.props.chartData}
-					chartOptions={this.props.chartOpts}
+					chartData={null}
+					chartOptions={null}
 				/>
 			</div>
 		)
@@ -85,7 +86,7 @@ class Dashboard extends Component {
 					chartOptions={this.props.chartOpts}
 				/>
 			</div>
-		)
+		) */
 
 		const writetofb = () => {
 			this.props.writeTest(this.props.userId, this.props.userNameGiven, this.props.userNameFamily, this.props.userEmail, this.props.userPic, this.props.userPhone);
@@ -107,17 +108,35 @@ class Dashboard extends Component {
 		// );
 		//Beginning DomRender
 		return (
+            <div className="cover">
 			<div className="dashboard">
 				<div className="cardContainer">
-					{userCard}
+                
+                {/*<strong className="cardTitle">TDC PARTICIPATION</strong>*/}
+
+				
+
+			    <DataCard title="TDC PREPARATION">
+                <CardTitle name="USER TODO" />
+                </DataCard>
+
+                <DataCard title="TDC PREPARATION">
+                <CardTitle name="USER TODO" />
+                </DataCard>
+                <AnalCard title="TDC PREPARATION">
+                <CardTitle name="TDC " />
+                </AnalCard>
+
+					{/* {userCard}
 					{todoCard}
 					{learnCard}
 					{participateCard}
 					{bookmarksCard}
-					{readHistoryCard}
+                    {readHistoryCard} */}
 				</div>
 				<h1 onClick={writetofb}>Welcome to your Dashboard. The heart of DE.</h1>
 			</div>
+            </div>
 		);
 	}
 }
