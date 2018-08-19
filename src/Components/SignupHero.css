@@ -1,3 +1,5 @@
+@import url("https://www.w3schools.com/w3css/4/w3.css");
+
 :root{
     --app-back-color: #1C2936;
     --app-fore-color: #273549;
@@ -90,6 +92,7 @@ body{
 .heroBtnHelper{
     color: var(--app-text-heading-color);
     font-size: var(--app-text-btnhelper-size);
+    padding-top: 5px;
 }
 
 
@@ -101,4 +104,105 @@ body{
 .sectionHead{
     color: var(--app-text-heading-color);
     font-size: var(--app-text-heading-size);
+}
+
+
+.signup{
+    padding-bottom: 1%;
+    min-height: 100vh;
+    max-width: 100%;
+    background-color: #1C2936;
+    color: white;
+}
+.columnLeft {
+    position: relative;
+    float: left;
+    width: 40%;
+    padding: 1%;
+    max-height: 75vh;
+    text-align: center;
+}
+.signupLogo{
+    margin-top: 20%;
+    max-width: 75%;
+    margin-left: 10%;
+}
+.row{
+    box-shadow: 4px 4px 3px #17232F;
+}
+
+.contentHero {
+    position: absolute;
+    bottom: -70px;
+    left: 35%;
+}
+
+.contentRest{
+    position: absolute;
+    bottom: 0px;
+    padding: 20px;
+}
+.header{
+    box-shadow: 4px 4px 4px #17232F;
+    max-height: 25vh;
+}
+.headerLogo{
+    width: 10%;
+    margin-left: 45%;  
+    margin-bottom: 1.5%;
+    padding-top: 1%;
+    padding-bottom: 0.1%;
+}
+.headerLogo>h4{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+.btn {
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+   /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+    border-radius: 5px;
+   }
+   .btn-grad {background-image: linear-gradient(to right, #fe8c00 0%, #f83600 51%, #fe8c00 100%)}
+   .btn-grad:hover { background-position: right center; }
+.columnRest {
+    position: relative;
+    float: left;
+    width: 19.5%;
+    margin: 0.25%;
+    min-height: 75vh; 
+    background-color: #202D3D;
+}
+.columnRestImage{
+    padding: 3%;
+    padding-top: 15%;
+    width: 100%;
+} 
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.contentRest>h2{
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  text-align: center;
+  color: #FF5722;
+}
+.contentRest>p{
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  color:#fff;
 }

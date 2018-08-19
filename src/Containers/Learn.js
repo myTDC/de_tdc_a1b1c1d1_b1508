@@ -15,7 +15,7 @@ class Learn extends Component{
  
     }
     componentDidMount() {
-        this.props.readArticles()
+        this.props.readArticlesFB();
     }
     render(){
         //let data = Array.from(this.props.articles);
@@ -23,7 +23,7 @@ class Learn extends Component{
         return(
             <div className="learnSection">
              {articleArray.map(artList =>(
-                <ArtCard key={artList.id} 
+                <ArtCard onClick = {() => this.props.storeArt(artList)} key={artList.id} 
                         title={artList.title} 
                         image={artList.image} 
                         url={artList.url} 
@@ -42,8 +42,12 @@ const mapStateToProps = state => {
 
 const mapDispactchToProps = dispatch => {
     return{
-        readArticles: () => dispatch(acts.readfromFB())
+        readArticlesFB: () => dispatch(acts.readfromFB()),
+        storeArt: (arts) => dispatch(acts.articleReadProgress(arts)),
     };
 };
 
 export default connect( mapStateToProps, mapDispactchToProps )( Learn );
+
+
+

@@ -1,9 +1,14 @@
+::-webkit-scrollbar{
+  display: none;
+}
+
 .App {
     margin: 0px;
     width: 100%;
     padding: 0px;
+    max-height: 100vh;
   }
-  
+
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
     height: 80px;

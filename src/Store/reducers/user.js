@@ -1,4 +1,4 @@
-import { CONT_COMMIT_ARTICLES, CONT_FETCH_ARTICLES, CONT_SET_FILTER, CONT_READ_COUNT } from '../actions/actionTypes';
+import { CONT_COMMIT_ARTICLES, CONT_FETCH_ARTICLES, CONT_SET_FILTER, CONT_READ_COUNT, CONT_READ_ARTICLES } from '../actions/actionTypes';
 import _ from 'lodash';
 // console.log('[Red/User] [userCommiter] ->  Initial State Val is', state);
 //let seq = 0;
@@ -14,6 +14,7 @@ const initState = {
             isComplete: false
         }
     },
+    articlesRead: {},
     chartdata : { } ,
     chartoptions : { }
 };
@@ -48,6 +49,10 @@ const reducer = ( state = initState, action ) => {
             console.log('Inside Reducer. State Val is', state);
             console.log('Inside Reducer. Action has Value is', action.pay);
             return updateObject(state, {count: state.count + action.pay})
+        }
+        case CONT_READ_ARTICLES:{
+            console.log('Articles stored as read!', state.articlesRead);
+            return updateObject(state.articlesRead, {article: action.articleReadProgress})
         }
         default: return state;
     }

@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 
 //Containers
 
+
 //Components
 import SignUpHero from '../Components/SignupHero';
 import Navbar from '../Components/Navbar';
@@ -92,11 +93,13 @@ class Layout extends Component {
         //Beginning DomRender
         return (
             <div className="App">
-                
+                <div className="scroll">
                 {header}
                 <div className = "logout">
                 {dash_base}
                 </div>
+                </div>
+                
               {/*   {articlePublisher}
 
                 {articleFetcher} */}
