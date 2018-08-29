@@ -4,6 +4,10 @@ import './Layout.css';
 
 //Libraries
 import { connect } from 'react-redux';
+import { LinkContainer } from 'react-router-bootstrap';
+import Button from '@material-ui/core/Button';
+import blueGrey from '@material-ui/core/colors/blueGrey';
+import logo from '../plane_grad.svg';
 
 //Containers
 import Dash from './Dashboard';
@@ -19,12 +23,46 @@ class Layout extends Component {
         
     }
 
+   
+
     componentDidUpdate() {
         console.log('[Comp/Layout] Components Updated | Current UserID is: ', localStorage.getItem('userID'));
         console.log('[Comp/Layout] Components Updated | Current ArtList is: ', this.props.articles);
     }
 
     render(props) {
+        let styles = {
+            root: {
+              flexGrow: 1,
+            },
+            colorDefault:{
+              backgroundColor: blueGrey[900],
+            },
+          
+            text:{
+              marginLeft: "25%",
+              color: blueGrey[300],
+              fontWeight: 700,
+            },
+          
+            flex: {
+              flexGrow: 1,
+            },
+            menuButton: {
+              marginLeft: -12,
+              marginRight: 20,
+            },
+            link: {
+              marginLeft: 32,
+              color: '#fff',
+              cursor: 'pointer',
+            },
+            profile: {
+              position: 'absolute',
+              right: 20,
+              color: '#fff',
+            },
+          };
         // let asyncTester = (
         //     <button onClick={this.props.onTest}>
         //         test now
@@ -70,25 +108,44 @@ class Layout extends Component {
                     </section>
                 );
         }
-        const dash_base = ( null
-            // <section> 
-            //     {signup}
-            //     <br/> 
-            //     {authorizer} 
-            //     <br/> 
-            // </section>
+        const dash_base = ( //null
+            <section> 
+                {signup}
+                <br/> 
+                {authorizer} 
+                <br/> 
+            </section>
         );
+
+        // {dash_base}
+
+        //         {articlePublisher}
+
+        //         {articleFetcher}
+
+        //         <Dash />
         //Beginning DomRender
         return (
             <div className="App">
+            
+            <header className="App-header">
+					<img src={logo} className="App-logo" alt="logo" />
+                    <h1 className="App-title">Welcome to TDC|DE</h1>
+                    <LinkContainer  style={styles.link} to="/mydash">
+                        <h4>DASHBOARD</h4>
+                    </LinkContainer>
+                    <LinkContainer style={styles.link} to="/learn">
+                        <h4>LEARN</h4>
+                    </LinkContainer>
+                    <LinkContainer  style={styles.link} to="/participate">
+                        <h4>PARTICIPATE</h4>
+                    </LinkContainer>
+                    <LinkContainer  style={styles.profile} to="/dashboard">
+                        <Button> Placeholder Profile </Button>
+                    </LinkContainer>
+				</header>
                 {this.props.children}
-                {dash_base}
-
-                {articlePublisher}
-
-                {articleFetcher}
-
-                <Dash />
+                
             </div>
         );
       }

@@ -1,8 +1,8 @@
 import * as actionType from './actionTypes';
 import {    //articlesRef_3P, 
-            dbRef,
-            pushRef//, 
-            // usrTodoRef 
+	getUserRef,
+	pushRef//, 
+	// usrTodoRef 
 } from '../config/fb';
 
 // let artStored = [
@@ -19,41 +19,54 @@ import {    //articlesRef_3P,
 // ];
 
 export const setupAnal = () => {
-    console.log('[Act/User] [setupAnal] -> ');
-    return {
-        type: actionType.DASH_FETCH_DAILY_COUNT
-    }
-}
+	console.log('[Act/User] [setupAnal] -> ');
+	return {
+		type: actionType.DASH_FETCH_DAILY_COUNT
+	};
+};
 
 export const writeUserPersonalInfo = (uID, uGname, uFname, uEmail, uPic, uPhone) => {
-    console.log('[Act/User] [writeUserPersonalInfo]');
-    const usersRef=dbRef.child('users/' + uID);
+	console.log('[Act/User] [writeUserPersonalInfo]');
+	const usersRef = getUserRef(uID);
 
-    usersRef.set({
-        name: uGname+" "+uFname,
-        email: uEmail,
-        dp: uPic,
-        mobile: uPhone
-      });
-    // usersRef.push({[uID]: {
-    //     'Given_Name': uName
-    // }});
-    return{
-        type: null
-    }
+	usersRef.set({
+		gname: uGname,
+		fname: uFname,
+		email: uEmail,
+		dp: uPic,
+		mobile: uPhone
+	});
+	// usersRef.push({[uID]: {
+	//     'Given_Name': uName
+	// }});
+	return {
+		type: null
+	};
+};
+
+const setStateUserPersonalInfo = () => {
+
 }
 
-export const setupPushNotifications = () =>{
-    pushRef.requestPermission()//Returns a Promise
-    .then(()=>{
-        console.log('[Act/User] [setupPushNotifications] [Promise Lvl1] User Gave Permission');
-        return pushRef.getToken();
-    })
-    .then((token)=>{
-        console.log("[Act/User] [setupPushNotifications] [Promise Lvl2] User's Token is:", token);
-    })
-    .catch(() => {
-        console.log("[Act/User] [setupPushNotifications] [Promise Lvl1] User Didn't Give Permission");
-        //Add Logic to prompt again. Add snackbar to ask not now or never. Add trigger in settings to toggle permission if user chooses to.
-    })
+export const getUserPersonalInfofromFB = (uID) => {
+	const usersRef = getUserRef(uID);
+	usersRef.once('value').then(function (snapshot) {
+		let username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+		// ...
+	});
+}
+
+export const setupPushNotifications = () => {
+	pushRef.requestPermission()//Returns a Promise
+		.then(() => {
+			console.log('[Act/User] [setupPushNotifications] [Promise Lvl1] User Gave Permission');
+			return pushRef.getToken();
+		})
+		.then((token) => {
+			console.log("[Act/User] [setupPushNotifications] [Promise Lvl2] User's Token is:", token);
+		})
+		.catch(() => {
+			console.log("[Act/User] [setupPushNotifications] [Promise Lvl1] User Didn't Give Permission");
+			//Add Logic to prompt again. Add snackbar to ask not now or never. Add trigger in settings to toggle permission if user chooses to.
+		})
 }

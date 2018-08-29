@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Layout from './Containers/Layout';
-import logo from './plane_grad.svg';
+
 
 // import { reduxTest } from './Store/actions/authExp';
 // import * as acts from './Store/actions';
@@ -12,6 +12,8 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 
 //Containers
 import Dash from './Containers/Dashboard';
+import Learn from './Containers/Learn';
+import Participate from './Containers/Participate';
 
 class App extends Component {
 
@@ -23,14 +25,19 @@ class App extends Component {
 		return (
 			<div>
 				<Layout>
-					<header className="App-header">
-						<img src={logo} className="App-logo" alt="logo" />
-						<h1 className="App-title">Welcome to TDC|DE</h1>
+				
 
-					</header>
+				{this.props.userId ? 
 					<Switch>
-						<Route path="/" to={Dash} />
+					  <Route exact path='/' component={Dash}/> 
+					  <Route exact path='/learn' component={Learn}/>
+					  <Route exact path='/mydash' component={Dash}/>
+					  <Route exact path='/participate' component={Participate}/>
 					</Switch>
+					: null}
+
+					
+					
 				</Layout>
 			</div>
 		);
@@ -39,7 +46,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
 	return {
-
+		userId: state.auth.user.Id//,
 	};
 };
 

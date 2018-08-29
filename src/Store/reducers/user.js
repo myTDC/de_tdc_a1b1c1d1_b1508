@@ -1,5 +1,5 @@
 import { CONT_COMMIT_ARTICLES, CONT_FETCH_ARTICLES, DASH_FETCH_DAILY_COUNT } from '../actions/actionTypes';
-import _ from 'lodash';
+//import _ from 'lodash';
 // console.log('[Red/User] [userCommiter] ->  Initial State Val is', state);
 //let seq = 0;
 
@@ -13,9 +13,7 @@ const initState = {
             compBy: "30th Sept 2018",//new Date(new Date()+(12*3600)),
             isComplete: false
         }
-    },
-    chartdata : { } ,
-    chartoptions : { }
+    }//,
 };
 
 const updateObject = (baseObject, updater) => { return{...baseObject ,...updater}; };
