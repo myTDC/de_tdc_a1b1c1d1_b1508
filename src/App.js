@@ -13,19 +13,19 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 class App extends Component {
 
   state = {
-    
+
   }
 
   render() {
     return (
       <div>
         <Layout />
-        {this.props.userId ? 
+        {this.props.userId ?
           <Switch>
-            <Route exact path='/' component={Learn}/> 
-            <Route exact path='/learn' component={Learn}/>
-            <Route exact path='/dashboard' component={Dash}/>
-            <Route exact path='/participate' component={Participate}/>
+            <Route exact path='/' component={Dash} />
+            <Route exact path='/learn' component={Learn} />
+            <Route exact path='/dashboard' component={Dash} />
+            <Route exact path='/participate' component={Participate} />
           </Switch>
           : null}
       </div>
@@ -34,15 +34,15 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  return{
+  return {
     userId: state.auth.user.Id,
   };
 };
 
 const mapDispactchToProps = dispatch => {
-  return{
+  return {
 
   };
 };
 
-export default withRouter(connect( mapStateToProps, mapDispactchToProps )( App ));
+export default withRouter(connect(mapStateToProps, mapDispactchToProps)(App));
