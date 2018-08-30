@@ -4,8 +4,8 @@ import React from 'react';
 const styles = ({
     title : {
         position: 'absolute',
-        bottom : '17%',
-        left: '-45px',
+        bottom : '30%',
+        left: '-50px',
         transform: 'rotate(-90deg)',
         fontFamily: 'Open Sans, sans serif',
         fontSize: '12px',

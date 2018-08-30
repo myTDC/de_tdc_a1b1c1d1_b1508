@@ -56,6 +56,7 @@
     padding-left: 20px;
     background-color: var(--app-container-back-color);
     margin-bottom: var(--app-container-margin-bottom);
+    margin-top: var(--app-card-margin-top);
     min-height: 100%;
     /* box-shadow: var(--app-container-back-shadow); */
 }

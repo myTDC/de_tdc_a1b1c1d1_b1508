@@ -99,7 +99,7 @@ class Layout extends Component {
                 {dash_base}
                 </div>
                 </div>
-                <Dash/>
+                
               {/*   {articlePublisher}
 
                 {articleFetcher} */}
