@@ -1,59 +1,105 @@
-import { CONT_COMMIT_ARTICLES, CONT_FETCH_ARTICLES, CONT_SET_FILTER, CONT_READ_COUNT, CONT_READ_ARTICLES } from '../actions/actionTypes';
+import { DASH_FETCH_COMPDATA, DASH_SET_USERDATA, DASH_FETCH_DAILY_COUNT, DASH_UPDATE_PROGRESS, DASH_FETCH_USERDATA, DASH_SET_COMPDATA } from '../actions/actionTypes';
 import _ from 'lodash';
 // console.log('[Red/User] [userCommiter] ->  Initial State Val is', state);
 //let seq = 0;
 
 const initState = {
     userId: null,
-    todolist:{
-        seq: { 
+    givenName: null,
+    familyName: null,
+    eMail: null,
+    dPic: null,
+    mobNum: null,
+    company: {
+        name: "",
+        isRegistered: "",
+        dateOfInception: "",
+        dateOfRegistration: "",
+        industrySector: "",
+        previousFunding: "",
+        teamSize: "",
+        bplan: "",
+        leancanvas: "",
+        founders: {},
+    },
+    todolist: {
+        seq: {
             title: "Seek Investment at TDC Elevate '18",
             desc: "Participate in TDC Elevate through DE portal and test your knowledge by pitching directly to the investors and analysts.",
             setOn: new Date(),
-            compBy: "30th Sept 2018",//new Date(new Date()+(12*3600)),
+            tobecompletedBy: "30th Sept 2018",//new Date(new Date()+(12*3600)),
+            source: "User",
+            url: "",
             isComplete: false
         }
     },
-    articlesRead: {},
-    chartdata : { } ,
-    chartoptions : { }
+    learnProgress: {
+        assignedCount: 30,
+        assigned: {},
+        readCount: 2,
+        read: {
+            ref: {
+                id: 'xyz',
+                date: ' ',
+                openCount: 1,
+                timeTaken: 120,
+                isCompleted: false
+            }
+        }
+    },
+    participateProgress: {
+        isParticipating: false,
+        lastStage: 'from 4 defined objects',
+        completionDate: new Date()
+    }
 };
 
-const updateObject = (baseObject, updater) => { return{...baseObject ,...updater}; };
+const updateObject = (baseObject, updater) => { return { ...baseObject, ...updater }; };
 
 const articlesCommiter = (state, action) => {
-    return updateObject(state, {count: state.count + action.pay})
+    return updateObject(state, { count: state.count + action.pay })
 }
 
 const setStateonFetch = (state, action) => {
-    const articles3p = {...state.articles3p}
+    const articles3p = { ...state.articles3p }
 
-    return updateObject(state, { articles3p: {
-        ...articles3p,
-        ...action.val
-    }});
+    return updateObject(state, {
+        articles3p: {
+            ...articles3p,
+            ...action.val
+        }
+    });
 };
 
-const reducer = ( state = initState, action ) => {
-    switch ( action.type ) {
-        case CONT_COMMIT_ARTICLES:  return articlesCommiter(state, action);
-        case CONT_FETCH_ARTICLES:   {
-            console.log('[Red/Switch]');
-            return setStateonFetch(state, action);}
-        case CONT_SET_FILTER: {
-            console.log('Inside Reducer. State Val is', state);
-            console.log('Inside Reducer. Action has Value is', action.pay);
-            return updateObject(state, {count: state.count + action.pay})
-        }
-        case CONT_READ_COUNT: {
-            console.log('Inside Reducer. State Val is', state);
-            console.log('Inside Reducer. Action has Value is', action.pay);
-            return updateObject(state, {count: state.count + action.pay})
-        }
-        case CONT_READ_ARTICLES:{
-            console.log('Articles stored as read!', state.articlesRead);
-            return updateObject(state.articlesRead, {article: action.articleReadProgress})
-        }
+const mapUserData = (state, action) => {
+    console.log('Payload Is:', action.obj);
+    return updateObject(state, {
+        userId: action.obj.uID,
+        givenName: action.obj.gname,
+        familyName: action.obj.fname,
+        eMail: action.obj.email,
+        dPic: action.obj.dp,
+        mobNum: action.obj.mobile,
+    })
+};
+
+const mapCompData = (state, action) => {
+    console.log('Payload Is:', action.obj);
+    return updateObject(state, {
+        userId: action.obj.uID,
+        givenName: action.obj.gname,
+        familyName: action.obj.fname,
+        eMail: action.obj.email,
+        dPic: action.obj.dp,
+        mobNum: action.obj.mobile,
+    })
+};
+
+const reducer = (state = initState, action) => {
+    switch (action.type) {
+        case DASH_SET_USERDATA: return mapUserData(state, action);
+
+        case DASH_SET_COMPDATA: return mapCompData(state, action);
         default: return state;
     }
 }

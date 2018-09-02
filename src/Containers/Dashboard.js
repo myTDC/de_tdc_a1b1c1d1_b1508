@@ -5,12 +5,12 @@ import './Dashboard.css';
 import { connect } from 'react-redux';
 
 //Components
-import UserCard from '../Components/DashCards/UserCard';
+//import UserCard from '../Components/DashCards/UserCard';
 import UserTodo from '../Components/DashCards/UserTodo';
 import DataCard from '../Components/DashCards/DataCard';
 import AnalCard from '../Components/DashCards/AnalCard';
 import CardTitle from '../Components/DashCards/CardTitle';
-import * as chartType from '../Components/Charter';
+//import * as chartType from '../Components/Charter';
 
 //Actions
 import * as acts from '../Store/actions';
@@ -18,7 +18,7 @@ import * as acts from '../Store/actions';
 
 class Dashboard extends Component {
 	state = {
-        
+
 	}
 
 
@@ -39,55 +39,55 @@ class Dashboard extends Component {
 		//     <h1>{this.props.count}</h1>
 		// );
 
-/* 		let userCard = (
-			<div className="cardholder user">
-				<UserCard className="card user" />
-			</div>
-		);
-
-		let todoCard = ( //Also has notifications, last read and 
-			<div className="cardholder">
-				<strong className="cardTitle">TO-DOs</strong>
-				<DataCard className="card todo" />
-			</div>
-		);
-
-		let learnCard = (
-			<div className="cardholder">
-				<strong className="cardTitle">LEARNING CURVE</strong>
-				<AnalCard className="card learn" charterType={chartType.LINE_CHART} />
-			</div>
-		);
-
-		let participateCard = (
-			//<AnalCard charterType={chartType.DOUGHNUT_CHART} />
-			<div className="cardholder">
-				<strong className="cardTitle">TDC PARTICIPATION</strong>
-				<AnalCard className="card participate" charterType={chartType.RADAR_CHART} />
-			</div>
-		);
-
-		let bookmarksCard = (
-			<div className="cardholder">
-				<strong className="cardTitle">FAV READLIST</strong>
-				<DataCard
-					className="card bookmarks"
-					chartData={null}
-					chartOptions={null}
-				/>
-			</div>
-		)
-
-		let readHistoryCard = (
-			<div className="cardholder">
-				<strong className="cardTitle">USER JOURNEY</strong>
-				<DataCard
-					className="card readHistory"
-					chartData={this.props.chartData}
-					chartOptions={this.props.chartOpts}
-				/>
-			</div>
-		) */
+		/* 		let userCard = (
+					<div className="cardholder user">
+						<UserCard className="card user" />
+					</div>
+				);
+		
+				let todoCard = ( //Also has notifications, last read and 
+					<div className="cardholder">
+						<strong className="cardTitle">TO-DOs</strong>
+						<DataCard className="card todo" />
+					</div>
+				);
+		
+				let learnCard = (
+					<div className="cardholder">
+						<strong className="cardTitle">LEARNING CURVE</strong>
+						<AnalCard className="card learn" charterType={chartType.LINE_CHART} />
+					</div>
+				);
+		
+				let participateCard = (
+					//<AnalCard charterType={chartType.DOUGHNUT_CHART} />
+					<div className="cardholder">
+						<strong className="cardTitle">TDC PARTICIPATION</strong>
+						<AnalCard className="card participate" charterType={chartType.RADAR_CHART} />
+					</div>
+				);
+		
+				let bookmarksCard = (
+					<div className="cardholder">
+						<strong className="cardTitle">FAV READLIST</strong>
+						<DataCard
+							className="card bookmarks"
+							chartData={null}
+							chartOptions={null}
+						/>
+					</div>
+				)
+		
+				let readHistoryCard = (
+					<div className="cardholder">
+						<strong className="cardTitle">USER JOURNEY</strong>
+						<DataCard
+							className="card readHistory"
+							chartData={this.props.chartData}
+							chartOptions={this.props.chartOpts}
+						/>
+					</div>
+				) */
 
 		const writetofb = () => {
 			this.props.writeTest(this.props.userId, this.props.userNameGiven, this.props.userNameFamily, this.props.userEmail, this.props.userPic, this.props.userPhone);
@@ -109,41 +109,41 @@ class Dashboard extends Component {
 		// );
 		//Beginning DomRender
 		return (
-            <div className="cover">
-			<div className="dashboard">
-				<div className="cardContainer">
-                
-                <UserTodo type="userTodos" header="completed" stat="02" footer="out of 06">
-                <CardTitle name="TODO & MORE" />
-                </UserTodo>
-                
-                <AnalCard type="learnProgress" header="You are reading" stat="1.2" footer="every day (avg)">
-                <CardTitle name="LEARN CURVE" />
-                </AnalCard>
+			<div className="cover">
+				<div className="dashboard">
+					<div className="cardContainer">
 
-                <AnalCard type="participateProgress" header="completed" stat="02" footer="Sections of 7">
-                <CardTitle name="PREPARATION" />
-                </AnalCard>
-                
-                <DataCard type="Favorites" header="you have" stat="03" footer="favorites">
-                <CardTitle name="FAV READLIST" />
-                </DataCard>
+						<UserTodo type="userTodos" header="completed" stat="02" footer="out of 06">
+							<CardTitle name="TODO & MORE" />
+						</UserTodo>
 
-                <DataCard type="totalArtProgress" header="You've read" stat="08" footer="articles of 30">
-                <CardTitle name="USER JOURNEY" />
-                </DataCard>
-                
+						<AnalCard type="learnProgress" header="You are reading" stat="1.2" footer="every day (avg)">
+							<CardTitle name="LEARN CURVE" />
+						</AnalCard>
 
-					{/* {userCard}
+						<AnalCard type="participateProgress" header="completed" stat="02" footer="Sections of 7">
+							<CardTitle name="PREPARATION" />
+						</AnalCard>
+
+						<DataCard type="Favorites" header="you have" stat="03" footer="favorites">
+							<CardTitle name="FAV READLIST" />
+						</DataCard>
+
+						<DataCard type="totalArtProgress" header="You've read" stat="08" footer="articles of 30">
+							<CardTitle name="USER JOURNEY" />
+						</DataCard>
+
+
+						{/* {userCard}
 					{todoCard}
 					{learnCard}
 					{participateCard}
 					{bookmarksCard}
                     {readHistoryCard} */}
+					</div>
+					<h1 onClick={writetofb}>Welcome to your Dashboard. The heart of DE.</h1>
 				</div>
-				<h1 onClick={writetofb}>Welcome to your Dashboard. The heart of DE.</h1>
 			</div>
-            </div>
 		);
 	}
 }
