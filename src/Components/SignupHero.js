@@ -1,6 +1,6 @@
 import React from 'react';
 import './SignupHero.css';
-import logo from '../logo_min.svg';
+//import logo from '../logo_min.svg';
 import logov2 from '../plane_grad.svg';
 import learn from  '../learn.svg';
 import domi from '../dominate.svg';
@@ -60,7 +60,10 @@ const SignupHero = (props) =>{
         </div>
     )
 }
-{/* <div className='container'>
+
+export default SignupHero;
+
+/* <div className='container'>
                 <section className='containerFirst'>
                     <img src={logov2} alt="Take Flight with the TDC Logo PaperPlane™"/>
                     <br />
@@ -95,5 +98,4 @@ const SignupHero = (props) =>{
                     <p className='sectionDescription'>Learn to control the audience and tease the investors 
                     just enough to get you closer to your dreams</p>
                 </span>
-            </div> */}
-export default SignupHero;
+            </div> */

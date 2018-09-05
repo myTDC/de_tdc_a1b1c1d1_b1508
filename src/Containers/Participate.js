@@ -10,7 +10,13 @@ import { connect } from 'react-redux';
 import * as acts from '../Store/actions';
 
 class Participate extends Component {
-
+    render(){
+        return(
+            <div className="participate">
+             <h1> Enter you participation info here </h1>
+           </div>
+        );
+    }
 }
 const mapStateToProps = state => {
     return{
@@ -20,7 +26,7 @@ const mapStateToProps = state => {
 
 const mapDispactchToProps = dispatch => {
     return{
-
+        readArticlesFB: () => dispatch(acts.readfromFB()),
     };
 };
 

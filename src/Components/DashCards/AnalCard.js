@@ -1,7 +1,6 @@
 import React from 'react';
-import LineChart from 'react-chartjs/lib/line';
 import Card from '@material-ui/core/Card';
-import Pbar from '../ProgressBar';
+//import Pbar from '../ProgressBar';
 import LeftContent from '../DashCardLeft';
 
 const styles = ({

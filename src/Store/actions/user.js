@@ -28,14 +28,14 @@ const asyncTriggerReducer = (type, object) => {
 export const setupAnal = () => {
     console.log('[Act/User] [setupAnal] -> ');
     return {
-        type: actionType.DASH_FETCH_DAILY_COUNT
+        type: actionType.DASH_FETCH_DATA
     }
 }
 
 
 export const writeUserPersonalInfo = (uID, uGname, uFname, uEmail, uPic, uPhone) => {
-    return dispatch => {
-        console.log('[Act/User] [writeUserPersonalInfo]');
+    return (dispatch,getState) => {
+        console.log('[Act/User] [writeUserPersonalInfo] State is:', getState());
         const usersRef = dbRef.child('users/' + uID);
 
         usersRef.set({
@@ -94,8 +94,21 @@ export const setupPushNotifications = () => {
             console.log("[Act/User] [setupPushNotifications] [Promise Lvl1] User Didn't Give Permission");
             //Add Logic to prompt again. Add snackbar to ask not now or never. Add trigger in settings to toggle permission if user chooses to.
         })
+};
+
+export const setVisited = (item) => {
+    console.log("[Act/User] [setVisited] Item id is:", item.id);
+    return {
+        type: null
+    }
 }
 
+export const setFavorite = (item) => {
+    console.log("[Act/User] [setFavorite] Item id is:", item.id);
+    return {
+        type: null
+    }
+}
 // const listenToFB = () => {
 
 // };

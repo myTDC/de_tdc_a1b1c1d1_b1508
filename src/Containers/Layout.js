@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import "./Layout.css";
-import logo from "../plane_grad.svg";
+//import logo from "../plane_grad.svg";
 
 //Libraries
 import { connect } from "react-redux";
 
 //Containers
-import Dash from "./Dashboard";
+//import Dash from "./Dashboard";
 
 //Components
 import SignUpHero from "../Components/SignupHero";

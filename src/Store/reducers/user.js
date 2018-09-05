@@ -1,7 +1,9 @@
-import { DASH_FETCH_COMPDATA, DASH_SET_USERDATA, DASH_FETCH_DAILY_COUNT, DASH_UPDATE_PROGRESS, DASH_FETCH_USERDATA, DASH_SET_COMPDATA } from '../actions/actionTypes';
-import _ from 'lodash';
+import { DASH_SET_USERDATA,DASH_SET_COMPDATA , DASH_UPDATE_PROGRESS,  DASH_FETCH_DATA} from '../actions/actionTypes';
+// import _ from 'lodash';
 // console.log('[Red/User] [userCommiter] ->  Initial State Val is', state);
 //let seq = 0;
+
+//let tStampNow = new Date().getMilliseconds();
 
 const initState = {
     userId: null,
@@ -51,25 +53,21 @@ const initState = {
         isParticipating: false,
         lastStage: 'from 4 defined objects',
         completionDate: new Date()
+    },
+    favList:{
+        // tStampNow : {
+        //     id: null
+        // }
+    },
+    readHistory: {
+        // new Date().getMilliseconds(): {
+        //     id: '',
+        //     title:''
+        // }
     }
 };
 
 const updateObject = (baseObject, updater) => { return { ...baseObject, ...updater }; };
-
-const articlesCommiter = (state, action) => {
-    return updateObject(state, { count: state.count + action.pay })
-}
-
-const setStateonFetch = (state, action) => {
-    const articles3p = { ...state.articles3p }
-
-    return updateObject(state, {
-        articles3p: {
-            ...articles3p,
-            ...action.val
-        }
-    });
-};
 
 const mapUserData = (state, action) => {
     console.log('Payload Is:', action.obj);
@@ -98,8 +96,9 @@ const mapCompData = (state, action) => {
 const reducer = (state = initState, action) => {
     switch (action.type) {
         case DASH_SET_USERDATA: return mapUserData(state, action);
-
         case DASH_SET_COMPDATA: return mapCompData(state, action);
+        case DASH_FETCH_DATA: return state;
+        case DASH_UPDATE_PROGRESS: return state;
         default: return state;
     }
 }
