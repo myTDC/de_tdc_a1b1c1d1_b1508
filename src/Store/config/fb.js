@@ -18,3 +18,8 @@ export const authRef = firebase.auth();
 export const provider = new firebase.auth.GoogleAuthProvider();
 
 export const pushRef = firebase.messaging();
+
+//Method to get the data with the current userID
+export const getUserRef = (uID) => {
+	return dbRef.child('users/' + uID);
+}
