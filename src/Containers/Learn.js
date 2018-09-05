@@ -14,19 +14,19 @@ class Learn extends Component{
     
     
     state = {
-        art: {},
+        //art: {},
         }
     componentDidMount() {
         this.props.readArticlesFB();
     }
     
-    handleclick(e){
+    /* handleclick(e){
         this.setState({
         art: e.target.dataset.artList
         });
         console.log("Hi", this.state.art);
         this.props.storeArt(this.state.art);
-    }
+    } */
     render(){
         
         //let artList;
@@ -35,9 +35,9 @@ class Learn extends Component{
         let articleArray = Object.values(this.props.articles);
         return(
             <div>
-            <div className="learnSection"  onClick = {(arts) => this.props.storeArt(data[2])}>
+            <div className="learnSection"  >
              {articleArray.map(artList =>(
-                <ArtCard onclick={this.handleclick.bind(this)} key={artList.id} 
+                <ArtCard onclick={(arts) => this.props.storeArt(data[artList.id-1])} key={artList.id} 
                         title={artList.title} 
                         image={artList.image} 
                         url={artList.url} 
