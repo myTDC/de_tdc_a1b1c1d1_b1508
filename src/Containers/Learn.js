@@ -11,26 +11,40 @@ import ArtCard from '../Components/ArtCard';
 import * as acts from '../Store/actions';
 
 class Learn extends Component{
+    
+    
     state = {
- 
-    }
+        art: {},
+        }
     componentDidMount() {
         this.props.readArticlesFB();
     }
+    
+    handleclick(e){
+        this.setState({
+        art: e.target.dataset.artList
+        });
+        console.log("Hi", this.state.art);
+        this.props.storeArt(this.state.art);
+    }
     render(){
-        //let data = Array.from(this.props.articles);
+        //onClick = {(arts) => this.props.storeArt(data[artList.id])}
+        //let artList;
+        
+        let data = (this.props.articles);
         let articleArray = Object.values(this.props.articles);
         return(
-            <div className="learnSection">
+            <div>
+            <div className="learnSection"  >
              {articleArray.map(artList =>(
-                <ArtCard key={artList.id} 
+                <ArtCard onclick={this.handleclick.bind(this)} key={artList.id} 
                         title={artList.title} 
                         image={artList.image} 
                         url={artList.url} 
                         length={artList.length} 
                         category={artList.category}/>
                 ))}
-           </div>
+           </div> </div>
         );
     }
 }
@@ -43,6 +57,7 @@ const mapStateToProps = state => {
 const mapDispactchToProps = dispatch => {
     return{
         readArticlesFB: () => dispatch(acts.readfromFB()),
+        storeArt: (arts) => dispatch(acts.articleReadProgress(arts)),
     };
 };
 

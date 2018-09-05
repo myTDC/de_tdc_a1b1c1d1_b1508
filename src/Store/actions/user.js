@@ -1,6 +1,7 @@
 import * as actionType from './actionTypes';
-import {    //articlesRef_3P, 
+import {    articlesRef_3P, 
             dbRef,
+            usersRef,
             pushRef//, 
             // usrTodoRef 
 } from '../config/fb';
@@ -58,6 +59,18 @@ export const setupPushNotifications = () =>{
     })
 }
 
+export const articleReadProgress = (readArts) => {
+    
+    try{
+        const newArticlesSetRef = articlesRef_3P.push();
+        newArticlesSetRef.set({ ...readArts});
+        console.log('[Act/Content] [writeToFB] -> Articles Written to FB:\n', ...readArts);
+        return{type: actionType.CONT_READ_ARTICLES};
+    }catch(err){
+        console.log('[Act/Content] [writeToFB] -> Write to FB Failed with Error:', err);
+        return{type: null};
+    }
+}
 // const listenToFB = () => {
     
 // };

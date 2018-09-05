@@ -39,8 +39,22 @@ const styles = ({
         minHeight: '100%',
         minWidth: '73%',
     },
-    todoitem: {
-
+    list :{
+        listStyleType: 'none',
+        padding: '0',
+        marginTop: '5%',
+        maxHeight:'21vh',
+        maxWidth: '100%',
+        overflow: 'scroll',
+    },
+    item: {
+        maxWidth: '80%',
+        minHeight: '9vh',
+        margin: '1.5%',
+        paddingLeft: '14px',
+        paddingTop: '0px',
+        paddingBottom: '0px',
+        backgroundColor: '#F0F0F0',
     },
 });
 
@@ -51,17 +65,19 @@ const DataCard = (props) => {
             <Card style={styles.card}>
                 <div id="categories" styles={styles.row}>
                     <LeftContent header= {props.header} stat={props.stat} footer={props.footer}/>
-                    
                     <div style={styles.columnRight}>
-                        <div style={styles.todolist}>
-                            <ul>
-                            <li><div style={styles.todoitem}>
+                        <div>
+                            <ul style={styles.list}>
+                            <li><div style={styles.item}>
                                 Item 1
                             </div></li>
-                            <li><div style={styles.todoitem}>
+                            <li><div style={styles.item}>
                                 Item 1
                             </div></li>
-                            <li><div style={styles.todoitem}>
+                            <li><div style={styles.item}>
+                                Item 1
+                            </div></li>
+                            <li><div style={styles.item}>
                                 Item 1
                             </div></li>
                             </ul>  

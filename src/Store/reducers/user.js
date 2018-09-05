@@ -14,7 +14,7 @@ const initState = {
             isComplete: false
         }
     },
-    articlesRead: {},
+    articlesRead: { },
     chartdata : { } ,
     chartoptions : { }
 };
@@ -52,7 +52,7 @@ const reducer = ( state = initState, action ) => {
         }
         case CONT_READ_ARTICLES:{
             console.log('Articles stored as read!', state.articlesRead);
-            return updateObject(state.articlesRead, {article: action.articleReadProgress})
+            return updateObject(state.articlesRead, {article: action.pay})
         }
         default: return state;
     }
