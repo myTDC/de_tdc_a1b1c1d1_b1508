@@ -28,7 +28,7 @@ class Learn extends Component{
         this.props.storeArt(this.state.art);
     }
     render(){
-        //
+        
         //let artList;
         
         let data = (this.props.articles);
