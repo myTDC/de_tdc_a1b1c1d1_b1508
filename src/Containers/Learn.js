@@ -18,8 +18,16 @@ class Learn extends Component{
         }
     componentDidMount() {
         this.props.readArticlesFB();
+        this.props.ReadUser(this.props.uID);
     }
     
+    readHistory = (uID, id, art) => {
+        let found;
+        if(this.props.history.hasOwnProperty("b1008"+id))
+             found=1; 
+        else found=0;
+        this.props.updateHistory(found, uID, id, this.props.history, art);
+    }
     /* handleclick(e){
         this.setState({
         art: e.target.dataset.artList
@@ -31,33 +39,38 @@ class Learn extends Component{
         
         //let artList;
         
-        let data = (this.props.articles);
+        //let data = (this.props.articles);
         let articleArray = Object.values(this.props.articles);
         return(
-            <div>
-            <div className="learnSection"  >
+            <div className="learnSection">
              {articleArray.map(artList =>(
-                <ArtCard onclick={(arts) => this.props.storeArt(data[artList.id-1])} key={artList.id} 
+                <ArtCard onclick={() => 
+                        this.readHistory(this.props.uID, artList.id, artList)} 
+                        key={artList.id} 
                         title={artList.title} 
                         image={artList.image} 
                         url={artList.url} 
                         length={artList.length} 
                         category={artList.category}/>
                 ))}
-           </div> </div>
+           </div>
         );
     }
 }
 const mapStateToProps = state => {
     return{
         articles: state.content.articles3p,
+        uID: state.auth.user.Id,
+        history: state.user.history,
     };
 };
 
 const mapDispactchToProps = dispatch => {
     return{
         readArticlesFB: () => dispatch(acts.readfromFB()),
-        storeArt: (arts) => dispatch(acts.articleReadProgress(arts)),
+        //storeArt: (id, ver, cat, uID) => dispatch(acts.writeReadProgressfb(id, ver, cat, uID)),
+        updateHistory: (found, uID, id, art) => dispatch(acts.updateUserReadHistory(found, uID, id, art)),
+        ReadUser: (uID) => dispatch(acts.readUserHistory(uID))
     };
 };
 

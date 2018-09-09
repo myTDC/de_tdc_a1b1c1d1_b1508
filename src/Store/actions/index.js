@@ -4,4 +4,4 @@ export { loadState, setState } from './auth';
 
 export { logArtList, writeToFB, readfromFB, reader } from './content';
 
-export { setupAnal, writeUserPersonalInfo, articleReadProgress } from './user';
+export { setupAnal, writeUserPersonalInfo, writeReadProgressfb, readUserHistory, updateUserReadHistory } from './user';

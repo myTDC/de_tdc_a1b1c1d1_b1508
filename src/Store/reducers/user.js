@@ -1,4 +1,4 @@
-import { CONT_COMMIT_ARTICLES, CONT_FETCH_ARTICLES, CONT_SET_FILTER, CONT_READ_COUNT, CONT_READ_ARTICLES } from '../actions/actionTypes';
+import { CONT_COMMIT_ARTICLES, CONT_FETCH_ARTICLES, CONT_SET_FILTER, CONT_READ_COUNT, CONT_READ_ARTICLES, PROF_SET_USERDATA, PROF_UPDATE_PROGRESS, PROF_WRITE_PROGRESS } from '../actions/actionTypes';
 import _ from 'lodash';
 // console.log('[Red/User] [userCommiter] ->  Initial State Val is', state);
 //let seq = 0;
@@ -15,7 +15,7 @@ const initState = {
         }
     },
     articlesRead: { },
-    chartdata : { } ,
+    chartdata : { },
     chartoptions : { }
 };
 
@@ -25,9 +25,16 @@ const articlesCommiter = (state, action) => {
     return updateObject(state, {count: state.count + action.pay})
 }
 
+const setUserHistonFetch = (state, action) => {
+    const history = {...state.user}
+    return updateObject(state, { history: {
+        ...history,
+        ...action.val
+    }});
+};
+
 const setStateonFetch = (state, action) => {
     const articles3p = {...state.articles3p}
-
     return updateObject(state, { articles3p: {
         ...articles3p,
         ...action.val
@@ -52,7 +59,19 @@ const reducer = ( state = initState, action ) => {
         }
         case CONT_READ_ARTICLES:{
             console.log('Articles stored as read!', state.articlesRead);
-            return updateObject(state.articlesRead, {article: action.pay})
+            return updateObject(state, {articlesRead: action.val})
+        }
+        case PROF_SET_USERDATA:{
+            console.log('User data set in state *thumbs up*')
+            return setUserHistonFetch(state, action);
+        }
+        case PROF_UPDATE_PROGRESS:{
+            console.log('progress updated');
+            return updateObject(state, {history: action.val})
+        }
+        case PROF_WRITE_PROGRESS:{
+            console.log('progress updated');
+            return updateObject(state, {history: action.val})
         }
         default: return state;
     }

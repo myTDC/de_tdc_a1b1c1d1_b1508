@@ -112,7 +112,7 @@ class Dashboard extends Component {
             <div className="cover">
 			<div className="dashboard">
 				<div className="cardContainer">
-                
+                <button onClick= {writetofb}> wire me up to fb </button>
                 <UserTodo type="userTodos" header="completed" stat="02" footer="out of 06">
                 <CardTitle name="TODO & MORE" />
                 </UserTodo>

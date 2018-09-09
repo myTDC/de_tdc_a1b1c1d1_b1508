@@ -17,7 +17,6 @@ import * as acts from "../Store/actions";
 
 class Layout extends Component {
   state = {};
-
   componentDidUpdate() {
     console.log(
       "[Comp/Layout] Components Updated | Current UserID is: ",
@@ -128,8 +127,7 @@ const mapDispactchToProps = dispatch => {
     // Actions from Content
     Log: () => dispatch(acts.logArtList()),
     Commit: () => dispatch(acts.writeToFB()),
-    Read: () => dispatch(acts.readfromFB())
-    //Read: () => dispatch(acts.reader())
+    Read: () => dispatch(acts.readfromFB()),
   };
 };
 

@@ -24,8 +24,8 @@ const rootReducer = combineReducers({
     auth: authRed,
     content: contentRed,
     user: userRed//,
-    // test: testred
-});
+    // test: testred  
+    });
 const persistedState = loadState();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
