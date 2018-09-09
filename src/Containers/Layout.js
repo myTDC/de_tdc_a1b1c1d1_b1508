@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import "./Layout.css";
-import logo from "../plane_grad.svg";
+//import logo from "../plane_grad.svg";
 
 //Libraries
 import { connect } from "react-redux";
 
 //Containers
-import Dash from "./Dashboard";
+//import Dash from "./Dashboard";
 
 //Components
 import SignUpHero from "../Components/SignupHero";
@@ -36,7 +36,7 @@ class Layout extends Component {
     //     <h1>{this.props.count}</h1>
     // );
 
-    let articlePublisher = (
+   /*  let articlePublisher = (
       <div>
         <button onClick={this.props.Log}> Log Current Art List </button>
         <button onClick={this.props.Commit}>
@@ -44,13 +44,13 @@ class Layout extends Component {
           Commit Current ArtList to FB{" "}
         </button>
       </div>
-    );
+    ); */
 
-    let articleFetcher = (
+    /* let articleFetcher = (
       <div>
         <button onClick={this.props.Read}> Read ArtList from FB </button>
       </div>
-    );
+    ); */
 
     let authorizer = <button onClick={this.props.onAuth}>Login</button>;
 

@@ -1,7 +1,7 @@
 import * as actionType from './actionTypes';
-import {    articlesRef_3P, 
+import {    //articlesRef_3P, 
             dbRef,
-            usersRef,
+            //usersRef,
             pushRef//, 
             // usrTodoRef 
 } from '../config/fb';
@@ -79,8 +79,6 @@ export const readUserHistory = (uID) =>{
 }};
 
 export const readSuccess = (hist) => {
-    //let list= {result};
-    
     console.log('User history read succesfuly! :): ', hist );
     return { 
             type: actionType.PROF_SET_USERDATA, 

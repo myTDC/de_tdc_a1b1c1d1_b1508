@@ -5,12 +5,12 @@ import './Dashboard.css';
 import { connect } from 'react-redux';
 
 //Components
-import UserCard from '../Components/DashCards/UserCard';
+//import UserCard from '../Components/DashCards/UserCard';
 import UserTodo from '../Components/DashCards/UserTodo';
 import DataCard from '../Components/DashCards/DataCard';
 import AnalCard from '../Components/DashCards/AnalCard';
 import CardTitle from '../Components/DashCards/CardTitle';
-import * as chartType from '../Components/Charter';
+//import * as chartType from '../Components/Charter';
 
 //Actions
 import * as acts from '../Store/actions';

@@ -6,8 +6,8 @@ import linkedinLogo from '../../logo.svg';
 import twitterLogo from '../../logo.svg';
 
 
-import * as chartType from '../Charter';
-import Charter from '../Charter';
+//import * as chartType from '../Charter';
+//import Charter from '../Charter';
 
 const UserCard = (props) => {
 

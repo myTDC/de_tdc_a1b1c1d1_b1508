@@ -38,8 +38,8 @@
 }
 
 .dashboard{
-    width: var(--app-dash-width);
-    height: var(--app-dash-height);
+    max-width: var(--app-dash-width);
+    max-height: var(--app-dash-height);
     margin-left: var(--app-dash-margin-left);
     margin-right: var(--app-dash-margin-right);
     overflow-y: scroll;

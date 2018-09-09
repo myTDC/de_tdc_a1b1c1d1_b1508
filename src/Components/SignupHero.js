@@ -1,6 +1,6 @@
 import React from 'react';
 import './SignupHero.css';
-import logo from '../logo_min.svg';
+//import logo from '../logo_min.svg';
 import logov2 from '../plane_grad.svg';
 import learn from  '../learn.svg';
 import domi from '../dominate.svg';
