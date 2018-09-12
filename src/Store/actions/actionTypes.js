@@ -9,10 +9,14 @@ export const AUTH_START = "AUTH_START";
 export const AUTH_SUCCESS = "AUTH_SUCCESS";
 
 //from profile actions
-export const DASH_SET_USERDATA = "SET_USERDATA";
-export const DASH_SET_COMPDATA = "SET_COMPANYDATA";
+export const DASH_SET_TODO = "SET_TODO";
+export const DASH_SET_USERDATA = "SET_USER_DATA";
+export const DASH_SET_COMPDATA = "SET_COMPANY_DATA";
 export const DASH_FETCH_DATA = "FETCH_FB_DATA";
+export const DASH_WRITE_PROGRESS = "WRITE_PROGRESS";
 export const DASH_UPDATE_PROGRESS = "UPDATE_PROGRESS";
+
+
 
 //from article actions
 export const CONT_READ_ARTICLES = "READ_ARTICLES";
