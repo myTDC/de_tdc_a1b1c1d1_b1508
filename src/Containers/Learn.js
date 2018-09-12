@@ -11,14 +11,12 @@ import ArtCard from '../Components/ArtCard';
 import * as acts from '../Store/actions';
 
 class Learn extends Component {
-    state = {
-
-    }
     componentDidMount() {
         this.props.readArticlesFB();
         this.props.ReadUser(this.props.uID);
     }
     readHistory = (uID, id, art) => {
+        console.log('[Container/Learn] User Read Article:', id);
         let found;
         if (this.props.history.hasOwnProperty("b1008" + id))
             found = 1;
@@ -28,12 +26,13 @@ class Learn extends Component {
 
     render() {
         //let data = Array.from(this.props.articles);
-        const data = this.props.articles;
+        //const data = this.props.articles;
         let articleArray = Object.values(this.props.articles);
         return (
             <div className="learnSection">
                 {articleArray.map(artList => (
-                    <ArtCard onclick={() => this.readHistory(this.props.uID, artList.id, artList)}
+                    <ArtCard onclick={() => 
+                        this.readHistory(this.props.uID, artList.id, artList)} 
                         key={artList.id}
                         title={artList.title}
                         image={artList.image}
@@ -48,7 +47,8 @@ class Learn extends Component {
 const mapStateToProps = state => {
     return {
         articles: state.content.articles3p,
-        history: state.user.history//,
+        history: state.user.history,
+        uID: state.auth.user.Id,
     };
 };
 

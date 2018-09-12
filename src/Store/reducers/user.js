@@ -5,6 +5,7 @@ import {
   DASH_FETCH_DATA,
   DASH_WRITE_PROGRESS,
   DASH_UPDATE_PROGRESS,
+  DASH_UPDATE_USERDATA
 } from "../actions/actionTypes";
 // import _ from 'lodash';
 // console.log('[Red/User] [userCommiter] ->  Initial State Val is', state);
@@ -64,9 +65,12 @@ const initState = {
   }
 };
 
+
+//#################### Helper Function ####################
 const updateObject = (baseObject, updater) => {
   return { ...baseObject, ...updater };
 };
+//#################### End of Helper Function ####################
 
 const mapUserData = (state, action) => {
   console.log("[Red/User] Payload Is:", action.obj);
@@ -119,6 +123,10 @@ const reducer = (state = initState, action) => {
       return mapTodoData(state, action);
     case DASH_FETCH_DATA:
       return state;
+    case DASH_UPDATE_USERDATA:{
+        console.log('User data set in state *thumbs up*')
+        return setUserHistonFetch(state, action);
+    }
     case DASH_UPDATE_PROGRESS: {
       console.log('progress updated');
       return updateObject(state, { history: action.val })

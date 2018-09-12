@@ -258,7 +258,7 @@ export const readUserHistory = (uID) => {
 export const readSuccess = (hist) => {
     console.log('User history read succesfuly! :): ', hist);
     return {
-        type: actionType.DASH_SET_USERDATA,
+        type: actionType.DASH_UPDATE_USERDATA,
         val: hist
     };
 };
