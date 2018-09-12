@@ -25,14 +25,15 @@ class Learn extends Component {
     }
 
     render() {
-        //let data = Array.from(this.props.articles);
+        let data = Array.from(this.props.articles);
         //const data = this.props.articles;
         let articleArray = Object.values(this.props.articles);
         return (
             <div className="learnSection">
                 {articleArray.map(artList => (
-                    <ArtCard onclick={() => 
-                        this.readHistory(this.props.uID, artList.id, artList)} 
+                    <ArtCard onclick={() =>
+                        //onclick={(arts) => this.props.storeArt(data[artList.id-1])} key={artList.id} 
+                        this.readHistory(this.props.uID, artList.id, artList)}
                         key={artList.id}
                         title={artList.title}
                         image={artList.image}

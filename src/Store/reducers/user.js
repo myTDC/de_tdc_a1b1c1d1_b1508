@@ -123,9 +123,9 @@ const reducer = (state = initState, action) => {
       return mapTodoData(state, action);
     case DASH_FETCH_DATA:
       return state;
-    case DASH_UPDATE_USERDATA:{
-        console.log('User data set in state *thumbs up*')
-        return setUserHistonFetch(state, action);
+    case DASH_UPDATE_USERDATA: {
+      console.log('User data set in state *thumbs up*')
+      return setUserHistonFetch(state, action);
     }
     case DASH_UPDATE_PROGRESS: {
       console.log('progress updated');
