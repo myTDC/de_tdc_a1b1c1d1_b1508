@@ -126,6 +126,8 @@ const fbDBUpdater = (ref, id, data) => {
     return ref.update(updates);
 }
 
+
+//################################################### Code to Initialize and Modfiy user ToDo data ################################################
 export const addToDo = (uID) => {
     let todoObj = userTodo;
     let todoLastRead = userTodo[1];
@@ -148,6 +150,69 @@ export const addToDo = (uID) => {
     }
 }
 
+//################################################### Dummy Data to supprt user ToDo data ################################################
+let dateObj = new Date();
+// let todayOld = dateObj.getMilliseconds() + dateObj.getMinutes() + "/" + dateObj.getDate() + "/" + dateObj.getMonth() + "/" + dateObj.getFullYear();
+let today = dateObj.getTime();
+// let userTodoSingle = {
+//     title: "Continue learning where you left off",
+//     desc: "Complete the last learning material you'd accessed..",
+//     setOn: "" + today,
+//     tobecompletedBy: "30th Sept 2018",//new Date(new Date()+(12*3600)),
+//     source: "User",
+//     url: "",
+//     isComplete: false
+// }
+let userTodo = {
+    1: {
+        title: "Continue learning where you left off",
+        desc: "Complete the last learning material you'd accessed..",
+        setOn: "" + today,
+        tobecompletedBy: "30th Sept 2018",//new Date(new Date()+(12*3600)),
+        source: "User",
+        url: "",
+        isComplete: false
+    },
+    2: {
+        title: "Seek Investment at TDC Elevate '18",
+        desc: "Participate in TDC Elevate through DE portal and test your knowledge by pitching directly to the investors and analysts.",
+        setOn: today,
+        tobecompletedBy: "30th Sept 2018",//new Date(new Date()+(12*3600)),
+        source: "System",
+        url: "",
+        isComplete: false
+    },
+    3: {
+        title: "Meet and Greet - Founders Club",
+        desc: "Join fellow founders and potential investors for the much awaited fellow dinner..",
+        setOn: today,
+        tobecompletedBy: "30th Sept 2018",//new Date(new Date()+(12*3600)),
+        source: "System",
+        url: "",
+        isComplete: false
+    },
+    4: {
+        title: "Link your LinkedIn account to TDC DE",
+        desc: "LinkedIn is a major medium for professionals and we highly recommend that you share your progress on the platform. Start by providing your linkedIn Profile Link on the dashboard",
+        setOn: today,
+        tobecompletedBy: "30th Sept 2018",//new Date(new Date()+(12*3600)),
+        source: "System",
+        url: "",
+        isComplete: false
+    },
+    5: {
+        title: "Share learn progress on facebook ",
+        desc: "Share your leanring progress with the world so they know you're ready to face all the challenges. #AarambhHaiPrachand",
+        setOn: today,
+        tobecompletedBy: "30th Sept 2018",//new Date(new Date()+(12*3600)),
+        source: "System",
+        url: "",
+        isComplete: false
+    },
+};
+//################################################### End of Dummy Data to supprt user ToDo data ################################################
+
+//################################################### End of Code to Initialize and Modfiy user ToDo data ################################################
 // const listenToFB = () => {
 
 // };
@@ -170,7 +235,7 @@ export function fetchPostsIfNeeded(subreddit) {
     }
   }
   */
-
+//################################################### Code to Initialize and Modfiy user read history ################################################
 export const readUserHistory = (uID) => {
     let hist = {};
     return async dispatch => {
@@ -239,64 +304,4 @@ export const updateUserReadHistory = (found, uID, id, art, Readart) => {
     }
 }
 
-
-//Dummy Data
-let dateObj = new Date();
-let todayOld = dateObj.getMilliseconds() + dateObj.getMinutes() + "/" + dateObj.getDate() + "/" + dateObj.getMonth() + "/" + dateObj.getFullYear();
-let today = dateObj.getTime();
-let userTodoSingle = {
-    title: "Continue learning where you left off",
-    desc: "Complete the last learning material you'd accessed..",
-    setOn: "" + today,
-    tobecompletedBy: "30th Sept 2018",//new Date(new Date()+(12*3600)),
-    source: "User",
-    url: "",
-    isComplete: false
-}
-let userTodo = {
-    1: {
-        title: "Continue learning where you left off",
-        desc: "Complete the last learning material you'd accessed..",
-        setOn: "" + today,
-        tobecompletedBy: "30th Sept 2018",//new Date(new Date()+(12*3600)),
-        source: "User",
-        url: "",
-        isComplete: false
-    },
-    2: {
-        title: "Seek Investment at TDC Elevate '18",
-        desc: "Participate in TDC Elevate through DE portal and test your knowledge by pitching directly to the investors and analysts.",
-        setOn: today,
-        tobecompletedBy: "30th Sept 2018",//new Date(new Date()+(12*3600)),
-        source: "System",
-        url: "",
-        isComplete: false
-    },
-    3: {
-        title: "Meet and Greet - Founders Club",
-        desc: "Join fellow founders and potential investors for the much awaited fellow dinner..",
-        setOn: today,
-        tobecompletedBy: "30th Sept 2018",//new Date(new Date()+(12*3600)),
-        source: "System",
-        url: "",
-        isComplete: false
-    },
-    4: {
-        title: "Link your LinkedIn account to TDC DE",
-        desc: "LinkedIn is a major medium for professionals and we highly recommend that you share your progress on the platform. Start by providing your linkedIn Profile Link on the dashboard",
-        setOn: today,
-        tobecompletedBy: "30th Sept 2018",//new Date(new Date()+(12*3600)),
-        source: "System",
-        url: "",
-        isComplete: false
-    },
-    5: {
-        title: "Share learn progress on facebook ",
-        desc: "Share your leanring progress with the world so they know you're ready to face all the challenges. #AarambhHaiPrachand",
-        setOn: today,
-        tobecompletedBy: "30th Sept 2018",//new Date(new Date()+(12*3600)),
-        source: "System",
-        url: "",
-        isComplete: false
-    },
-}
+//################################################### End of Code to Initialize and Modfiy user read history ################################################
