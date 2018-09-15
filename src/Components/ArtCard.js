@@ -6,7 +6,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 const card = (props) => {
     
     return(
-    <div className="rel">
+    <div className="rel" onClick = {props.onclick}>
     <a href={props.url} target="_blank">
       <Card>
         <CardMedia className="media"
