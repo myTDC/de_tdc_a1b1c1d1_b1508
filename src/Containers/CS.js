@@ -10,7 +10,13 @@ import { connect } from 'react-redux';
 import * as acts from '../Store/actions';
 
 class CS extends Component {
-
+    render(){
+        return(
+            <div className="Creator's Studio">
+             <h1> Your window to create content. </h1>
+           </div>
+        );
+    }
 }
 const mapStateToProps = state => {
     return{
