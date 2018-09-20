@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
+import Charter from '../Charter';
 //import Pbar from '../ProgressBar';
 import LeftContent from '../DashCardLeft';
 
@@ -10,14 +11,14 @@ const styles = ({
         margin: '4px',
         boxShadow: '3px 3px 4px #E0E0E0',
     },
-    parent :{
+    parent: {
         position: 'relative',
-        width:'100%',
+        width: '100%',
         margin: 0,
         padding: '4px',
     },
     row: {
-        position:'relative',
+        position: 'relative',
         minHeight: '28vh',
         minWidth: '100%',
     },
@@ -31,7 +32,7 @@ const styles = ({
         background: 'linear-gradient(90deg, red, yellow, green)',
         zIndex: '100',
     }, */
-    
+
     columnRight: {
         position: 'absolute',
         right: 0,
@@ -41,15 +42,21 @@ const styles = ({
 });
 
 const AnalCard = (props) => {
-    return(
+    return (
         <div style={styles.parent}>
             {props.children}
             <Card style={styles.card}>
                 <div id="categories" styles={styles.row}>
-                    <LeftContent header= {props.header} stat={props.stat} footer={props.footer}/>
-                    
+                    <LeftContent header={props.header} stat={props.stat} footer={props.footer} />
+
                     <div style={styles.columnRight}>
-                    
+                        <Charter 
+							type={props.chartType} 
+							width={props.chartWidth} 
+							height={props.chartHeight} 
+							chartLabels={props.chartLabels} 
+							chartData={props.chartData} 
+							chartDataBaseline={props.chartDataBaseline} />
                     </div>
                 </div>
             </Card>

@@ -7,6 +7,12 @@ import {
   // usrTodoRef
 } from "../config/fb";
 
+//Global Variables
+let dateNow = new Date();
+// let timeNowOld = dateObj.getMilliseconds() + dateObj.getMinutes() + "/" + dateObj.getDate() + "/" + dateObj.getMonth() + "/" + dateObj.getFullYear();
+let timeNow = dateNow.getTime();
+
+
 // const readHistory = {
 //     // new Date().getMilliseconds(): {
 //     //     id: '',
@@ -31,13 +37,6 @@ const asyncTriggerReducer = (type, object) => {
   return {
     type: type,
     obj: object
-  };
-};
-
-export const setupAnal = uID => {
-  console.log("[Act/User] [setupAnal] for uID:", uID);
-  return {
-    type: actionType.DASH_FETCH_DATA
   };
 };
 
@@ -188,13 +187,10 @@ export const addToDo = uID => {
 };
 
 //################################################### Dummy Data to supprt user ToDo data ################################################
-let dateObj = new Date();
-// let todayOld = dateObj.getMilliseconds() + dateObj.getMinutes() + "/" + dateObj.getDate() + "/" + dateObj.getMonth() + "/" + dateObj.getFullYear();
-let today = dateObj.getTime();
 // let userTodoSingle = {
 //     title: "Continue learning where you left off",
 //     desc: "Complete the last learning material you'd accessed..",
-//     setOn: "" + today,
+//     setOn: "" + timeNow,
 //     tobecompletedBy: "30th Sept 2018",//new Date(new Date()+(12*3600)),
 //     source: "User",
 //     url: "",
@@ -204,7 +200,7 @@ let userTodo = {
   1: {
     title: "Continue learning where you left off",
     desc: "Complete the last learning material you'd accessed..",
-    setOn: "" + today,
+    setOn: "" + timeNow,
     tobecompletedBy: "30th Sept 2018", //new Date(new Date()+(12*3600)),
     source: "User",
     url: "",
@@ -214,7 +210,7 @@ let userTodo = {
     title: "Seek Investment at TDC Elevate '18",
     desc:
       "Participate in TDC Elevate through DE portal and test your knowledge by pitching directly to the investors and analysts.",
-    setOn: today,
+    setOn: timeNow,
     tobecompletedBy: "30th Sept 2018", //new Date(new Date()+(12*3600)),
     source: "System",
     url: "",
@@ -224,7 +220,7 @@ let userTodo = {
     title: "Meet and Greet - Founders Club",
     desc:
       "Join fellow founders and potential investors for the much awaited fellow dinner..",
-    setOn: today,
+    setOn: timeNow,
     tobecompletedBy: "30th Sept 2018", //new Date(new Date()+(12*3600)),
     source: "System",
     url: "",
@@ -234,7 +230,7 @@ let userTodo = {
     title: "Link your LinkedIn account to TDC DE",
     desc:
       "LinkedIn is a major medium for professionals and we highly recommend that you share your progress on the platform. Start by providing your linkedIn Profile Link on the dashboard",
-    setOn: today,
+    setOn: timeNow,
     tobecompletedBy: "30th Sept 2018", //new Date(new Date()+(12*3600)),
     source: "System",
     url: "",
@@ -244,7 +240,7 @@ let userTodo = {
     title: "Share learn progress on facebook ",
     desc:
       "Share your leanring progress with the world so they know you're ready to face all the challenges. #AarambhHaiPrachand",
-    setOn: today,
+    setOn: timeNow,
     tobecompletedBy: "30th Sept 2018", //new Date(new Date()+(12*3600)),
     source: "System",
     url: "",
@@ -277,14 +273,35 @@ export function fetchPostsIfNeeded(subreddit) {
   }
   */
 //################################################### Code to Initialize and Modfiy user read history ################################################
+//let sUser;
+//let sAuth;
+let sContent;
+
+const loadState = () => (dispatch, getState) => {
+  const cState = getState();
+  //sUser = cState.user;
+  //sAuth = cState.auth;
+  sContent = cState.content;
+
+  dispatch(() => {
+    console.log('[Act/User][loadState] State loaded', cState);
+    getContentBuildVersion(sContent);
+  })
+};
+
+const getContentBuildVersion = (content) => {
+  //loadState();
+  return content.updateVer;
+};
+
 export const readUserHistory = uID => {
   let hist = {};
   return async dispatch => {
     try {
       const readArts = dbRef.child("users/" + uID + "/readHistory");
       readArts
-        .once("value", function(snapshot) {
-          snapshot.forEach(function(childSnapshot) {
+        .once("value", function (snapshot) {
+          snapshot.forEach(function (childSnapshot) {
             let childKey = childSnapshot.key;
             let childData = childSnapshot.val();
             console.log(
@@ -318,16 +335,17 @@ const readFailure = error => {
 
 export const updateUserReadHistory = (found, uID, id, art, Readart) => {
   const readArts = dbRef.child("users/" + uID + "/readHistory");
+  const contentUpdateVersion = "b1008";
   const updates = {};
   if (found) {
-    let read = art["b1008" + id];
+    let read = art[contentUpdateVersion + id];
     read.count++;
-    read[read.count] = new Date();
-    updates["/" + "b1008" + id] = read;
+    read[read.count] = timeNow;
+    updates["/" + contentUpdateVersion + "_" + id] = read;
     readArts.update(updates);
     //let newState = {};
-    //newState["b1008"+id]=read;
-    art["b1008" + id] = read;
+    //newState[contentUpdateVersion+id]=read;
+    art[contentUpdateVersion + id] = read;
     return {
       type: actionType.DASH_UPDATE_PROGRESS,
       val: art
@@ -338,12 +356,12 @@ export const updateUserReadHistory = (found, uID, id, art, Readart) => {
       id: id,
       count: i
     };
-    read[i] = new Date();
-    updates["/" + "b1008" + id] = read;
+    read[i] = timeNow;
+    updates["/" + contentUpdateVersion + "_" + id] = read;
     readArts.update(updates);
     let newState = {};
     newState = read;
-    art["b1008" + id] = { ...art["b1008" + id], ...newState };
+    art[contentUpdateVersion + "_" + id] = { ...art[contentUpdateVersion + "_" + id], ...newState };
     return {
       type: actionType.DASH_WRITE_PROGRESS,
       val: art
@@ -351,4 +369,34 @@ export const updateUserReadHistory = (found, uID, id, art, Readart) => {
   }
 };
 
-//################################################### End of Code to Initialize and Modfiy user read history ################################################
+//############################################ End of Code to Initialize and Modfiy user read history ############################################
+
+//############################################ Code to Fetch Data for Analytics based on user read history ############################################
+//Julian day = Monday, Tuesday, etc. starts at 0 goes up to 6.
+
+const historyLoader = history => {
+
+}
+
+export const setupAnal = uID => {
+  console.log("[Act/User] [setupAnal] for uID:", uID);
+  return (dispatch, getState) => {
+    let readHistory = getState().user.history;
+    console.log("[Act/User] [setupAnal] readhist is:", readHistory);
+    dispatch(asyncTriggerReducer(actionType.DASH_FETCH_DATA, {}));
+  };
+};
+
+//############################################ End of Code to Fetch Data for Analytics based on user read history ############################################
+
+//############################################ Code to Setup User Environment ############################################
+
+export const ecoSet = uID => {
+
+}
+
+//############################################ End of Code to Setup User Environment ############################################
+
+//############################################ Code to Fetch Data for Analytics based on user read history ############################################
+
+//############################################ End of Code to Fetch Data for Analytics based on user read history ############################################

@@ -25,8 +25,6 @@ class Learn extends Component {
     }
 
     render() {
-        //let data = Array.from(this.props.articles);
-        //const data = this.props.articles;
         let articleArray = Object.values(this.props.articles);
         return (
             <div className="learnSection">

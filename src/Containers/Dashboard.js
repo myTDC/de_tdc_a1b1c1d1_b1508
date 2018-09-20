@@ -10,7 +10,7 @@ import UserTodo from "../Components/DashCards/UserTodo";
 import DataCard from "../Components/DashCards/DataCard";
 import AnalCard from "../Components/DashCards/AnalCard";
 import CardTitle from "../Components/DashCards/CardTitle";
-//import * as chartType from '../Components/Charter';
+import * as chartType from '../Components/Charter';
 
 //Actions
 import * as acts from "../Store/actions";
@@ -122,8 +122,7 @@ class Dashboard extends Component {
 							type="userTodos"
 							header="completed"
 							stat="02"
-							footer="out of 06"
-						>
+							footer="out of 06">
 							<CardTitle name="TODO & MORE" />
 						</UserTodo>
 
@@ -132,7 +131,10 @@ class Dashboard extends Component {
 							header="You are reading"
 							stat="1.2"
 							footer="every day (avg)"
-						>
+							chartType={chartType.LINE_CHART}
+							chartWidth="600" chartHeight="240" 
+							chartLabels={this.props.chartLineLabels} 
+							chartData={this.props.chartLineData} chartDataBaseline={null}>
 							<CardTitle name="LEARN CURVE" />
 						</AnalCard>
 
@@ -141,7 +143,10 @@ class Dashboard extends Component {
 							header="completed"
 							stat="02"
 							footer="Sections of 7"
-						>
+							chartType={chartType.RADAR_CHART}
+							chartWidth="600" chartHeight="240"
+							chartLabels={this.props.chartRadarLabels} 
+							chartData={this.props.chartRadarData} chartDataBaseline={this.props.chartRadarDataBaseline}>
 							<CardTitle name="PREPARATION" />
 						</AnalCard>
 
@@ -149,8 +154,7 @@ class Dashboard extends Component {
 							type="Favorites"
 							header="you have"
 							stat="03"
-							footer="favorites"
-						>
+							footer="favorites">
 							<CardTitle name="FAV READLIST" />
 						</DataCard>
 
@@ -158,8 +162,7 @@ class Dashboard extends Component {
 							type="totalArtProgress"
 							header="You've read"
 							stat="08"
-							footer="articles of 30"
-						>
+							footer="articles of 30">
 							<CardTitle name="USER JOURNEY" />
 						</DataCard>
 
@@ -172,7 +175,7 @@ class Dashboard extends Component {
 					</div>
 					<h1 onClick={writetofb}>
 						Welcome to your Dashboard. The heart of DE.
-          </h1>
+          			</h1>
 				</div>
 			</div>
 		);
@@ -188,8 +191,11 @@ const mapStateToProps = state => {
 		userEmail: state.auth.user.Email,
 		userPhone: state.auth.user.PhoneNumber,
 
-		chartData: state.user.chartdata,
-		chartOpts: state.user.chartoptions
+		chartLineData: state.user.readHistoryLineData,
+		chartLineLabels: state.user.readHistoryLineLabel,
+		chartRadarData: state.user.readHistoryRadarData,
+		chartRadarDataBaseline: state.user.readHistoryRadarDataBaseline,
+		chartRadarLabels: state.user.readHistoryRadarLabel
 	};
 };
 
