@@ -52,7 +52,7 @@ let artStored = [
 ];
 
 export const logArtList = () => {
-    console.log('[Act/Content] [logArtList] -> Articles to be Written to FB:\n', ...artStored);
+    //console.log('[Act/Content] [logArtList] -> Articles to be Written to FB:\n', ...artStored);
     return{type: null};
 }
 
@@ -77,7 +77,7 @@ export const readfromFB = () => {
                 snapshot.forEach(function(childSnapshot) {
                     let childKey = childSnapshot.key;
                     let childData = childSnapshot.val();
-                    console.log('[Act/Content] [readFromFB] -> Data Key: ',childKey, 'Data Value: ', childData);
+                    //console.log('[Act/Content] [readFromFB] -> Data Key: ',childKey, 'Data Value: ', childData);
                     arts.push(...childData);
                 });
             }).then(() => dispatch(readSuccess(arts)));
@@ -94,7 +94,7 @@ export const readfromFB = () => {
 export const readSuccess = (result) => {
     //let list= {result};
     
-    console.log('[Act/Content] [readSuccess] -> Read from FB Successful:', result );
+    //console.log('[Act/Content] [readSuccess] -> Read from FB Successful:', result );
     return { 
             type: actionType.CONT_FETCH_ARTICLES, 
             val: result

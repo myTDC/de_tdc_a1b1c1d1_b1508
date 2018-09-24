@@ -26,8 +26,9 @@ class Dashboard extends Component {
 	};
 
 	componentDidMount() {
-		this.props.onLoad(this.props.userId);
+		this.props.onLoad(this.props.userId, this.props.userHistory);
 		this.props.loadTodo(this.props.userId);
+		this.props.ReadUser(this.props.userId);
 	};
 
 	render() {
@@ -98,6 +99,17 @@ class Dashboard extends Component {
 				this.props.userPhone
 			);
 		};
+
+		let userReadHistory = Object.values(this.props.userHistory);
+
+		const loadHistory = (uID, id, art) => {
+			console.log('[Container/Dash] Clicked Article has id:', id);
+			let found;
+			if (this.props.history.hasOwnProperty("b1008" + id)) //Checks if the object has the specified value as it's own property or is an inherited property.
+				found = true;
+			else found = false;
+			this.props.updateHistory(found, uID, id, this.props.history, art);
+		}
 		// if(this.props.){
 		//         signup = (null);
 		//         authorizer = (
@@ -162,9 +174,12 @@ class Dashboard extends Component {
 							type="totalArtProgress"
 							header="You've read"
 							stat="08"
-							footer="articles of 30">
+							footer="articles of 30"
+							history={userReadHistory}
+							>
 							<CardTitle name="USER JOURNEY" />
 						</DataCard>
+						
 
 						{/* {userCard}
 					{todoCard}
@@ -191,6 +206,8 @@ const mapStateToProps = state => {
 		userEmail: state.auth.user.Email,
 		userPhone: state.auth.user.PhoneNumber,
 
+		userHistory: state.user.history,
+
 		chartLineData: state.user.readHistoryLineData,
 		chartLineLabels: state.user.readHistoryLineLabel,
 		chartRadarData: state.user.readHistoryRadarData,
@@ -202,16 +219,12 @@ const mapStateToProps = state => {
 const mapDispactchToProps = dispatch => {
 	return {
 		// onAuth: () => dispatch(acts.fbSignIn()),
-		onLoad: uID => dispatch(acts.setupAnal(uID)),
+		onLoad: (uID, userRHistory) => dispatch(acts.setupAnal(uID, userRHistory)),
 		loadTodo: uID => dispatch(acts.addToDo(uID)),
-		writeTest: (uID, uGname, uFname, uEmail, uPic, uPhone) =>
-			dispatch(
-				acts.writeUserPersonalInfo(uID, uGname, uFname, uEmail, uPic, uPhone)
-			) //,
+		writeTest: (uID, uGname, uFname, uEmail, uPic, uPhone) => dispatch(acts.writeUserPersonalInfo(uID, uGname, uFname, uEmail, uPic, uPhone)),
+		ReadUser: (uID) => dispatch(acts.readUserHistory(uID)),
+        updateHistory: (found, uID, id, art) => dispatch(acts.updateUserReadHistory(found, uID, id, art))
 	};
 };
 
-export default connect(
-	mapStateToProps,
-	mapDispactchToProps
-)(Dashboard);
+export default connect(	mapStateToProps, mapDispactchToProps)(Dashboard);

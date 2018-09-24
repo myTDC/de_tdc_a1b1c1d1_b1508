@@ -60,8 +60,8 @@ const articlesCommiter = (state, action) => {
 }
 
 const setStateonFetch = (state, action) => {
-    console.log('[Red/Content] [setStateonFetchArt] ->  Initial State Val is', state);
-    console.log('[Red/Content] [setStateonFetchArt] ->  Initial State Val is', action.val);
+    //console.log('[Red/Content] [setStateonFetchArt] ->  Initial State Val is', state);
+    //console.log('[Red/Content] [setStateonFetchArt] ->  Initial State Val is', action.val);
     const articles3p = {...state.articles3p}
 
     return updateObject(state, { articles3p: {

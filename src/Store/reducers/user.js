@@ -57,7 +57,7 @@ const initState = {
     //     id: null
     // }
   },
-  readHistory: {
+  history: {
     // cVer+"_"+id:{
     //     count: i,
     //     i: New Date(),
@@ -129,15 +129,15 @@ const reducer = (state = initState, action) => {
     case DASH_FETCH_DATA:
       return state;
     case DASH_UPDATE_USERDATA: {
-      console.log('User data set in state *thumbs up*')
+      console.log('[Red/User] User data set in state *thumbs up*')
       return setUserHistonFetch(state, action);
     }
     case DASH_UPDATE_PROGRESS: {
-      console.log('progress updated');
+      console.log('[Red/User] progress updated');
       return updateObject(state, { history: action.val })
     }
     case DASH_WRITE_PROGRESS: {
-      console.log('progress updated');
+      console.log('[Red/User] progress updated');
       return updateObject(state, { history: action.val })
     }
     default:

@@ -7,6 +7,8 @@ import {
   // usrTodoRef
 } from "../config/fb";
 
+import _ from 'lodash';
+
 //Global Variables
 let dateNow = new Date();
 // let timeNowOld = dateObj.getMilliseconds() + dateObj.getMinutes() + "/" + dateObj.getDate() + "/" + dateObj.getMonth() + "/" + dateObj.getFullYear();
@@ -273,47 +275,22 @@ export function fetchPostsIfNeeded(subreddit) {
   }
   */
 //################################################### Code to Initialize and Modfiy user read history ################################################
-//let sUser;
-//let sAuth;
-let sContent;
-
-const loadState = () => (dispatch, getState) => {
-  const cState = getState();
-  //sUser = cState.user;
-  //sAuth = cState.auth;
-  sContent = cState.content;
-
-  dispatch(() => {
-    console.log('[Act/User][loadState] State loaded', cState);
-    getContentBuildVersion(sContent);
-  })
-};
-
-const getContentBuildVersion = (content) => {
-  //loadState();
-  return content.updateVer;
-};
-
 export const readUserHistory = uID => {
   let hist = {};
   return async dispatch => {
     try {
-      const readArts = dbRef.child("users/" + uID + "/readHistory");
-      readArts
-        .once("value", function (snapshot) {
-          snapshot.forEach(function (childSnapshot) {
-            let childKey = childSnapshot.key;
-            let childData = childSnapshot.val();
-            console.log(
-              "[Act/Content] [readFromFB] -> Data Key: ",
-              childKey,
-              "Data Value: ",
-              childData
-            );
-            hist[childKey] = childData;
-          });
-        })
-        .then(() => dispatch(readSuccess(hist)));
+      const readArts = dbRef.child("users/" + uID + "/readHistory"); //TODO: Abstract the db ref path. only get the reference variable to be returned from a function
+      readArts.once("value", function (snapshot) {
+        snapshot.forEach(function (childSnapshot) {
+          let childKey = childSnapshot.key;
+          let childData = childSnapshot.val();
+          // console.log(
+          //   "[Act/User] [readFromFB] -> Data Key: ", childKey,
+          //   "Data Value: ", childData
+          // );
+          hist[childKey] = childData;
+        });
+      }).then(() => dispatch(readSuccess(hist)));
     } catch (err) {
       dispatch(readFailure(err));
     }
@@ -321,7 +298,7 @@ export const readUserHistory = uID => {
 };
 
 export const readSuccess = hist => {
-  console.log("User history read succesfuly! :): ", hist);
+  console.log("[Act/User] [readSuccess] User history read succesfuly! :)  :", hist);
   return {
     type: actionType.DASH_UPDATE_USERDATA,
     val: hist
@@ -329,7 +306,7 @@ export const readSuccess = hist => {
 };
 
 const readFailure = error => {
-  console.log("User history read failure :(: ", error);
+  console.log("[Act/User] [readFailure] User history read failure :(  :", error);
   return { type: null };
 };
 
@@ -374,15 +351,31 @@ export const updateUserReadHistory = (found, uID, id, art, Readart) => {
 //############################################ Code to Fetch Data for Analytics based on user read history ############################################
 //Julian day = Monday, Tuesday, etc. starts at 0 goes up to 6.
 
-const historyLoader = history => {
+// const historyLoader = (id) => {
+//   return (dispatch, getState) => {
+//     if (getState().user.readHistory) {
+//       const uReadHistory = getState().user.readHistory;
+//     } else {
+//       //TODO: Get dat from fb and write it in the state.
+//     }
 
-}
 
-export const setupAnal = uID => {
-  console.log("[Act/User] [setupAnal] for uID:", uID);
+//   }
+// }
+
+export const setupAnal = (uID, userHistory) => {
+  //console.log("[Act/User] [setupAnal] for uID:", uID);
+  //historyLoader(uID);
+  //let readHistory = {};
   return (dispatch, getState) => {
-    let readHistory = getState().user.history;
-    console.log("[Act/User] [setupAnal] readhist is:", readHistory);
+    const readHistory = userHistory;
+    //let readUserHistory = Object.values(readHistory)
+    //let articleArray = Object.values(this.props.articles);
+    console.log("[Act/User] [setupAnal] User's reading history is:", readHistory);
+    // readHistory.forEach(()=>{
+    //   console.log('Read Count is:',1);
+    // });
+    //console.log("[Act/User] [setupAnal] readhist is:", readHistory[1]);
     dispatch(asyncTriggerReducer(actionType.DASH_FETCH_DATA, {}));
   };
 };
@@ -400,3 +393,24 @@ export const ecoSet = uID => {
 //############################################ Code to Fetch Data for Analytics based on user read history ############################################
 
 //############################################ End of Code to Fetch Data for Analytics based on user read history ############################################
+
+//let sUser;
+//let sAuth;
+// let sContent;
+
+// const loadState = () => (dispatch, getState) => {
+//   const cState = getState();
+//   //sUser = cState.user;
+//   //sAuth = cState.auth;
+//   sContent = cState.content;
+
+//   dispatch(() => {
+//     console.log('[Act/User][loadState] State loaded', cState);
+//     getContentBuildVersion(sContent);
+//   })
+// };
+
+// const getContentBuildVersion = (content) => {
+//   //loadState();
+//   return content.updateVer;
+// };

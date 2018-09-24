@@ -65,7 +65,7 @@ const authSuccess = (state, action) => {
         FamilyName: action.authUserInfo.profile.family_name,
         PicUrl: action.authUserInfo.profile.picture,
         Email: action.authUserInfo.profile.email,
-        PhoneNumber: action.authUser.phoneNumber || 'No Number Given',
+        PhoneNumber: action.authUser.phoneNumber || 'No Number Provided',
     }});
 };
 

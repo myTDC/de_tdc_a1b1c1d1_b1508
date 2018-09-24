@@ -73,3 +73,15 @@ const DataCard = (props) => {
 };
 
 export default DataCard;
+
+
+// {userReadHistory.map(uReadHistory => (
+
+//     //TODO: Add the Lister Component
+//     onclick={() => this.loadHistory(this.props.userId, uReadHistory.id, uReadHistory)}
+//     key={uReadHistory.id}
+//     title={uReadHistory.title}
+//     url={uReadHistory.url}
+//     length={uReadHistory.length}
+//     category={uReadHistory.category} 
+//     ))}
