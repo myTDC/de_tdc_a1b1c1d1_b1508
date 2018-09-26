@@ -315,7 +315,7 @@ export const updateUserReadHistory = (found, uID, id, art, Readart) => {
   const contentUpdateVersion = "b1008";
   const updates = {};
   if (found) {
-    let read = art[contentUpdateVersion + id];
+    let read = art[contentUpdateVersion + "_" + id];
     read.count++;
     read[read.count] = timeNow;
     updates["/" + contentUpdateVersion + "_" + id] = read;

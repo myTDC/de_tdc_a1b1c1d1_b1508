@@ -18,7 +18,7 @@ class Learn extends Component {
     readHistory = (uID, id, art) => {
         console.log('[Container/Learn] User Read Article:', id);
         let found;
-        if (this.props.history.hasOwnProperty("b1008" + id)) //Checks if the object has the specified value as it's own property or is an inherited property.
+        if (this.props.history.hasOwnProperty("b1008_" + id)) //Checks if the object has the specified value as it's own property or is an inherited property.
             found = true;
         else found = false;
         this.props.updateHistory(found, uID, id, this.props.history, art);
