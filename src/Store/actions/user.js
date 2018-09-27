@@ -290,6 +290,7 @@ export const readUserHistory = uID => {
           // );
           hist[childKey] = childData;
         });
+        dispatch(setupAnal(uID, hist));
       }).then(() => dispatch(readSuccess(hist)));
     } catch (err) {
       dispatch(readFailure(err));
@@ -311,9 +312,13 @@ const readFailure = error => {
 };
 
 export const updateUserReadHistory = (found, uID, id, art, Readart) => {
+
   const readArts = dbRef.child("users/" + uID + "/readHistory");
   const contentUpdateVersion = "b1008";
   const updates = {};
+  
+  readArts.update({[contentUpdateVersion + "_" + 0] : id}); //Storing the last read article as cVer_0 : id
+  return async dispatch => {
   if (found) {
     let read = art[contentUpdateVersion + "_" + id];
     read.count++;
@@ -322,7 +327,8 @@ export const updateUserReadHistory = (found, uID, id, art, Readart) => {
     readArts.update(updates);
     //let newState = {};
     //newState[contentUpdateVersion+id]=read;
-    art[contentUpdateVersion + id] = read;
+    art[contentUpdateVersion + "_" + id] = read;
+    dispatch(setupAnal(uID, art));
     return {
       type: actionType.DASH_UPDATE_PROGRESS,
       val: art
@@ -339,13 +345,14 @@ export const updateUserReadHistory = (found, uID, id, art, Readart) => {
     let newState = {};
     newState = read;
     art[contentUpdateVersion + "_" + id] = { ...art[contentUpdateVersion + "_" + id], ...newState };
+    dispatch(setupAnal(uID, art));
     return {
       type: actionType.DASH_WRITE_PROGRESS,
       val: art
     };
   }
 };
-
+}
 //############################################ End of Code to Initialize and Modfiy user read history ############################################
 
 //############################################ Code to Fetch Data for Analytics based on user read history ############################################
@@ -367,16 +374,37 @@ export const setupAnal = (uID, userHistory) => {
   //console.log("[Act/User] [setupAnal] for uID:", uID);
   //historyLoader(uID);
   //let readHistory = {};
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     const readHistory = userHistory;
-    //let readUserHistory = Object.values(readHistory)
-    //let articleArray = Object.values(this.props.articles);
-    console.log("[Act/User] [setupAnal] User's reading history is:", readHistory);
+    let readUserHistory = Object.values(readHistory);
+    let dates=[];
+    let readArticles=[];
+    let anData=[0, 0, 0, 0, 0, 0, 0];
+    let count; 
+    let i=0, j=0;
+    count = readUserHistory[i].count;
+    for(i = 1; i<readUserHistory.length; i++){
+      count = readUserHistory[i].count;
+      readArticles.push(readUserHistory[i].id);
+      for(j = 1; j<=count; j++){
+        let f = j.toString();
+        let temp = new Date(readUserHistory[i][f]);
+        dates.push(temp);
+      }
+    } 
+    for(i = 0; i<dates.length; i++){
+        if((timeNow-dates[i].getTime()) < 604800000)
+          anData[dates[i].getDay()] += 1; 
+    }
+    //let articleArray = Object.values(this.props.articles);    
+    
+    console.log("[Act/User] [setupAnal] User's reading history is:", anData, readArticles);
     // readHistory.forEach(()=>{
     //   console.log('Read Count is:',1);
     // });
     //console.log("[Act/User] [setupAnal] readhist is:", readHistory[1]);
-    dispatch(asyncTriggerReducer(actionType.DASH_FETCH_DATA, {}));
+    //TODO: set the data in state from reducer
+    dispatch(asyncTriggerReducer(actionType.DASH_FETCH_DATA, {anData, readArticles}));
   };
 };
 

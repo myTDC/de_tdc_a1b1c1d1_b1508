@@ -14,23 +14,25 @@ import * as chartType from '../Components/Charter';
 
 //Actions
 import * as acts from "../Store/actions";
+import { watchFile } from "fs";
 
 class Dashboard extends Component {
 	state = {};
 
 	componentDidUpdate() {
+		this.props.onLoad(this.props.userId, this.props.userHistory);
 		console.log(
 			"[Cont/Dash] Components Updated | Current UserID is: ",
 			localStorage.getItem("userID")
 		);
 	};
-
-	componentDidMount() {
+	componentWillUnmount(){
+		this.getMYVALUES();
+	}
+	getMYVALUES(){
 		this.props.onLoad(this.props.userId, this.props.userHistory);
 		this.props.loadTodo(this.props.userId);
-		this.props.ReadUser(this.props.userId);
-	};
-
+	}
 	render() {
 		// let asyncTester = (
 		//     <button onClick={this.props.onTest}>

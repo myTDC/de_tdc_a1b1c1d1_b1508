@@ -17,8 +17,11 @@ import * as acts from "../Store/actions";
 
 class Layout extends Component {
   state = {};
-
+  componentDidMount(){
+    this.props.ReadUser(this.props.userId);
+  }
   componentDidUpdate() {
+    this.props.ReadUser(this.props.userId);
     console.log(
       "[Comp/Layout] Components Updated | Current UserID is: ",
       localStorage.getItem("userID")
@@ -125,6 +128,8 @@ const mapDispactchToProps = dispatch => {
     onAuth: () => dispatch(acts.fbSignIn()),
     onLogOut: () => dispatch(acts.logout()),
 
+    ReadUser: (uID) => dispatch(acts.readUserHistory(uID)),
+    
     // Actions from Content
     Log: () => dispatch(acts.logArtList()),
     Commit: () => dispatch(acts.writeToFB()),

@@ -13,8 +13,9 @@ import * as acts from '../Store/actions';
 class Learn extends Component {
     componentDidMount() {
         this.props.readArticlesFB();
-        this.props.ReadUser(this.props.uID);
+        //this.props.ReadUser(this.props.uID);
     }
+
     readHistory = (uID, id, art) => {
         console.log('[Container/Learn] User Read Article:', id);
         let found;
@@ -55,7 +56,7 @@ const mapDispactchToProps = dispatch => {
     return {
         readArticlesFB: () => dispatch(acts.readfromFB()),
         //storeArt: (arts) => dispatch(acts.setVisited(arts)),
-        ReadUser: (uID) => dispatch(acts.readUserHistory(uID)),
+        //ReadUser: (uID) => dispatch(acts.readUserHistory(uID)),
         updateHistory: (found, uID, id, art) => dispatch(acts.updateUserReadHistory(found, uID, id, art))//,
     };
 };
