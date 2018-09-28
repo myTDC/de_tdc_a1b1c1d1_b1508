@@ -35,12 +35,23 @@ let timeNow = dateNow.getTime();
 //     "publisher": "Medium/Entrepreneur's Handbook"},
 // ];
 
+
+//################ Common Helper Functions ################
 const asyncTriggerReducer = (type, object) => {
   return {
     type: type,
     obj: object
   };
 };
+
+
+const fbDBUpdater = (ref, id, data) => {
+  var updates = {};
+  updates["/" + id] = data;
+  //updates['/user-posts/' + uid + '/' + newPostKey] = postData;
+  return ref.update(updates);
+};
+//################ End of Common Helper Functions ################
 
 export const writeUserPersonalInfo = (
   uID,
@@ -157,13 +168,7 @@ export const setFavorite = item => {
   };
 };
 
-const fbDBUpdater = (ref, id, data) => {
-  var updates = {};
-  updates["/" + id] = data;
-  //updates['/user-posts/' + uid + '/' + newPostKey] = postData;
 
-  return ref.update(updates);
-};
 
 //################################################### Code to Initialize and Modfiy user ToDo data ################################################
 export const addToDo = uID => {

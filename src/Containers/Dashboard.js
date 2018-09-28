@@ -14,7 +14,7 @@ import * as chartType from '../Components/Charter';
 
 //Actions
 import * as acts from "../Store/actions";
-import { watchFile } from "fs";
+//import { watchFile } from "fs";
 
 class Dashboard extends Component {
 	state = {};
@@ -26,71 +26,14 @@ class Dashboard extends Component {
 			localStorage.getItem("userID")
 		);
 	};
-	componentWillUnmount(){
+	componentWillUnmount() {
 		//this.getMYVALUES();
 	}
-	getMYVALUES(){
+	getMYVALUES() {
 		this.props.onLoad(this.props.userId, this.props.userHistory);
 		this.props.loadTodo(this.props.userId);
 	}
 	render() {
-		// let asyncTester = (
-		//     <button onClick={this.props.onTest}>
-		//         test now
-		//     </button>
-		//     <h1>{this.props.count}</h1>
-		// );
-
-		/* 		let userCard = (
-						<div className="cardholder user">
-							<UserCard className="card user" />
-						</div>
-					);
-			
-					let todoCard = ( //Also has notifications, last read and 
-						<div className="cardholder">
-							<strong className="cardTitle">TO-DOs</strong>
-							<DataCard className="card todo" />
-						</div>
-					);
-			
-					let learnCard = (
-						<div className="cardholder">
-							<strong className="cardTitle">LEARNING CURVE</strong>
-							<AnalCard className="card learn" charterType={chartType.LINE_CHART} />
-						</div>
-					);
-			
-					let participateCard = (
-						//<AnalCard charterType={chartType.DOUGHNUT_CHART} />
-						<div className="cardholder">
-							<strong className="cardTitle">TDC PARTICIPATION</strong>
-							<AnalCard className="card participate" charterType={chartType.RADAR_CHART} />
-						</div>
-					);
-			
-					let bookmarksCard = (
-						<div className="cardholder">
-							<strong className="cardTitle">FAV READLIST</strong>
-							<DataCard
-								className="card bookmarks"
-								chartData={null}
-								chartOptions={null}
-							/>
-						</div>
-					)
-			
-					let readHistoryCard = (
-						<div className="cardholder">
-							<strong className="cardTitle">USER JOURNEY</strong>
-							<DataCard
-								className="card readHistory"
-								chartData={this.props.chartData}
-								chartOptions={this.props.chartOpts}
-							/>
-						</div>
-					) */
-
 		const writetofb = () => {
 			this.props.writeTest(
 				this.props.userId,
@@ -112,22 +55,6 @@ class Dashboard extends Component {
 			else found = false;
 			this.props.updateHistory(found, uID, id, this.props.history, art);
 		}
-		// if(this.props.){
-		//         signup = (null);
-		//         authorizer = (
-
-		//         );
-		// }
-
-		// const dash_base = (
-		//     <section>
-		//         {signup}
-		//         <br/>
-		//         {authorizer}
-		//         <br/>
-		//     </section>
-		// );
-		//Beginning DomRender
 		return (
 			<div className="cover">
 				<div className="dashboard">
@@ -146,8 +73,8 @@ class Dashboard extends Component {
 							stat="1.2"
 							footer="every day (avg)"
 							chartType={chartType.LINE_CHART}
-							chartWidth="600" chartHeight="240" 
-							chartLabels={this.props.chartLineLabels} 
+							chartWidth="600" chartHeight="240"
+							chartLabels={this.props.chartLineLabels}
 							chartData={this.props.chartLineData} chartDataBaseline={null}>
 							<CardTitle name="LEARN CURVE" />
 						</AnalCard>
@@ -159,7 +86,7 @@ class Dashboard extends Component {
 							footer="Sections of 7"
 							chartType={chartType.RADAR_CHART}
 							chartWidth="600" chartHeight="240"
-							chartLabels={this.props.chartRadarLabels} 
+							chartLabels={this.props.chartRadarLabels}
 							chartData={this.props.chartRadarData} chartDataBaseline={this.props.chartRadarDataBaseline}>
 							<CardTitle name="PREPARATION" />
 						</AnalCard>
@@ -177,18 +104,9 @@ class Dashboard extends Component {
 							header="You've read"
 							stat="08"
 							footer="articles of 30"
-							history={userReadHistory}
-							>
+							history={userReadHistory} >
 							<CardTitle name="USER JOURNEY" />
 						</DataCard>
-						
-
-						{/* {userCard}
-					{todoCard}
-					{learnCard}
-					{participateCard}
-					{bookmarksCard}
-                    {readHistoryCard} */}
 					</div>
 					<h1 onClick={writetofb}>
 						Welcome to your Dashboard. The heart of DE.
@@ -225,8 +143,90 @@ const mapDispactchToProps = dispatch => {
 		loadTodo: uID => dispatch(acts.addToDo(uID)),
 		writeTest: (uID, uGname, uFname, uEmail, uPic, uPhone) => dispatch(acts.writeUserPersonalInfo(uID, uGname, uFname, uEmail, uPic, uPhone)),
 		ReadUser: (uID) => dispatch(acts.readUserHistory(uID)),
-        updateHistory: (found, uID, id, art) => dispatch(acts.updateUserReadHistory(found, uID, id, art))
+		updateHistory: (found, uID, id, art) => dispatch(acts.updateUserReadHistory(found, uID, id, art))
 	};
 };
 
-export default connect(	mapStateToProps, mapDispactchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispactchToProps)(Dashboard);
+
+// let asyncTester = (
+//     <button onClick={this.props.onTest}>
+//         test now
+//     </button>
+//     <h1>{this.props.count}</h1>
+// );
+
+/* 		let userCard = (
+				<div className="cardholder user">
+					<UserCard className="card user" />
+				</div>
+			);
+	
+			let todoCard = ( //Also has notifications, last read and 
+				<div className="cardholder">
+					<strong className="cardTitle">TO-DOs</strong>
+					<DataCard className="card todo" />
+				</div>
+			);
+	
+			let learnCard = (
+				<div className="cardholder">
+					<strong className="cardTitle">LEARNING CURVE</strong>
+					<AnalCard className="card learn" charterType={chartType.LINE_CHART} />
+				</div>
+			);
+	
+			let participateCard = (
+				//<AnalCard charterType={chartType.DOUGHNUT_CHART} />
+				<div className="cardholder">
+					<strong className="cardTitle">TDC PARTICIPATION</strong>
+					<AnalCard className="card participate" charterType={chartType.RADAR_CHART} />
+				</div>
+			);
+	
+			let bookmarksCard = (
+				<div className="cardholder">
+					<strong className="cardTitle">FAV READLIST</strong>
+					<DataCard
+						className="card bookmarks"
+						chartData={null}
+						chartOptions={null}
+					/>
+				</div>
+			)
+	
+			let readHistoryCard = (
+				<div className="cardholder">
+					<strong className="cardTitle">USER JOURNEY</strong>
+					<DataCard
+						className="card readHistory"
+						chartData={this.props.chartData}
+						chartOptions={this.props.chartOpts}
+					/>
+				</div>
+			) */
+
+// if(this.props.){
+//         signup = (null);
+//         authorizer = (
+
+//         );
+// }
+
+// const dash_base = (
+//     <section>
+//         {signup}
+//         <br/>
+//         {authorizer}
+//         <br/>
+//     </section>
+// );
+//Beginning DomRender
+
+
+{/* {userCard}
+					{todoCard}
+					{learnCard}
+					{participateCard}
+					{bookmarksCard}
+                    {readHistoryCard} */}

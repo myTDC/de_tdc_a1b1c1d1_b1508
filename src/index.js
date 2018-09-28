@@ -27,7 +27,7 @@ const rootReducer = combineReducers({
     // test: testred
 });
 const persistedState = loadState();
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
 
 const de_tdc_store = createStore(rootReducer, persistedState, composeEnhancers(applyMiddleware(reduxThunk)));
 
