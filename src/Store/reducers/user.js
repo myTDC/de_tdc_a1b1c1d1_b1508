@@ -128,7 +128,8 @@ const reducer = (state = initState, action) => {
     case DASH_SET_TODO:
       return mapTodoData(state, action);
     case DASH_FETCH_DATA:
-      return state;
+      //return state;
+      return updateObject(state, { readHistoryLineData: action.obj.anData })
     case DASH_UPDATE_USERDATA: {
       console.log('[Red/User] User data set in state *thumbs up*')
       return setUserHistonFetch(state, action);

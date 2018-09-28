@@ -20,14 +20,14 @@ class Dashboard extends Component {
 	state = {};
 
 	componentDidUpdate() {
-		this.props.onLoad(this.props.userId, this.props.userHistory);
+		//this.props.onLoad(this.props.userId, this.props.userHistory);
 		console.log(
 			"[Cont/Dash] Components Updated | Current UserID is: ",
 			localStorage.getItem("userID")
 		);
 	};
 	componentWillUnmount(){
-		this.getMYVALUES();
+		//this.getMYVALUES();
 	}
 	getMYVALUES(){
 		this.props.onLoad(this.props.userId, this.props.userHistory);

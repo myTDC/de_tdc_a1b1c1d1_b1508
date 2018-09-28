@@ -96,7 +96,7 @@ const UserTodo = (props) => {
                         <div>
                             <ul style={styles.todolist}>
                             <li><div style={styles.todoitem}>
-                                <h4 style={styles.todotext}>01 Do something productive</h4>
+                                <h4 style={styles.todotext}>last read</h4>
                                 <span style={styles.dates}><h4 style={styles.datesText}>13th July '18</h4> 
                                 <h4 style={styles.datesText}><b>Today</b></h4></span>
                             </div></li>

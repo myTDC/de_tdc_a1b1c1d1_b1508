@@ -21,7 +21,7 @@ class Layout extends Component {
     this.props.ReadUser(this.props.userId);
   }
   componentDidUpdate() {
-    this.props.ReadUser(this.props.userId);
+    //this.props.ReadUser(this.props.userId);
     console.log(
       "[Comp/Layout] Components Updated | Current UserID is: ",
       localStorage.getItem("userID")
