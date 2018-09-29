@@ -5,7 +5,7 @@ import "./Dashboard.css";
 import { connect } from "react-redux";
 
 //Components
-//import UserCard from '../Components/DashCards/UserCard';
+import UserCard from '../Components/DashCards/UserCard';
 import UserTodo from "../Components/DashCards/UserTodo";
 import DataCard from "../Components/DashCards/DataCard";
 import AnalCard from "../Components/DashCards/AnalCard";
@@ -51,6 +51,7 @@ class Dashboard extends Component {
 			<div className="cover">
 				<div className="dashboard">
 					<div className="cardContainer">
+						<UserCard nameTitle="Mr." firstName="Abhishek" lastName="Patwa" post="COO" company="Festive"/>
 						<UserTodo
 							type="userTodos"
 							header="completed"

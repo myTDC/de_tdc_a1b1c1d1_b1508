@@ -53,8 +53,7 @@
 }
 .cardContainer{
     width: var(--app-container-width);
-    padding-left: 20px;
-    
+    padding-left: 0px;
     margin-bottom: var(--app-container-margin-bottom);
     margin-top: var(--app-card-margin-top);
     min-height: 100%;
