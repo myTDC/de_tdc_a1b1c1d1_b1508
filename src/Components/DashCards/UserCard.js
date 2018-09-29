@@ -116,16 +116,15 @@ const UserCard = (props) => {
 
     return(
         <section style={styles.row}>
-            //TODO: add links
-            <section style={styles.header}>
+            
+            <section style={styles.header}> {/*TODO: add the links*/}
                 <h4 style={styles.headerText}>BRAG</h4>
                 <h4 style={styles.headerText}>EDIT</h4>
                 <h4 style={styles.headerText}>LOGOUT</h4>
             </section>
 
             <section style={styles.logo}>
-            //TODO: correct logo
-            <img src={tdcLogo}/>
+            <img src={tdcLogo}/> {/*TODO: correct the logo*/}
             <h4><b>&nbsp;&nbsp;TDC | DE</b></h4>
             </section>
 
@@ -148,8 +147,7 @@ const UserCard = (props) => {
                 </div>
             </section>
 
-            //TODO: align the logos
-            <section style={styles.social}>
+            <section style={styles.social}> {/*TODO: align the logos*/}
                 {userFb}
                 {userLinkedin}
                 {userInsta}
