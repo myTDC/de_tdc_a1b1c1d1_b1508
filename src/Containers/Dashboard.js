@@ -73,7 +73,7 @@ class Dashboard extends Component {
 							stat="1.2"
 							footer="every day (avg)"
 							chartType={chartType.LINE_CHART}
-							chartWidth="600" chartHeight="240"
+							chartWidth="600" chartHeight="200"
 							chartLabels={this.props.chartLineLabels}
 							chartData={this.props.chartLineData} chartDataBaseline={null}>
 							<CardTitle name="LEARN CURVE" />

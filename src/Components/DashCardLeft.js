@@ -2,21 +2,20 @@ import React from 'react';
 
 const styles = ({
     columnLeft: {
-        position: 'absolute',
-        left: 0,
-        paddingTop: '4%',
-        textAlign: 'center',
-        minHeight: '100%',
-        minWidth: '25%',
+        flexShrink: 1,
+        width: '20%',
+        height: '100%',
+        paddingTop: 50,
     },
     num: {
-        fontSize: '50pt',
+        fontSize: '60pt',
         fontWeight: '600',
         color: '#4e4e4e',
         paddingTop: 0,
         marginBottom: '7px',
         marginTop:0,
         lineHeight: '52pt',
+        textAlign: 'center',
     },
     txt :{
         fontSize: '10pt',
@@ -26,6 +25,7 @@ const styles = ({
         //paddingLeft: '25%',
         padding: 0,
         margin:0,
+        textAlign: 'center',
         
     },
 });

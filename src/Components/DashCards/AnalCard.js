@@ -18,9 +18,14 @@ const styles = ({
         padding: '4px',
     },
     row: {
-        position: 'relative',
-        minHeight: '28vh',
-        minWidth: '100%',
+        display: 'flex',
+        width: '100%',
+        height: 250,
+        alignItems: 'flex-start',
+        padding: 8,
+        flexWrap: 'wrap',
+        backgroundColor: '#FFF8E7',
+        boxShadow: '3px 3px 4px #E0E0E0',
     },
     /* progressBar: {
         position: 'absolute',
@@ -34,33 +39,35 @@ const styles = ({
     }, */
 
     columnRight: {
-        position: 'absolute',
-        right: 0,
-        minHeight: '100%',
-        minWidth: '73%',
+        flex: 1,
+        width: '79%',
+        height: '100%',
+        marginTop: 24,
+        marginLeft: 8,
+        overflow: 'scroll',
+        padding: 0,
     },
 });
 
 const AnalCard = (props) => {
     return (
         <div style={styles.parent}>
-            {props.children}
-            <Card style={styles.card}>
-                <div id="categories" styles={styles.row}>
-                    <LeftContent header={props.header} stat={props.stat} footer={props.footer} />
-
-                    <div style={styles.columnRight}>
-                        <Charter 
-							type={props.chartType} 
-							width={props.chartWidth} 
-							height={props.chartHeight} 
-							chartLabels={props.chartLabels} 
-							chartData={props.chartData} 
-							chartDataBaseline={props.chartDataBaseline} />
-                    </div>
+        {props.children}
+        
+            <div style={styles.row}>
+            <LeftContent header= {props.header} stat={props.stat} footer={props.footer}/>
+                <div style={styles.columnRight}>
+                <Charter 
+                type={props.chartType} 
+                width={props.chartWidth} 
+                height={props.chartHeight} 
+                chartLabels={props.chartLabels} 
+                chartData={props.chartData} 
+                chartDataBaseline={props.chartDataBaseline} />
                 </div>
-            </Card>
-        </div>
+            </div>
+       
+    </div>
     );
 };
 

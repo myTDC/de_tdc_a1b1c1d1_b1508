@@ -173,7 +173,8 @@ export const setFavorite = item => {
 //################################################### Code to Initialize and Modfiy user ToDo data ################################################
 export const addToDo = uID => {
   let todoObj = userTodo;
-  let todoLastRead = userTodo[1];
+  let todoLastRead = userTodo[1]; //TODO: Only adds the first item in the list
+  let todo = userTodo; //TODO: Adds all the todo list items to fb.
   console.log("[Act/User] [addToDo] Todo Item is:", todoObj);
   return dispatch => {
     //const usersRef = getUserRef(uID);
@@ -182,6 +183,7 @@ export const addToDo = uID => {
     //const pushRef = todoRef.push().key;
     //console.log("[Act/User] [addToDo] pushRef is", pushRef)
     fbDBUpdater(todoRef, 1, todoLastRead);
+    //fbDBUpdater(todoRef, 1, todo);
 
     // todoRef.set({
     //     ...todoObj

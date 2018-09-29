@@ -4,12 +4,6 @@ import Card from '@material-ui/core/Card';
 import LeftContent from '../DashCardLeft';
 
 const styles = ({
-    card: {
-        minHeight: '30vh',
-        position: 'relative',
-        margin: '4px',
-        boxShadow: '3px 3px 4px #E0E0E0',
-    },
     parent :{
         position: 'relative',
         width:'100%',
@@ -17,9 +11,14 @@ const styles = ({
         padding: '4px',
     },
     row: {
-        position:'relative',
-        minHeight: '28vh',
-        minWidth: '100%',
+        display: 'flex',
+        width: '100%',
+        height: 250,
+        alignItems: 'flex-start',
+        padding: 8,
+        flexWrap: 'wrap',
+        backgroundColor: '#FFF8E7',
+        boxShadow: '3px 3px 4px #E0E0E0',
     },
     /* progressBar: {
         position: 'absolute',
@@ -31,57 +30,58 @@ const styles = ({
         background: 'linear-gradient(90deg, red, yellow, green)',
         zIndex: '100',
     }, */
-    
     columnRight: {
-        position: 'absolute',
-        right: 0,
-        minHeight: '100%',
-        minWidth: '73%',
-        backgroundColor : '#F2F2F2',
-    },
-    todolist: {
-        listStyleType: 'none',
-        padding: '0',
-        marginTop: '5%',
-        maxHeight:'21vh',
-        maxWidth: '100%',
+        flex: 1,
+        width: '79%',
+        height: '100%',
+        marginTop: 24,
+        marginLeft: 8,
         overflow: 'scroll',
+        padding: 0,
     },
     todoitem: {
-        maxWidth: '87%',
-        margin: '1.5%',
-        paddingLeft: '14px',
-        paddingTop: '0px',
-        paddingBottom: '0px',
-        backgroundColor: '#fff',
-        borderRadius: '20px',
+        display: 'flex',
+        justifyContent: 'space-between',
+        width: '87%',
+        height: '19%',
+        padding: 0,
+        marginLeft: 20,
+        marginBottom: 12,
+        marginRight: 4,
+        borderRadius: '20vh',
+        background: '#F9F9F9',
+        boxShadow: '1px 1px 3px rgba(0,0,0,16%)'
     },
     todotext: {
-        display: 'inline-block',
         fontFamily: 'Raleway, sans-serif',
-        fontSize: '17px',
+        fontSize: '20px',
         fontWeight: '500',
         color: '#4e4e4e',
-        marginTop:0,
+        marginTop:5,
         marginRight:0,
-        marginLeft:0,
-        marginBottom: '2px',
+        marginLeft:18,
         padding: 0,
     },
-    dates: {
-        display: 'inline-block',
-        marginLeft: '18%',
-        marginTop: '2px',
-        padding:0,
-        color: '#4E4E4E',
-    },
-    datesText: {
-        fontSize: '8pt',
+
+    AdatesText: {
         fontFamily: 'Raleway, sans-serif',
-        lineHeight: '10pt',
+        fontSize: '13px',
+        fontWeight: '500',
+        color: '#4e4e4e',
+        marginTop:2,
+        marginRight:18,
         padding: 0,
-        margin:0,
-        textAlign: 'right',
+    },
+
+    CdatesText: {
+        fontFamily: 'Raleway, sans-serif',
+        fontSize: '13px',
+        fontWeight: '700',
+        color: '#4e4e4e',
+        marginTop: 0,
+        marginRight:18,
+        lineHeight: 0.5,
+        padding: 0,
     },
 });
 
@@ -89,8 +89,23 @@ const UserTodo = (props) => {
     return(
         <div style={styles.parent}>
             {props.children}
-            <Card style={styles.card}>
-                <div id="categories" styles={styles.row}>
+            
+                <div style={styles.row}>
+                <LeftContent header= {props.header} stat={props.stat} footer={props.footer}/>
+                    <div style={styles.columnRight}>
+                        <div style={styles.todoitem}>
+                            <h4 style={styles.todotext}> asaddaf sdfsd sdafs dfs df abcc </h4>
+                            <h4 style={styles.AdatesText}> abccsaddsfsd <h4 style={styles.CdatesText}> abcc </h4> </h4>
+                        </div>
+                    </div>
+                </div>
+           
+        </div>
+    );
+};
+
+export default UserTodo;
+/* <div id="categories" styles={styles.row}>
                     <LeftContent header= {props.header} stat={props.stat} footer={props.footer}/>
                     <div style={styles.columnRight}>
                         <div>
@@ -123,10 +138,4 @@ const UserTodo = (props) => {
                             </ul>  
                         </div>
                     </div>
-                </div>
-            </Card>
-        </div>
-    );
-};
-
-export default UserTodo;
+                </div> */

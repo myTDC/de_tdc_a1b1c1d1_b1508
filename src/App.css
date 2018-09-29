@@ -12,23 +12,21 @@
   background-color: #263238;
 }
 .toolbar{
-  text-align: center;
+ 
 }
 .App-header {
-  text-align: center;
-  background:  radial-gradient(#455A64, #232D32);
-  min-height: 41vh;
+ 
   overflow: hidden;
   color: white;
 }
 
 .App-title {
-  text-align: center;
+
   font-size: 1.5em;
 }
 
 .App-intro {
-  text-align: center;
+
   font-size: large;
 }
 

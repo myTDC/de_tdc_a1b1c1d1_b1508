@@ -73,7 +73,7 @@ class Layout extends Component {
       );
       authorizer = (
         <section>
-          <button onClick={this.props.onLogOut}>Logout</button>
+      {/*<button onClick={this.props.onLogOut}>Logout</button>*/}
 
           {/* <h2>{this.props.userNameGiven}</h2>
                         <h3>{this.props.userNameFamily}</h3>

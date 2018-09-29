@@ -58,10 +58,10 @@ const initState = {
     // }
   },
   history: {
-    // cVer+"_"+id:{
-    //     count: i,
-    //     i: New Date(),
-    // }
+    cVer:{
+        count: 'i',
+        i: new Date(),
+    }
   },
   readHistoryLineData: [2, 4, 2, 1, 3, 0, 1],
   readHistoryLineLabel: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],

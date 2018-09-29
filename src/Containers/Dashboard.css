@@ -1,9 +1,9 @@
 :root {
-    --app-dash-width: 55%;
+    --app-dash-width: 50%;
     --app-dash-height: 80vh;
     --app-dash-margin-top: 10vh;
-    --app-dash-margin-left: 20%;
-    --app-dash-margin-right: 20%;
+    --app-dash-margin-left: 22.5%;
+    --app-dash-margin-right: 22.5%;
     
 
     --app-container-width: 100%;
@@ -28,9 +28,11 @@
     --app-card-shadow-user:2px 4px 8px 1px rgba(55, 71, 79, 0.20);
 }
 
-@media (max-width: 1023px) and (orientation: landscape) { 
+@media (max-width: 1600px){ 
+   
     :root {
         --app-dash-width: 96%;
+        --app-container-width: 96%;
         --app-dash-margin-top: 10vh;
         --app-dash-margin-left: 4%;
         --app-dash-margin-right: 4%;
@@ -47,14 +49,12 @@
 }
 
 .cover{
-    width: 100%;
-    margin-top: -21%;
-    background-color: white;
+   
 }
 .cardContainer{
     width: var(--app-container-width);
     padding-left: 20px;
-    background-color: var(--app-container-back-color);
+    
     margin-bottom: var(--app-container-margin-bottom);
     margin-top: var(--app-card-margin-top);
     min-height: 100%;
@@ -80,7 +80,7 @@
     align-items: flex-end;
     width: var(--app-card-width);
     height: var(--app-card-height);
-    background-color: var(--app-card-back-color);
+    
     box-shadow: var(--app-card-shadow);
     margin: var(--app-card-margin);
     margin-top: var(--app-card-margin-top);

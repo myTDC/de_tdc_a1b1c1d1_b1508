@@ -3,7 +3,7 @@
 .learnSection{
     max-height: 70.2vh;
     max-width: 45%;
-    margin-top: -130px;
+    
     margin-left: 27%;
     padding-left: 5px;
     padding-right: 5px;
@@ -11,13 +11,13 @@
 }
 
 
-@media screen and (max-width: 600px){
+/* @media screen and (max-width: 600px){
     .learnSection{
         max-width: 85%;
         max-height: 80vh;
         margin-left: 7.5%;
     }
-}
+} */
 
 @media screen and (max-width: 1028px) {
     .learnSection{
