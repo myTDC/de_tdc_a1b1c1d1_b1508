@@ -6,8 +6,8 @@ import linkedinLogo from '../../logo.svg';
 import twitterLogo from '../../logo.svg';
 
 
-import * as chartType from '../Charter';
-import Charter from '../Charter';
+//import * as chartType from '../Charter';
+//import Charter from '../Charter';
 
 let styles = {
     row:{
@@ -91,15 +91,15 @@ let styles = {
 };
 const UserCard = (props) => {
 
-    const uid = props.tdc;
-    let tdc_url= "https://www.mytdc.com/users/"+{uid};
+    //const uid = props.tdc;
+    //let tdc_url= "https://www.mytdc.com/users/"+{uid};
     let userFb = null;
     let userLinkedin = null;
     let userInsta = null;
     let userTwit = null;
 
-    let user_desig = "Chief Operating Office";
-    let user_relation = "is a " + user_desig + " at";
+    //let user_desig = "Chief Operating Office";
+    //let user_relation = "is a " + user_desig + " at";
     
     if(props.fb||1){
         userFb = (<a href={props.fb}><img className="smm-icon" src={fbLogo} alt="Facebook Logo"/>FB</a>);
