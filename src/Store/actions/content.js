@@ -75,7 +75,7 @@ export const readfromFB = () => {
         try {
             articlesRef_3P.once('value', function(snapshot) {
                 snapshot.forEach(function(childSnapshot) {
-                    let childKey = childSnapshot.key;
+                    //let childKey = childSnapshot.key;
                     let childData = childSnapshot.val();
                     //console.log('[Act/Content] [readFromFB] -> Data Key: ',childKey, 'Data Value: ', childData);
                     arts.push(...childData);

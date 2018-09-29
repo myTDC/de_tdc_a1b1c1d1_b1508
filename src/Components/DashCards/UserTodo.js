@@ -1,5 +1,4 @@
 import React from 'react';
-import Card from '@material-ui/core/Card';
 //import Pbar from '../ProgressBar';
 import LeftContent from '../DashCardLeft';
 
@@ -33,8 +32,9 @@ const styles = ({
     columnRight: {
         flex: 1,
         width: '79%',
-        height: '100%',
+        maxHeight: '80%',
         marginTop: 24,
+        marginBottom: 24,
         marginLeft: 8,
         overflow: 'scroll',
         padding: 0,
@@ -80,7 +80,7 @@ const styles = ({
         color: '#4e4e4e',
         marginTop: 0,
         marginRight:18,
-        lineHeight: 0.5,
+        lineHeight: 0.3,
         padding: 0,
     },
 });
@@ -89,17 +89,18 @@ const UserTodo = (props) => {
     return(
         <div style={styles.parent}>
             {props.children}
-            
-                <div style={styles.row}>
+            <div style={styles.row}>
                 <LeftContent header= {props.header} stat={props.stat} footer={props.footer}/>
-                    <div style={styles.columnRight}>
-                        <div style={styles.todoitem}>
-                            <h4 style={styles.todotext}> asaddaf sdfsd sdafs dfs df abcc </h4>
-                            <h4 style={styles.AdatesText}> abccsaddsfsd <h4 style={styles.CdatesText}> abcc </h4> </h4>
-                        </div>
+                <div style={styles.columnRight}>
+                    <div style={styles.todoitem}>
+                        <h4 style={styles.todotext}> asaddaf sdfsd sdafs dfs df abcc </h4>
+                        <section>
+                            <h4 style={styles.AdatesText}> abccsaddsfsd </h4> 
+                            <h4 style={styles.CdatesText}> abcc </h4>
+                        </section>
                     </div>
                 </div>
-           
+            </div>
         </div>
     );
 };

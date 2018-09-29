@@ -46,15 +46,7 @@ class Dashboard extends Component {
 		};
 
 		let userReadHistory = Object.values(this.props.userHistory);
-
-		const loadHistory = (uID, id, art) => {
-			console.log('[Container/Dash] Clicked Article has id:', id);
-			let found;
-			if (this.props.history.hasOwnProperty("b1008" + id)) //Checks if the object has the specified value as it's own property or is an inherited property.
-				found = true;
-			else found = false;
-			this.props.updateHistory(found, uID, id, this.props.history, art);
-		}
+		
 		return (
 			<div className="cover">
 				<div className="dashboard">
@@ -222,11 +214,3 @@ export default connect(mapStateToProps, mapDispactchToProps)(Dashboard);
 //     </section>
 // );
 //Beginning DomRender
-
-
-{/* {userCard}
-					{todoCard}
-					{learnCard}
-					{participateCard}
-					{bookmarksCard}
-                    {readHistoryCard} */}

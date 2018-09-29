@@ -7,7 +7,7 @@ import {
   // usrTodoRef
 } from "../config/fb";
 
-import _ from 'lodash';
+//import _ from 'lodash';
 
 //Global Variables
 let dateNow = new Date();
@@ -174,7 +174,7 @@ export const setFavorite = item => {
 export const addToDo = uID => {
   let todoObj = userTodo;
   let todoLastRead = userTodo[1]; //TODO: Only adds the first item in the list
-  let todo = userTodo; //TODO: Adds all the todo list items to fb.
+  //let todo = userTodo; //TODO: Adds all the todo list items to fb.
   console.log("[Act/User] [addToDo] Todo Item is:", todoObj);
   return dispatch => {
     //const usersRef = getUserRef(uID);

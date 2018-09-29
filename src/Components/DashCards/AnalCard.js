@@ -1,16 +1,10 @@
 import React from 'react';
-import Card from '@material-ui/core/Card';
 import Charter from '../Charter';
 //import Pbar from '../ProgressBar';
 import LeftContent from '../DashCardLeft';
 
 const styles = ({
-    card: {
-        minHeight: '30vh',
-        position: 'relative',
-        margin: '4px',
-        boxShadow: '3px 3px 4px #E0E0E0',
-    },
+
     parent: {
         position: 'relative',
         width: '100%',

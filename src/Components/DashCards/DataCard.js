@@ -1,15 +1,8 @@
 import React from 'react';
-import Card from '@material-ui/core/Card';
 // import Pbar from '../ProgressBar';
 import LeftContent from '../DashCardLeft';
 
 const styles = ({
-    card: {
-        minHeight: '30vh',
-        position: 'relative',
-        margin: '4px',
-        boxShadow: '3px 3px 4px #E0E0E0',
-    },
     parent :{
         position: 'relative',
         width:'100%',
@@ -20,8 +13,9 @@ const styles = ({
         display: 'flex',
         width: '100%',
         height: 250,
+        overflow: 'hidden',
         alignItems: 'flex-start',
-        padding: 8,
+        padding: 0,
         flexWrap: 'wrap',
         backgroundColor: '#FFF8E7',
         boxShadow: '3px 3px 4px #E0E0E0',
@@ -40,13 +34,14 @@ const styles = ({
     columnRight: {
         flex: 1,
         width: '79%',
-        height: '100%',
+        maxHeight: '80%',
         marginTop: 24,
+        marginBottom: 24,
         marginLeft: 8,
         overflow: 'scroll',
         padding: 0,
     },
-    todoitem: {
+    articleCard: {
         display: 'flex',
         justifyContent: 'space-between',
         borderBottom: '3px solid #D0FFE9',
@@ -76,9 +71,10 @@ const styles = ({
         fontSize: '14px',
         fontWeight: '500',
         color: '#4e4e4e',
-        marginTop:5,
-        marginBottom:15,
+        marginLeft: 18,
         marginRight:0,
+        marginBottom:15,
+        lineHeight: 0.3,
         padding: 0,
     },
 
@@ -88,7 +84,6 @@ const styles = ({
         fontWeight: '500',
         color: '#4e4e4e',
         marginTop:10,
-        marginBottom:15,
         marginRight:20,
         padding: 0,
     },
@@ -101,11 +96,15 @@ const DataCard = (props) => {
             <div style={styles.row}>
                 <LeftContent header= {props.header} stat={props.stat} footer={props.footer}/>
                     <div style={styles.columnRight}>
-                        <div style={styles.todoitem}>
-                            <h4 style={styles.Favtitle}>Article Title
-                            <h4 style={styles.author}>by: author</h4> </h4>
-                            <h4 style={styles.textRight}> views 
-                            <h4 style={styles.textRight}> favorite date </h4> </h4>
+                        <div style={styles.articleCard}>
+                            <section>
+                                <h4 style={styles.Favtitle}>Article Title </h4>
+                                <h4 style={styles.author}>by: author</h4>
+                            </section>
+                            <section>
+                                <h4 style={styles.textRight}> views </h4>
+                                <h4 style={styles.textRight}> favorite date </h4> 
+                            </section>
                         </div>
                     </div>
                 </div>

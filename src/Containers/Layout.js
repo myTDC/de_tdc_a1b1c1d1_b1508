@@ -40,21 +40,21 @@ class Layout extends Component {
     //     <h1>{this.props.count}</h1>
     // );
 
-    let articlePublisher = (
-      <div>
-        <button onClick={this.props.Log}> Log Current Art List </button>
-        <button onClick={this.props.Commit}>
-          {" "}
-          Commit Current ArtList to FB{" "}
-        </button>
-      </div>
-    );
+    // let articlePublisher = (
+    //   <div>
+    //     <button onClick={this.props.Log}> Log Current Art List </button>
+    //     <button onClick={this.props.Commit}>
+    //       {" "}
+    //       Commit Current ArtList to FB{" "}
+    //     </button>
+    //   </div>
+    // );
 
-    let articleFetcher = (
-      <div>
-        <button onClick={this.props.Read}> Read ArtList from FB </button>
-      </div>
-    );
+    // let articleFetcher = (
+    //   <div>
+    //     <button onClick={this.props.Read}> Read ArtList from FB </button>
+    //   </div>
+    // );
 
     let authorizer = <button onClick={this.props.onAuth}>Login</button>;
 
