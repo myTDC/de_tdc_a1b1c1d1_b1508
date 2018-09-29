@@ -14,11 +14,11 @@
 .toolbar{
  
 }
-.App-header {
+/* .App-header {
  
   overflow: hidden;
   color: white;
-}
+} */
 
 .App-title {
 
@@ -35,10 +35,10 @@
   to { transform: rotate(360deg); }
 }
 
-@media screen and (max-width: 600px){
+/* @media screen and (max-width: 600px){
   .App-header {
       min-height: 29.5vh;
     
     
   }
-}
+} */
