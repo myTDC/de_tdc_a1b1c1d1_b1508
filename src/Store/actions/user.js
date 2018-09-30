@@ -51,10 +51,10 @@ const fbDBUpdater = (ref, id, data) => {
   return ref.update(updates);
 };
 
-const readSuccess = (source, data) => {
+const readSuccess = (source, data, actType) => {
   console.log("[Act/User] [readSuccess] " + source + " read succesfuly! :)  :", data);
   return {
-    type: actionType.DASH_UPDATE_USERDATA,
+    type: actType,
     val: data
   };
 };
@@ -66,10 +66,10 @@ const readFailure = (source, error) => {
   };
 };
 
-export const writeSuccess = (source, data) => {
+export const writeSuccess = (source, data, actType) => {
   console.log("[Act/User] [writeSuccess] " + source + " read succesfuly! :)  :", data);
   return {
-    type: actionType.DASH_UPDATE_USERDATA,
+    type: actType,
     val: data
   };
 };
@@ -216,7 +216,8 @@ export const addTodo = uID => {
     //const usersRef = getUserRef(uID);
     const todoRef = getUserRef(uID).child("todo");
 
-    //const pushRef = todoRef.push().key;
+    try{
+      //const pushRef = todoRef.push().key;
     //console.log("[Act/User] [addToDo] pushRef is", pushRef)
     //fbDBUpdater(todoRef, 1, todoLastRead);
     //fbDBUpdater(todoRef, 1, todo);
@@ -229,23 +230,32 @@ export const addTodo = uID => {
     dispatch(asyncTriggerReducer(actionType.DASH_SET_TODO, {
       ...todoObj
     }));
+    } catch (err){
+      writeFailure('addTodo', err);
+    }
+    
   };
 };
 
 export const readTodo = uID => {
   return async dispatch => {
-    let userTodos;
+    let userTodos = {};
     try {//TODO: Abstract the db ref path. only get the reference variable to be returned from a function
       const todoRef = getUserRef(uID).child("todo"); 
       todoRef.once("value", function (snapshot) {
+        //console.log('Snap', snapshot);
         snapshot.forEach(function (childSnapshot) {
-          userTodos = childSnapshot.val();
+          let todoKey = childSnapshot.key;
+          let todoData = childSnapshot.val();
+          userTodos = {
+            ...userTodos,
+            todoKey: todoData}
           //console.log("[Act/User] [addToDo] Todo read from firebase", {userTodos});
         });
-        dispatch(asyncTriggerReducer(actionType.DASH_SET_TODO, {
-          userTodos
-        }))
-      }).then(() => dispatch(readSuccess(userTodos)));
+        console.log('[Act/User] [readTodo] todolist is: ', userTodos);
+        dispatch(asyncTriggerReducer(actionType.DASH_SET_TODO, userTodo//{ ...userTodos }
+        ));
+      }).then(() => dispatch(readSuccess('readTodo', userTodos, null )));
     } catch (err) {
       dispatch(readFailure(err));
     }
@@ -257,7 +267,7 @@ let userTodo = {
   1: {
     title: "Continue learning where you left off",
     desc: "Complete the last learning material you'd accessed..",
-    setOn: "" + timeNow,
+    setOn: timeNow,
     tobecompletedBy: "30th Sept 2018", //new Date(new Date()+(12*3600)),
     source: "User",
     url: "",
