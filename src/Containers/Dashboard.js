@@ -17,11 +17,17 @@ import * as acts from "../Store/actions";
 //import { watchFile } from "fs";
 
 class Dashboard extends Component {
-	state = {};
+	state = {
+		readArtList : {}
+	};
+
+	componentDidMount() {
+		this.props.loadTodo(this.props.userId);
+	}
 
 	componentDidUpdate() {
 		//this.props.onLoad(this.props.userId, this.props.userHistory);
-		this.props.loadTodo(this.props.userId);
+		
 		console.log(
 			"[Cont/Dash] Components Updated | Current UserID is: ",
 			localStorage.getItem("userID")
@@ -34,6 +40,14 @@ class Dashboard extends Component {
 		this.props.onLoad(this.props.userId, this.props.userHistory);
 		this.props.loadTodo(this.props.userId);
 	}
+
+	hydrateReadistory() {
+		const artlist = this.props.articles;
+		const history = this.props.userHistory;
+
+
+	}
+
 	render() {
 		const writetofb = () => {
 			this.props.writeTest(
@@ -62,7 +76,10 @@ class Dashboard extends Component {
 							type="userTodos"
 							header="completed"
 							stat="02"
-							footer="out of 06">
+							footer="out of 06"
+							list={'bleh'
+							//this.props.uTodo
+						}>
 							<CardTitle name="TODO & MORE" />
 						</UserTodo>
 
@@ -125,6 +142,8 @@ const mapStateToProps = state => {
 		userPhone: state.auth.user.PhoneNumber,
 
 		userHistory: state.user.history,
+		articles: state.content.articles3p,
+		//uTodo: state.user.todolist,
 
 		chartLineData: state.user.readHistoryLineData,
 		chartLineLabels: state.user.readHistoryLineLabel,
@@ -138,7 +157,7 @@ const mapDispactchToProps = dispatch => {
 	return {
 		// onAuth: () => dispatch(acts.fbSignIn()),
 		onLoad: (uID, userRHistory) => dispatch(acts.setupAnal(uID, userRHistory)),
-		loadTodo: uID => dispatch(acts.addToDo(uID)),
+		loadTodo: uID => dispatch(acts.readTodo(uID)),
 		writeTest: (uID, uGname, uFname, uEmail, uPic, uPhone) => dispatch(acts.writeUserPersonalInfo(uID, uGname, uFname, uEmail, uPic, uPhone)),
 		ReadUser: (uID) => dispatch(acts.readUserHistory(uID)),
 		updateHistory: (found, uID, id, art) => dispatch(acts.updateUserReadHistory(found, uID, id, art))

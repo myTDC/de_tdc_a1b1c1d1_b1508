@@ -207,7 +207,7 @@ export const setFavorite = item => {
 
 
 //################################################### Code to Initialize and Modfiy user ToDo data ################################################
-export const addToDo = uID => {
+export const addTodo = uID => {
   let todoObj = userTodo; //TODO: Adds all the todo list items to fb.
   let todoLastRead = userTodo[1]; //TODO: Only adds the first item in the list
 
@@ -221,34 +221,26 @@ export const addToDo = uID => {
     //fbDBUpdater(todoRef, 1, todoLastRead);
     //fbDBUpdater(todoRef, 1, todo);
     todoRef.set({
-        ...todoObj
+      ...todoObj
     });
 
     console.log("[Act/User] [addToDo] Todo added to firebase");
 
     dispatch(asyncTriggerReducer(actionType.DASH_SET_TODO, {
-      todoLastRead
+      ...todoObj
     }));
   };
 };
 
 export const readTodo = uID => {
-  return dispatch => {
-    let userTodos = {};
-    try {
-      const readArts = dbRef.child("users/" + uID + "/readHistory"); //TODO: Abstract the db ref path. only get the reference variable to be returned from a function
-      readArts.once("value", function (snapshot) {
+  return async dispatch => {
+    let userTodos;
+    try {//TODO: Abstract the db ref path. only get the reference variable to be returned from a function
+      const todoRef = getUserRef(uID).child("todo"); 
+      todoRef.once("value", function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
-          //let childKey = childSnapshot.key;
-          let childData = childSnapshot.val();
-          // console.log(
-          //   "[Act/User] [readFromFB] -> Data Key: ", childKey,
-          //   "Data Value: ", childData
-          // );
-          userTodos = {
-            childData
-          };
-          console.log("[Act/User] [addToDo] Todo read from firebase", userTodos);
+          userTodos = childSnapshot.val();
+          //console.log("[Act/User] [addToDo] Todo read from firebase", {userTodos});
         });
         dispatch(asyncTriggerReducer(actionType.DASH_SET_TODO, {
           userTodos

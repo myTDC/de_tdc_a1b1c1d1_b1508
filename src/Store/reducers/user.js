@@ -38,13 +38,13 @@ const initState = {
     assigned: {},
     readCount: 2,
     read: {
-      ref: {
-        id: "xyz",
-        date: " ",
-        openCount: 1,
-        timeTaken: 120,
-        isCompleted: false
-      }
+      // ref: {
+      //   id: "xyz",
+      //   date: " ",
+      //   openCount: 1,
+      //   timeTaken: 120,
+      //   isCompleted: false
+      // }
     }
   },
   participateProgress: {
@@ -63,7 +63,7 @@ const initState = {
         i: new Date(),
     }
   },
-  readHistoryLineData: [2, 4, 2, 1, 3, 0, 1],
+  readHistoryLineData: [1, 2, 1, 6, 1, 2, 1],
   readHistoryLineLabel: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
   readHistoryRadarData: [4, 1, 3, 4, 2, 3],
   readHistoryRadarDataBaseline: [4, 4, 4, 4, 4, 4],
@@ -127,9 +127,21 @@ const reducer = (state = initState, action) => {
       return mapCompData(state, action);
     case DASH_SET_TODO:
       return mapTodoData(state, action);
-    case DASH_FETCH_DATA:
+    case DASH_FETCH_DATA:{
+      return updateObject(state, { 
+        readHistoryLineData: action.obj.anData,
+        learnProgress: {
+          ...state.learnProgress,
+          read: {
+            ...state.learnProgress.read,
+            ...action.obj.readArticles
+          }
+        }
+        
+       })
+    }
       //return state;
-      return updateObject(state, { readHistoryLineData: action.obj.anData })
+      
     case DASH_UPDATE_USERDATA: {
       console.log('[Red/User] User data set in state *thumbs up*')
       return setUserHistonFetch(state, action);
