@@ -351,7 +351,7 @@ export const readUserHistory = uID => {
           // );
           hist[childKey] = childData;
         });
-        dispatch(setupAnal(uID, hist));
+        if(hist!=={}) dispatch(setupAnal(uID, hist)); 
       }).then(() => dispatch(uReadSuccess(hist)));
     } catch (err) {
       dispatch(uReadFailure(err));
@@ -362,7 +362,7 @@ export const readUserHistory = uID => {
 const uReadSuccess = hist => {
   console.log("[Act/User] [uReadSuccess] User history read succesfuly! :)  :", hist);
   return {
-    type: actionType.DASH_UPDATE_USERDATA,
+    type: actionType.DASH_SET_USERHISTORY,
     val: hist
   };
 };
@@ -511,6 +511,36 @@ export const setupAnal = (uID, userHistory) => {
 
 //############################################ End of Code to Fetch Data for Analytics based on user read history ############################################
 
+//############################################ Code for favorites ########################
+export const fetchFavorite = (uID) => {
+  return async dispatch => {
+    let userFav = [];
+    try {
+      const favRef = getUserRef(uID).child("favList"); 
+      favRef.once("value", function (snapshot) {
+        snapshot.forEach(function (childSnapshot) {
+          let favData = childSnapshot.val();
+          userFav.push(favData);
+        });
+        console.log('[Act/User] [fetchFavorite] favorites are: ', uID, userFav);
+        dispatch(asyncTriggerReducer(actionType.DASH_SET_USERFAV, userFav//{ ...userTodos }
+        ));
+      }).then(() => dispatch(readSuccess('readFavs', userFav, null )));
+    } catch (err) {
+      dispatch(readFailure(err));
+    }
+  };
+};
+
+export const writeFavList = (uID, favList) => {
+  //const list = favList;
+  const favRef = getUserRef(uID).child("favList/"); 
+  var updates = favList;
+  favRef.set(updates);
+  return async dispatch => {
+    dispatch(asyncTriggerReducer(actionType.DASH_WRITE_USERFAV, updates));
+  };
+}
 //############################################ Code to Setup User Environment ############################################
 
 export const ecoSet = uID => {

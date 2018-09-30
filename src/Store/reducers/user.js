@@ -5,7 +5,9 @@ import {
   DASH_FETCH_DATA,
   DASH_WRITE_PROGRESS,
   DASH_UPDATE_PROGRESS,
-  DASH_UPDATE_USERDATA
+  DASH_SET_USERHISTORY,
+  DASH_SET_USERFAV,
+  DASH_WRITE_USERFAV,
 } from "../actions/actionTypes";
 // import _ from 'lodash';
 // console.log('[Red/User] [userCommiter] ->  Initial State Val is', state);
@@ -108,6 +110,12 @@ const mapTodoData = (state, action) => {
   });
 };
 
+const mapFavData = (state, action) => {
+  console.log("[Red/User] Favs Added:", action.obj);
+  return updateObject(state, {
+    favList: [...action.obj]
+  });
+};
 
 const setUserHistonFetch = (state, action) => {
   const history = { ...state.user }
@@ -142,18 +150,23 @@ const reducer = (state = initState, action) => {
     }
       //return state;
       
-    case DASH_UPDATE_USERDATA: {
+    case DASH_SET_USERHISTORY: 
       console.log('[Red/User] User data set in state *thumbs up*')
       return setUserHistonFetch(state, action);
-    }
-    case DASH_UPDATE_PROGRESS: {
+  
+    case DASH_UPDATE_PROGRESS: 
       console.log('[Red/User] progress updated');
       return updateObject(state, { history: action.val })
-    }
-    case DASH_WRITE_PROGRESS: {
+    
+    case DASH_WRITE_PROGRESS: 
       console.log('[Red/User] progress updated');
       return updateObject(state, { history: action.val })
-    }
+    
+    case DASH_SET_USERFAV:
+      return mapFavData(state, action);
+
+    case DASH_WRITE_USERFAV:
+      return updateObject(state, {favList: action.obj});
     default:
       return state;
   }

@@ -18,7 +18,7 @@ import * as acts from "../Store/actions";
 class Layout extends Component {
   state = {};
   componentDidMount(){
-    this.props.ReadUser(this.props.userId);
+    //this.props.ReadUser(this.props.userId);
   }
   componentDidUpdate() {
     //this.props.ReadUser(this.props.userId);
@@ -118,7 +118,8 @@ const mapStateToProps = state => {
     userPic: state.auth.user.PicUrl,
     userEmail: state.auth.user.Email,
     userPhone: state.auth.user.PhoneNumber,
-    articles: state.content.articles3p
+    articles: state.content.articles3p,
+    userHistory: state.user.history,
   };
 };
 

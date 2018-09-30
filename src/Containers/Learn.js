@@ -13,14 +13,14 @@ import * as acts from '../Store/actions';
 class Learn extends Component {
     componentDidMount() {
         this.props.readArticlesFB();
+        this.props.fetchFavorites(this.props.uID);
         //this.favTable(this.props.uID, this.props.articles);
         //this.props.ReadUser(this.props.uID);
     }
 
-    componentDidUpdate() {
-        
+    componentWillUnmount() {
+        this.props.updateFavorites(this.props.uID, this.props.favList);
     }
-
     readHistory = (uID, id, art) => {
         console.log('[Container/Learn] User Read Article:', id);
         let found;
@@ -86,8 +86,8 @@ const mapStateToProps = state => {
 const mapDispactchToProps = dispatch => {
     return {
         readArticlesFB: () => dispatch(acts.readfromFB()),
-        //fetchFavorites: () => dispatch(acts.fetchFavorites(uID)),
-        //updateFavorites: () => dispatch(acts.fetchFavorites(uID, favList)),
+        fetchFavorites: (uID) => dispatch(acts.fetchFavorite(uID)),
+        updateFavorites: (uID, list) => dispatch(acts.writeFavList(uID, list)),
         //storeArt: (arts) => dispatch(acts.setVisited(arts)),
         //ReadUser: (uID) => dispatch(acts.readUserHistory(uID)),
         updateHistory: (found, uID, id, art) => dispatch(acts.updateUserReadHistory(found, uID, id, art))//,

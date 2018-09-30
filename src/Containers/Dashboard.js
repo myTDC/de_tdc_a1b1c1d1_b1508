@@ -157,7 +157,7 @@ const mapStateToProps = state => {
 const mapDispactchToProps = dispatch => {
 	return {
 		// onAuth: () => dispatch(acts.fbSignIn()),
-		onLoad: (uID, userRHistory) => dispatch(acts.setupAnal(uID, userRHistory)),
+		OnLoad: (uID, userRHistory) => dispatch(acts.setupAnal(uID, userRHistory)),
 		loadTodo: uID => dispatch(acts.readTodo(uID)),
 		writeTest: (uID, uGname, uFname, uEmail, uPic, uPhone) => dispatch(acts.writeUserPersonalInfo(uID, uGname, uFname, uEmail, uPic, uPhone)),
 		ReadUser: (uID) => dispatch(acts.readUserHistory(uID)),
