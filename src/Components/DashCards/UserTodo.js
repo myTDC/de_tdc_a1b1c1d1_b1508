@@ -86,6 +86,8 @@ const styles = ({
 });
 
 const UserTodo = (props) => {
+    let todoList = Object.values(props.list);
+    console.log('[Comp/UserTodo] List is:', todoList);
     return(
         <div style={styles.parent}>
             {props.children}
