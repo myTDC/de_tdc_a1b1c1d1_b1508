@@ -1,6 +1,6 @@
 :root {
     --app-dash-width: 50%;
-    --app-dash-height: 80vh;
+    --app-dash-height: 90vh;
     --app-dash-margin-top: 10vh;
     --app-dash-margin-left: 22.5%;
     --app-dash-margin-right: 22.5%;
@@ -41,7 +41,7 @@
 
 .dashboard{
     width: var(--app-dash-width);
-    height: var(--app-dash-height);
+    min-height: var(--app-dash-height);
     margin-top: -40px;
     padding-top: 0;
     margin-left: var(--app-dash-margin-left);
