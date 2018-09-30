@@ -52,11 +52,11 @@ const initState = {
     lastStage: "from 4 defined objects",
     completionDate: new Date()
   },
-  favList: {
+  favList: [],
     // tStampNow : {
     //     id: null
     // }
-  },
+  
   history: {
     cVer:{
         count: 'i',

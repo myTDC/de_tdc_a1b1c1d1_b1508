@@ -1,4 +1,4 @@
-.cardContent>h2 {
+.cont>h2 {
     flex: 0;
     min-width: 100%;
     font-family: 'Fira Sans', sans-serif;
@@ -8,8 +8,7 @@
     margin-bottom: 0px;
 }
 
-.cardContent>h3 {
-    flex-grow: 1;
+.cont>h3 {
     font-family: 'Open Sans';
     font-weight: 300;
     font-size: 10pt;
@@ -17,9 +16,14 @@
     margin-left: 20px;
     
 }
-
+.icon{
+    display: flex;
+    flex-shrink: 1;
+}
 a {
+    text-decoration: none;
     color: black;
+    min-width: 80%;
 }
 
 .media {
@@ -37,7 +41,10 @@ a {
     box-shadow: 0px 0px 0px #fff;
     outline: none;
 }
-
+.cont{
+    flex-grow: 0;
+    max-width: 90%;
+}
 .cardContent {
     display: flex;
     justify-content: space-between;

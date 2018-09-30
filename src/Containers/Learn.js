@@ -13,7 +13,12 @@ import * as acts from '../Store/actions';
 class Learn extends Component {
     componentDidMount() {
         this.props.readArticlesFB();
+        //this.favTable(this.props.uID, this.props.articles);
         //this.props.ReadUser(this.props.uID);
+    }
+
+    componentDidUpdate() {
+        
     }
 
     readHistory = (uID, id, art) => {
@@ -23,6 +28,27 @@ class Learn extends Component {
             found = true;
         else found = false;
         this.props.updateHistory(found, uID, id, this.props.history, art);
+        this.forceUpdate();
+    }
+
+    handleFavorite = (id, list) => {
+        if(list.includes(id)){
+            let index = list.indexOf(id);
+            list = list.splice(index,1);}
+        else list.push(id);
+        this.forceUpdate();
+    }
+
+    returnFav = (id, list) => {
+        if(list.includes(id))
+        return 1
+        return 0
+    }
+
+    returnRead = (id) => {
+        if(this.props.history.hasOwnProperty("b1008_" + id))
+        return 1
+        return 0
     }
 
     render() {
@@ -38,7 +64,11 @@ class Learn extends Component {
                         image={artList.image}
                         url={artList.url}
                         length={artList.length}
-                        category={artList.category} />
+                        category={artList.category}
+                        isRead={this.returnRead(artList.id)}
+                        isFav={this.returnFav(artList.id, this.props.favList)}
+                        favHandle={() => this.handleFavorite(artList.id, this.props.favList)}
+                    />
                 ))}
             </div>
         );
@@ -48,6 +78,7 @@ const mapStateToProps = state => {
     return {
         articles: state.content.articles3p,
         history: state.user.history,
+        favList: state.user.favList,
         uID: state.auth.user.Id,
     };
 };
@@ -55,6 +86,8 @@ const mapStateToProps = state => {
 const mapDispactchToProps = dispatch => {
     return {
         readArticlesFB: () => dispatch(acts.readfromFB()),
+        //fetchFavorites: () => dispatch(acts.fetchFavorites(uID)),
+        //updateFavorites: () => dispatch(acts.fetchFavorites(uID, favList)),
         //storeArt: (arts) => dispatch(acts.setVisited(arts)),
         //ReadUser: (uID) => dispatch(acts.readUserHistory(uID)),
         updateHistory: (found, uID, id, art) => dispatch(acts.updateUserReadHistory(found, uID, id, art))//,
