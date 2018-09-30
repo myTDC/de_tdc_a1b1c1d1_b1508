@@ -33,7 +33,7 @@
     :root {
         --app-dash-width: 96%;
         --app-container-width: 96%;
-        --app-dash-margin-top: 10vh;
+        --app-dash-margin-top: 0;
         --app-dash-margin-left: 4%;
         --app-dash-margin-right: 4%;
     }
@@ -42,20 +42,20 @@
 .dashboard{
     width: var(--app-dash-width);
     height: var(--app-dash-height);
+    margin-top: -40px;
+    padding-top: 0;
     margin-left: var(--app-dash-margin-left);
     margin-right: var(--app-dash-margin-right);
     overflow-y: scroll;
     position: relative;
 }
 
-.cover{
-   
-}
 .cardContainer{
     width: var(--app-container-width);
     padding-left: 20px;
+    padding-top: 0;
     margin-bottom: var(--app-container-margin-bottom);
-    margin-top: var(--app-card-margin-top);
+    margin-top: 0;
     min-height: 100%;
     /* box-shadow: var(--app-container-back-shadow); */
 }
@@ -72,40 +72,6 @@
     width: 5px;
     height: 8px;
     background-color: #a0a; /* or add it to the track */
-}
-
-.cardholder {
-    display: flex;
-    align-items: flex-end;
-    width: var(--app-card-width);
-    height: var(--app-card-height);
-    
-    box-shadow: var(--app-card-shadow);
-    margin: var(--app-card-margin);
-    margin-top: var(--app-card-margin-top);
-}
-
-.cardTitle {
-    font-family: 'Raleway';
-    font-size: 0.8em;
-    font-variant: small-caps;
-    transform: rotate(270deg);
-    margin: 4px;
-    align-self: auto;
-}
-
-.card {
-    display: flex;
-    align-items: flex-end;
-}
-
-.user{
-    width: var(--app-card-width-user);
-    height: var(--app-card-height-user);
-    margin: 0;
-    background-color: var(--app-card-back-color-user);
-    box-shadow: var(--app-card-shadow-user);
-    background-color: #324a5c;
 }
 
 /* <h3 className="smm-profile"></h3> */

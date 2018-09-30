@@ -1,9 +1,9 @@
 import React from 'react';
 import tdcLogo from '../../tdc-logo-wm-trans-ondark.svg';
-import fbLogo from '../../logo.svg';
-import instaLogo from '../../logo.svg';
-import linkedinLogo from '../../logo.svg';
-import twitterLogo from '../../logo.svg';
+import fbLogo from '../../fb.svg';
+import instaLogo from '../../insta.svg';
+import linkedinLogo from '../../ln.svg';
+import twitterLogo from '../../tw.svg';
 
 
 //import * as chartType from '../Charter';
@@ -16,7 +16,11 @@ let styles = {
         height: 300,
         justifyContent: 'space-between',
         flexWrap: 'wrap',
-        background: '#2D3D54'
+        background: '#2D3D54',
+        marginTop: 0,
+        marginBottom: 20,
+        paddingTop: 0,
+        zIndex: -100,
     },
     header:{
         width: '100%',
@@ -24,7 +28,6 @@ let styles = {
         display: 'flex',
         color: '#f9f9f9',
         justifyContent: 'flex-end',
-        borderBottom: '1.5px solid #f9f9f9'
     },
     headerText:{
         padding:0,
@@ -35,7 +38,8 @@ let styles = {
     logo:{
         width: 120,
         height: '80%',
-        margin: 10,
+        marginLeft: 50,
+        marginTop: 10,
         color: '#f9f9f9',
     },
     ack: {
@@ -66,6 +70,7 @@ let styles = {
     profPic: {
         width: '100%',
         height: '75%',
+        overflow: 'hidden',
     },
     profText: {
         marginTop: 12,
@@ -80,13 +85,21 @@ let styles = {
         fontSize: '12pt',
     },
     social: {
-        width: '10%',
+        width: '5%',
         height: '80%',
-        justifyContent: 'space-around',
+        justifyContent: 'flex-start',
         alignItems: 'flex-start',
         alignContent: 'flex-start',
         textAlign: 'center',
         margin: 10,       
+    },
+    smmFb:{
+        width: '20px',
+        margin: 10,
+    },
+    smmIcons:{
+        width: '25px',
+        margin: 10,
     },
 };
 const UserCard = (props) => {
@@ -102,16 +115,16 @@ const UserCard = (props) => {
     //let user_relation = "is a " + user_desig + " at";
     
     if(props.fb||1){
-        userFb = (<a href={props.fb}><img className="smm-icon" src={fbLogo} alt="Facebook Logo"/>FB</a>);
+        userFb = (<a href={props.fb}><img style={styles.smmFb} src={fbLogo} alt="Facebook Logo"/></a>);
     }
     if(props.linked||1){
-        userLinkedin = (<a href={props.linked}><img className="smm-icon" src={linkedinLogo} alt="LinkedIn Logo"/>LinkedIn</a>);
+        userLinkedin = (<a href={props.linked}><img style={styles.smmIcons} src={linkedinLogo} alt="LinkedIn Logo"/></a>);
     }
     if(props.insta||1){
-       userInsta = (<a href={props.insta}><img className="smm-icon" src={instaLogo} alt="Instagram Logo"/>Insta</a>);
+       userInsta = (<a href={props.insta}><img style={styles.smmIcons} src={instaLogo} alt="Instagram Logo"/></a>);
     }
     if(props.twit||1){
-        userTwit = (<a href={props.twit}><img className="smm-icon" src={twitterLogo} alt="Twitter Logo"/>Twitter</a>);
+        userTwit = (<a href={props.twit}><img style={styles.smmIcons} src={twitterLogo} alt="Twitter Logo"/></a>);
     }
 
     return(
@@ -124,8 +137,7 @@ const UserCard = (props) => {
             </section>
 
             <section style={styles.logo}>
-            <img src={tdcLogo}/> {/*TODO: correct the logo*/}
-            <h4><b>&nbsp;&nbsp;TDC | DE</b></h4>
+            <img src={tdcLogo} alt="TDC | DE"/>
             </section>
 
             <section style={styles.ack}>
@@ -139,7 +151,7 @@ const UserCard = (props) => {
 
             <section style={styles.prof}>
                 <div style={styles.profPic}>
-
+                    <img width="100%" src={props.pic} alt="Profile"></img>
                 </div>
                 <div style={styles.profText}>
                 <h4 style={styles.profh4}><b>{props.firstName}</b>  {props.lastName}</h4>
@@ -151,6 +163,7 @@ const UserCard = (props) => {
                 {userFb}
                 {userLinkedin}
                 {userInsta}
+                {userTwit}
             </section>
         </section> 
 /*         <div className="userCard">

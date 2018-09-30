@@ -49,10 +49,15 @@ class Dashboard extends Component {
 		let userReadHistory = Object.values(this.props.userHistory);
 		
 		return (
-			<div className="cover">
 				<div className="dashboard">
 					<div className="cardContainer">
-						<UserCard nameTitle="Mr." firstName="Abhishek" lastName="Patwa" post="COO" company="Festive"/>
+						<UserCard 
+							nameTitle=" " 
+							firstName={this.props.userNameGiven}
+							lastName={this.props.userNameFamily} 
+							pic={this.props.userPic}
+							post="post" 
+							company="company"/>
 						<UserTodo
 							type="userTodos"
 							header="completed"
@@ -106,7 +111,6 @@ class Dashboard extends Component {
 						Welcome to your Dashboard. The heart of DE.
           			</h1>
 				</div>
-			</div>
 		);
 	};
 };

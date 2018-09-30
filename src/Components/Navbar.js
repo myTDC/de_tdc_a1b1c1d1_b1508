@@ -69,7 +69,8 @@ let styles = {
   },
   appBarColor: {
     backgroundColor: blueGrey[900],
-
+    margin: 0,
+    padding: 0,
   },
   myTool: {
     display: 'flex',
@@ -96,6 +97,7 @@ let styles = {
     flexGrow: 1,
     width: '75%',
     marginLeft: '12.5%',
+    marginTop: 10,
     justifyContent: 'flex-start',
   },
 };

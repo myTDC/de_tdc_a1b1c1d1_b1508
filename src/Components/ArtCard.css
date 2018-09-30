@@ -1,4 +1,6 @@
 .cardContent>h2 {
+    flex: 0;
+    min-width: 100%;
     font-family: 'Fira Sans', sans-serif;
     font-size: 14pt;
     margin-top: 10px;
@@ -7,11 +9,13 @@
 }
 
 .cardContent>h3 {
+    flex-grow: 1;
     font-family: 'Open Sans';
     font-weight: 300;
     font-size: 10pt;
     margin-top: 3px;
     margin-left: 20px;
+    
 }
 
 a {
@@ -35,6 +39,9 @@ a {
 }
 
 .cardContent {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     position: absolute;
     border-radius: 2px;
     background-color: #fff;
