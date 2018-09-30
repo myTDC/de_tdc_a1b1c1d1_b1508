@@ -43,7 +43,7 @@ class Dashboard extends Component {
 
 	hydrateReadistory() {
 		const artlist = this.props.articles;
-		const history = this.props.userHistory;
+		const history = this.props.userLearnedProg;
 
 
 	}
@@ -77,8 +77,8 @@ class Dashboard extends Component {
 							header="completed"
 							stat="02"
 							footer="out of 06"
-							list={'bleh'
-							//this.props.uTodo
+							list={//'bleh'
+							this.props.uTodo
 						}>
 							<CardTitle name="TODO & MORE" />
 						</UserTodo>
@@ -143,7 +143,8 @@ const mapStateToProps = state => {
 
 		userHistory: state.user.history,
 		articles: state.content.articles3p,
-		//uTodo: state.user.todolist,
+		uTodo: state.user.todolist,
+		userLearnedProg: state.user.learnProgress.read,
 
 		chartLineData: state.user.readHistoryLineData,
 		chartLineLabels: state.user.readHistoryLineLabel,

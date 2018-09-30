@@ -86,7 +86,13 @@ const styles = ({
 });
 
 const UserTodo = (props) => {
-    let todoList = Object.values(props.list);
+    const datify=(time)=> {
+        const dateObj = new Date(time);
+        //let timeNowOld = 
+        return dateObj.getDate() + "/" + dateObj.getMonth() + "/" + dateObj.getFullYear();
+    }
+
+    let todoList = Object.values(props.list||'null');
     console.log('[Comp/UserTodo] List is:', todoList);
     return(
         <div style={styles.parent}>
@@ -94,13 +100,17 @@ const UserTodo = (props) => {
             <div style={styles.row}>
                 <LeftContent header= {props.header} stat={props.stat} footer={props.footer}/>
                 <div style={styles.columnRight}>
-                    <div style={styles.todoitem}>
-                        <h4 style={styles.todotext}> asaddaf sdfsd sdafs dfs df abcc </h4>
+
+                {todoList.map(todoList => (
+                    <div style={styles.todoitem} key={todoList.title + todoList.setOn}>
+                        <h4 style={styles.todotext}> {todoList.title} </h4>
                         <section>
-                            <h4 style={styles.AdatesText}> abccsaddsfsd </h4> 
-                            <h4 style={styles.CdatesText}> abcc </h4>
+                            <h4 style={styles.AdatesText}> {datify(todoList.setOn)} </h4> 
+                            <h4 style={styles.CdatesText}> {todoList.tobecompletedBy} </h4>
                         </section>
                     </div>
+                ))}
+                    
                 </div>
             </div>
         </div>
