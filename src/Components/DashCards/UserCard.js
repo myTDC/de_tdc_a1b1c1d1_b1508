@@ -1,5 +1,5 @@
 import React from 'react';
-import tdcLogo from '../../plane_grad.svg';
+import tdcLogo from '../../tdc-logo-wm-trans-ondark.svg';
 import fbLogo from '../../logo.svg';
 import instaLogo from '../../logo.svg';
 import linkedinLogo from '../../logo.svg';

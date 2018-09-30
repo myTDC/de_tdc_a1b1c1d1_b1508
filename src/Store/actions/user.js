@@ -44,12 +44,41 @@ const asyncTriggerReducer = (type, object) => {
   };
 };
 
-
 const fbDBUpdater = (ref, id, data) => {
   var updates = {};
   updates["/" + id] = data;
   //updates['/user-posts/' + uid + '/' + newPostKey] = postData;
   return ref.update(updates);
+};
+
+const readSuccess = (source, data) => {
+  console.log("[Act/User] [readSuccess] " + source + " read succesfuly! :)  :", data);
+  return {
+    type: actionType.DASH_UPDATE_USERDATA,
+    val: data
+  };
+};
+
+const readFailure = (source, error) => {
+  console.log("[Act/User] [readFailure] " + source + " read failure :(  :", error);
+  return {
+    type: null
+  };
+};
+
+export const writeSuccess = (source, data) => {
+  console.log("[Act/User] [writeSuccess] " + source + " read succesfuly! :)  :", data);
+  return {
+    type: actionType.DASH_UPDATE_USERDATA,
+    val: data
+  };
+};
+
+const writeFailure = (source, error) => {
+  console.log("[Act/User] [readFailure] " + source + " read failure :(  :", error);
+  return {
+    type: null
+  };
 };
 //################ End of Common Helper Functions ################
 
@@ -75,7 +104,14 @@ export const writeUserPersonalInfo = (
     // usersRef.push({[uID]: {
     //     'Given_Name': uName
     // }});
-    const userInfo = { uID, uGname, uFname, uEmail, uPic, uPhone };
+    const userInfo = {
+      uID,
+      uGname,
+      uFname,
+      uEmail,
+      uPic,
+      uPhone
+    };
 
     dispatch(asyncTriggerReducer(actionType.DASH_SET_USERDATA, userInfo));
   };
@@ -172,9 +208,9 @@ export const setFavorite = item => {
 
 //################################################### Code to Initialize and Modfiy user ToDo data ################################################
 export const addToDo = uID => {
-  let todoObj = userTodo;
+  let todoObj = userTodo; //TODO: Adds all the todo list items to fb.
   let todoLastRead = userTodo[1]; //TODO: Only adds the first item in the list
-  //let todo = userTodo; //TODO: Adds all the todo list items to fb.
+
   console.log("[Act/User] [addToDo] Todo Item is:", todoObj);
   return dispatch => {
     //const usersRef = getUserRef(uID);
@@ -182,29 +218,49 @@ export const addToDo = uID => {
 
     //const pushRef = todoRef.push().key;
     //console.log("[Act/User] [addToDo] pushRef is", pushRef)
-    fbDBUpdater(todoRef, 1, todoLastRead);
+    //fbDBUpdater(todoRef, 1, todoLastRead);
     //fbDBUpdater(todoRef, 1, todo);
-
-    // todoRef.set({
-    //     ...todoObj
-    // });
+    todoRef.set({
+        ...todoObj
+    });
 
     console.log("[Act/User] [addToDo] Todo added to firebase");
 
-    dispatch(asyncTriggerReducer(actionType.DASH_SET_TODO, { todoLastRead }));
+    dispatch(asyncTriggerReducer(actionType.DASH_SET_TODO, {
+      todoLastRead
+    }));
   };
 };
 
+export const readTodo = uID => {
+  return dispatch => {
+    let userTodos = {};
+    try {
+      const readArts = dbRef.child("users/" + uID + "/readHistory"); //TODO: Abstract the db ref path. only get the reference variable to be returned from a function
+      readArts.once("value", function (snapshot) {
+        snapshot.forEach(function (childSnapshot) {
+          //let childKey = childSnapshot.key;
+          let childData = childSnapshot.val();
+          // console.log(
+          //   "[Act/User] [readFromFB] -> Data Key: ", childKey,
+          //   "Data Value: ", childData
+          // );
+          userTodos = {
+            childData
+          };
+          console.log("[Act/User] [addToDo] Todo read from firebase", userTodos);
+        });
+        dispatch(asyncTriggerReducer(actionType.DASH_SET_TODO, {
+          userTodos
+        }))
+      }).then(() => dispatch(readSuccess(userTodos)));
+    } catch (err) {
+      dispatch(readFailure(err));
+    }
+  };
+}
+
 //################################################### Dummy Data to supprt user ToDo data ################################################
-// let userTodoSingle = {
-//     title: "Continue learning where you left off",
-//     desc: "Complete the last learning material you'd accessed..",
-//     setOn: "" + timeNow,
-//     tobecompletedBy: "30th Sept 2018",//new Date(new Date()+(12*3600)),
-//     source: "User",
-//     url: "",
-//     isComplete: false
-// }
 let userTodo = {
   1: {
     title: "Continue learning where you left off",
@@ -217,8 +273,7 @@ let userTodo = {
   },
   2: {
     title: "Seek Investment at TDC Elevate '18",
-    desc:
-      "Participate in TDC Elevate through DE portal and test your knowledge by pitching directly to the investors and analysts.",
+    desc: "Participate in TDC Elevate through DE portal and test your knowledge by pitching directly to the investors and analysts.",
     setOn: timeNow,
     tobecompletedBy: "30th Sept 2018", //new Date(new Date()+(12*3600)),
     source: "System",
@@ -227,8 +282,7 @@ let userTodo = {
   },
   3: {
     title: "Meet and Greet - Founders Club",
-    desc:
-      "Join fellow founders and potential investors for the much awaited fellow dinner..",
+    desc: "Join fellow founders and potential investors for the much awaited fellow dinner..",
     setOn: timeNow,
     tobecompletedBy: "30th Sept 2018", //new Date(new Date()+(12*3600)),
     source: "System",
@@ -237,8 +291,7 @@ let userTodo = {
   },
   4: {
     title: "Link your LinkedIn account to TDC DE",
-    desc:
-      "LinkedIn is a major medium for professionals and we highly recommend that you share your progress on the platform. Start by providing your linkedIn Profile Link on the dashboard",
+    desc: "LinkedIn is a major medium for professionals and we highly recommend that you share your progress on the platform. Start by providing your linkedIn Profile Link on the dashboard",
     setOn: timeNow,
     tobecompletedBy: "30th Sept 2018", //new Date(new Date()+(12*3600)),
     source: "System",
@@ -246,9 +299,8 @@ let userTodo = {
     isComplete: false
   },
   5: {
-    title: "Share learn progress on facebook ",
-    desc:
-      "Share your leanring progress with the world so they know you're ready to face all the challenges. #AarambhHaiPrachand",
+    title: "Get some PR Capital by Sharing your learn progress on facebook ",
+    desc: "Share your leanring progress with the world so they know you're ready to face all the challenges. #AarambhHaiPrachand",
     setOn: timeNow,
     tobecompletedBy: "30th Sept 2018", //new Date(new Date()+(12*3600)),
     source: "System",
@@ -298,24 +350,26 @@ export const readUserHistory = uID => {
           hist[childKey] = childData;
         });
         dispatch(setupAnal(uID, hist));
-      }).then(() => dispatch(readSuccess(hist)));
+      }).then(() => dispatch(uReadSuccess(hist)));
     } catch (err) {
-      dispatch(readFailure(err));
+      dispatch(uReadFailure(err));
     }
   };
 };
 
-export const readSuccess = hist => {
-  console.log("[Act/User] [readSuccess] User history read succesfuly! :)  :", hist);
+const uReadSuccess = hist => {
+  console.log("[Act/User] [uReadSuccess] User history read succesfuly! :)  :", hist);
   return {
     type: actionType.DASH_UPDATE_USERDATA,
     val: hist
   };
 };
 
-const readFailure = error => {
-  console.log("[Act/User] [readFailure] User history read failure :(  :", error);
-  return { type: null };
+const uReadFailure = error => {
+  console.log("[Act/User] [uReadFailure] User history read failure :(  :", error);
+  return {
+    type: null
+  };
 };
 
 export const updateUserReadHistory = (found, uID, id, art, Readart) => {
@@ -323,43 +377,77 @@ export const updateUserReadHistory = (found, uID, id, art, Readart) => {
   const readArts = dbRef.child("users/" + uID + "/readHistory");
   const contentUpdateVersion = "b1008";
   const updates = {};
-  
-  readArts.update({[contentUpdateVersion + "_" + 0] : id}); //Storing the last read article as cVer_0 : id
+
+  readArts.update({
+    [contentUpdateVersion + "_" + 0]: id
+  }); //Storing the last read article as cVer_0 : id
   return async dispatch => {
-  if (found) {
-    let read = art[contentUpdateVersion + "_" + id];
-    read.count++;
-    read[read.count] = timeNow;
-    updates["/" + contentUpdateVersion + "_" + id] = read;
-    readArts.update(updates);
-    //let newState = {};
-    //newState[contentUpdateVersion+id]=read;
-    art[contentUpdateVersion + "_" + id] = read;
-    dispatch(setupAnal(uID, art));
-    return {
-      type: actionType.DASH_UPDATE_PROGRESS,
-      val: art
-    };
-  } else {
-    let i = 1;
-    let read = {
-      id: id,
-      count: i
-    };
-    read[i] = timeNow;
-    updates["/" + contentUpdateVersion + "_" + id] = read;
-    readArts.update(updates);
-    let newState = {};
-    newState = read;
-    art[contentUpdateVersion + "_" + id] = { ...art[contentUpdateVersion + "_" + id], ...newState };
-    dispatch(setupAnal(uID, art));
-    return {
-      type: actionType.DASH_WRITE_PROGRESS,
-      val: art
-    };
-  }
+    if (found) {
+      let read = art[contentUpdateVersion + "_" + id];
+      read.count++;
+      read[read.count] = timeNow;
+      updates["/" + contentUpdateVersion + "_" + id] = read;
+      readArts.update(updates);
+      //let newState = {};
+      //newState[contentUpdateVersion+id]=read;
+      art[contentUpdateVersion + "_" + id] = read;
+      dispatch(setupAnal(uID, art));
+      return {
+        type: actionType.DASH_UPDATE_PROGRESS,
+        val: art
+      };
+    } else {
+      let i = 1;
+      let read = {
+        id: id,
+        count: i
+      };
+      read[i] = timeNow;
+      updates["/" + contentUpdateVersion + "_" + id] = read;
+      readArts.update(updates);
+      let newState = {};
+      newState = read;
+      art[contentUpdateVersion + "_" + id] = { ...art[contentUpdateVersion + "_" + id],
+        ...newState
+      };
+      dispatch(setupAnal(uID, art));
+      return {
+        type: actionType.DASH_WRITE_PROGRESS,
+        val: art
+      };
+    }
+  };
 };
-}
+
+export const updateLastRead = (uID, artObj) => {
+  let todoLastRead = artObj; //TODO: Only adds the first item in the list
+
+  console.log("[Act/User] [updateLastRead] New Todo Item is:", artObj);
+  return dispatch => {
+    //const usersRef = getUserRef(uID);
+    const todoRef = getUserRef(uID).child("todo");
+
+    //const pushRef = todoRef.push().key;
+    //console.log("[Act/User] [addToDo] pushRef is", pushRef)
+    try {
+      fbDBUpdater(todoRef, 1, todoLastRead).then(() => dispatch(writeSuccess('updateLastRead', todoLastRead)));
+    } catch (err) {
+      dispatch(readFailure(err));
+    }
+
+    //fbDBUpdater(todoRef, 1, todo);
+
+    // todoRef.set({
+    //     ...todoObj
+    // });
+
+    console.log("[Act/User] [addToDo] Last Read updated in firebase");
+
+    dispatch(asyncTriggerReducer(actionType.DASH_SET_TODO, {
+      todoLastRead
+    }));
+  };
+};
 //############################################ End of Code to Initialize and Modfiy user read history ############################################
 
 //############################################ Code to Fetch Data for Analytics based on user read history ############################################
@@ -384,34 +472,38 @@ export const setupAnal = (uID, userHistory) => {
   return async (dispatch, getState) => {
     const readHistory = userHistory;
     let readUserHistory = Object.values(readHistory);
-    let dates=[];
-    let readArticles=[];
-    let anData=[0, 0, 0, 0, 0, 0, 0];
-    let count; 
-    let i=0, j=0;
+    let dates = [];
+    let readArticles = [];
+    let anData = [0, 0, 0, 0, 0, 0, 0];
+    let count;
+    let i = 0,
+      j = 0;
     count = readUserHistory[i].count;
-    for(i = 1; i<readUserHistory.length; i++){
+    for (i = 1; i < readUserHistory.length; i++) {
       count = readUserHistory[i].count;
       readArticles.push(readUserHistory[i].id);
-      for(j = 1; j<=count; j++){
+      for (j = 1; j <= count; j++) {
         let f = j.toString();
         let temp = new Date(readUserHistory[i][f]);
         dates.push(temp);
       }
-    } 
-    for(i = 0; i<dates.length; i++){
-        if((timeNow-dates[i].getTime()) < 604800000)
-          anData[dates[i].getDay()] += 1; 
+    }
+    for (i = 0; i < dates.length; i++) {
+      if ((timeNow - dates[i].getTime()) < 604800000)
+        anData[dates[i].getDay()] += 1;
     }
     //let articleArray = Object.values(this.props.articles);    
-    
+
     console.log("[Act/User] [setupAnal] User's reading history is:", anData, readArticles);
     // readHistory.forEach(()=>{
     //   console.log('Read Count is:',1);
     // });
     //console.log("[Act/User] [setupAnal] readhist is:", readHistory[1]);
     //TODO: set the data in state from reducer
-    dispatch(asyncTriggerReducer(actionType.DASH_FETCH_DATA, {anData, readArticles}));
+    dispatch(asyncTriggerReducer(actionType.DASH_FETCH_DATA, {
+      anData,
+      readArticles
+    }));
   };
 };
 
@@ -449,3 +541,16 @@ export const ecoSet = uID => {
 //   //loadState();
 //   return content.updateVer;
 // };
+
+
+
+
+// let userTodoSingle = {
+//     title: "Continue learning where you left off",
+//     desc: "Complete the last learning material you'd accessed..",
+//     setOn: "" + timeNow,
+//     tobecompletedBy: "30th Sept 2018",//new Date(new Date()+(12*3600)),
+//     source: "User",
+//     url: "",
+//     isComplete: false
+// }

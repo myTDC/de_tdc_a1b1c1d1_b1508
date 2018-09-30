@@ -21,6 +21,7 @@ class Dashboard extends Component {
 
 	componentDidUpdate() {
 		//this.props.onLoad(this.props.userId, this.props.userHistory);
+		this.props.loadTodo(this.props.userId);
 		console.log(
 			"[Cont/Dash] Components Updated | Current UserID is: ",
 			localStorage.getItem("userID")
