@@ -18,7 +18,7 @@ import * as acts from "../Store/actions";
 class Layout extends Component {
   state = {};
   componentDidMount(){
-    //this.props.ReadUser(this.props.userId);
+    this.props.ReadUser(this.props.userId);
   }
   componentDidUpdate() {
     //this.props.ReadUser(this.props.userId);

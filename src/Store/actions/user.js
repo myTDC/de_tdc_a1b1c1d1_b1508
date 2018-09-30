@@ -339,10 +339,11 @@ export function fetchPostsIfNeeded(subreddit) {
 export const readUserHistory = uID => {
   let hist = {};
   return async dispatch => {
-    try {
+    
       const readArts = dbRef.child("users/" + uID + "/readHistory"); //TODO: Abstract the db ref path. only get the reference variable to be returned from a function
       readArts.once("value", function (snapshot) {
-        snapshot.forEach(function (childSnapshot) {
+        try {
+          snapshot.forEach(function (childSnapshot) {
           let childKey = childSnapshot.key;
           let childData = childSnapshot.val();
           // console.log(
@@ -351,11 +352,12 @@ export const readUserHistory = uID => {
           // );
           hist[childKey] = childData;
         });
-        if(hist!=={}) dispatch(setupAnal(uID, hist)); 
-      }).then(() => dispatch(uReadSuccess(hist)));
-    } catch (err) {
-      dispatch(uReadFailure(err));
-    }
+        if(Object.keys(hist).length !== 0) 
+        dispatch(setupAnal(uID, hist)).then(() => dispatch(uReadSuccess(hist)));
+        }catch (err) {
+        dispatch(uReadFailure(err));
+        }; 
+    })
   };
 };
 
