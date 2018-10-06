@@ -38,6 +38,7 @@ let timeNow = dateNow.getTime();
 
 //################ Common Helper Functions ################
 const asyncTriggerReducer = (type, object) => {
+  console.log('[Act/User][asyncTrigger] Action Dispatched: ',type, ' with data: ', object);
   return {
     type: type,
     obj: object
@@ -45,7 +46,7 @@ const asyncTriggerReducer = (type, object) => {
 };
 
 const fbDBUpdater = (ref, id, data) => {
-  var updates = {};
+  let updates = {};
   updates["/" + id] = data;
   //updates['/user-posts/' + uid + '/' + newPostKey] = postData;
   return ref.update(updates);
@@ -518,16 +519,16 @@ export const fetchFavorite = (uID) => {
   return async dispatch => {
     let userFav = [];
     try {
-      const favRef = getUserRef(uID).child("favList"); 
+      const favRef = getUserRef(uID).child("favList");
       favRef.once("value", function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
           let favData = childSnapshot.val();
           userFav.push(favData);
         });
         console.log('[Act/User] [fetchFavorite] favorites are: ', uID, userFav);
-        dispatch(asyncTriggerReducer(actionType.DASH_SET_USERFAV, userFav//{ ...userTodos }
+        dispatch(asyncTriggerReducer(actionType.DASH_SET_USERFAV, userFav //{ ...userTodos }
         ));
-      }).then(() => dispatch(readSuccess('readFavs', userFav, null )));
+      }).then(() => dispatch(readSuccess('readFavs', userFav, null)));
     } catch (err) {
       dispatch(readFailure(err));
     }
@@ -536,8 +537,8 @@ export const fetchFavorite = (uID) => {
 
 export const writeFavList = (uID, favList) => {
   //const list = favList;
-  const favRef = getUserRef(uID).child("favList/"); 
-  var updates = favList;
+  const favRef = getUserRef(uID).child("favList/");
+  const updates = favList;
   favRef.set(updates);
   return async dispatch => {
     dispatch(asyncTriggerReducer(actionType.DASH_WRITE_USERFAV, updates));
