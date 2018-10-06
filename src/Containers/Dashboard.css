@@ -28,14 +28,24 @@
     --app-card-shadow-user:2px 4px 8px 1px rgba(55, 71, 79, 0.20);
 }
 
-@media (max-width: 1600px){ 
+@media (max-width: 1280px){ 
    
     :root {
-        --app-dash-width: 96%;
-        --app-container-width: 96%;
+        --app-dash-width: 85%;
+        --app-container-width: 100;
         --app-dash-margin-top: 0;
-        --app-dash-margin-left: 4%;
-        --app-dash-margin-right: 4%;
+        --app-dash-margin-left: 7.5%;
+        --app-dash-margin-right: 7.5%;
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    :root {
+        --app-dash-width: 70%;
+        --app-container-width: 100%;
+        --app-dash-margin-top: 0;
+        --app-dash-margin-left: 15%;
+        --app-dash-margin-right: 15%;
     }
 }
 

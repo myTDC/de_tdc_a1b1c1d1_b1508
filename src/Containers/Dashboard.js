@@ -42,10 +42,8 @@ class Dashboard extends Component {
 	}
 
 	hydrateReadistory() {
-		const artlist = this.props.articles;
-		const history = this.props.userLearnedProg;
-
-
+		// const artlist = this.props.articles;
+		// const history = this.props.userLearnedProg;
 	}
 
 	render() {

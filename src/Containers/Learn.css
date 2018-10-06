@@ -19,9 +19,16 @@
     }
 } */
 
-@media screen and (max-width: 1028px) {
+@media screen and (max-width: 1280px) {
     .learnSection {
         max-width: 85%;
         margin-left: 7.5%;
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    .learnSection {
+        max-width: 70%;
+        margin-left: 15%;
     }
 }

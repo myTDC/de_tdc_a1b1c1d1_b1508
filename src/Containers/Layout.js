@@ -10,51 +10,47 @@ import { connect } from "react-redux";
 
 //Components
 import SignUpHero from "../Components/SignupHero";
-import Navbar from "../Components/Navbar";
+import Navbar from "../Components/Nav/NavBar";
+import Drawer from "../Components/Nav/Drawer";
+import Blackout from "../Components/Nav/Blackout";
+import OldNavbar from "../Components/Navbar";
 
 //Actions
 import * as acts from "../Store/actions";
 
 class Layout extends Component {
-  state = {};
+  state = {
+    sideDrawerOpen: true
+  };
+
   componentDidMount(){
     this.props.ReadUser(this.props.userId);
-  }
+  };
+
   componentDidUpdate() {
     //this.props.ReadUser(this.props.userId);
-    console.log(
-      "[Comp/Layout] Components Updated | Current UserID is: ",
-      localStorage.getItem("userID")
-    );
-    console.log(
-      "[Comp/Layout] Components Updated | Current ArtList is: ",
-      this.props.articles
-    );
-  }
+    console.log("[Comp/Layout] Components Updated | Current UserID is: ", localStorage.getItem("userID"));
+    console.log("[Comp/Layout] Components Updated | Current ArtList is: ", this.props.articles);
+  };
+
+  
+
+  drawerToggleClickHandler = () => {
+    this.setState((prevState) => {
+      return {sideDrawerOpen: !prevState.sideDrawerOpen};
+    });
+  };
+
+  backdropClickHandler = () => {
+    this.setState({sideDrawerOpen: false});
+  };
 
   render() {
-    // let asyncTester = (
-    //     <button onClick={this.props.onTest}>
-    //         test now
-    //     </button>
-    //     <h1>{this.props.count}</h1>
-    // );
+    let blackout;
 
-    // let articlePublisher = (
-    //   <div>
-    //     <button onClick={this.props.Log}> Log Current Art List </button>
-    //     <button onClick={this.props.Commit}>
-    //       {" "}
-    //       Commit Current ArtList to FB{" "}
-    //     </button>
-    //   </div>
-    // );
-
-    // let articleFetcher = (
-    //   <div>
-    //     <button onClick={this.props.Read}> Read ArtList from FB </button>
-    //   </div>
-    // );
+    if (this.state.sideDrawerOpen) {
+      blackout = <Blackout click={this.backdropClickHandler} />
+    }
 
     let authorizer = <button onClick={this.props.onAuth}>Login</button>;
 
@@ -68,7 +64,11 @@ class Layout extends Component {
       signup = null;
       header = (
         <header className="App-header">
-          <Navbar user={this.props.userNameGiven} />
+          <Navbar 
+            drawerClickHandler={this.drawerToggleClickHandler}
+            userNameGiven={this.props.userNameGiven}
+            userOrgDesig={this.props.userNameFamily}
+            uPic={this.props.userPic} />
         </header>
       );
       authorizer = (
@@ -85,6 +85,8 @@ class Layout extends Component {
     }
     const dash_base = (
       <section>
+        <Drawer show={this.state.sideDrawerOpen} />
+        {blackout}  
         {signup}
         <br />
         {authorizer}
@@ -143,3 +145,26 @@ export default connect(
   mapStateToProps,
   mapDispactchToProps
 )(Layout);
+
+// let asyncTester = (
+//     <button onClick={this.props.onTest}>
+//         test now
+//     </button>
+//     <h1>{this.props.count}</h1>
+// );
+
+// let articlePublisher = (
+//   <div>
+//     <button onClick={this.props.Log}> Log Current Art List </button>
+//     <button onClick={this.props.Commit}>
+//       {" "}
+//       Commit Current ArtList to FB{" "}
+//     </button>
+//   </div>
+// );
+
+// let articleFetcher = (
+//   <div>
+//     <button onClick={this.props.Read}> Read ArtList from FB </button>
+//   </div>
+// );
