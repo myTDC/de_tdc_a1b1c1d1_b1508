@@ -13,14 +13,14 @@ import SignUpHero from "../Components/SignupHero";
 import Navbar from "../Components/Nav/NavBar";
 import Drawer from "../Components/Nav/Drawer";
 import Blackout from "../Components/Nav/Blackout";
-import OldNavbar from "../Components/Navbar";
+//import OldNavbar from "../Components/Navbar";
 
 //Actions
 import * as acts from "../Store/actions";
 
 class Layout extends Component {
   state = {
-    sideDrawerOpen: true
+    sideDrawerOpen: false
   };
 
   componentDidMount(){
@@ -29,11 +29,9 @@ class Layout extends Component {
 
   componentDidUpdate() {
     //this.props.ReadUser(this.props.userId);
-    console.log("[Comp/Layout] Components Updated | Current UserID is: ", localStorage.getItem("userID"));
-    console.log("[Comp/Layout] Components Updated | Current ArtList is: ", this.props.articles);
+    //console.log("[Comp/Layout] Components Updated | Current UserID is: ", localStorage.getItem("userID"));
+    //console.log("[Comp/Layout] Components Updated | Current ArtList is: ", this.props.articles);
   };
-
-  
 
   drawerToggleClickHandler = () => {
     this.setState((prevState) => {
@@ -85,7 +83,7 @@ class Layout extends Component {
     }
     const dash_base = (
       <section>
-        <Drawer show={this.state.sideDrawerOpen} />
+        <Drawer show={this.state.sideDrawerOpen}>{"org-timeline"}</Drawer>
         {blackout}  
         {signup}
         <br />

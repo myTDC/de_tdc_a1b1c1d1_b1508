@@ -22,7 +22,7 @@ const SignupHero = (props) =>{
             <img className="w3-image" src={logov2} alt="Take Flight with the TDC Logo PaperPlane™"/>
           </div>
           <div className="contentHero">
-            <a className='btn btn-grad' onClick={props.clicked}>{props.heroAction}</a>
+            <p className='btn btn-grad' onClick={props.clicked}>{props.heroAction}</p>
             <p className='heroBtnHelper'>TO LAUNCH YOUR DREAMS</p>
           </div>
         </div>

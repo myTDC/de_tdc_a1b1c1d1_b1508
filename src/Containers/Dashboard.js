@@ -41,10 +41,21 @@ class Dashboard extends Component {
 		this.props.loadTodo(this.props.userId);
 	}
 
-	hydrateReadistory() {
-		// const artlist = this.props.articles;
-		// const history = this.props.userLearnedProg;
-	}
+	// hydrateFavs = (articleList, favs) => {
+	// 	const artList = Object.values(articleList);
+	// 	favs.forEach(element => {
+	// 		//TODO: Query the Artlist to find the items with the ids in favs.			
+	// 	});
+	// }
+	// hydrateReadistory() {
+	// 	const artlist = this.props.articles;
+	// 	const history = this.props.userLearnedProg;
+	// 	const favs = this.props.favs;
+
+	// 	const favList = this.hydrateFavs(artlist, favs);
+	// let userReadHistory = Object.values(this.props.userHistory);
+		
+	// }
 
 	render() {
 		const writetofb = () => {
@@ -58,7 +69,7 @@ class Dashboard extends Component {
 			);
 		};
 
-		let userReadHistory = Object.values(this.props.userHistory);
+
 		
 		return (
 				<div className="dashboard">
@@ -109,7 +120,9 @@ class Dashboard extends Component {
 							type="Favorites"
 							header="you have"
 							stat="03"
-							footer="favorites">
+							footer="favorites"
+							artList={this.props.articles}
+							favList={this.props.favs}>
 							<CardTitle name="FAV READLIST" />
 						</DataCard>
 
@@ -118,7 +131,8 @@ class Dashboard extends Component {
 							header="You've read"
 							stat="08"
 							footer="articles of 30"
-							history={userReadHistory} >
+							artList={this.props.articles}
+							userHasRed={this.props.userLearnedProg} >
 							<CardTitle name="USER JOURNEY" />
 						</DataCard>
 					</div>
@@ -143,6 +157,7 @@ const mapStateToProps = state => {
 		articles: state.content.articles3p,
 		uTodo: state.user.todolist,
 		userLearnedProg: state.user.learnProgress.read,
+		favs: state.user.favList,
 
 		chartLineData: state.user.readHistoryLineData,
 		chartLineLabels: state.user.readHistoryLineLabel,

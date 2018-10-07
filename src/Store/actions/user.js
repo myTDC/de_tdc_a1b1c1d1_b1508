@@ -210,7 +210,7 @@ export const setFavorite = item => {
 //################################################### Code to Initialize and Modfiy user ToDo data ################################################
 export const addTodo = uID => {
   let todoObj = userTodo; //TODO: Adds all the todo list items to fb.
-  let todoLastRead = userTodo[1]; //TODO: Only adds the first item in the list
+  //let todoLastRead = userTodo[1]; //TODO: Only adds the first item in the list
 
   console.log("[Act/User] [addToDo] Todo Item is:", todoObj);
   return dispatch => {
@@ -246,7 +246,7 @@ export const readTodo = uID => {
       todoRef.once("value", function (snapshot) {
         //console.log('Snap', snapshot);
         snapshot.forEach(function (childSnapshot) {
-          let todoKey = childSnapshot.key;
+          //let todoKey = childSnapshot.key;
           let todoData = childSnapshot.val();
           userTodos = {
             ...userTodos,
@@ -499,7 +499,7 @@ export const setupAnal = (uID, userHistory) => {
     }
     //let articleArray = Object.values(this.props.articles);    
 
-    console.log("[Act/User] [setupAnal] User's reading history is:", anData, readArticles);
+    console.log("[Act/User] [setupAnal] User's reading history is:", anData, 'User has read the articles: ', readArticles);
     // readHistory.forEach(()=>{
     //   console.log('Read Count is:',1);
     // });

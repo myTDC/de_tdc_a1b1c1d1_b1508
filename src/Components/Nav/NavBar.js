@@ -48,6 +48,7 @@ const styles = ({
         height: '5vh',
         maxHeight: '6vh',
         minHeight: '5vh',
+        zIndex: '100',
         // margin: '1vh',
         // marginLeft: '2vh'
     },
@@ -64,7 +65,8 @@ const styles = ({
         boxShadow: '2px, 1px, 2px, #041620',
         margin: 0,
         marginRight: '1vw',
-        borderRadius: 4, //'1vh',
+        borderRadius: 4,
+        zIndex: '100', //'1vh',
     },
     profiler_container:{
         color: '#FFF8E7',
@@ -72,12 +74,14 @@ const styles = ({
         flexFlow: 'column',
         alignItems: 'flex-end',
         margin: '4%',
+        zIndex: '120',
     },
     profiler_name:{
         color: '#FFF8E7',
         fontSize: '1rem',
         lineHeight: 0,
         widthMax: '8vw',
+        
     },
     profiler_desig:{
         color: '#DEDEDE',
@@ -94,6 +98,7 @@ const styles = ({
         marginRight: '4%',
         //marginLeft: '1vh',
         fontSize: '.5rem',
+        zIndex: '120',
         // marginLeft: '2vh'
     },
 })
@@ -104,9 +109,7 @@ const navbar = props => (
         
         </div>
         <div >
-            <a href="/" className="toolbar__logo">
-                <img style={styles.logo} src={logoDE} alt="Take Flight with the TDC Logo PaperPlane™" />
-            </a>
+            <img className="toolbar__logo" onClick={props.drawerClickHandler} style={styles.logo} src={logoDE} alt="Take Flight with the TDC Logo PaperPlane™" />
         </div>
         <div style={styles.spacer} className="spacer" />
         <div style={styles.linkContainer} className="toolbar__navigation-items">

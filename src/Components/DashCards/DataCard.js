@@ -90,23 +90,61 @@ const styles = ({
 });
 
 const DataCard = (props) => {
+
+        const artList = Object.values(props.artList)||'null';
+		const userHistory = props.userHasRed||0;
+		const favList = props.favList||0;
+
+		const tdcTimelineDrawer = (
+			<div className={'drawer open tdc'}>
+				{artList.map(artList => (
+					<div style={styles.articleCard} key={favList}>
+                        <section>
+                            <h4 style={styles.Favtitle}> {artList.title|| "Article Title"} </h4>
+                            <h4 style={styles.author}>by: {artList.author|| "author"}</h4>
+                        </section>
+                        <section>
+                            <h4 style={styles.textRight}> {artList.views || "views"}</h4>
+                            <h4 style={styles.textRight}> {artList.favdate || "favorite date"} </h4> 
+                        </section>
+					</div>
+				))}
+			</div>
+			
+		)
+
+		const userHistoryDrawer = (
+            <div style={styles.columnRight}>
+				{artList.map(artList => (
+					<div style={styles.articleCard} key={userHistory.id}>
+						<section>
+							<h4 style={styles.Favtitle}> {artList.title|| "Article Title"} </h4>
+							<h4 style={styles.author}>by: {artList.author|| "author"}</h4>
+						</section>
+						<section>
+							<h4 style={styles.textRight}> {artList.views || "views"}</h4>
+							<h4 style={styles.textRight}> {artList.favdate || "favorite date"} </h4> 
+						</section>
+					</div>
+                ))}
+            </div>
+		)
+		
+		let lister = {};
+		if(props.children === "org-timeline"){
+			lister = tdcTimelineDrawer;
+		}else /*if(this.props.children === "user-history")*/{
+			lister = userHistoryDrawer;
+        }
+        
     return(
         <div style={styles.parent}>
             {props.children}
             <div style={styles.row}>
                 <LeftContent header= {props.header} stat={props.stat} footer={props.footer}/>
-                    <div style={styles.columnRight}>
-                        <div style={styles.articleCard}>
-                            <section>
-                                <h4 style={styles.Favtitle}>Article Title </h4>
-                                <h4 style={styles.author}>by: author</h4>
-                            </section>
-                            <section>
-                                <h4 style={styles.textRight}> views </h4>
-                                <h4 style={styles.textRight}> favorite date </h4> 
-                            </section>
-                        </div>
-                    </div>
+                    
+                        {lister}
+                    
                 </div>
         </div>
     );
