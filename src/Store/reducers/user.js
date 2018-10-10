@@ -47,6 +47,9 @@ const initState = {
       //   timeTaken: 120,
       //   isCompleted: false
       // }
+    },
+    readList: {
+
     }
   },
   participateProgress: {
@@ -55,6 +58,7 @@ const initState = {
     completionDate: new Date()
   },
   favList: [],
+  favArtList: [],
     // tStampNow : {
     //     id: null
     // }
@@ -113,7 +117,8 @@ const mapTodoData = (state, action) => {
 const mapFavData = (state, action) => {
   console.log("[Red/User] Favs Added:", action.obj);
   return updateObject(state, {
-    favList: [...action.obj]
+    favList: [...action.obj.userFav],
+    favArtList: action.obj.userFavArtList
   });
 };
 
@@ -135,7 +140,7 @@ const reducer = (state = initState, action) => {
       return mapCompData(state, action);
     case DASH_SET_TODO:
       return mapTodoData(state, action);
-    case DASH_FETCH_DATA:{
+    case DASH_FETCH_DATA: {
       return updateObject(state, { 
         readHistoryLineData: action.obj.anData,
         learnProgress: {
@@ -143,13 +148,14 @@ const reducer = (state = initState, action) => {
           read: {
             ...state.learnProgress.read,
             ...action.obj.readArticles
+          },
+          readList: {
+            ...state.learnProgress.readList,
+            ...action.obj.readArticles
           }
         }
-        
        })
-    }
-      //return state;
-      
+    }      
     case DASH_SET_USERHISTORY: 
       console.log('[Red/User] User data set in state *thumbs up*')
       return setUserHistonFetch(state, action);
@@ -166,7 +172,8 @@ const reducer = (state = initState, action) => {
       return mapFavData(state, action);
 
     case DASH_WRITE_USERFAV:
-      return updateObject(state, {favList: action.obj});
+      return updateObject(state, { favList: action.obj });
+
     default:
       return state;
   }

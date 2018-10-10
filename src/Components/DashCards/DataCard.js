@@ -90,62 +90,78 @@ const styles = ({
 });
 
 const DataCard = (props) => {
+        const readArticles = Object.values(props.readArtList);
+        const favArticles = Object.values(props.userFavList);
 
-        const artList = Object.values(props.artList)||'null';
-		const userHistory = props.userHasRed||0;
-		const favList = props.favList||0;
-
-		const tdcTimelineDrawer = (
-			<div className={'drawer open tdc'}>
-				{artList.map(artList => (
-					<div style={styles.articleCard} key={favList}>
-                        <section>
-                            <h4 style={styles.Favtitle}> {artList.title|| "Article Title"} </h4>
-                            <h4 style={styles.author}>by: {artList.author|| "author"}</h4>
-                        </section>
-                        <section>
-                            <h4 style={styles.textRight}> {artList.views || "views"}</h4>
-                            <h4 style={styles.textRight}> {artList.favdate || "favorite date"} </h4> 
-                        </section>
-					</div>
-				))}
-			</div>
-			
-		)
-
-		const userHistoryDrawer = (
-            <div style={styles.columnRight}>
-				{artList.map(artList => (
-					<div style={styles.articleCard} key={userHistory.id}>
-						<section>
-							<h4 style={styles.Favtitle}> {artList.title|| "Article Title"} </h4>
-							<h4 style={styles.author}>by: {artList.author|| "author"}</h4>
-						</section>
-						<section>
-							<h4 style={styles.textRight}> {artList.views || "views"}</h4>
-							<h4 style={styles.textRight}> {artList.favdate || "favorite date"} </h4> 
-						</section>
-					</div>
-                ))}
+		const favoritesLister = (
+            <div style={styles.row}>
+                <LeftContent header= {props.header} stat={props.stat} footer={props.footer}/>
+                <div style={styles.columnRight}>
+                    {favArticles.map(favArticles => (
+                        <div style={styles.articleCard} key={favArticles.id}>
+                            <section>
+                                <h4 style={styles.Favtitle}> {favArticles.title|| "Article Title"} </h4>
+                                <h4 style={styles.author}>by: {favArticles.author|| "author"}</h4>
+                            </section>
+                            <section>
+                                <h4 style={styles.textRight}> {favArticles.views || "views"}</h4>
+                                <h4 style={styles.textRight}> {favArticles.favdate || "favorite date"} </h4> 
+                            </section>
+                        </div>
+                    ))}
+                </div>
             </div>
-		)
-		
+		);
+
+		const historyLister = (
+            <div style={styles.row}>
+                <LeftContent header= {props.header} stat={props.stat} footer={props.footer}/>
+                <div style={styles.columnRight}>
+                    {readArticles.map(readArticles => (
+                        <div style={styles.articleCard} key={readArticles.id}>
+                            <section>
+                                <h4 style={styles.Favtitle}> {readArticles.title|| "Article Title"} </h4>
+                                <h4 style={styles.author}>by: {readArticles.author|| "author"}</h4>
+                            </section>
+                            <section>
+                                <h4 style={styles.textRight}> {readArticles.views || "views"}</h4>
+                                <h4 style={styles.textRight}> {readArticles.favdate || "favorite date"} </h4> 
+                            </section>
+                        </div>
+                    ))}
+                </div>
+            </div>
+            
+		);
+        
+        const nodata = (
+            <div style={styles.row}>
+                <LeftContent header= {props.header} stat={props.stat} footer={props.footer}/>
+                <div style={styles.columnRight}>
+                        <div style={styles.articleCard}>
+                            <section>
+                                <h4 style={styles.Favtitle}> No Data Received </h4>
+                                <h4 style={styles.author}>user needs to interact with articles to populate fields</h4>
+                            </section>
+                        </div>
+                </div>
+            </div>
+		);
+        
 		let lister = {};
-		if(props.children === "org-timeline"){
-			lister = tdcTimelineDrawer;
-		}else /*if(this.props.children === "user-history")*/{
-			lister = userHistoryDrawer;
+		if(props.favList){
+			lister = favoritesLister;
+		}else if(props.userHasRed) /*if(this.props.children === "user-history")*/{
+			lister = historyLister;
+        }
+        else{
+            lister = nodata;
         }
         
     return(
         <div style={styles.parent}>
             {props.children}
-            <div style={styles.row}>
-                <LeftContent header= {props.header} stat={props.stat} footer={props.footer}/>
-                    
-                        {lister}
-                    
-                </div>
+            {lister}
         </div>
     );
 };

@@ -22,7 +22,7 @@ class App extends Component {
         <Layout />
         {this.props.userId ?
           <Switch>
-            <Route exact path='/' component={Dash} />
+            <Route exact path='/' component={Learn} />
             <Route exact path='/learn' component={Learn} />
             <Route exact path='/dashboard' component={Dash} />
             <Route exact path='/participate' component={Participate} />

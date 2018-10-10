@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 
 //Libraries
 import { connect } from "react-redux";
@@ -13,6 +13,11 @@ import './Drawer.css';
 
 
 const styles = ({
+    drawer: {
+        color: '#EEF',
+        height: '100%',
+        overflowY: 'true',
+    },
     parent :{
         position: 'relative',
         width:'100%',
@@ -100,69 +105,88 @@ const styles = ({
 });
 	
 
-class Drawer extends React.Component {
+class Drawer extends Component {
 	state = {};
 
-	componentWillMount(){
-		console.log('[Comp/Drawer] userHistory is: ', this.props.userLearnedProg);
-	};
+    componentWillMount(){
+        console.log('[Comp/Drawer] userHistory is: ', Object.values(this.props.userReadList));
+        //getReadHistory();
+    };
 
 	render() {
-		let drawerClasses = 'drawer';
-		if (this.props.show) {
-			drawerClasses = 'drawer open';
-		}
-
-		const artList = Object.values(this.props.artList||'null');
-		const orgTimeline = Object.values(this.props.userLearnedProg||'null');
-		const userHistory = this.props.userLearnedProg||0;
+		// const artList = Object.values(this.props.articles);
+		//const orgTimeline = Object.values(this.props.userLearnedProg);
+        // const history = Object.values(this.props.userLearnedProg);
+        
+        const readArticles = Object.values(this.props.userReadList);
+        
+        //let readArticles = history.filter((val, artList) => {
+        //     console.log(readArticles);
+        //     return artList[val];
+        // });
 
 		const tdcTimelineDrawer = (
-			<div className={'tdc'}>
-				{orgTimeline.map(orgTimeline => (
-					<div style={styles.articleCard} key={orgTimeline}>
-					<section>
-						<h4 style={styles.Favtitle}> {artList.title|| "Article Title"} </h4>
-						<h4 style={styles.author}>by: {artList.author|| "author"}</h4>
-					</section>
-					<section>
-						<h4 style={styles.textRight}> {artList.views || "views"}</h4>
-						<h4 style={styles.textRight}> {artList.favdate || "favorite date"} </h4> 
-					</section>
+            <React.Fragment>
+                <h1> Process ArtList Data </h1>
+				{readArticles.map(element => (
+					<div style={styles.articleCard} key={element.id}>
+						<section>
+							<h4 style={styles.Favtitle}> {element.title|| "Article Title"} </h4>
+							<h4 style={styles.author}>by: {element.author|| "author"}</h4>
+						</section>
+						<section>
+							<h4 style={styles.textRight}> {element.views || "views"}</h4>
+							<h4 style={styles.textRight}> {element.favdate || "favorite date"} </h4> 
+						</section>
 					</div>
 				))}
-			</div>
-			
-		)
+			</React.Fragment>
+		);
 
 		const userHistoryDrawer = (
-			<div className={'user'}>
-				{artList.map(artList => (
-					<div style={styles.articleCard} key={userHistory.id}>
+            <React.Fragment>
+                <h1> Process ArtList Data </h1>
+				{readArticles.map(artObj => (
+					<div style={styles.articleCard} key={artObj.id}>
 						<section>
-							<h4 style={styles.Favtitle}> {artList.title|| "Article Title"} </h4>
-							<h4 style={styles.author}>by: {artList.author|| "author"}</h4>
+							<h4 style={styles.Favtitle}> {artObj.title|| "Article Title"} </h4>
+							<h4 style={styles.author}>by: {artObj.author|| "author"}</h4>
 						</section>
 						<section>
-							<h4 style={styles.textRight}> {artList.views || "views"}</h4>
-							<h4 style={styles.textRight}> {artList.favdate || "favorite date"} </h4> 
+							<h4 style={styles.textRight}> {artObj.views || "views"}</h4>
+							<h4 style={styles.textRight}> {artObj.favdate || "favorite date"} </h4> 
 						</section>
 					</div>
 				))}
-			</div>
-		)
+			</React.Fragment>
+		);
 		
-		let drawer = {};
-		if(this.props.children === "org-timeline"){
-			drawer = tdcTimelineDrawer;
-		}else /*if(this.props.children === "user-history")*/{
-			drawer = userHistoryDrawer;
-		}
+        let drawer = null;
+        let userDrawerClasses = 'drawer user';
+        let orgDrawerClasses = 'drawer tdc';
+		if (this.props.drawerUser) {
+            userDrawerClasses = 'drawer user open';
+            drawer = userHistoryDrawer;
+        }
+        else if (this.props.drawerOrg){
+            orgDrawerClasses = 'drawer tdc open';
+            drawer = tdcTimelineDrawer;
+        }
+		// if(this.props.children === "org-timeline"){
+		// 	drawer = tdcTimelineDrawer;
+		// }else /*if(this.props.children === "user-history")*/{
+		// 	drawer = userHistoryDrawer;
+		// }
 
 		return (
-			<div className={drawerClasses}>
-		{drawer/**/}
-			</div>
+            <div style={styles.drawer}>
+                <div className={userDrawerClasses}>
+                    {drawer/**/}
+                </div>
+                <div className={orgDrawerClasses}>
+                    {drawer/**/}
+                </div>
+            </div>
 		);
 	};
 };
@@ -176,11 +200,7 @@ const mapStateToProps = state => {
 		userEmail: state.auth.user.Email,
 		userPhone: state.auth.user.PhoneNumber,
 
-		userHistory: state.user.history,
-		articles: state.content.articles3p,
-		uTodo: state.user.todolist,
-		userLearnedProg: state.user.learnProgress.read,
-		favList: state.user.favList,
+		userReadList: state.user.learnProgress.readList,
 	};
 };
 

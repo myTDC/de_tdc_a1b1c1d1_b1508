@@ -20,37 +20,40 @@ import * as acts from "../Store/actions";
 
 class Layout extends Component {
   state = {
-    sideDrawerOpen: false
+    //sideDrawerOpen: false,
+    drawerUser_open: false,
+    drawerOrg_open: false
   };
 
   componentDidMount(){
     this.props.ReadUser(this.props.userId);
   };
 
-  componentDidUpdate() {
-    //this.props.ReadUser(this.props.userId);
-    //console.log("[Comp/Layout] Components Updated | Current UserID is: ", localStorage.getItem("userID"));
-    //console.log("[Comp/Layout] Components Updated | Current ArtList is: ", this.props.articles);
-  };
-
-  drawerToggleClickHandler = () => {
+  //################################ Methods for Navigation/Side Drawers ################################
+  drawerToggleClickHandlerUser = () => {
     this.setState((prevState) => {
-      return {sideDrawerOpen: !prevState.sideDrawerOpen};
+      return {drawerUser_open: !prevState.drawerUser_open};
+    });
+  };
+  drawerToggleClickHandlerOrg = () => {
+    this.setState((prevState) => {
+      return {drawerOrg_open: !prevState.drawerOrg_open};
     });
   };
 
   backdropClickHandler = () => {
-    this.setState({sideDrawerOpen: false});
+    this.setState({drawerUser_open: false, drawerOrg_open: false});
   };
+  //################################ End of methods for Navigation/Side Drawers ################################
 
-  render() {
+  render(){
     let blackout;
 
-    if (this.state.sideDrawerOpen) {
+    if (this.state.drawerOrg_open || this.state.drawerUser_open) {
       blackout = <Blackout click={this.backdropClickHandler} />
     }
 
-    let authorizer = <button onClick={this.props.onAuth}>Login</button>;
+    //let authorizer = <button onClick={this.props.onAuth}>Login</button>;
 
     let signup = (
       <SignUpHero clicked={this.props.onAuth} heroAction="Lift Off" />
@@ -63,31 +66,36 @@ class Layout extends Component {
       header = (
         <header className="App-header">
           <Navbar 
-            drawerClickHandler={this.drawerToggleClickHandler}
+            drawerClickHandlerUser={this.drawerToggleClickHandlerUser}
+            drawerClickHandlerOrg={this.drawerToggleClickHandlerOrg}
             userNameGiven={this.props.userNameGiven}
             userOrgDesig={this.props.userNameFamily}
             uPic={this.props.userPic} />
         </header>
       );
-      authorizer = (
-        <section>
-      {/*<button onClick={this.props.onLogOut}>Logout</button>*/}
+      // authorizer = (
+      //   <section>
+      // {/*<button onClick={this.props.onLogOut}>Logout</button>*/}
 
-          {/* <h2>{this.props.userNameGiven}</h2>
-                        <h3>{this.props.userNameFamily}</h3>
-                        <img src={this.props.userPic} alt="Users DP" />
-                        <h4>{this.props.userEmail}</h4>
-                        <h4>{this.props.userPhone}</h4> */}
-        </section>
-      );
+      //     {/* <h2>{this.props.userNameGiven}</h2>
+      //                   <h3>{this.props.userNameFamily}</h3>
+      //                   <img src={this.props.userPic} alt="Users DP" />
+      //                   <h4>{this.props.userEmail}</h4>
+      //                   <h4>{this.props.userPhone}</h4> */}
+      //   </section>
+      // );
     }
     const dash_base = (
       <section>
-        <Drawer show={this.state.sideDrawerOpen}>{"org-timeline"}</Drawer>
+        <Drawer 
+          drawerUser={this.state.drawerUser_open} 
+          drawerOrg={this.state.drawerOrg_open}
+          //dataList={}
+          />
         {blackout}  
         {signup}
         <br />
-        {authorizer}
+        {/*authorizer*/}
         <br />
       </section>
     );
@@ -139,10 +147,7 @@ const mapDispactchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispactchToProps
-)(Layout);
+export default connect(mapStateToProps,mapDispactchToProps)(Layout);
 
 // let asyncTester = (
 //     <button onClick={this.props.onTest}>
