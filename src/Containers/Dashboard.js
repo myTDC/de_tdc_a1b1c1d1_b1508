@@ -119,7 +119,7 @@ class Dashboard extends Component {
 							header="you have"
 							stat="03"
 							footer="favorites"
-							favList={this.props.favArtList}>
+							userFavList={this.props.userFavList}>
 							<CardTitle name="FAV READLIST" />
 						</DataCard>
 
@@ -128,7 +128,7 @@ class Dashboard extends Component {
 							header="You've read"
 							stat="08"
 							footer="articles of 30"
-							readArtList={this.props.userReadLists} >
+							userReadList={this.props.userReadList} >
 							<CardTitle name="USER JOURNEY" />
 						</DataCard>
 					</div>
@@ -152,7 +152,8 @@ const mapStateToProps = state => {
 		uTodo: state.user.todolist,
 		userLearnedProg: state.user.learnProgress.read,
 		favs: state.user.favList,
-		favArtList: state.user.favArtList,
+		
+		userFavList: state.user.favArtList,
 		userReadList: state.user.learnProgress.readList,
 
 		chartLineData: state.user.readHistoryLineData,

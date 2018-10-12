@@ -151,7 +151,7 @@ const reducer = (state = initState, action) => {
           },
           readList: {
             ...state.learnProgress.readList,
-            ...action.obj.readArticles
+            ...action.obj.readArticlesList
           }
         }
        })

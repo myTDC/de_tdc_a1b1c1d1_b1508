@@ -444,17 +444,17 @@ export const setupAnal = (uID, userHistory) => {
 		}
 		//let articleArray = Object.values(this.props.articles);    
 
-		console.log('[Act/Drawer][Tester] Main', getState());
+		console.log('[Act/Drawer][Tester] Main State: ', getState());
 		let artList = Object.values(getState().content.articles3p);
 		
-		console.log('[Act/Drawer][Tester]', artList);
+		console.log('[Act/Drawer][Tester] ArtList: ', artList);
 
 		let readArticlesList = [];
 		readArticles.forEach(element => {
 			readArticlesList.push(artList[element]);
 		});
 
-		console.log('[Act/Drawer][Tester]', readArticlesList);
+		console.log('[Act/Drawer][Tester] readArticlesList: ', readArticlesList);
 
 		console.log("[Act/User] [setupAnal] User's reading history is:", anData, 'User has read the articles: ', readArticles);
 		// readHistory.forEach(()=>{
@@ -473,8 +473,8 @@ export const setupAnal = (uID, userHistory) => {
 //############################################ End of Code to Fetch Data for Analytics based on user read history ############################################
 
 //############################################ Code for favorites ########################
-const updateFavArtList = (favList) => {
-	return getState => {
+const updateFavArtList = (favList, getState) => { //FIXME: Return Values Porperly
+//	return getState => {
 		let artList = Object.values(getState().content.articles3p);
 		let favArticlesList = [];
 
@@ -482,11 +482,11 @@ const updateFavArtList = (favList) => {
 			favArticlesList.push(artList[element]);
 		});
 		return favArticlesList;
-	};
+//	};
 };
 
 export const fetchFavorite = (uID) => {
-	return async dispatch => {
+	return async (dispatch, getState) => {
 		let userFav = [];
 		try {
 			const favRef = getUserRef(uID).child("favList");
@@ -498,8 +498,8 @@ export const fetchFavorite = (uID) => {
 
 				console.log('[Act/User] [fetchFavorite] favorites are: ', uID, userFav);
 				
-				const userFavArtList = updateFavArtList(userFav);
-				
+				let userFavArtList = updateFavArtList(userFav, getState);
+				console.log('[Act/User] [fetchFavorite] favorite Articles are (List): ', userFavArtList);
 				dispatch(asyncTriggerReducer(actionType.DASH_SET_USERFAV, {userFav, userFavArtList}//{ ...userTodos }
 				));
 			}).then(() => dispatch(readSuccess('readFavs', userFav, null)));

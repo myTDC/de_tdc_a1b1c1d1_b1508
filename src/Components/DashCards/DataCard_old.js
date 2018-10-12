@@ -92,12 +92,8 @@ const styles = ({
 const DataCard = (props) => {
     let readArticles = [{},{},{},{},{},{},{},{},{},{}];
     let favArticles =  [{},{},{},{},{},{},{},{},{},{}];
-             
-    let lister = {};
-    if(props.userFavList){
-        favArticles = Object.values(props.userFavList);
-        console.log('[Comp/DataCard] rendering favs ',favArticles);
-        lister = (
+
+		let favoritesLister = (
             <div style={styles.row}>
                 <LeftContent header= {props.header} stat={props.stat} footer={props.footer}/>
                 <div style={styles.columnRight}>
@@ -115,11 +111,9 @@ const DataCard = (props) => {
                     ))}
                 </div>
             </div>
-        );
-    }else if(props.userReadList) /*if(this.props.children === "user-history")*/{
-        readArticles = Object.values(props.userReadList);
-        console.log('[Comp/DataCard] rendering hist ',readArticles);
-        lister = (
+		);
+
+		let historyLister = (
             <div style={styles.row}>
                 <LeftContent header= {props.header} stat={props.stat} footer={props.footer}/>
                 <div style={styles.columnRight}>
@@ -138,10 +132,9 @@ const DataCard = (props) => {
                 </div>
             </div>
             
-        );
-    }
-    else{
-        lister = (
+		);
+        
+        const nodata = (
             <div style={styles.row}>
                 <LeftContent header= {props.header} stat={props.stat} footer={props.footer}/>
                 <div style={styles.columnRight}>
@@ -153,8 +146,21 @@ const DataCard = (props) => {
                         </div>
                 </div>
             </div>
-        );
-    }
+		);
+        
+		let lister = {};
+		if(props.userFavList){
+            favArticles = Object.values(props.userFavList);
+            console.log('[Comp/DataCard] rendering favs ',favArticles);
+			lister = favoritesLister;
+		}else if(props.userReadList) /*if(this.props.children === "user-history")*/{
+            readArticles = Object.values(props.userReadList);
+            console.log('[Comp/DataCard] rendering hist ',readArticles);
+			lister = historyLister;
+        }
+        else{
+            lister = nodata;
+        }
         
     return(
         <div style={styles.parent}>
