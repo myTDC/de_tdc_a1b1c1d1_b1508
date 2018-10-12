@@ -14,28 +14,6 @@ let dateNow = new Date();
 // let timeNowOld = dateObj.getMilliseconds() + dateObj.getMinutes() + "/" + dateObj.getDate() + "/" + dateObj.getMonth() + "/" + dateObj.getFullYear();
 let timeNow = dateNow.getTime();
 
-
-// const readHistory = {
-//     // new Date().getMilliseconds(): {
-//     //     id: '',
-//     //     title:''
-//     //      url: ''
-//     // }
-// }
-// let artStored = [
-//     {"ver": contentUpdateVer,
-//     "id": 31,
-//     "title": "How We Decided To Split Equity As Co-Founders",
-//     "url": "https://entrepreneurshandbook.co/how-we-decided-to-split-equity-as-co-founders-of-digital-press-cffd464232dd",
-//     "image": "https://cdn-images-1.medium.com/max/2000/1*9yqQX9xPZ95KisyOlHkWGQ.jpeg",
-//     "category": "Best Practices",
-//     "length": "4 Mins",
-//     "read": 0,
-//     "author": "Nicolas Cole",
-//     "publisher": "Medium/Entrepreneur's Handbook"},
-// ];
-
-
 //################ Common Helper Functions ################
 const asyncTriggerReducer = (type, object) => {
 	console.log('[Act/User][asyncTrigger] Action Dispatched: ', type, ' with data: ', object);
@@ -436,19 +414,6 @@ export const updateLastRead = (uID, artObj) => {
 //############################################ End of Code to Initialize and Modfiy user read history ############################################
 
 //############################################ Code to Fetch Data for Analytics based on user read history ############################################
-//Julian day = Monday, Tuesday, etc. starts at 0 goes up to 6.
-
-// const historyLoader = (id) => {
-//   return (dispatch, getState) => {
-//     if (getState().user.readHistory) {
-//       const uReadHistory = getState().user.readHistory;
-//     } else {
-//       //TODO: Get dat from fb and write it in the state.
-//     }
-
-
-//   }
-// }
 
 export const setupAnal = (uID, userHistory) => {
 	//console.log("[Act/User] [setupAnal] for uID:", uID);
@@ -621,3 +586,39 @@ export function fetchPostsIfNeeded(subreddit) {
     }
   }
   */
+
+//Julian day = Monday, Tuesday, etc. starts at 0 goes up to 6.
+
+// const historyLoader = (id) => {
+//   return (dispatch, getState) => {
+//     if (getState().user.readHistory) {
+//       const uReadHistory = getState().user.readHistory;
+//     } else {
+//       //TODO: Get dat from fb and write it in the state.
+//     }
+
+
+//   }
+// }
+
+
+// const readHistory = {
+//     // new Date().getMilliseconds(): {
+//     //     id: '',
+//     //     title:''
+//     //      url: ''
+//     // }
+// }
+// let artStored = [
+//     {"ver": contentUpdateVer,
+//     "id": 31,
+//     "title": "How We Decided To Split Equity As Co-Founders",
+//     "url": "https://entrepreneurshandbook.co/how-we-decided-to-split-equity-as-co-founders-of-digital-press-cffd464232dd",
+//     "image": "https://cdn-images-1.medium.com/max/2000/1*9yqQX9xPZ95KisyOlHkWGQ.jpeg",
+//     "category": "Best Practices",
+//     "length": "4 Mins",
+//     "read": 0,
+//     "author": "Nicolas Cole",
+//     "publisher": "Medium/Entrepreneur's Handbook"},
+// ];
+

@@ -58,26 +58,3 @@ export const logout = () => {
         type: actionTypes.AUTH_LOGOUT
     };
 };
-
-export const loadState = () => {
-    try{
-        const serializedState = localStorage.getItem('authState');
-        if(serializedState === null){
-            return undefined;
-        }
-        return JSON.parse(serializedState);
-    }
-    catch(err){
-        console.log('[Act/Auth] -> [loadState()] Error Getting Serilaized State');
-        return undefined;
-    }
-};
-
-export const setState = (state) => {
-    try {
-        const serializedState = JSON.stringify(state);
-        localStorage.setItem('authState', serializedState);
-    } catch (err) {
-        console.log('[Act/Auth] -> [setState()] Error Setting Serilaized State');
-    }
-}

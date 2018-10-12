@@ -1,6 +1,6 @@
 export { fbSignIn, logout } from './auth';
 
-export { loadState, setState } from './auth';
+export { loadState, setState } from './utils';
 
 export { logArtList, writeToFB, readfromFB, /*reader*/ } from './content';
 
