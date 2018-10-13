@@ -42,6 +42,7 @@ const styles = ({
     todoitem: {
         display: 'flex',
         justifyContent: 'space-between',
+        alignItems: 'center',
         width: '87%',
         height: '19%',
         padding: 0,
@@ -54,12 +55,13 @@ const styles = ({
     },
     todotext: {
         fontFamily: 'Raleway, sans-serif',
-        fontSize: '20px',
+        fontSize: '1.2rem',
         fontWeight: '500',
         color: '#4e4e4e',
-        marginTop:5,
-        marginRight:0,
-        marginLeft:18,
+        maxWidth: '70%',
+        marginTop: 5,
+        marginRight: 0,
+        marginLeft: 18,
         padding: 0,
     },
 
