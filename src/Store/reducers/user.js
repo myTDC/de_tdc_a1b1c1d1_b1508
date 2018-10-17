@@ -71,9 +71,9 @@ const initState = {
   },
   readHistoryLineData: [1, 2, 1, 6, 1, 2, 1],
   readHistoryLineLabel: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-  readHistoryRadarData: [4, 1, 3, 4, 2, 3],
-  readHistoryRadarDataBaseline: [4, 4, 4, 4, 4, 4],
-  readHistoryRadarLabel: ["Best Practices", "Investment", "Product Design", "Charisma", "Prgramming", "Leadership"],
+  readHistoryRadarData: [4, 1, 3, 4, 2, 3, 2],
+  readHistoryRadarDataBaseline: [5, 5, 5, 5, 5, 5, 5],
+  readHistoryRadarLabel: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
 };
 
 

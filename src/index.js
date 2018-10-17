@@ -36,7 +36,8 @@ const de_tdc_store = createStore(rootReducer, persistedState, composeEnhancers(a
 de_tdc_store.subscribe(throttle(() => { //throttle runs the encapsulated funciton only once in the specified timer (miliseconds)
     setState({
         auth: de_tdc_store.getState().auth,
-        content: de_tdc_store.getState().content
+        content: de_tdc_store.getState().content,
+        user: de_tdc_store.getState().user
     });
 }), 1000);
 

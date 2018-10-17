@@ -16,24 +16,7 @@ const styles = ({
     drawer: {
         color: '#EEF',
         height: '100%',
-        overflowY: 'true',
-    },
-    parent :{
-        position: 'relative',
-        width:'100%',
-        margin: 0,
-        padding: '4px',
-    },
-    row: {
-        display: 'flex',
-        width: '100%',
-        height: 250,
-        overflow: 'hidden',
-        alignItems: 'flex-start',
-        padding: 0,
-        flexWrap: 'wrap',
-        backgroundColor: '#FFF8E7',
-        boxShadow: '3px 3px 4px #E0E0E0',
+        overflowY: 'visible',
     },
     /* progressBar: {
         position: 'absolute',
@@ -46,22 +29,12 @@ const styles = ({
         zIndex: '100',
     }, */
     
-    // columnRight: {
-    //     flex: 1,
-    //     width: '79%',
-    //     maxHeight: '80%',
-    //     marginTop: 24,
-    //     marginBottom: 24,
-    //     marginLeft: 8,
-    //     overflow: 'scroll',
-    //     padding: 0,
-    // },
     articleCard: {
         display: 'flex',
         justifyContent: 'space-between',
         borderBottom: '3px solid #D0FFE9',
         width: '96%',
-        height: '20%',
+        height: '8vh',
         padding: 0,
         marginLeft: '2%',
         marginBottom: '4%',
@@ -102,6 +75,48 @@ const styles = ({
         marginRight:20,
         padding: 0,
     },
+    // todoitem: {
+    //     display: 'flex',
+    //     justifyContent: 'space-between',
+    //     alignItems: 'center',
+    //     width: '87%',
+    //     height: '8vh',
+    //     padding: 0,
+    //     margin: 4,
+    //     marginLeft: 20,
+    //     marginBottom: 8,
+    //     borderRadius: '.2vh',
+    //     background: '#F9F9F9',
+    //     boxShadow: '1px 1px 3px rgba(0,0,0,16%)',
+    //     fontFamily: 'Raleway, sans-serif',
+    //     fontSize: '1rem',
+    //     fontWeight: '600',
+    //     color: '#4e4e4e',
+    // },
+
+    // todotext: {
+    //     fontFamily: 'Raleway, sans-serif',
+    //     fontSize: '1rem',
+    //     fontWeight: '600',
+    //     color: '#4e4e4e',
+    //     maxWidth: '70%',
+    //     marginTop: 5,
+    //     marginRight: 0,
+    //     marginLeft: 18,
+    //     padding: 0,
+    //     alignText: 'left',
+    // },
+
+    CdatesText: {
+        fontFamily: 'Raleway, sans-serif',
+        fontSize: '13px',
+        fontWeight: '700',
+        color: '#4e4e4e',
+        marginTop: 0,
+        marginRight:18,
+        lineHeight: 0.3,
+        padding: 0,
+    },
 });
 	
 
@@ -119,11 +134,48 @@ class Drawer extends Component {
         // const history = Object.values(this.props.userLearnedProg);
         
         const readArticles = Object.values(this.props.userReadList);
+        let todoList = Object.values(this.props.userTodoList||{},{},{},{},{},{},{});
+
+        const datify=(time)=> {
+            const dateObj = new Date(time);
+            //let timeNowOld = 
+            return dateObj.getDate() + "/" + dateObj.getMonth() + "/" + dateObj.getFullYear();
+        };
+        const datifyObj=(time)=> {
+            const datedObj = new Date(time);
+            
+            let dateObj = {
+                date: datedObj.getDate(),
+                month: datedObj.getMonth(),
+                year: datedObj.getFullYear()
+            };
+
+            console.log('[Cont/Drawer/datifyOb] date:', dateObj.date);
+            return dateObj;
+        };
         
         //let readArticles = history.filter((val, artList) => {
         //     console.log(readArticles);
         //     return artList[val];
         // });
+
+        let pendingTodoCount = 5;
+
+        const drawerTodo = (
+            <React.Fragment>
+                <h1 > ToDos: {pendingTodoCount} </h1>
+                <h4> You should consider doing the following to make the most of TDC </h4>
+                {todoList.map(todoList => (
+                    <div className={'todoitem'} key={todoList.title + todoList.setOn}>
+                        <section>
+                            <h4 className={'completeByDate'}> {datify(todoList.setOn)} </h4> 
+                            <h4 className={'completeByDate'}> {datifyObj(todoList.tobecompletedBy).date} </h4>
+                        </section>
+                        <p className={'todoText'}> {todoList.title} </p>    
+                    </div>
+                ))}
+            </React.Fragment>
+        )
 
 		const tdcTimelineDrawer = (
             <React.Fragment>
@@ -168,10 +220,15 @@ class Drawer extends Component {
             userDrawerClasses = 'drawer user open';
             drawer = userHistoryDrawer;
         }
+        else if (this.props.drawerTodo){
+            orgDrawerClasses = 'drawer tdc open';
+            drawer = drawerTodo;
+        }
         else if (this.props.drawerOrg){
             orgDrawerClasses = 'drawer tdc open';
             drawer = tdcTimelineDrawer;
         }
+
 		// if(this.props.children === "org-timeline"){
 		// 	drawer = tdcTimelineDrawer;
 		// }else /*if(this.props.children === "user-history")*/{
@@ -200,7 +257,8 @@ const mapStateToProps = state => {
 		userEmail: state.auth.user.Email,
 		userPhone: state.auth.user.PhoneNumber,
 
-		userReadList: state.user.learnProgress.readList,
+        userReadList: state.user.learnProgress.readList,
+        userTodoList: state.user.todolist,
 	};
 };
 
@@ -211,3 +269,32 @@ const mapDispactchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispactchToProps)(Drawer);
+
+/* 
+<View style={{
+        flex: 1,
+        width: 500,
+        height: 500,
+      }}>
+        <View style={{
+          flex: 1,
+          width: 100,
+          height: 100,
+          justifyContent: 'space-around',
+          alignItems: 'center',
+          flexGrow: 0,
+        }}>
+          <View style={{
+            flex: 1,
+            width: 80,
+            height: 80,
+          }} />
+        </View>
+        <View style={{
+          flex: 1,
+          width: 100,
+          height: 100,
+          flexGrow: 1,
+        }} />
+      </View>
+*/

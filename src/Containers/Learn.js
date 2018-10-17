@@ -13,7 +13,7 @@ import * as acts from '../Store/actions';
 class Learn extends Component {
     componentDidMount() {
         this.props.readArticlesFB();
-        this.props.fetchFavorites(this.props.uID);
+        this.props.fetchFavorites(this.props.uID, this.props.articles);
         console.log('ArtList is: ',this.props.articles);
         //this.favTable(this.props.uID, this.props.articles);
         //this.props.ReadUser(this.props.uID);
@@ -89,7 +89,7 @@ const mapStateToProps = state => {
 const mapDispactchToProps = dispatch => {
     return {
         readArticlesFB: () => dispatch(acts.readfromFB()),
-        fetchFavorites: (uID) => dispatch(acts.fetchFavorite(uID)),
+        fetchFavorites: (uID, artList) => dispatch(acts.fetchFavorite(uID, artList)),
         updateFavorites: (uID, list) => dispatch(acts.writeFavList(uID, list)),
         //storeArt: (arts) => dispatch(acts.setVisited(arts)),
         //ReadUser: (uID) => dispatch(acts.readUserHistory(uID)),

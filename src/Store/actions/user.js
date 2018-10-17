@@ -336,7 +336,7 @@ const uReadFailure = error => {
 };
 
 export const updateUserReadHistory = (found, uID, id, art, Readart) => {
-
+	//Called in Container/Learn
 	const readArts = dbRef.child("users/" + uID + "/readHistory");
 	const contentUpdateVersion = "b1008";
 	const updates = {};
@@ -473,9 +473,9 @@ export const setupAnal = (uID, userHistory) => {
 //############################################ End of Code to Fetch Data for Analytics based on user read history ############################################
 
 //############################################ Code for favorites ########################
-const updateFavArtList = (favList, getState) => { //FIXME: Return Values Porperly
+const updateFavArtList = (favList, arts) => { //FIXME: Return Values Porperly
 //	return getState => {
-		let artList = Object.values(getState().content.articles3p);
+		let artList = Object.values(arts);
 		let favArticlesList = [];
 
 		favList.forEach(element => {
@@ -485,8 +485,8 @@ const updateFavArtList = (favList, getState) => { //FIXME: Return Values Porperl
 //	};
 };
 
-export const fetchFavorite = (uID) => {
-	return async (dispatch, getState) => {
+export const fetchFavorite = (uID, artList) => {
+	return async dispatch => {
 		let userFav = [];
 		try {
 			const favRef = getUserRef(uID).child("favList");
@@ -496,12 +496,11 @@ export const fetchFavorite = (uID) => {
 					userFav.push(favData);
 				});
 
-				console.log('[Act/User] [fetchFavorite] favorites are: ', uID, userFav);
+				//console.log('[Act/User] [fetchFavorite] favorites are: ', uID, userFav);
 				
-				let userFavArtList = updateFavArtList(userFav, getState);
+				let userFavArtList = updateFavArtList(userFav, artList);
 				console.log('[Act/User] [fetchFavorite] favorite Articles are (List): ', userFavArtList);
-				dispatch(asyncTriggerReducer(actionType.DASH_SET_USERFAV, {userFav, userFavArtList}//{ ...userTodos }
-				));
+				dispatch(asyncTriggerReducer(actionType.DASH_SET_USERFAV, {userFav, userFavArtList}/*{ ...userTodos }*/));
 			}).then(() => dispatch(readSuccess('readFavs', userFav, null)));
 		} catch (err) {
 			dispatch(readFailure(err));

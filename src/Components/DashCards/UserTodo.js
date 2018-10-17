@@ -102,7 +102,6 @@ const UserTodo = (props) => {
             <div style={styles.row}>
                 <LeftContent header= {props.header} stat={props.stat} footer={props.footer}/>
                 <div style={styles.columnRight}>
-
                 {todoList.map(todoList => (
                     <div style={styles.todoitem} key={todoList.title + todoList.setOn}>
                         <h4 style={styles.todotext}> {todoList.title} </h4>
@@ -112,7 +111,6 @@ const UserTodo = (props) => {
                         </section>
                     </div>
                 ))}
-                    
                 </div>
             </div>
         </div>
