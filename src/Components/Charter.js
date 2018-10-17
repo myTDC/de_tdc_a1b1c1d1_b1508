@@ -32,7 +32,7 @@ const Charter = (props) => {
             strokeColor: "rgba(22,223,130,1)",
             pointColor: "#fff",
             pointStrokeColor: "rgba(50, 74, 92, 1)",
-            pointHighlightFill: "#fff",
+            pointHighlightFill: "rgba(22,223,130,1)",
             pointHighlightStroke: "rgba(22,223,130,1)",
             data: props.chartData //|| lineSampleData
         }//,{
@@ -53,12 +53,12 @@ const Charter = (props) => {
         labels: props.chartLabels,// || radarSampleLabels,
         datasets: [{
             label: "Topic Coverage",
-            fillColor: "rgba(50, 74, 92, 0.8)",
-            strokeColor: "rgba(220,220,220,1)",
-            pointColor: "rgba(220,220,220,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
+            fillColor: "rgba(50, 74, 92, 0.7)",
+            strokeColor: "rgba(22,223,130,1)",
+            pointColor: "#fff",
+            pointStrokeColor: "rgba(50, 74, 92, 1)",
+            pointHighlightFill: "rgba(22,223,130,1)",
+            pointHighlightStroke: "rgba(50, 74, 92, 1)",
             data: props.chartData //|| radarSampleData
         }, {
             label: "Total Articles",
@@ -77,19 +77,19 @@ const Charter = (props) => {
         color: "#16df82",
         highlight: "#5AD3D1",
         label: "Articles Read"
-    }, {
-        value: 25,
-        color: "#CFD8DC",
-        highlight: "#FF5A5E",
-        label: "Articles Unread"
-    },
-
+    }, 
         // {
         //     value: 100,
         //     color: "#FDB45C",
         //     highlight: "#FFC870",
         //     label: "Yellow"
         // }
+    {
+        value: 25,
+        color: "#CFD8DC",
+        highlight: "#FF5A5E",
+        label: "Articles Unread"
+    },
     ];
 
     let barData = {
@@ -161,7 +161,7 @@ const Charter = (props) => {
         scaleShowGridLines: true,
 
         //String - Colour of the grid lines
-        scaleGridLineColor: "rgba(0,0,0,.05)",
+        scaleGridLineColor: "rgba(0,0,0,.1)",
 
         //Number - Width of the grid lines
         scaleGridLineWidth: 1,
@@ -170,7 +170,7 @@ const Charter = (props) => {
         scaleShowHorizontalLines: true,
 
         //Boolean - Whether to show vertical lines (except Y axis)
-        scaleShowVerticalLines: true,
+        scaleShowVerticalLines: false,
 
         //Boolean - Whether the line is curved between points
         bezierCurve: true,
@@ -185,7 +185,7 @@ const Charter = (props) => {
         pointDotRadius: 4,
 
         //Number - Pixel width of point dot stroke
-        pointDotStrokeWidth: 1,
+        pointDotStrokeWidth: 2,
 
         //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
         pointHitDetectionRadius: 20,
@@ -194,7 +194,7 @@ const Charter = (props) => {
         datasetStroke: true,
 
         //Number - Pixel width of dataset stroke
-        datasetStrokeWidth: 2,
+        datasetStrokeWidth: 3,
 
         //Boolean - Whether to fill the dataset with a colour
         datasetFill: true,
@@ -246,19 +246,19 @@ const Charter = (props) => {
         angleLineColor: "rgba(0,0,0,0)",
 
         //Number - Pixel width of the angle line
-        angleLineWidth: 1,
+        angleLineWidth: 2,
 
         //Number - Interval at which to draw angle lines ("every Nth point")
         angleLineInterval: 1,
 
         //String - Point label font declaration
-        pointLabelFontFamily: "'Raleway'",
+        pointLabelFontFamily: "'Roboto'",
 
         //String - Point label font weight
         pointLabelFontStyle: "normal",
 
         //Number - Point label font size in pixels
-        pointLabelFontSize: 10,
+        pointLabelFontSize: 12,
 
         //String - Point label font colour
         pointLabelFontColor: "#222222",
@@ -267,10 +267,10 @@ const Charter = (props) => {
         pointDot: true,
 
         //Number - Radius of each point dot in pixels
-        pointDotRadius: 3,
+        pointDotRadius: 4,
 
         //Number - Pixel width of point dot stroke
-        pointDotStrokeWidth: 1,
+        pointDotStrokeWidth: 2,
 
         //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
         pointHitDetectionRadius: 20,
@@ -279,7 +279,7 @@ const Charter = (props) => {
         datasetStroke: true,
 
         //Number - Pixel width of dataset stroke
-        datasetStrokeWidth: 2,
+        datasetStrokeWidth: 3,
 
         //Boolean - Whether to fill the dataset with a colour
         datasetFill: true,
