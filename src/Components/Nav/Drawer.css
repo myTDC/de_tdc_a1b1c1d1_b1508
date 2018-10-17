@@ -1,45 +1,60 @@
 .drawer {
-    height: 100%;
-    background: #042432;
-    box-shadow: 1px 0px 7px rgba(0, 0, 0, 0.5);
-    position: fixed;
-    top: 0;
-    left: 0;
+  height: 100%;
+  background: #042432;
+  box-shadow: 1px 0px 7px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  width: 70%;
+  max-width: 320px;
+  z-index: 200;
+  transition: transform 0.3s ease-out;
+}
+
+@media (max-width: 1280px) {
+  .drawer {
     width: 70%;
-    max-width: 400px;
-    z-index: 200;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease-out;
+    max-width: 320px;
   }
-  
-  .drawer.open {
-    transform: translateX(0);
-  }
-  
-  .drawer ul {
-    height: 100%;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  .drawer li {
-    margin: 0.5rem 0;
-  }
-  
-  .drawer a {
-    color: #521751;
-    text-decoration: none;
-    font-size: 1.2rem;
-  }
-  
-  .drawer a:hover,
-  .drawer a:active {
-    color: #fa923f;
-  }
-  
-  /* @media (min-width: 769px) {
+}
+
+.drawer.tdc {
+  left: 0;
+  transform: translateX(-100%);
+}
+
+.drawer.user {
+  right: 0;
+  transform: translateX(100%);
+}
+
+.drawer.open {
+  transform: translateX(0);
+}
+
+.drawer ul {
+  height: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.drawer li {
+  margin: 0.5rem 0;
+}
+
+.drawer a {
+  color: #521751;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.drawer a:hover,
+.drawer a:active {
+  color: #fa923f;
+}
+
+/* @media (min-width: 769px) {
       .drawer {
           display: none;
       }

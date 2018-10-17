@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './ArtCard.css';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -17,12 +17,12 @@ let styles = {
 	},
 };
 
-const Greeting =(Fav) => {
-	if (!Fav) {
-	  return <FavoriteDisable />;
-	}
-	return <FavoriteEnable/>;
-  }
+// const Greeting =(Fav) => {
+// 	if (!Fav) {
+// 	  return <FavoriteDisable />;
+// 	}
+// 	return <FavoriteEnable/>;
+//   }
 const card = (props) => {
 	 let fav = props.isFav;
 	 let read = props.isRead;
@@ -34,11 +34,11 @@ const card = (props) => {
 					image={props.image}
 					title={props.title} />
 
-				<a href={props.url} target="_blank">
+				<a href={props.url} target="_blank" rel="noopener noreferrer">
 					<div onClick={props.onclick} className="grad"> </div></a>
 
 				<section className="cardContent">
-					<a href={props.url} target="_blank">
+					<a href={props.url} target="_blank" rel="noopener noreferrer">
 						<div className="cont" onClick={props.onclick}>
 							<h2>{props.title}</h2>
 							<h3>{props.length} | #{props.category}</h3>

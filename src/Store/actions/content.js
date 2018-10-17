@@ -101,6 +101,15 @@ export const readSuccess = (result) => {
         };
 };
 
+const readFailure = (error) => {
+    console.log('[Act/Content] [readFailure] -> Read from FB Failed with Error:', error);
+    return{type: null};
+}
+
+// const listenToFB = () => {
+    
+// };
+
 // export const reader = () => {
 //     //let list= {result};
 //     return async dispatch =>{
@@ -110,12 +119,3 @@ export const readSuccess = (result) => {
 //     }
     
 // }
-
-const readFailure = (error) => {
-    console.log('[Act/Content] [readFailure] -> Read from FB Failed with Error:', error);
-    return{type: null};
-}
-
-// const listenToFB = () => {
-    
-// };

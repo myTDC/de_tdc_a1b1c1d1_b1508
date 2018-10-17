@@ -13,7 +13,8 @@ class Participate extends Component {
     render(){
         return(
             <div className="participate">
-             <h1> Enter you participation info here </h1>
+            <h1>Under Construction</h1>
+             <h1> you would enter you participation info here </h1>
            </div>
         );
     }

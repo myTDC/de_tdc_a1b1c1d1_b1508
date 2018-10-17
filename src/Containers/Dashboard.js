@@ -41,25 +41,34 @@ class Dashboard extends Component {
 		this.props.loadTodo(this.props.userId);
 	}
 
-	hydrateReadistory() {
-		// const artlist = this.props.articles;
-		// const history = this.props.userLearnedProg;
-	}
+	// hydrateFavs = (articleList, favs) => {
+	// 	const artList = Object.values(articleList);
+	// 	favs.forEach(element => {
+	// 		//TODO: Query the Artlist to find the items with the ids in favs.			
+	// 	});
+	// }
+	// hydrateReadistory() {
+	// 	const artlist = this.props.articles;
+	// 	const history = this.props.userLearnedProg;
+	// 	const favs = this.props.favs;
+
+	// 	const favList = this.hydrateFavs(artlist, favs);
+	// let userReadHistory = Object.values(this.props.userHistory);
+		
+	// }
 
 	render() {
-		const writetofb = () => {
-			this.props.writeTest(
-				this.props.userId,
-				this.props.userNameGiven,
-				this.props.userNameFamily,
-				this.props.userEmail,
-				this.props.userPic,
-				this.props.userPhone
-			);
-		};
+		// const writetofb = () => {
+		// 	this.props.writeTest(
+		// 		this.props.userId,
+		// 		this.props.userNameGiven,
+		// 		this.props.userNameFamily,
+		// 		this.props.userEmail,
+		// 		this.props.userPic,
+		// 		this.props.userPhone
+		// 	);
+		// };
 
-		let userReadHistory = Object.values(this.props.userHistory);
-		
 		return (
 				<div className="dashboard">
 					<div className="cardContainer">
@@ -109,7 +118,8 @@ class Dashboard extends Component {
 							type="Favorites"
 							header="you have"
 							stat="03"
-							footer="favorites">
+							footer="favorites"
+							userFavList={this.props.userFavList}>
 							<CardTitle name="FAV READLIST" />
 						</DataCard>
 
@@ -118,13 +128,11 @@ class Dashboard extends Component {
 							header="You've read"
 							stat="08"
 							footer="articles of 30"
-							history={userReadHistory} >
+							userReadList={this.props.userReadList} >
 							<CardTitle name="USER JOURNEY" />
 						</DataCard>
 					</div>
-					<h1 onClick={writetofb}>
-						Welcome to your Dashboard. The heart of DE.
-          			</h1>
+
 				</div>
 		);
 	};
@@ -143,6 +151,10 @@ const mapStateToProps = state => {
 		articles: state.content.articles3p,
 		uTodo: state.user.todolist,
 		userLearnedProg: state.user.learnProgress.read,
+		favs: state.user.favList,
+		
+		userFavList: state.user.favArtList,
+		userReadList: state.user.learnProgress.readList,
 
 		chartLineData: state.user.readHistoryLineData,
 		chartLineLabels: state.user.readHistoryLineLabel,
@@ -238,3 +250,8 @@ export default connect(mapStateToProps, mapDispactchToProps)(Dashboard);
 //     </section>
 // );
 //Beginning DomRender
+
+
+// <h1 onClick={writetofb}>
+// Welcome to your Dashboard. The heart of DE.
+// </h1>

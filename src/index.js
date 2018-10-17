@@ -26,6 +26,7 @@ const rootReducer = combineReducers({
     user: userRed//,
     // test: testred
 });
+
 const persistedState = loadState();
 //const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -33,7 +34,10 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const de_tdc_store = createStore(rootReducer, persistedState, composeEnhancers(applyMiddleware(reduxThunk)));
 
 de_tdc_store.subscribe(throttle(() => { //throttle runs the encapsulated funciton only once in the specified timer (miliseconds)
-    setState({auth: de_tdc_store.getState().auth});
+    setState({
+        auth: de_tdc_store.getState().auth,
+        content: de_tdc_store.getState().content
+    });
 }), 1000);
 
 const app = (

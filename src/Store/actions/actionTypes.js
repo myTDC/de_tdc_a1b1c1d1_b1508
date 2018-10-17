@@ -18,6 +18,7 @@ export const DASH_UPDATE_PROGRESS = "UPDATE_PROGRESS";
 export const DASH_SET_USERHISTORY = "SET_USER_HISTORY";
 export const DASH_SET_USERFAV = "SET_USER_FAV";
 export const DASH_WRITE_USERFAV = "WRITE_USER_FAV";
+export const DASH_WRITE_USERFAVLIST = "WRITE_USER_FAV_LIST";
 
 //from article actions
 export const CONT_READ_ARTICLES = "READ_ARTICLES";

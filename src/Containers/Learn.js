@@ -14,6 +14,7 @@ class Learn extends Component {
     componentDidMount() {
         this.props.readArticlesFB();
         this.props.fetchFavorites(this.props.uID);
+        console.log('ArtList is: ',this.props.articles);
         //this.favTable(this.props.uID, this.props.articles);
         //this.props.ReadUser(this.props.uID);
     }
@@ -41,14 +42,16 @@ class Learn extends Component {
 
     returnFav = (id, list) => {
         if(list.includes(id))
-        return 1
-        return 0
+            return 1
+        else
+            return 0
     }
 
     returnRead = (id) => {
         if(this.props.history.hasOwnProperty("b1008_" + id))
-        return 1
-        return 0
+            return 1
+        else 
+            return 0
     }
 
     render() {
