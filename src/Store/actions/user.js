@@ -493,7 +493,7 @@ export const setupAnal = (uID, userHistory) => {
       }
     }
     for (i = 0; i < dates.length; i++) {
-      if ((timeNow - dates[i].getTime()) < 604800000)
+      if ((timeNow - dates[i].getTime()) < 518400000)
         anData[dates[i].getDay()] += 1;
     }
     //let articleArray = Object.values(this.props.articles);    
@@ -588,3 +588,14 @@ export const ecoSet = uID => {
 //     url: "",
 //     isComplete: false
 // }
+
+// var promise = new Promise(function(resolve, reject) {
+//   // do a thing, possibly async, then…
+
+//   if (/* everything turned out fine */) {
+//     resolve("Stuff worked!");
+//   }
+//   else {
+//     reject(Error("It broke"));
+//   }
+// });

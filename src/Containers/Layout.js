@@ -17,14 +17,23 @@ import OldNavbar from "../Components/Navbar";
 
 //Actions
 import * as acts from "../Store/actions";
-
+import { instanceOf } from "prop-types";
+ 
 class Layout extends Component {
   state = {
-    sideDrawerOpen: true
+    sideDrawerOpen: true,
+    tester:{},
   };
 
+  componentNullStatus = (comp) => {
+      if(Object.keys(comp).length !== 0)
+        return false;
+    else return true;
+  };
+  
   componentDidMount(){
     this.props.ReadUser(this.props.userId);
+    console.log("Testing null status of tester", this.componentNullStatus(this.state.tester));
   };
 
   componentDidUpdate() {
@@ -32,8 +41,6 @@ class Layout extends Component {
     console.log("[Comp/Layout] Components Updated | Current UserID is: ", localStorage.getItem("userID"));
     console.log("[Comp/Layout] Components Updated | Current ArtList is: ", this.props.articles);
   };
-
-  
 
   drawerToggleClickHandler = () => {
     this.setState((prevState) => {
@@ -46,6 +53,7 @@ class Layout extends Component {
   };
 
   render() {
+     
     let blackout;
 
     if (this.state.sideDrawerOpen) {
