@@ -1,5 +1,8 @@
 import * as actionTypes from './actionTypes';
 import {authRef, provider} from '../config/fb';
+
+//Actions
+import * as acts from "../actions";
 // import localforage from 'localforage';
 
 export const fbSignIn = (/*Takes Payload of the associated Action*/) => {
@@ -17,6 +20,9 @@ export const fbSignIn = (/*Takes Payload of the associated Action*/) => {
             localStorage.setItem('userID', userId);
 
             dispatch(logIn(token, user, uInfo, userId));
+            console.log("[Act/Auth] Trying Multi Dispatcher");
+            dispatch(acts.addTodo(userId));
+
             // ...
           }).catch(error => {
             // Handle Errors here.

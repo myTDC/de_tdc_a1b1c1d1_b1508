@@ -13,6 +13,9 @@ import {
 let dateNow = new Date();
 // let timeNowOld = dateObj.getMilliseconds() + dateObj.getMinutes() + "/" + dateObj.getDate() + "/" + dateObj.getMonth() + "/" + dateObj.getFullYear();
 let timeNow = dateNow.getTime();
+let timeCompleteby_d1 = timeNow+86400000;
+let timeCompleteby_d15 = timeNow+1296000000;
+let timeCompleteby_d30 = timeNow+2592000000;
 
 //################ Common Helper Functions ################
 const asyncTriggerReducer = (type, object) => {
@@ -243,12 +246,14 @@ export const readTodo = uID => {
 }
 
 //################################################### Dummy Data to supprt user ToDo data ################################################
+//getTime gives value in miliseconds
+//30 days = 2592000000 miliseconds
 let userTodo = {
 	1: {
 		title: "Continue learning where you left off",
 		desc: "Complete the last learning material you'd accessed..",
 		setOn: timeNow,
-		tobecompletedBy: "30th Sept 2018", //new Date(new Date()+(12*3600)),
+		tobecompletedBy: timeCompleteby_d1, //new Date(new Date()+(12*3600)),
 		source: "User",
 		url: "",
 		isComplete: false
@@ -257,34 +262,34 @@ let userTodo = {
 		title: "Seek Investment at TDC Elevate '18",
 		desc: "Participate in TDC Elevate through DE portal and test your knowledge by pitching directly to the investors and analysts.",
 		setOn: timeNow,
-		tobecompletedBy: "30th Sept 2018", //new Date(new Date()+(12*3600)),
+		tobecompletedBy: timeCompleteby_d30, //new Date(new Date()+(12*3600)),
 		source: "System",
 		url: "",
 		isComplete: false
 	},
 	3: {
-		title: "Meet and Greet - Founders Club",
-		desc: "Join fellow founders and potential investors for the much awaited fellow dinner..",
+		title: "Fill Up the Lean Canvas",
+		desc: "Use the powers of the lean canvas to find out the gaps and biases in your idea",
 		setOn: timeNow,
-		tobecompletedBy: "30th Sept 2018", //new Date(new Date()+(12*3600)),
+		tobecompletedBy: timeCompleteby_d15, //new Date(new Date()+(12*3600)),
 		source: "System",
 		url: "",
 		isComplete: false
 	},
 	4: {
-		title: "Link your LinkedIn account to TDC DE",
-		desc: "LinkedIn is a major medium for professionals and we highly recommend that you share your progress on the platform. Start by providing your linkedIn Profile Link on the dashboard",
+		title: "Do a SWOT Analysis for your team",
+		desc: "Gain control over the unknowns by knowing where you are at right now. Map out your Strengths Weaknesses Opportunities and Threats",
 		setOn: timeNow,
-		tobecompletedBy: "30th Sept 2018", //new Date(new Date()+(12*3600)),
+		tobecompletedBy: timeCompleteby_d15, //new Date(new Date()+(12*3600)),
 		source: "System",
 		url: "",
 		isComplete: false
 	},
 	5: {
-		title: "Get some PR Capital by Sharing your learn progress on facebook ",
-		desc: "Share your leanring progress with the world so they know you're ready to face all the challenges. #AarambhHaiPrachand",
+		title: "Prioritize your tasks via Eisenhower Matrix",
+		desc: "User the wisdom of Dwight D. Eisenhower the 34th President of the US to Bring Clarity and make the most out of your work hours",
 		setOn: timeNow,
-		tobecompletedBy: "30th Sept 2018", //new Date(new Date()+(12*3600)),
+		tobecompletedBy: timeCompleteby_d1, //new Date(new Date()+(12*3600)),
 		source: "System",
 		url: "",
 		isComplete: false

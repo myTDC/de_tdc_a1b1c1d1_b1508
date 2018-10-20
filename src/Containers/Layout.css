@@ -1,7 +1,3 @@
-::-webkit-scrollbar {
-  display: none;
-}
-
 .App {
   margin: 0px;
   width: 100%;
@@ -10,7 +6,8 @@
 }
 
 .App-header {
-  max-height: 70px;
+  max-height: 8vh;
+  height: 8vh;
   overflow: hidden;
   margin:0;
   box-shadow: 2px 2px 5px rgba(0,0,0,50%);

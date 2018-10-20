@@ -17,7 +17,7 @@ import Blackout from "../Components/Nav/Blackout";
 
 //Actions
 import * as acts from "../Store/actions";
-import { instanceOf } from "prop-types";
+//import { instanceOf } from "prop-types";
  
 class Layout extends Component {
 	state = {
@@ -72,7 +72,8 @@ class Layout extends Component {
 						drawerClickHandlerOrg={this.drawerToggleClickHandlerOrg}
 						userNameGiven={this.props.userNameGiven}
 						userOrgDesig={this.props.userNameFamily}
-						uPic={this.props.userPic} />
+						uPic={this.props.userPic}
+						logout={this.props.onLogOut} />
 				</header>
 			);
 			// authorizer = (

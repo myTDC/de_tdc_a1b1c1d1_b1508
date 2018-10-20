@@ -27,6 +27,13 @@ const styles = ({
         boxSizing: 'border-box',
         lineHeight: 0,
     },
+    linkContainer: {
+        display: 'flex',
+        width: '75%',
+        marginLeft: '12.5%',
+        marginTop: 10,
+        justifyContent: 'flex-start',
+    },
     link: {
         marginRight: '1vw',
         color: '#fff',
@@ -37,13 +44,6 @@ const styles = ({
         //textTransform: 'uppercase',
         //fontVariant: 'small-caps'
     },
-    linkContainer: {
-        display: 'flex',
-        width: '75%',
-        marginLeft: '12.5%',
-        marginTop: 10,
-        justifyContent: 'flex-start',
-    },
     spacer: {
         flexGrow: 1,
     },
@@ -51,27 +51,33 @@ const styles = ({
         height: '5vh',
         maxHeight: '6vh',
         minHeight: '5vh',
-        zIndex: '100',
+        zIndex: '200',
         // margin: '1vh',
         // marginLeft: '2vh'
     },
     profiler: {
         display: 'flex',
-        flexFlow: 'row-reverse wrap', //flexDirection and flexWrap combined
-        height: '5vh',
-        maxHeight: '6vh',
-        maxWidth: '20%',
-        width: '20%',
-        color: '#FFF8E7',
-        //margin: '0.8vh',
-        background: '#042432',
-        boxSizing: 'border-box',
-        boxShadow: '2px, 1px, 2px, #041620',
-        margin: 0,
-        marginRight: '1vw',
-        borderRadius: 4,
-        zIndex: '100', //'1vh',
+        maxWidth: '30%', //flexDirection and flexWrap combined
+
+        zIndex: '200', //'1vh',
     },
+    // profiler: {
+    //     display: 'flex',
+    //     flexFlow: 'row-reverse wrap', //flexDirection and flexWrap combined
+    //     height: '5vh',
+    //     maxHeight: '6vh',
+    //     maxWidth: '30%',
+    //     width: '30%',
+    //     color: '#FFF8E7',
+    //     //margin: '0.8vh',
+    //     background: '#042432',
+    //     boxSizing: 'border-box',
+    //     boxShadow: '2px, 1px, 2px, #041620',
+    //     margin: 0,
+    //     marginRight: '1vw',
+    //     borderRadius: 4,
+    //     zIndex: '200', //'1vh',
+    // },
     // profiler_container:{
     //     color: '#FFF8E7',
     //     display: 'flex',
@@ -109,9 +115,6 @@ const styles = ({
 
 const navbar = props => (
     <nav style={styles.toolbar} className="toolbar">
-        <div className="toolbar__toggle-button">
-        
-        </div>
         <div >
             <img className="toolbar__logo" onClick={props.drawerClickHandlerOrg} style={styles.logo} src={logoDE} alt="Take Flight with the TDC Logo PaperPlane™" />
         </div>
@@ -127,16 +130,28 @@ const navbar = props => (
                 <h4>events</h4>
             </LinkContainer>
         </div>
-        <div style={styles.profiler} className="toolbar__profiler">
-            <UserNavCard
-                clicker={props.drawerClickHandlerUser}
-                pic={props.uPic}
-                name={props.userNameGiven||'Sign In'}
-                company={null}
-                designation={props.userOrgDesig||'to continue'}
-            />
-        </div>
+        <UserNavCard 
+            clicker={props.drawerClickHandlerUser}
+            pic={props.uPic}
+            name={props.userNameGiven||'Sign In'}
+            company={null}
+            designation={props.userOrgDesig||'to continue'}
+        />
+        <button onClick={props.logout}>Logout</button>
+
     </nav>
 );
 
 export default navbar;
+
+// <div className="toolbar__toggle-button"> </div>
+
+// <div style={styles.profiler} className="toolbar__profiler">
+// <UserNavCard
+//     clicker={props.drawerClickHandlerUser}
+//     pic={props.uPic}
+//     name={props.userNameGiven||'Sign In'}
+//     company={null}
+//     designation={props.userOrgDesig||'to continue'}
+// />
+// </div>

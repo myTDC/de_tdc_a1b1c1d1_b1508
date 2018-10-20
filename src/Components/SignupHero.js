@@ -2,18 +2,19 @@ import React from 'react';
 import './SignupHero.css';
 //import logo from '../logo_min.svg';
 import logov2 from '../plane_grad.svg';
-import learn from  '../learn.svg';
-import domi from '../dominate.svg';
-import mat from '../mature.svg';
-import logode from '../tdcde_logo.png';
+import learn from  '../l-learn.svg';
+import domi from '../l-dominate.svg';
+import mat from '../l-mature.svg';
+import logoDE from '../tdc-de.svg';
+import logoTDCWM from '../tdc-logo-wm-long-ondark.svg';
 
 const SignupHero = (props) =>{
     return(
         <div className= "signup">
-        <div class="header"> 
+        <div className="header"> 
         <div className="headerLogo">  
-            <img className="w3-image" src={logode} alt="Take Flight with the TDC Logo PaperPlane™"/>
-            <h4> &nbsp; LAUNCHPAD </h4>
+            <img className="w3-image" src={logoDE} alt="Take Flight with the DE Logo PaperPlane™"/>
+            <img className="w3-image" src={logoTDCWM} alt="Take Flight with the TDC Logo PaperPlane™"/>
           </div>
         </div>
         <div id="categories" className="row">
@@ -22,7 +23,7 @@ const SignupHero = (props) =>{
             <img className="w3-image" src={logov2} alt="Take Flight with the TDC Logo PaperPlane™"/>
           </div>
           <div className="contentHero">
-            <p className='btn btn-grad' onClick={props.clicked}>{props.heroAction}</p>
+            <p className='btn btn-grad' onClick={props.clicked}>  {props.heroAction}  </p>
             <p className='heroBtnHelper'>TO LAUNCH YOUR DREAMS</p>
           </div>
         </div>
