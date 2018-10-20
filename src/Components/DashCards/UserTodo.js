@@ -91,7 +91,7 @@ const UserTodo = (props) => {
     const datify=(time)=> {
         const dateObj = new Date(time);
         //let timeNowOld = 
-        return dateObj.getDate() + "/" + dateObj.getMonth() + "/" + dateObj.getFullYear();
+        return dateObj.getDate() + "/" + (dateObj.getMonth()+1) + "/" + dateObj.getFullYear();
     }
 
     const datifyObj=(time)=> {
