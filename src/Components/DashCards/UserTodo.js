@@ -55,7 +55,7 @@ const styles = ({
     },
     todotext: {
         fontFamily: 'Raleway, sans-serif',
-        fontSize: '1.2rem',
+        fontSize: '1rem',
         fontWeight: '500',
         color: '#4e4e4e',
         maxWidth: '70%',
@@ -94,6 +94,23 @@ const UserTodo = (props) => {
         return dateObj.getDate() + "/" + dateObj.getMonth() + "/" + dateObj.getFullYear();
     }
 
+    const datifyObj=(time)=> {
+        const datedObj = new Date(time);
+        
+        // let dateObj = {
+        //     date: datedObj.getDate(),
+        //     month: datedObj.getMonth(),
+        //     year: datedObj.getFullYear()
+        // };
+
+        // console.log('[Cont/Drawer/datifyOb] date:', dateObj);
+        return {
+            date: datedObj.getDate(),
+            month: datedObj.getMonth(),
+            year: datedObj.getFullYear()
+        };
+    };
+
     let todoList = Object.values(props.list||'null');
     console.log('[Comp/UserTodo] List is:', todoList);
     return(
@@ -107,7 +124,7 @@ const UserTodo = (props) => {
                         <h4 style={styles.todotext}> {todoList.title} </h4>
                         <section>
                             <h4 style={styles.AdatesText}> {datify(todoList.setOn)} </h4> 
-                            <h4 style={styles.CdatesText}> {todoList.tobecompletedBy} </h4>
+                            <h4 style={styles.CdatesText}> {datifyObj(todoList.tobecompletedBy).date + '/' + (datifyObj(todoList.tobecompletedBy).month+1)} </h4>
                         </section>
                     </div>
                 ))}

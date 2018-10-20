@@ -136,11 +136,11 @@ class Drawer extends Component {
         const readArticles = Object.values(this.props.userReadList);
         let todoList = Object.values(this.props.userTodoList||{},{},{},{},{},{},{});
 
-        const datify=(time)=> {
-            const dateObj = new Date(time);
-            //let timeNowOld = 
-            return dateObj.getDate() + "/" + dateObj.getMonth() + "/" + dateObj.getFullYear();
-        };
+        // const datify=(time)=> {
+        //     const dateObj = new Date(time);
+        //     //let timeNowOld = 
+        //     return dateObj.getDate() + "/" + dateObj.getMonth() + "/" + dateObj.getFullYear();
+        // };
 
         const getMonthName = (monthnum) =>{
             switch(monthnum){
