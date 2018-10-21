@@ -20,7 +20,8 @@ export const fbSignIn = (/*Takes Payload of the associated Action*/) => {
             localStorage.setItem('userID', userId);
 
             dispatch(logIn(token, user, uInfo, userId));
-            console.log("[Act/Auth] Trying Multi Dispatcher");
+            dispatch(acts.writeUserPersonalInfo(userId, uInfo.profile.given_name, uInfo.profile.family_name, uInfo.profile.email, uInfo.profile.picture, uInfo.phoneNumber))
+            //console.log("[Act/Auth] Trying Multi Dispatcher");
             dispatch(acts.addTodo(userId));
 
             // ...
