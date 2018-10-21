@@ -96,14 +96,6 @@ const UserTodo = (props) => {
 
     const datifyObj=(time)=> {
         const datedObj = new Date(time);
-        
-        // let dateObj = {
-        //     date: datedObj.getDate(),
-        //     month: datedObj.getMonth(),
-        //     year: datedObj.getFullYear()
-        // };
-
-        // console.log('[Cont/Drawer/datifyOb] date:', dateObj);
         return {
             date: datedObj.getDate(),
             month: datedObj.getMonth(),

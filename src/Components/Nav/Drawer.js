@@ -156,6 +156,7 @@ class Drawer extends Component {
                 case 9 : return "OCT";
                 case 10 : return "NOV";
                 case 11 : return "DEC";
+                default: return null;
             }
         }
 
