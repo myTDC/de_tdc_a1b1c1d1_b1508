@@ -109,7 +109,7 @@ const UserTodo = (props) => {
         <div style={styles.parent}>
             {props.children}
             <div style={styles.row}>
-                <LeftContent header= {props.header} stat={props.stat} footer={props.footer}/>
+                <LeftContent header= {"complete"} stat={todoList.length} footer={ "of " + todoList.length + " TODOs"}/>
                 <div style={styles.columnRight}>
                 {todoList.map(todoList => (
                     <div style={styles.todoitem} key={todoList.title + todoList.setOn}>

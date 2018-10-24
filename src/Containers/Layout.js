@@ -28,6 +28,7 @@ class Layout extends Component {
 
 	componentDidMount() {
 		this.props.readUserReadHistory(this.props.userId);
+		this.props.loadTodo(this.props.userId);
 		//this.props.fetchFavorites(this.props.uID, this.props.articles);
 	};
 
@@ -142,6 +143,8 @@ const mapDispactchToProps = dispatch => {
 
 		//Fetches the user's readinghistory from fb.
 		readUserReadHistory: (uID) => dispatch(acts.readUserHistory(uID)),
+		//Fetches Todos from FB
+		loadTodo: uID => dispatch(acts.readTodo(uID)),
 		//Fetches the Favorites from fb.
 		fetchFavorites: (uID, artList) => dispatch(acts.fetchFavorite(uID, artList)),
 

@@ -30,12 +30,12 @@
     }
 }
 
-/* @media screen and (max-width: 1360px) {
+@media screen and (max-width: 1360px) {
     .learnSection {
         max-width: 50%;
         margin-left: 25%;
     }
-} */
+}
 
 @media screen and (max-width: 1600px) {
     .learnSection {

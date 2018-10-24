@@ -51,12 +51,9 @@
 
 .dashboard{
     width: var(--app-dash-width);
-    min-height: var(--app-dash-height);
-    margin-top: -40px;
     padding-top: 0;
     margin-left: var(--app-dash-margin-left);
     margin-right: var(--app-dash-margin-right);
-    overflow-y: scroll;
     position: relative;
 }
 

@@ -1,0 +1,16 @@
+.toolbar__nav-link{
+    padding: 4px 12px;
+}
+
+.toolbar__nav-link.active,
+.toolbar__nav-link:hover{
+    background:linear-gradient(60deg, #041620, #162432 ); /*#041620;*/
+    color: #16df64;
+    border-bottom: 2px solid #16df64;
+}
+
+.toolbar__nav-link.logout:hover{
+    background:linear-gradient(60deg, #041620, #162432 ); /*#041620;*/
+    color: #16df64;
+    border-bottom: 2px solid #fc4444;
+}

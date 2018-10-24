@@ -1,9 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Roboto');
+
 .App {
   margin: 0px;
   width: 100%;
   padding: 0px;
 }
 
+/* .kit-scrollbar::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+@media not all, (-webkit-min-device-pixel-ratio: 1.5), not all, (min-resolution: 1.5dppx)
+.kit-scrollbar.with-arrows::-webkit-scrollbar-button {
+  background-image: url(https://d3e54v103j8qbb.cloudfront.net/gen/img/sprites/scrollbars@2x.cabbabb21a.png);
+  background-size: 60px;
+}
+.kit-scrollbar.with-arrows::-webkit-scrollbar-button {
+  display: block;
+  height: 11px;
+  position: relative;
+  background-color: #16df84;
+  background-image: url(https://d3e54v103j8qbb.cloudfront.net/gen/img/sprites/scrollbars.f8bcb5d750.png);
+  background-repeat: no-repeat;
+  border-color: #212121;
+  border-style: solid;
+} */
 
 /* @media screen and (max-width: 600px){
   .App-header {
@@ -12,3 +33,20 @@
     
   }
 } */
+
+::-webkit-scrollbar {
+  width: 12px;
+  
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(22, 223, 133, 1);/* linear-gradient(#16df84, #162432); */
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-button {
+  width: 12px;
+  height: 16px;
+  background: rgba(0, 0, 235, 0.5);
+  border-radius: 2px;
+}

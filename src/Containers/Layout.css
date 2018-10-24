@@ -1,15 +1,18 @@
-.App {
+/* .App {
   margin: 0px;
   width: 100%;
   padding: 0px;
   max-height: 100vh;
-}
+} */
 
 .App-header {
   max-height: 8vh;
   height: 8vh;
   overflow: hidden;
   margin:0;
+  top: 0;
+  left: 0;
+  z-index: 100;
   box-shadow: 2px 2px 5px rgba(0,0,0,50%);
 }
 

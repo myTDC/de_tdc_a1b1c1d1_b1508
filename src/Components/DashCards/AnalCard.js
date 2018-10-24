@@ -2,6 +2,7 @@ import React from 'react';
 import Charter from '../Charter';
 //import Pbar from '../ProgressBar';
 import LeftContent from '../DashCardLeft';
+import { array } from 'prop-types';
 
 const styles = ({
 
@@ -43,13 +44,23 @@ const styles = ({
     },
 });
 
+const avg = array => {
+    return array.reduce(( accumulator, currentValue ) => accumulator + currentValue );
+};
+
+const round = (value, precision) => {
+    var multiplier = Math.pow(10, precision || 0);
+    return Math.round(value * multiplier) / multiplier;
+};
+
 const AnalCard = (props) => {
+
     return (
         <div style={styles.parent}>
         {props.children}
         
             <div style={styles.row}>
-            <LeftContent header= {props.header} stat={props.stat} footer={props.footer}/>
+            <LeftContent header= {props.header} stat={round(avg(props.chartData)/props.chartData.length,1)} footer={props.footer}/>
                 <div style={styles.columnRight}>
                     <Charter 
                         type={props.chartType} 

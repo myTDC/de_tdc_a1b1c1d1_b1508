@@ -101,7 +101,7 @@ const DataCard = (props) => {
         console.log('[Comp/DataCard] rendering favs ',favArticles);
         lister = (
             <div style={styles.row}>
-                <LeftContent header= {props.header} stat={props.stat} footer={props.footer}/>
+                <LeftContent header= {props.header} stat={favArticles.length} footer={props.footer}/>
                 <div style={styles.columnRight}>
                     {favArticles.map(favArticles => (
                         <div style={styles.articleCard} key={favArticles.id}>
@@ -123,7 +123,7 @@ const DataCard = (props) => {
         console.log('[Comp/DataCard] rendering hist ',readArticles);
         lister = (
             <div style={styles.row}>
-                <LeftContent header= {props.header} stat={props.stat} footer={props.footer}/>
+                <LeftContent header= {props.header} stat={readArticles.length} footer={props.footer}/>
                 <div style={styles.columnRight}>
                     {readArticles.map(readArticles => (
                         <div style={styles.articleCard} key={readArticles.id}>

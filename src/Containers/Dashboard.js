@@ -81,12 +81,10 @@ class Dashboard extends Component {
 							company="company"/>
 						<UserTodo
 							type="userTodos"
-							header="completed"
-							stat="02"
-							footer="out of 06"
-							list={//'bleh'
-							this.props.uTodo
-						}>
+							// header="complete"
+							// stat="02"
+							// footer="out of 06"
+							list={/*'bleh'*/this.props.uTodo}>
 							<CardTitle name="TODO & MORE" />
 						</UserTodo>
 
@@ -96,7 +94,7 @@ class Dashboard extends Component {
 							stat="1.2"
 							footer="every day (avg)"
 							chartType={chartType.LINE_CHART}
-							chartWidth="600" chartHeight="200"
+							chartWidth="540" chartHeight="200"
 							chartLabels={this.props.chartLineLabels}
 							chartData={this.props.chartLineData} chartDataBaseline={null}>
 							<CardTitle name="LEARN CURVE" />
@@ -108,7 +106,7 @@ class Dashboard extends Component {
 							stat="02"
 							footer="Sections of 7"
 							chartType={chartType.RADAR_CHART}
-							chartWidth="600" chartHeight="200"
+							chartWidth="540" chartHeight="200"
 							chartLabels={this.props.chartRadarLabels}
 							chartData={this.props.chartRadarData} chartDataBaseline={this.props.chartRadarDataBaseline}>
 							<CardTitle name="PREPARATION" />

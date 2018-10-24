@@ -34,7 +34,7 @@ const fbDBUpdater = (ref, id, data) => {
 };
 
 const readSuccess = (source, data, actType) => {
-	//console.log("[Act/User] [readSuccess] " + source + " read succesfuly! :)  :", data);
+	console.log("[Act/User] [readSuccess] " + source + " read succesfuly! :)  :", data);
 	return {
 		type: actType,
 		val: data
@@ -42,14 +42,14 @@ const readSuccess = (source, data, actType) => {
 };
 
 const readFailure = (source, error) => {
-	//console.log("[Act/User] [readFailure] " + source + " read failure :(  :", error);
+	console.log("[Act/User] [readFailure] " + source + " read failure :(  :", error);
 	return {
 		type: null
 	};
 };
 
 export const writeSuccess = (source, data, actType) => {
-	//console.log("[Act/User] [writeSuccess] " + source + " read succesfuly! :)  :", data);
+	console.log("[Act/User] [writeSuccess] " + source + " read succesfuly! :)  :", data);
 	return {
 		type: actType,
 		val: data
@@ -57,7 +57,7 @@ export const writeSuccess = (source, data, actType) => {
 };
 
 const writeFailure = (source, error) => {
-	//console.log("[Act/User] [readFailure] " + source + " read failure :(  :", error);
+	console.log("[Act/User] [readFailure] " + source + " read failure :(  :", error);
 	return {
 		type: null
 	};
