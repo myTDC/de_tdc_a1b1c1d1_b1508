@@ -14,7 +14,7 @@ class Learn extends Component {
     componentDidMount() {
         this.props.readArticlesFB();
         this.props.fetchFavorites(this.props.uID, this.props.articles);
-        console.log('ArtList is: ',this.props.articles);
+        //console.log('ArtList is: ',this.props.articles);
         //this.favTable(this.props.uID, this.props.articles);
         //this.props.ReadUser(this.props.uID);
     }
@@ -23,7 +23,7 @@ class Learn extends Component {
         this.props.updateFavorites(this.props.uID, this.props.favList);
     }
     readHistory = (uID, id, art) => {
-        console.log('[Container/Learn] User Read Article:', id);
+        //console.log('[Container/Learn] User Read Article:', id);
         let found;
         if (this.props.history.hasOwnProperty("b1008_" + id)) //Checks if the object has the specified value as it's own property or is an inherited property.
             found = true;

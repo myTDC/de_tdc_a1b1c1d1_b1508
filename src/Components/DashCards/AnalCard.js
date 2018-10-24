@@ -51,13 +51,13 @@ const AnalCard = (props) => {
             <div style={styles.row}>
             <LeftContent header= {props.header} stat={props.stat} footer={props.footer}/>
                 <div style={styles.columnRight}>
-                <Charter 
-                type={props.chartType} 
-                width={props.chartWidth} 
-                height={props.chartHeight} 
-                chartLabels={props.chartLabels} 
-                chartData={props.chartData} 
-                chartDataBaseline={props.chartDataBaseline} />
+                    <Charter 
+                        type={props.chartType} 
+                        width={props.chartWidth} 
+                        height={props.chartHeight} 
+                        chartLabels={props.chartLabels} 
+                        chartData={props.chartData} 
+                        chartDataBaseline={props.chartDataBaseline} />
                 </div>
             </div>
        

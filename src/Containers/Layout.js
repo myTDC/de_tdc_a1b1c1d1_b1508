@@ -22,7 +22,7 @@ import * as acts from "../Store/actions";
 class Layout extends Component {
 	state = {
 		//sideDrawerOpen: false,
-		drawerOrg_open: true,
+		drawerOrg_open: false,
 		drawerUser_open: false,
 	};
 

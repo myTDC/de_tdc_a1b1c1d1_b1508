@@ -104,7 +104,7 @@ const UserTodo = (props) => {
     };
 
     let todoList = Object.values(props.list||'null');
-    console.log('[Comp/UserTodo] List is:', todoList);
+    //console.log('[Comp/UserTodo] List is:', todoList);
     return(
         <div style={styles.parent}>
             {props.children}

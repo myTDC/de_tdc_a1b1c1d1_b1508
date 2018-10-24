@@ -9,6 +9,7 @@
     "firebase": "^5.5.4",
     "localforage": "^1.7.2",
     "lodash": "^4.17.11",
+    "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-bootstrap": "^0.32.4",
     "react-chartjs": "^1.2.0",

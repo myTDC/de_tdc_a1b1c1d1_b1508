@@ -123,7 +123,7 @@ const styles = ({
 class Drawer extends Component {
 	state = {};
 
-    componentWillMount(){
+    componentDidMount(){
         console.log('[Comp/Drawer] userHistory is: ', Object.values(this.props.userReadList));
         //getReadHistory();
     };
@@ -133,7 +133,7 @@ class Drawer extends Component {
 		//const orgTimeline = Object.values(this.props.userLearnedProg);
         // const history = Object.values(this.props.userLearnedProg);
         
-        const readArticles = Object.values(this.props.userReadList);
+        const readArticles = Object.values(this.props.userReadList||{},{},{},{},{},{},{});
         let todoList = Object.values(this.props.userTodoList||{},{},{},{},{},{},{});
 
         // const datify=(time)=> {

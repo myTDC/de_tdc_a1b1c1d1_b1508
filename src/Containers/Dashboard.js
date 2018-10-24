@@ -28,10 +28,10 @@ class Dashboard extends Component {
 	componentDidUpdate() {
 		//this.props.onLoad(this.props.userId, this.props.userHistory);
 		
-		console.log(
-			"[Cont/Dash] Components Updated | Current UserID is: ",
-			localStorage.getItem("userID")
-		);
+		// console.log(
+		// 	"[Cont/Dash] Components Updated | Current UserID is: ",
+		// 	localStorage.getItem("userID")
+		// );
 	};
 	componentWillUnmount() {
 		//this.getMYVALUES();
@@ -108,7 +108,7 @@ class Dashboard extends Component {
 							stat="02"
 							footer="Sections of 7"
 							chartType={chartType.RADAR_CHART}
-							chartWidth="600" chartHeight="240"
+							chartWidth="600" chartHeight="200"
 							chartLabels={this.props.chartRadarLabels}
 							chartData={this.props.chartRadarData} chartDataBaseline={this.props.chartRadarDataBaseline}>
 							<CardTitle name="PREPARATION" />

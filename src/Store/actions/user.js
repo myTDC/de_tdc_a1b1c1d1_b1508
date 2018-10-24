@@ -19,7 +19,7 @@ let timeCompleteby_d30 = timeNow+2592000000;
 
 //################ Common Helper Functions ################
 const asyncTriggerReducer = (type, object) => {
-	console.log('[Act/User][asyncTrigger] Action Dispatched: ', type, ' with data: ', object);
+	//console.log('[Act/User][asyncTrigger] Action Dispatched: ', type, ' with data: ', object);
 	return {
 		type: type,
 		obj: object
@@ -34,7 +34,7 @@ const fbDBUpdater = (ref, id, data) => {
 };
 
 const readSuccess = (source, data, actType) => {
-	console.log("[Act/User] [readSuccess] " + source + " read succesfuly! :)  :", data);
+	//console.log("[Act/User] [readSuccess] " + source + " read succesfuly! :)  :", data);
 	return {
 		type: actType,
 		val: data
@@ -42,14 +42,14 @@ const readSuccess = (source, data, actType) => {
 };
 
 const readFailure = (source, error) => {
-	console.log("[Act/User] [readFailure] " + source + " read failure :(  :", error);
+	//console.log("[Act/User] [readFailure] " + source + " read failure :(  :", error);
 	return {
 		type: null
 	};
 };
 
 export const writeSuccess = (source, data, actType) => {
-	console.log("[Act/User] [writeSuccess] " + source + " read succesfuly! :)  :", data);
+	//console.log("[Act/User] [writeSuccess] " + source + " read succesfuly! :)  :", data);
 	return {
 		type: actType,
 		val: data
@@ -57,7 +57,7 @@ export const writeSuccess = (source, data, actType) => {
 };
 
 const writeFailure = (source, error) => {
-	console.log("[Act/User] [readFailure] " + source + " read failure :(  :", error);
+	//console.log("[Act/User] [readFailure] " + source + " read failure :(  :", error);
 	return {
 		type: null
 	};
@@ -73,7 +73,7 @@ export const writeUserPersonalInfo = (
 	uPhone
 ) => {
 	return (dispatch, getState) => {
-		console.log("[Act/User] [writeUserPersonalInfo] State is:", getState());
+		//console.log("[Act/User] [writeUserPersonalInfo] State is:", getState());
 		const usersRef = getUserRef(uID);
 
 		usersRef.set({
@@ -153,21 +153,14 @@ export const setupPushNotifications = () => {
 	pushRef
 		.requestPermission() //Returns a Promise
 		.then(() => {
-			console.log(
-				"[Act/User] [setupPushNotifications] [Promise Lvl1] User Gave Permission"
-			);
+			console.log("[Act/User] [setupPushNotifications] [Promise Lvl1] User Gave Permission");
 			return pushRef.getToken();
 		})
 		.then(token => {
-			console.log(
-				"[Act/User] [setupPushNotifications] [Promise Lvl2] User's Token is:",
-				token
-			);
+			console.log("[Act/User] [setupPushNotifications] [Promise Lvl2] User's Token is:", token);
 		})
 		.catch(() => {
-			console.log(
-				"[Act/User] [setupPushNotifications] [Promise Lvl1] User Didn't Give Permission"
-			);
+			console.log("[Act/User] [setupPushNotifications] [Promise Lvl1] User Didn't Give Permission");
 			//Add Logic to prompt again. Add snackbar to ask not now or never. Add trigger in settings to toggle permission if user chooses to.
 		});
 };
@@ -235,7 +228,7 @@ export const readTodo = uID => {
 					}
 					//console.log("[Act/User] [addToDo] Todo read from firebase", {userTodos});
 				});
-				console.log('[Act/User] [readTodo] todolist is: ', userTodos);
+				//console.log('[Act/User] [readTodo] todolist is: ', userTodos);
 				dispatch(asyncTriggerReducer(actionType.DASH_SET_TODO, userTodo //{ ...userTodos }
 				));
 			}).then(() => dispatch(readSuccess('readTodo', userTodos, null)));
@@ -326,7 +319,7 @@ export const readUserHistory = uID => {
 };
 
 const uReadSuccess = hist => {
-	console.log("[Act/User] [uReadSuccess] User history read succesfuly! :)  :", hist);
+	//console.log("[Act/User] [uReadSuccess] User history read succesfuly! :)  :", hist);
 	return {
 		type: actionType.DASH_SET_USERHISTORY,
 		val: hist
@@ -334,7 +327,7 @@ const uReadSuccess = hist => {
 };
 
 const uReadFailure = error => {
-	console.log("[Act/User] [uReadFailure] User history read failure :(  :", error);
+	//console.log("[Act/User] [uReadFailure] User history read failure :(  :", error);
 	return {
 		type: null
 	};
@@ -390,7 +383,7 @@ export const updateUserReadHistory = (found, uID, id, art, Readart) => {
 export const updateLastRead = (uID, artObj) => {
 	let todoLastRead = artObj; //TODO: Only adds the first item in the list
 
-	console.log("[Act/User] [updateLastRead] New Todo Item is:", artObj);
+	//console.log("[Act/User] [updateLastRead] New Todo Item is:", artObj);
 	return dispatch => {
 		//const usersRef = getUserRef(uID);
 		const todoRef = getUserRef(uID).child("todo");
@@ -409,7 +402,7 @@ export const updateLastRead = (uID, artObj) => {
 		//     ...todoObj
 		// });
 
-		console.log("[Act/User] [addToDo] Last Read updated in firebase");
+		//console.log("[Act/User] [addToDo] Last Read updated in firebase");
 
 		dispatch(asyncTriggerReducer(actionType.DASH_SET_TODO, {
 			todoLastRead
@@ -447,9 +440,23 @@ export const setupAnal = (uID, userHistory) => {
       if ((timeNow - dates[i].getTime()) < 518400000)
         anData[dates[i].getDay()] += 1;
     }
-    //let articleArray = Object.values(this.props.articles);    
+	//let articleArray = Object.values(this.props.articles);    
+	
+	console.log('[Act/Drawer][Tester] Main State: ', getState());
+	let artList = Object.values(getState().content.articles3p);
+		
+	console.log('[Act/Drawer][Tester] ArtList: ', artList);
 
-    console.log("[Act/User] [setupAnal] User's reading history is:", anData, readArticles);
+	let readArticlesList = [];
+
+	readArticles.forEach(element => {
+		readArticlesList.push(artList[element]);
+	});
+
+	console.log('[Act/Drawer][Tester] readArticlesList: ', readArticlesList);
+
+	console.log("[Act/User] [setupAnal] User's reading history is:", anData, 'User has read the articles: ', readArticles);
+
     // readHistory.forEach(()=>{
     //   console.log('Read Count is:',1);
     // });
@@ -457,7 +464,8 @@ export const setupAnal = (uID, userHistory) => {
     //TODO: set the data in state from reducer
     dispatch(asyncTriggerReducer(actionType.DASH_FETCH_DATA, {
       anData,
-      readArticles
+	  readArticles,
+	  readArticlesList
     }));
   };
 };

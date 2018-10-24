@@ -61,6 +61,11 @@ const styles = ({
 
         zIndex: '200', //'1vh',
     },
+    logger: {
+        background: null,
+        color: '#FFF',
+        fontSize: '1rem'
+    }
     // profiler: {
     //     display: 'flex',
     //     flexFlow: 'row-reverse wrap', //flexDirection and flexWrap combined
@@ -137,7 +142,7 @@ const navbar = props => (
             company={null}
             designation={props.userOrgDesig||'to continue'}
         />
-        <button onClick={props.logout}>Logout</button>
+        <p style={styles.logger} onClick={props.logout}>logout</p>
 
     </nav>
 );
