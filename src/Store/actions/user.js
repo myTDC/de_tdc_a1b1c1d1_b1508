@@ -165,19 +165,19 @@ export const setupPushNotifications = () => {
 		});
 };
 
-export const setVisited = item => {
-	console.log("[Act/User] [setVisited] Item id is:", item);
-	return {
-		type: null
-	};
-};
+// export const setVisited = item => {
+// 	console.log("[Act/User] [setVisited] Item id is:", item);
+// 	return {
+// 		type: null
+// 	};
+// };
 
-export const setFavorite = item => {
-	console.log("[Act/User] [setFavorite] Item id is:", item.id);
-	return {
-		type: null
-	};
-};
+// export const setFavorite = item => {
+// 	console.log("[Act/User] [setFavorite] Item id is:", item.id);
+// 	return {
+// 		type: null
+// 	};
+// };
 
 
 

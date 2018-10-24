@@ -29,7 +29,7 @@ class Layout extends Component {
 	componentDidMount() {
 		this.props.readUserReadHistory(this.props.userId);
 		this.props.loadTodo(this.props.userId);
-		//this.props.fetchFavorites(this.props.uID, this.props.articles);
+		this.props.fetchFavorites(this.props.userId, this.props.articles);
 	};
 
 	//################################ Methods for Navigation/Side Drawers ################################
@@ -130,6 +130,7 @@ const mapStateToProps = state => {
 		userPic: state.auth.user.PicUrl,
 		userEmail: state.auth.user.Email,
 		userPhone: state.auth.user.PhoneNumber,
+
 		articles: state.content.articles3p,
 		userHistory: state.user.history,
 	};

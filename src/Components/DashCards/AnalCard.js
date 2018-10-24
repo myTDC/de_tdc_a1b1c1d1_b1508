@@ -2,7 +2,7 @@ import React from 'react';
 import Charter from '../Charter';
 //import Pbar from '../ProgressBar';
 import LeftContent from '../DashCardLeft';
-import { array } from 'prop-types';
+//import { array } from 'prop-types';
 
 const styles = ({
 

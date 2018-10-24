@@ -62,7 +62,32 @@ const initState = {
     // tStampNow : {
     //     id: null
     // }
-  
+  categoryCoverage:{
+    "Best Practices": {
+      total: 11,
+      read: 0
+    },
+    "Investment": {
+      total: 8,
+      read: 0
+    },
+    "Design": {
+      total: 5,
+      read: 0
+    },
+    "Motivation": {
+      total: 2,
+      read: 0
+    },
+    "Develop": {
+      total: 2,
+      read: 0
+    },
+    "Leadership": {
+      total: 2,
+      read: 0
+    },
+  },
   history: {
     cVer:{
         count: 'i',
@@ -71,9 +96,9 @@ const initState = {
   },
   readHistoryLineData: [1, 2, 1, 6, 1, 2, 1],
   readHistoryLineLabel: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-  readHistoryRadarData: [4, 1, 3, 4, 2, 3, 2],
-  readHistoryRadarDataBaseline: [5, 5, 5, 5, 5, 5, 5],
-  readHistoryRadarLabel: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+  readHistoryRadarData: [4, 1, 3, 4, 2, 3],
+  readHistoryRadarDataBaseline: [11, 8, 5, 2, 2, 2], //11,8,5,2,2,2,
+  readHistoryRadarLabel: ["Best Practices" , "Investment", "Design", "Motivation", "Develop", "Leadership"],
 };
 
 
