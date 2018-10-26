@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 //Components
 
 //Actions
-import * as acts from '../Store/actions';
+import * as acts from '../../Store/actions';
 
 class Participate extends Component {
     render(){

@@ -3,7 +3,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import blueGrey from '@material-ui/core/colors/blueGrey'
 import { LinkContainer } from 'react-router-bootstrap';
-import Logode from '../tdc-de.svg';
+import Logode from '../imgs/tdc-de.svg';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';

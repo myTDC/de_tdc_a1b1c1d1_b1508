@@ -86,7 +86,7 @@ const initState = {
     "Leadership": {
       total: 2,
       read: 0
-    },
+    }
   },
   history: {
     cVer:{

@@ -200,37 +200,32 @@ class Drawer extends Component {
             </React.Fragment>
         )
 
-		const tdcTimelineDrawer = (
-            <React.Fragment>
-                <h1> Process ArtList Data </h1>
-				{readArticles.map(element => (
-					<div style={styles.articleCard} key={element.id}>
-						<section>
-							<h4 style={styles.Favtitle}> {element.title|| "Article Title"} </h4>
-							<h4 style={styles.author}>by: {element.author|| "author"}</h4>
-						</section>
-						<section>
-							<h4 style={styles.textRight}> {element.views || "views"}</h4>
-							<h4 style={styles.textRight}> {element.favdate || "favorite date"} </h4> 
-						</section>
-					</div>
-				))}
-			</React.Fragment>
-		);
+		// const tdcTimelineDrawer = (
+        //     <React.Fragment>
+        //         <h1> Process ArtList Data </h1>
+		// 		{readArticles.map(element => (
+		// 			<div style={styles.articleCard} key={element.id}>
+		// 				<section>
+		// 					<h4 style={styles.Favtitle}> {element.title|| "Article Title"} </h4>
+		// 					<h4 style={styles.author}>by: {element.author|| "author"}</h4>
+		// 				</section>
+		// 				<section>
+		// 					<h4 style={styles.textRight}> {element.views || "views"}</h4>
+		// 					<h4 style={styles.textRight}> {element.favdate || "favorite date"} </h4> 
+		// 				</section>
+		// 			</div>
+		// 		))}
+		// 	</React.Fragment>
+		// );
 
 		const userHistoryDrawer = (
             <React.Fragment>
-                <h1> Process ArtList Data </h1>
+            <h1 > Read History: </h1>
+                <h1 className={'histDrawerTitle'}> You've Read {readArticles.length} out of 30 Articles</h1>
 				{readArticles.map(artObj => (
-					<div style={styles.articleCard} key={artObj.id}>
-						<section>
-							<h4 style={styles.Favtitle}> {artObj.title|| "Article Title"} </h4>
-							<h4 style={styles.author}>by: {artObj.author|| "author"}</h4>
-						</section>
-						<section>
-							<h4 style={styles.textRight}> {artObj.views || "views"}</h4>
-							<h4 style={styles.textRight}> {artObj.favdate || "favorite date"} </h4> 
-						</section>
+                    <div className={'histCard'} key={artObj.id}>
+                        <p className={'histCardTitle'}> {artObj.title|| "Article Title"} </p>
+                        <p className={'histCardCategory'}> {artObj.category|| "Category"}</p>
 					</div>
 				))}
 			</React.Fragment>
@@ -247,10 +242,10 @@ class Drawer extends Component {
             orgDrawerClasses = 'drawer tdc open';
             drawer = drawerTodo;
         }
-        else if (this.props.drawerOrg){
-            orgDrawerClasses = 'drawer tdc open';
-            drawer = tdcTimelineDrawer;
-        }
+        // else if (this.props.drawerOrg){
+        //     orgDrawerClasses = 'drawer tdc open';
+        //     drawer = tdcTimelineDrawer;
+        // }
 
 		// if(this.props.children === "org-timeline"){
 		// 	drawer = tdcTimelineDrawer;

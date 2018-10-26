@@ -21,7 +21,7 @@ const styles = ({
         boxShadow: '3px 3px 4px #E0E0E0',
     },
     /* progressBar: {
-        position: 'absolute',
+        position: 'reabsolute',
         bottom: '50px',
         minHeight: '10px',
         width: {width},
@@ -44,38 +44,40 @@ const styles = ({
     articleCard: {
         display: 'flex',
         justifyContent: 'space-between',
-        borderBottom: '3px solid #D0FFE9',
-        width: '87%',
-        height: '35%',
+        borderBottom: '4px solid #D0FFEF',
+        width: '88%',
+        // height: '35%',
         padding: 0,
         marginLeft: 20,
         marginBottom: 12,
         marginRight: 4,
         background: '#F9F9F9',
-        boxShadow: '1px 1px 3px rgba(0,0,0,16%)'
+        boxShadow: '1px 1px 3px rgba(0,0,0,.1)'
     },
     Favtitle: {
         fontFamily: 'Raleway, sans-serif',
-        fontSize: '1.2rem',
+        fontSize: '1rem',
         fontWeight: '700',
         color: '#4e4e4e',
-        maxWidth: '80%',
-        marginTop:10,
-        marginBottom:15,
-        marginRight:0,
-        marginLeft:18,
+        // maxWidth: '80%',
+        margin: '6px 12px',
+        // marginTop:10,
+        // marginBottom:15,
+        // marginRight: '8px',
+        // marginLeft:18,
         padding: 0,
     },
 
     author: {
         fontFamily: 'Raleway, sans-serif',
-        fontSize: '14px',
+        fontSize: '.8rem',
         fontWeight: '500',
         color: '#4e4e4e',
-        marginLeft: 18,
-        marginRight:0,
-        marginBottom:15,
-        lineHeight: 0.3,
+        margin: '2px 12px',
+        // marginLeft: 18,
+        // marginRight:0,
+        // marginBottom:15,
+        //lineHeight: 0.3,
         padding: 0,
     },
 
@@ -105,14 +107,10 @@ const DataCard = (props) => {
                 <div style={styles.columnRight}>
                     {favArticles.map(favArticles => (
                         <div style={styles.articleCard} key={favArticles.id}>
-                            <section>
+                            <span>
                                 <h4 style={styles.Favtitle}> {favArticles.title|| "Article Title"} </h4>
-                                <h4 style={styles.author}>by: {favArticles.author|| "author"}</h4>
-                            </section>
-                            <section>
-                                <h4 style={styles.textRight}> {favArticles.views || "views"}</h4>
-                                <h4 style={styles.textRight}> {favArticles.favdate || "favorite date"} </h4> 
-                            </section>
+                                <h4 style={styles.author}>Category: {favArticles.category|| "Article Category"}</h4>
+                            </span>
                         </div>
                     ))}
                 </div>
@@ -127,14 +125,10 @@ const DataCard = (props) => {
                 <div style={styles.columnRight}>
                     {readArticles.map(readArticles => (
                         <div style={styles.articleCard} key={readArticles.id}>
-                            <section>
-                                <h4 style={styles.Favtitle}> {readArticles.title} </h4>
-                                <h4 style={styles.author}>by: {readArticles.author}</h4>
-                            </section>
-                            <section>
-                                <h4 style={styles.textRight}> {readArticles.views}</h4>
-                                <h4 style={styles.textRight}> {readArticles.favdate} </h4> 
-                            </section>
+                            <span>
+                                <h4 style={styles.Favtitle}> {readArticles.title|| "Article Title"} </h4>
+                                <p style={styles.author}>Category: {readArticles.category|| "Article Category"}</p>
+                            </span>
                         </div>
                     ))}
                 </div>
@@ -179,3 +173,49 @@ export default DataCard;
 //     length={uReadHistory.length}
 //     category={uReadHistory.category} 
 //     ))}
+
+// if(props.userFavList){
+//     favArticles = Object.values(props.userFavList);
+//     console.log('[Comp/DataCard] rendering favs ',favArticles);
+//     lister = (
+//         <div style={styles.row}>
+//             <LeftContent header= {props.header} stat={favArticles.length} footer={props.footer}/>
+//             <div style={styles.columnRight}>
+//                 {favArticles.map(favArticles => (
+//                     <div style={styles.articleCard} key={favArticles.id}>
+//                         <section>
+//                             <h4 style={styles.Favtitle}> {favArticles.title|| "Article Title"} </h4>
+//                             <h4 style={styles.author}>by: {favArticles.author|| "author"}</h4>
+//                         </section>
+//                         <section>
+//                             <h4 style={styles.textRight}> {favArticles.views || "views"}</h4>
+//                             <h4 style={styles.textRight}> {favArticles.favdate || "favorite date"} </h4> 
+//                         </section>
+//                     </div>
+//                 ))}
+//             </div>
+//         </div>
+//     );
+// }else if(props.userReadList) /*if(this.props.children === "user-history")*/{
+//     readArticles = Object.values(props.userReadList);
+//     console.log('[Comp/DataCard] rendering hist ',readArticles);
+//     lister = (
+//         <div style={styles.row}>
+//             <LeftContent header= {props.header} stat={readArticles.length} footer={props.footer}/>
+//             <div style={styles.columnRight}>
+//                 {readArticles.map(readArticles => (
+//                     <div style={styles.articleCard} key={readArticles.id}>
+//                         <section>
+//                             <h4 style={styles.Favtitle}> {readArticles.title} </h4>
+//                             <h4 style={styles.author}>by: {readArticles.author}</h4>
+//                         </section>
+//                         <section>
+//                             <h4 style={styles.textRight}> {readArticles.views}</h4>
+//                             <h4 style={styles.textRight}> {readArticles.favdate} </h4> 
+//                         </section>
+//                     </div>
+//                 ))}
+//             </div>
+//         </div>
+//     );
+// }

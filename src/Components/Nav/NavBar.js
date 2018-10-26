@@ -3,14 +3,12 @@ import React from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 
 //Assets
-import logoDE from '../../tdc-de.svg';
+import logoDE from /*'../../imgs/tdc-logo-wm-long-ondark.svg';*/'../../imgs/tdc-de.svg';
 
 import './NavBar.css';
 
 //ProjectComponents
 import UserNavCard from './UserNavCard';
-//import DrawerToggleButton from '../SideDrawer/DrawerToggleButton';
-
 
 const styles = ({
     toolbar: {
@@ -26,9 +24,9 @@ const styles = ({
         display: 'flex',
         alignItems: 'center',
         zIndex: '200',
+        alignContent: 'stretch',
         justifyContent: 'space-between',
         fontVariant: 'small-caps',
-        boxSizing: 'border-box',
         fontFamily: "'Roboto', 'sans-serif'",
         fontWeight: '300',
         //lineHeight: 0,
@@ -37,22 +35,19 @@ const styles = ({
     
     linkContainer: {
         display: 'flex',
-        width: '75%',
-        marginLeft: '12.5%',
+        flexGrow: 1,
+        flexShrin: 1,
+        //width: '75%',
+        margin: '0vw 4vw',
         alignContent: 'flex-start',
     },
     link: {
         marginRight: '1vw',
-        color: '#fff',
         cursor: 'pointer',
-        fontSize: '1.2rem',
         fontFamily: "'Roboto', 'sans-serif'",
         fontWeight: '400',
         //textTransform: 'uppercase',
         //fontVariant: 'small-caps'
-    },
-    spacer: {
-        flexGrow: 1,
     },
     logo: {
         height: '5vh',
@@ -64,19 +59,65 @@ const styles = ({
         // marginLeft: '2vh'
     },
     profiler: {
-        display: 'flex',
         cursor: 'pointer',
         maxWidth: '30%', //flexDirection and flexWrap combined
         zIndex: '200', //'1vh',
     },
     logger: {
         background: '#042432',
-        color: '#FFF',
-        fontSize: '1.2rem',
-        padding: '4px 8px',
         fontFamily: "'Roboto', 'sans-serif'",
         boxShadow: '2px, 2px, 4px, rgba(0,0,0,.5)',
     }
+});
+
+const navbar = props => (
+    <nav style={styles.toolbar} className="toolbar">
+        <img className="toolbar__logo" onClick={props.drawerClickHandlerOrg} style={styles.logo} src={logoDE} alt="Take Flight with the TDC Logo PaperPlane™" />
+
+        <div style={styles.linkContainer} className="toolbar__navigation-items">
+            <LinkContainer style={styles.link} to="/learn">
+                <h4 className="toolbar__nav-link">learn</h4>
+            </LinkContainer>
+            <LinkContainer style={styles.link} to="/dashboard">
+                <h4 className="toolbar__nav-link">insights</h4>
+            </LinkContainer>
+        </div>
+
+        <UserNavCard 
+            style={styles.profiler}
+            clicker={props.drawerClickHandlerUser}
+            pic={props.uPic}
+            name={props.userNameGiven||'Sign In'}
+            company={null}
+            designation={props.userOrgDesig||'to continue'}
+        />
+        
+        <LinkContainer to="/logout">
+            <p className="toolbar__nav-link logout" style={styles.logger} onClick={props.logout}>logout</p>
+        </LinkContainer>
+        
+
+    </nav>
+);
+
+export default navbar;
+
+// <div className="toolbar__toggle-button"> </div>
+
+// <div style={styles.profiler} className="toolbar__profiler">
+// <UserNavCard
+//     clicker={props.drawerClickHandlerUser}
+//     pic={props.uPic}
+//     name={props.userNameGiven||'Sign In'}
+//     company={null}
+//     designation={props.userOrgDesig||'to continue'}
+// />
+// </div>
+
+// <LinkContainer style={styles.link} to="/events">
+// <h4 className="toolbar__nav-link">events</h4>
+// </LinkContainer>
+
     // profiler: {
     //     display: 'flex',
     //     flexFlow: 'row-reverse wrap', //flexDirection and flexWrap combined
@@ -127,48 +168,6 @@ const styles = ({
     //     zIndex: '120',
     //     // marginLeft: '2vh'
     // },
-})
 
-const navbar = props => (
-    <nav style={styles.toolbar} className="toolbar">
-        <div >
-            <img className="toolbar__logo" onClick={props.drawerClickHandlerOrg} style={styles.logo} src={logoDE} alt="Take Flight with the TDC Logo PaperPlane™" />
-        </div>
-        <div style={styles.spacer} className="spacer" />
-        <div style={styles.linkContainer} className="toolbar__navigation-items">
-            <LinkContainer style={styles.link} to="/learn">
-                <h4 className="toolbar__nav-link">learn</h4>
-            </LinkContainer>
-            <LinkContainer style={styles.link} to="/dashboard">
-                <h4 className="toolbar__nav-link">insights</h4>
-            </LinkContainer>
-            <LinkContainer style={styles.link} to="/events">
-                <h4 className="toolbar__nav-link">events</h4>
-            </LinkContainer>
-        </div>
-        <UserNavCard 
-            style={styles.profiler}
-            clicker={props.drawerClickHandlerUser}
-            pic={props.uPic}
-            name={props.userNameGiven||'Sign In'}
-            company={null}
-            designation={props.userOrgDesig||'to continue'}
-        />
-        <p className="toolbar__nav-link logout" style={styles.logger} onClick={props.logout}>logout</p>
 
-    </nav>
-);
-
-export default navbar;
-
-// <div className="toolbar__toggle-button"> </div>
-
-// <div style={styles.profiler} className="toolbar__profiler">
-// <UserNavCard
-//     clicker={props.drawerClickHandlerUser}
-//     pic={props.uPic}
-//     name={props.userNameGiven||'Sign In'}
-//     company={null}
-//     designation={props.userOrgDesig||'to continue'}
-// />
-// </div>
+    // <div style={styles.spacer} className="spacer" />

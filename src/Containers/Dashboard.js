@@ -21,54 +21,7 @@ class Dashboard extends Component {
 		readArtList : {}
 	};
 
-	componentDidMount() {
-		this.props.loadTodo(this.props.userId);
-	}
-
-	componentDidUpdate() {
-		//this.props.onLoad(this.props.userId, this.props.userHistory);
-		
-		// console.log(
-		// 	"[Cont/Dash] Components Updated | Current UserID is: ",
-		// 	localStorage.getItem("userID")
-		// );
-	};
-	componentWillUnmount() {
-		//this.getMYVALUES();
-	}
-	getMYVALUES() {
-		this.props.onLoad(this.props.userId, this.props.userHistory);
-		this.props.loadTodo(this.props.userId);
-	}
-
-	// hydrateFavs = (articleList, favs) => {
-	// 	const artList = Object.values(articleList);
-	// 	favs.forEach(element => {
-	// 		//TODO: Query the Artlist to find the items with the ids in favs.			
-	// 	});
-	// }
-	// hydrateReadistory() {
-	// 	const artlist = this.props.articles;
-	// 	const history = this.props.userLearnedProg;
-	// 	const favs = this.props.favs;
-
-	// 	const favList = this.hydrateFavs(artlist, favs);
-	// let userReadHistory = Object.values(this.props.userHistory);
-		
-	// }
-
 	render() {
-		// const writetofb = () => {
-		// 	this.props.writeTest(
-		// 		this.props.userId,
-		// 		this.props.userNameGiven,
-		// 		this.props.userNameFamily,
-		// 		this.props.userEmail,
-		// 		this.props.userPic,
-		// 		this.props.userPhone
-		// 	);
-		// };
-
 		return (
 				<div className="dashboard">
 					<div className="cardContainer">
@@ -81,35 +34,20 @@ class Dashboard extends Component {
 							company="company"/>
 						<UserTodo
 							type="userTodos"
-							// header="complete"
-							// stat="02"
-							// footer="out of 06"
-							list={/*'bleh'*/this.props.uTodo}>
+							list={this.props.uTodo}>
 							<CardTitle name="TODO & MORE" />
 						</UserTodo>
 
 						<AnalCard
 							type="learnProgress"
-							header="You are reading"
+							header="You're reading"
 							stat="1.2"
-							footer="every day (avg)"
+							footer="articles daily"
 							chartType={chartType.LINE_CHART}
 							chartWidth="540" chartHeight="200"
 							chartLabels={this.props.chartLineLabels}
 							chartData={this.props.chartLineData} chartDataBaseline={null}>
 							<CardTitle name="LEARN CURVE" />
-						</AnalCard>
-
-						<AnalCard
-							type="participateProgress"
-							header="completed"
-							stat="02"
-							footer="Sections of 7"
-							chartType={chartType.RADAR_CHART}
-							chartWidth="540" chartHeight="200"
-							chartLabels={this.props.chartRadarLabels}
-							chartData={this.props.chartRadarData} chartDataBaseline={this.props.chartRadarDataBaseline}>
-							<CardTitle name="PREPARATION" />
 						</AnalCard>
 
 						<DataCard
@@ -253,3 +191,66 @@ export default connect(mapStateToProps, mapDispactchToProps)(Dashboard);
 // <h1 onClick={writetofb}>
 // Welcome to your Dashboard. The heart of DE.
 // </h1>
+
+	// hydrateFavs = (articleList, favs) => {
+	// 	const artList = Object.values(articleList);
+	// 	favs.forEach(element => {
+	// 		//TODO: Query the Artlist to find the items with the ids in favs.			
+	// 	});
+	// }
+	// hydrateReadistory() {
+	// 	const artlist = this.props.articles;
+	// 	const history = this.props.userLearnedProg;
+	// 	const favs = this.props.favs;
+
+	// 	const favList = this.hydrateFavs(artlist, favs);
+	// let userReadHistory = Object.values(this.props.userHistory);
+		
+	// }
+
+		// const writetofb = () => {
+		// 	this.props.writeTest(
+		// 		this.props.userId,
+		// 		this.props.userNameGiven,
+		// 		this.props.userNameFamily,
+		// 		this.props.userEmail,
+		// 		this.props.userPic,
+		// 		this.props.userPhone
+		// 	);
+		// };
+
+// <AnalCard
+// 	type="participateProgress"
+// 	header="completed"
+// 	stat="02"
+// 	footer="Sections of 7"
+// 	chartType={chartType.RADAR_CHART}
+// 	chartWidth="540" chartHeight="200"
+// 	chartLabels={this.props.chartRadarLabels}
+// 	chartData={this.props.chartRadarData} chartDataBaseline={this.props.chartRadarDataBaseline}>
+// 	<CardTitle name="PREPARATION" />
+// </AnalCard>
+
+// header="complete"
+// stat="02"
+// footer="out of 06"
+
+	// componentDidMount() {
+	// 	this.props.loadTodo(this.props.userId);
+	// }
+
+	// componentDidUpdate() {
+	// 	//this.props.onLoad(this.props.userId, this.props.userHistory);
+		
+	// 	// console.log(
+	// 	// 	"[Cont/Dash] Components Updated | Current UserID is: ",
+	// 	// 	localStorage.getItem("userID")
+	// 	// );
+	// };
+	// componentWillUnmount() {
+	// 	//this.getMYVALUES();
+	// }
+	// getMYVALUES() {
+	// 	this.props.onLoad(this.props.userId, this.props.userHistory);
+	// 	this.props.loadTodo(this.props.userId);
+	// }

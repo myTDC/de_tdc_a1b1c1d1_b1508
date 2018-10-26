@@ -43,7 +43,6 @@
 .todoText {
   font-size: 1rem;
   margin: 1vh;
-  line-height: 2vh;
   padding: 0;
   text-align: start;
 }
@@ -67,11 +66,12 @@
 
 .todoDates {
   background: rgba(22, 223, 100, .5);
-  margin: 0.2vh;
+  margin: 10% 1%;
   padding: .6vh;
-  width: 60px;
-  min-width: 60px;
-  height: 60px;
+  width: 25%;
+  min-width: 40px;
+  height: 90%;
+  min-height: 40px;
   line-height: 1vh;
   color: #4e4e4e;
   border-radius: 3vh 0vh 3vh 0vh;
@@ -95,10 +95,47 @@
 
 .todoTitle {
   font-size: .9rem;
-  font-weight: 600;
   color: #4e4e4e;
+  width: 70%;
   margin-left: 1vw;
   line-height: 1.6vh;
   padding: 0;
   text-align: left;
+}
+
+.histDrawerTitle {
+  font-size: 1.2rem;
+  margin: 1vh;
+  padding: 0;
+  text-align: start;
+}
+.histCard {
+  display: flex;
+  flex-flow: column;
+  align-content: flex-start;
+  width: 96%;
+  padding: 1% 4%;
+  margin: 4px;
+  margin-bottom: 8px;
+  border-radius: 2px;
+  background: #fafafa;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, .5);
+  font-family: Roboto, sans-serif;
+}
+
+.histCardTitle {
+  font-size: 1rem;
+  font-weight: 500;
+  height: 60%;
+  line-height: 1.2;
+  color: #4e4e4e;
+}
+
+.histCardCategory {
+  font-size: .8rem;
+  font-weight: 600;
+  background: #E6E6e6;
+  margin: 0 2 2 2;
+  height: 40%;
+  color: rgba(50, 74, 94, .8);
 }

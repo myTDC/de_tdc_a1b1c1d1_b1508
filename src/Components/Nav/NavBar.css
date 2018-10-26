@@ -1,16 +1,103 @@
-.toolbar__nav-link{
-    padding: 4px 12px;
+:root{
+    --link-font-size: 1rem;
+    --link-padding: 4px 10px;
+    --link-color: #FFF8E7;
+
+    --profiler-name-font-size: 1rem;
+    --profiler-desig-font-size: .8rem;
+    --profiler-height: 92%
 }
 
-.toolbar__nav-link.active,
+
+@media screen and (max-width: 510px){
+    :root{
+        --link-font-size: .8rem;
+        --link-padding: 2px 6px;
+
+        --profiler-name-font-size: .7rem;
+        --profiler-desig-font-size: .5rem;
+    }
+}
+
+.toolbar{
+
+}
+
+.toolbar__nav-link{
+    font-size: var(--link-font-size);
+    padding: var(--link-padding);
+    color: var(--link-color);
+    border-bottom: 2px solid #26663e00;
+    
+}
+
+.toolbar__nav-link.logout{
+    font-size: var(--link-font-size);
+    padding: var(--link-padding);
+    color: var(--link-color);
+    border-bottom: 2px solid #fc444400;
+}
+/*.toolbar__nav-link.active,*/
 .toolbar__nav-link:hover{
     background:linear-gradient(60deg, #041620, #162432 ); /*#041620;*/
-    color: #16df64;
+    /*color: #16df64;*//*Doesn't Work;*/
     border-bottom: 2px solid #16df64;
+    boxShadow: 2px, 2px, 4px, rgba(0,0,0,.5);
 }
 
 .toolbar__nav-link.logout:hover{
     background:linear-gradient(60deg, #041620, #162432 ); /*#041620;*/
-    color: #16df64;
     border-bottom: 2px solid #fc4444;
+}
+
+.profilerContainer {
+    background: /*#162432;*/ rgba(153, 153, 153, 0.3);
+    -webkit-backdrop-filter: blur(30px) saturate(150%);
+    background-blend-mode: luminosity;
+    display: flex;
+    align-items: center;
+    align-content: space-around;
+    height: var(--profiler-height);
+    max-width: 240px;
+    width: 24vw;
+    min-width: 80px;
+
+    margin: 0px;
+    margin-right: 1vh;
+    padding: 1vh;
+
+    line-height: 0.8;
+
+    cursor: pointer;
+    
+    border-radius: 1vh;
+    z-index: 200;
+    box-shadow: 2px, 2px, 4px, rgba(0,0,0, 0.5);
+}
+
+.profilerDP {
+    background: var(--link-color);
+    height: 92%;
+    max-height: 8vw;
+    min-height: 32px;
+    min-width: 32px;
+    /*width: 20%;*/
+    /*margin: 4%;*/
+    /*marginRight: 4%;*/
+    /*marginLeft: 1vh;*/
+    border-radius: 10vh;
+    font-size: .5rem;
+    visibility: invisible;
+}
+
+.profilerText {
+    width: 75%;
+    color: #FFF8E7;
+}
+.profilerTextName {
+    font-size: var(--profiler-name-font-size);
+}
+.profilerTextDesig {
+    color: #DEDEDE;
+    font-size: var(--profiler-desig-font-size);
 }

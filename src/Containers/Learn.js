@@ -22,13 +22,13 @@ class Learn extends Component {
     componentWillUnmount() {
         this.props.updateFavorites(this.props.uID, this.props.favList);
     }
-    readHistory = (uID, id, art) => {
+    readHistory = (uID, id, art/*, cat,*/) => {
         //console.log('[Container/Learn] User Read Article:', id);
         let found;
         if (this.props.history.hasOwnProperty("b1008_" + id)) //Checks if the object has the specified value as it's own property or is an inherited property.
             found = true;
         else found = false;
-        this.props.updateHistory(found, uID, id, this.props.history, art);
+        this.props.updateHistory(found, uID, id, this.props.history, art /*, cat, this.props.catCoverage*/);
         this.forceUpdate();
     }
 
@@ -61,7 +61,7 @@ class Learn extends Component {
                 {articleArray.map(artList => (
                     <ArtCard onclick={() =>
                         //onclick={(arts) => this.props.storeArt(data[artList.id-1])} key={artList.id} 
-                        this.readHistory(this.props.uID, artList.id, artList)}
+                        this.readHistory(this.props.uID, artList.id, artList /*, artList.category//, */)}
                         key={artList.id}
                         title={artList.title}
                         image={artList.image}
@@ -82,7 +82,8 @@ const mapStateToProps = state => {
         articles: state.content.articles3p,
         history: state.user.history,
         favList: state.user.favList,
-        uID: state.auth.user.Id,
+        uID: state.auth.user.Id//,
+        //catCoverage: state.user.categoryCoverage//,
     };
 };
 
@@ -93,7 +94,7 @@ const mapDispactchToProps = dispatch => {
         updateFavorites: (uID, list) => dispatch(acts.writeFavList(uID, list)),
         //storeArt: (arts) => dispatch(acts.setVisited(arts)),
         //ReadUser: (uID) => dispatch(acts.readUserHistory(uID)),
-        updateHistory: (found, uID, id, art) => dispatch(acts.updateUserReadHistory(found, uID, id, art))//,
+        updateHistory: (found, uID, id, art/*, cat, catState*/) => dispatch(acts.updateUserReadHistory(found, uID, id, art/*, cat, catState*/))//,
     };
 };
 

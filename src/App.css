@@ -6,6 +6,12 @@
   padding: 0px;
 }
 
+.appContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
 /* .kit-scrollbar::-webkit-scrollbar {
   width: 10px;
   height: 10px;

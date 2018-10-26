@@ -333,7 +333,7 @@ const uReadFailure = error => {
 	};
 };
 
-export const updateUserReadHistory = (found, uID, id, art, Readart) => {
+export const updateUserReadHistory = (found, uID, id, art, Readart/*, cat, catState*/) => {
 	//Called in Container/Learn
 	const readArts = dbRef.child("users/" + uID + "/readHistory");
 	const contentUpdateVersion = "b1008";
@@ -364,8 +364,39 @@ export const updateUserReadHistory = (found, uID, id, art, Readart) => {
 				count: i
 			};
 			read[i] = timeNow;
+			//################################ Code to Update the category covered by each article that the user has read ################################
+			// let categoryCoverage = {
+			// 	"Best Practices": {
+			// 		total: 11,
+			// 		read: 0
+			// 	},
+			// 	"Investment": {
+			// 		total: 8,
+			// 		read: 0
+			// 	},
+			// 	"Design": {
+			// 		total: 5,
+			// 		read: 0
+			// 	},
+			// 	"Motivation": {
+			// 		total: 2,
+			// 		read: 0
+			// 	},
+			// 	"Develop": {
+			// 		total: 2,
+			// 		read: 0
+			// 	},
+			// 	"Leadership": {
+			// 		total: 2,
+			// 		read: 0
+			// 	}
+			// };
+
+			//################################ Code to Update the category covered by each article that the user has read ################################
+
 			updates["/" + contentUpdateVersion + "_" + id] = read;
 			readArts.update(updates);
+
 			let newState = {};
 			newState = read;
 			art[contentUpdateVersion + "_" + id] = { ...art[contentUpdateVersion + "_" + id],
@@ -442,10 +473,10 @@ export const setupAnal = (uID, userHistory) => {
     }
 	//let articleArray = Object.values(this.props.articles);    
 	
-	console.log('[Act/Drawer][Tester] Main State: ', getState());
+	//console.log('[Act/Drawer][Tester] Main State: ', getState());
 	let artList = Object.values(getState().content.articles3p);
 		
-	console.log('[Act/Drawer][Tester] ArtList: ', artList);
+	//console.log('[Act/Drawer][Tester] ArtList: ', artList);
 
 	let readArticlesList = [];
 
@@ -453,9 +484,9 @@ export const setupAnal = (uID, userHistory) => {
 		readArticlesList.push(artList[element]);
 	});
 
-	console.log('[Act/Drawer][Tester] readArticlesList: ', readArticlesList);
+	//console.log('[Act/Drawer][Tester] readArticlesList: ', readArticlesList);
 
-	console.log("[Act/User] [setupAnal] User's reading history is:", anData, 'User has read the articles: ', readArticles);
+	//console.log("[Act/User] [setupAnal] User's reading history is:", anData, 'User has read the articles: ', readArticles);
 
     // readHistory.forEach(()=>{
     //   console.log('Read Count is:',1);
@@ -473,7 +504,7 @@ export const setupAnal = (uID, userHistory) => {
 //############################################ End of Code to Fetch Data for Analytics based on user read history ############################################
 
 //############################################ Code for favorites ########################
-const updateFavArtList = (favList, arts) => { //FIXME: Return Values Porperly
+const updateFavArtList = (favList, arts) => {
 //	return getState => {
 		let artList = Object.values(arts);
 		let favArticlesList = [];
@@ -631,3 +662,63 @@ export function fetchPostsIfNeeded(subreddit) {
 //     "publisher": "Medium/Entrepreneur's Handbook"},
 // ];
 
+// const catUpdater = (cat) => {
+// 	let catCovered = categoryCoverageModel;
+// 	switch(cat){
+// 		case "Best Practices": {
+
+// 			break;
+// 		}
+// 		case "Investment": {
+			
+// 			break;
+// 		}
+// 		case "Design": {
+			
+// 			break;
+// 		}
+// 		case "Motivation": {
+			
+// 			break;
+// 		}
+// 		case "Develop": {
+			
+// 			break;
+// 		}
+// 		case "Leadership": {
+			
+// 			break;
+// 		}
+// 		default: console.log('[Act/User/catUpdater] Unknown Category', cat);
+// 	}
+// }
+
+//################################ Model Data for category covered by each article that the user has read ################################
+// const categoryCoverageModel = {
+// 	"Best Practices": {
+// 		total: 11,
+// 		read: 0
+// 	},
+// 	"Investment": {
+// 		total: 8,
+// 		read: 0
+// 	},
+// 	"Design": {
+// 		total: 5,
+// 		read: 0
+// 	},
+// 	"Motivation": {
+// 		total: 2,
+// 		read: 0
+// 	},
+// 	"Develop": {
+// 		total: 2,
+// 		read: 0
+// 	},
+// 	"Leadership": {
+// 		total: 2,
+// 		read: 0
+// 	}
+// };
+
+//################################ End of Model Data for category covered by each article that the user has read ################################

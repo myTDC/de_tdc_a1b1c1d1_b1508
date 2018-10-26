@@ -3,7 +3,7 @@ import './App.css';
 import Layout from './Containers/Layout';
 import Dash from './Containers/Dashboard';
 import Learn from './Containers/Learn';
-import Participate from './Containers/Participate';
+import Participate from './Containers/exp/Participate';
 // import { reduxTest } from './Store/actions/authExp';
 // import * as acts from './Store/actions';
 
@@ -35,11 +35,11 @@ class App extends Component {
     // <div className="kit-scrollbar with-arrows" style={styles.scrollbar}><div style={styles.scrollbarwindow}></div></div>
 
     return (
-      <div>
+      <div className={'App'}>
         <Layout />
-        <Route exact path='/home' component={Participate} />
         {this.props.userId ?
-          <Switch>
+          <Switch className = {'appContainer'}>
+            <Route exact path='/home' component={Participate} />
             <Route exact path='/' component={Learn} />
             <Route exact path='/learn' component={Learn} />
             <Route exact path='/dashboard' component={Dash} />
@@ -49,7 +49,6 @@ class App extends Component {
             <Route exact path='/tools' component={Participate} />
           </Switch>
           : null}
-          
       </div>
     );
   }

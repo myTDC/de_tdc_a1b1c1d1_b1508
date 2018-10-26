@@ -54,19 +54,19 @@ const styles = ({
         boxShadow: '1px 1px 3px rgba(0,0,0,16%)'
     },
     todotext: {
-        fontFamily: 'Raleway, sans-serif',
+        fontFamily: 'Roboto, sans-serif',
         fontSize: '1rem',
         fontWeight: '500',
         color: '#4e4e4e',
         maxWidth: '70%',
         marginTop: 5,
-        marginRight: 0,
-        marginLeft: 18,
+        marginRight: '8px',
+        marginLeft: '16px',
         padding: 0,
     },
 
     AdatesText: {
-        fontFamily: 'Raleway, sans-serif',
+        fontFamily: 'Roboto, sans-serif',
         fontSize: '13px',
         fontWeight: '500',
         color: '#4e4e4e',
@@ -76,7 +76,7 @@ const styles = ({
     },
 
     CdatesText: {
-        fontFamily: 'Raleway, sans-serif',
+        fontFamily: 'Roboto, sans-serif',
         fontSize: '13px',
         fontWeight: '700',
         color: '#4e4e4e',

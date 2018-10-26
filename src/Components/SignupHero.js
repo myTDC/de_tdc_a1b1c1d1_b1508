@@ -1,12 +1,12 @@
 import React from 'react';
 import './SignupHero.css';
 //import logo from '../logo_min.svg';
-import logov2 from '../plane_grad.svg';
-import learn from  '../l-learn.svg';
-import domi from '../l-dominate.svg';
-import mat from '../l-mature.svg';
-import logoDE from '../tdc-de.svg';
-import logoTDCWM from '../tdc-logo-wm-long-ondark.svg';
+import logov2 from '../imgs/plane_grad.svg';
+import learn from  '../imgs/l-learn.svg';
+import domi from '../imgs/l-dominate.svg';
+import mat from '../imgs/l-mature.svg';
+import logoDE from '../imgs/tdc-de.svg';
+import logoTDCWM from '../imgs/tdc-logo-wm-long-ondark.svg';
 
 const SignupHero = (props) =>{
     return(

@@ -1,45 +1,66 @@
 @import url("https://www.w3schools.com/w3css/4/w3.css");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
 
+
+
+::-webkit-scrollbar{
+    visibility: hidden;
+}
 .learnSection {
-    max-height: 88vh;
-    max-width: 45%;
+    max-height: 90vh;
+    max-width: 46%;
+    margin-top: 2vh;
     margin-left: 27%;
     padding-left: 5px;
     padding-right: 5px;
     overflow-y: scroll;
 }
 
-::-webkit-scrollbar{
-    visibility: hidden;
-}
-
-
-/* @media screen and (max-width: 600px){
-    .learnSection{
-        max-width: 85%;
-        max-height: 80vh;
-        margin-left: 7.5%;
-    }
-} */
-
-@media screen and (max-width: 1020px) {
-    .learnSection {
-        max-width: 85%;
-        margin-left: 7.5%;
-    }
-}
-
-@media screen and (max-width: 1360px) {
+@media screen and (max-width: 1600px)  {
     .learnSection {
         max-width: 50%;
         margin-left: 25%;
     }
 }
 
-@media screen and (max-width: 1600px) {
+@media screen and (max-width: 1360px) {
     .learnSection {
-        max-width: 70%;
+        max-width: 60%;
         margin-left: 15%;
     }
 }
+
+@media screen and (max-width: 1280px) {
+    .learnSection {
+        max-width: 80%;
+        margin-left: 10%;
+    }
+}
+
+@media screen and (max-width: 1020px) {
+    .learnSection {
+        max-width: 88%;
+        margin-left: 6%;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .learnSection{
+        max-width: 92%;
+        margin-left: 4%;
+    }
+}
+
+@media screen and (max-width: 440px){
+    .learnSection{
+        max-width: 96%;
+        margin-left: 2%;
+    }
+}
+
+
+
+
+
+
+

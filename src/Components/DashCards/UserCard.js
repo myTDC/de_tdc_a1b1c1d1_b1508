@@ -1,9 +1,9 @@
 import React from 'react';
-import tdcLogo from '../../tdc-logo-wm-trans-ondark.svg';
-import fbLogo from '../../fb.svg';
-import instaLogo from '../../insta.svg';
-import linkedinLogo from '../../ln.svg';
-import twitterLogo from '../../tw.svg';
+import tdcLogo from '../../imgs/tdc-logo-wm-trans-ondark.svg';
+import fbLogo from '../../imgs/fb.svg';
+import instaLogo from '../../imgs/insta.svg';
+import linkedinLogo from '../../imgs/ln.svg';
+import twitterLogo from '../../imgs/tw.svg';
 
 
 //import * as chartType from '../Charter';
@@ -13,7 +13,7 @@ let styles = {
     row:{
         display: 'flex',
         width: '100%',
-        height: 300,
+        height: '36vh',
         justifyContent: 'space-between',
         flexWrap: 'wrap',
         background: '#2D3D54',
@@ -111,19 +111,19 @@ const UserCard = (props) => {
     let userInsta = null;
     let userTwit = null;
 
-    //let user_desig = "Chief Operating Office";
+    //let user_desig = "Chief Operating Office"; 
     //let user_relation = "is a " + user_desig + " at";
     
-    if(props.fb||1){
+    if(props.fb||0){
         userFb = (<a href={props.fb}><img style={styles.smmFb} src={fbLogo} alt="Facebook Logo"/></a>);
     }
-    if(props.linked||1){
+    if(props.linked||0){
         userLinkedin = (<a href={props.linked}><img style={styles.smmIcons} src={linkedinLogo} alt="LinkedIn Logo"/></a>);
     }
-    if(props.insta||1){
+    if(props.insta||0){
        userInsta = (<a href={props.insta}><img style={styles.smmIcons} src={instaLogo} alt="Instagram Logo"/></a>);
     }
-    if(props.twit||1){
+    if(props.twit||0){
         userTwit = (<a href={props.twit}><img style={styles.smmIcons} src={twitterLogo} alt="Twitter Logo"/></a>);
     }
 
@@ -159,12 +159,14 @@ const UserCard = (props) => {
                 </div>
             </section>
 
-            <section style={styles.social}> {/*TODO: align the logos*/}
+            {/*
+            <section style={styles.social}>
                 {userFb}
                 {userLinkedin}
                 {userInsta}
                 {userTwit}
             </section>
+            */}
         </section> 
 /*         <div className="userCard">
             <div className="topActs">

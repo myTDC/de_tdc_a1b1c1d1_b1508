@@ -56,8 +56,6 @@ class Layout extends Component {
 			blackout = <Blackout click={this.backdropClickHandler} />
 		}
 
-		//let authorizer = <button onClick={this.props.onAuth}>Login</button>;
-
 		let signup = (
 			<SignUpHero clicked={this.props.onAuth} heroAction="Lift Off" />
 		);
@@ -77,30 +75,17 @@ class Layout extends Component {
 						logout={this.props.onLogOut} />
 				</header>
 			);
-			// authorizer = (
-			//   <section>
-			// {/*<button onClick={this.props.onLogOut}>Logout</button>*/}
 
-			//     {/* <h2>{this.props.userNameGiven}</h2>
-			//                   <h3>{this.props.userNameFamily}</h3>
-			//                   <img src={this.props.userPic} alt="Users DP" />
-			//                   <h4>{this.props.userEmail}</h4>
-			//                   <h4>{this.props.userPhone}</h4> */}
-			//   </section>
-			// );
 		}
 		const dash_base = (
 			<section>
 				<Drawer
 					drawerUser={this.state.drawerUser_open}
 					drawerTodo={this.state.drawerOrg_open}
-				//dataList={}
 				/>
 				{blackout}
 				{signup}
-				<br />
-				{/*authorizer*/}
-				<br />
+				<br/>
 			</section>
 		);
 		//Beginning DomRender
@@ -180,4 +165,32 @@ export default connect(mapStateToProps, mapDispactchToProps)(Layout);
 //   <div>
 //     <button onClick={this.props.Read}> Read ArtList from FB </button>
 //   </div>
+// );
+
+
+		//let authorizer = <button onClick={this.props.onAuth}>Login</button>;
+			// authorizer = (
+			//   <section>
+			// {/*<button onClick={this.props.onLogOut}>Logout</button>*/}
+
+			//     {/* <h2>{this.props.userNameGiven}</h2>
+			//                   <h3>{this.props.userNameFamily}</h3>
+			//                   <img src={this.props.userPic} alt="Users DP" />
+			//                   <h4>{this.props.userEmail}</h4>
+			//                   <h4>{this.props.userPhone}</h4> */}
+			//   </section>
+			// );
+// const dash_base = (
+// 	<section>
+// 		<Drawer
+// 			drawerUser={this.state.drawerUser_open}
+// 			drawerTodo={this.state.drawerOrg_open}
+// 		//dataList={}
+// 		/>
+// 		{blackout}
+// 		{signup}
+// 		<br />
+// 		{/*authorizer*/}
+// 		<br />
+// 	</section>
 // );
