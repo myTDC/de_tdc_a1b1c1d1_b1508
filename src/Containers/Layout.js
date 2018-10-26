@@ -85,17 +85,16 @@ class Layout extends Component {
 				/>
 				{blackout}
 				{signup}
-				<br/>
 			</section>
 		);
 		//Beginning DomRender
 		return (
-			<div className="App">
+			<div className="Layout">
 				<div className="scroll">
 					{header}
 					<div className="logout">{dash_base}</div>
 				</div>
-
+				{this.props.children}
 				{/*   {articlePublisher}
 
                 {articleFetcher} */}

@@ -13,7 +13,7 @@ let styles = {
     row:{
         display: 'flex',
         width: '100%',
-        height: '36vh',
+        height: '48vh',
         justifyContent: 'space-between',
         flexWrap: 'wrap',
         background: '#2D3D54',
@@ -71,6 +71,7 @@ let styles = {
         width: '100%',
         height: '75%',
         overflow: 'hidden',
+        background: '#FFF8E709',
     },
     profText: {
         marginTop: 12,
@@ -129,7 +130,6 @@ const UserCard = (props) => {
 
     return(
         <section style={styles.row}>
-            
             <section style={styles.header}> {/*TODO: add the links*/}
                 <h4 style={styles.headerText}>BRAG</h4>
                 <h4 style={styles.headerText}>EDIT</h4>
@@ -159,15 +159,18 @@ const UserCard = (props) => {
                 </div>
             </section>
 
-            {/*
             <section style={styles.social}>
                 {userFb}
                 {userLinkedin}
                 {userInsta}
                 {userTwit}
             </section>
-            */}
         </section> 
+    );
+};
+
+export default UserCard;
+
 /*         <div className="userCard">
             <div className="topActs">
                 <a href="_blank">BRAG</a>
@@ -191,7 +194,3 @@ const UserCard = (props) => {
                 {userTwit}
             </div>
         </div> */
-    );
-};
-
-export default UserCard;

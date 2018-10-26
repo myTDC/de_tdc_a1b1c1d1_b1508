@@ -133,7 +133,7 @@ class Drawer extends Component {
 		//const orgTimeline = Object.values(this.props.userLearnedProg);
         // const history = Object.values(this.props.userLearnedProg);
         
-        const readArticles = Object.values(this.props.userReadList||{},{},{},{},{},{},{});
+        let readArticles = Object.values(this.props.userReadList||{},{},{},{},{},{},{});
         let todoList = Object.values(this.props.userTodoList||{},{},{},{},{},{},{});
 
         // const datify=(time)=> {
@@ -218,7 +218,7 @@ class Drawer extends Component {
 		// 	</React.Fragment>
 		// );
 
-		const userHistoryDrawer = (
+		let userHistoryDrawer = (readArticles!==Object.values({},{},{},{},{},{},{})) ? (
             <React.Fragment>
             <h1 > Read History: </h1>
                 <h1 className={'histDrawerTitle'}> You've Read {readArticles.length} out of 30 Articles</h1>
@@ -229,7 +229,13 @@ class Drawer extends Component {
 					</div>
 				))}
 			</React.Fragment>
-		);
+        ) :
+        (
+            <React.Fragment>
+            <h1 > Read History: </h1>
+                <h2 className={'histDrawerTitle'}> You've not read any of 30 Articles. Go to the learn section and read at some so we can show you your history.</h2>
+			</React.Fragment>
+        )
 		
         let drawer = null;
         let userDrawerClasses = 'drawer user';

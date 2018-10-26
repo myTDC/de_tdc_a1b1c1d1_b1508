@@ -36,7 +36,7 @@ class App extends Component {
 
     return (
       <div className={'App'}>
-        <Layout />
+        <Layout>
         {this.props.userId ?
           <Switch className = {'appContainer'}>
             <Route exact path='/home' component={Participate} />
@@ -49,6 +49,7 @@ class App extends Component {
             <Route exact path='/tools' component={Participate} />
           </Switch>
           : null}
+        </Layout>
       </div>
     );
   }
