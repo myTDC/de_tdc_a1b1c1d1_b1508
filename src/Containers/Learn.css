@@ -11,6 +11,7 @@
     max-width: 46%;
     margin-top: 2vh;
     margin-left: 27%;
+    margin-right: 27%;
     padding-left: 5px;
     padding-right: 5px;
     overflow-y: scroll;
@@ -20,27 +21,31 @@
     .learnSection {
         max-width: 50%;
         margin-left: 25%;
+        margin-right: 25%;
     }
 }
 
-@media screen and (max-width: 1360px) {
+@media screen and (max-width: 1366px) {
     .learnSection {
         max-width: 60%;
-        margin-left: 15%;
+        margin-left: 20%;
+        margin-right: 20%;
     }
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1200px) {
+    .learnSection {
+        max-width: 68%;
+        margin-left: 16%;
+        margin-right: 16%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
     .learnSection {
         max-width: 80%;
         margin-left: 10%;
-    }
-}
-
-@media screen and (max-width: 1020px) {
-    .learnSection {
-        max-width: 88%;
-        margin-left: 6%;
+        margin-right: 10%;
     }
 }
 
@@ -48,6 +53,7 @@
     .learnSection{
         max-width: 92%;
         margin-left: 4%;
+        margin-right: 4%;
     }
 }
 
@@ -55,6 +61,7 @@
     .learnSection{
         max-width: 96%;
         margin-left: 2%;
+        margin-right: 2%;
     }
 }
 

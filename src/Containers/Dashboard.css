@@ -36,7 +36,7 @@
     }
 }
 
-@media screen and (max-width: 1360px) {
+@media screen and (max-width: 1366px) {
     :root {
         --app-dash-width: 60%;
         --app-dash-margin-left: 20%;
@@ -44,19 +44,19 @@
     }
 }
 
-@media screen and (max-width: 1280px){ 
+@media screen and (max-width: 1200px) {
+    :root {
+        --app-dash-width: 68%;
+        --app-dash-margin-left: 16%;
+        --app-dash-margin-right: 16%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
     :root {
         --app-dash-width: 80%;
         --app-dash-margin-left: 10%;
         --app-dash-margin-right: 10%;
-    }
-}
-
-@media screen and (max-width: 1020px) {
-    :root {
-        --app-dash-width: 88%;
-        --app-dash-margin-left: 6%;
-        --app-dash-margin-right: 6%;
     }
 }
 

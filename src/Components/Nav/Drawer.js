@@ -186,8 +186,8 @@ class Drawer extends Component {
 
         const drawerTodo = (
             <React.Fragment>
-                <h1 > ToDos: {pendingTodoCount} </h1>
-                <h4 className={'todoText'}> You should consider doing the following to make the most of TDC </h4>
+                <h1 className={'todoDrawerTitle'}> ToDos: {pendingTodoCount} </h1>
+                <h4 className={'todoDrawerDesc'}> You should consider doing the following to make the most of TDC </h4>
                 {todoList.map(todoList => (
                     <div className={'todoitem'} key={todoList.title + todoList.setOn}>
                         <section className={'todoDates'}>
@@ -220,14 +220,16 @@ class Drawer extends Component {
 
 		let userHistoryDrawer = (readArticles!==Object.values({},{},{},{},{},{},{})) ? (
             <React.Fragment>
-            <h1 > Read History: </h1>
-                <h1 className={'histDrawerTitle'}> You've Read {readArticles.length} out of 30 Articles</h1>
-				{readArticles.map(artObj => (
-                    <div className={'histCard'} key={artObj.id}>
-                        <p className={'histCardTitle'}> {artObj.title|| "Article Title"} </p>
-                        <p className={'histCardCategory'}> {artObj.category|| "Category"}</p>
-					</div>
-				))}
+            <h1 className={'histDrawerTitle'}> Read History: </h1>
+            <h1 className={'liner histDrawerTitle'}>  </h1>
+            <h1 className={'histDrawerDesc'}> You've read {readArticles.length} out of 30 Articles:</h1>
+            {readArticles.map(artObj => (
+                <div className={'histCard'} key={artObj.id}>
+                    <p className={'histCardCategory'}> #{artObj.category|| "Category"}</p>
+                    <span className={'histCardCategoryLiner'}> </span>
+                    <p className={'histCardTitle'}> {artObj.title|| "Article Title"}</p>
+                </div>
+            ))}
 			</React.Fragment>
         ) :
         (

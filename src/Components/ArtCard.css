@@ -16,7 +16,7 @@
     margin-left: 20px;
     
 }
-.icon{
+.icons{
     display: flex;
     flex-shrink: 1;
 }
@@ -41,10 +41,6 @@ a {
     box-shadow: 0px 0px 0px #fff;
     outline: none;
 }
-.cont{
-    flex-grow: 0;
-    max-width: 90%;
-}
 .cardContent {
     display: flex;
     justify-content: space-between;
@@ -59,6 +55,16 @@ a {
     bottom: 0px;
     min-width: 100.5%;
     min-height: 10vh;
+}
+
+.conttext{
+    max-width: 80%;
+}
+.cont{
+    flex-grow: 0;
+}
+.conttitle {
+    max-width: 100%;
 }
 
 .grad {

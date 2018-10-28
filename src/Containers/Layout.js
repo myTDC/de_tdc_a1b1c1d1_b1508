@@ -9,7 +9,8 @@ import { connect } from "react-redux";
 //import Dash from "./Dashboard";
 
 //Components
-import SignUpHero from "../Components/SignupHero";
+// import SignUpHero from "../Components/SignupHero";
+import SignUpHero from "../Components/SignupHeroNeo";
 import Navbar from "../Components/Nav/NavBar";
 import Drawer from "../Components/Nav/Drawer";
 import Blackout from "../Components/Nav/Blackout";
@@ -57,7 +58,7 @@ class Layout extends Component {
 		}
 
 		let signup = (
-			<SignUpHero clicked={this.props.onAuth} heroAction="Lift Off" />
+			<SignUpHero clicked={this.props.onAuth} heroAction="Signup with GMAIL" />
 		);
 
 		let header = null;

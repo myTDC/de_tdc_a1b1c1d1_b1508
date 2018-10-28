@@ -1,0 +1,244 @@
+:root{
+    --app-back-color: #1C2936;
+    --app-fore-color: #273549;
+
+    --app-container-first-width: 40%;
+    --app-container-back-height: 64vh;
+    --app-container-fore-height: 70%;
+    --app-container-rest-width: 20%;
+
+    --app-container-margin: 2px;
+    --app-container-padding: 4%;
+
+    --app-herobtn-back: linear-gradient(#16df82, #82fd61, 45deg);
+
+    --app-text-button-size: 1em;
+    --app-text-btnhelper-size: 0.6em;
+    --app-text-heading-size: 1em;
+    --app-text-description-size: 0.6em;
+
+    --app-text-heading-color: #FEFEFE;
+    --app-text-description-color: #F1F1F1;
+
+    --app-fore-container-corner-radius: 4px;
+    --app-fore-container-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.1); /* box-shadow: offset-x | offset-y | blur-radius | spread-radius | color */
+    --app-back-container-shadow: 1px 1px 4px 1px rgb(40, 40, 40, 0.1);
+
+    --app-landingContainer-section-width: 50%;
+    --app-landingContainer-section-min-width: 600px;
+
+    --app-landing-text-section-height: 72vh;
+    --app-landing-text-title-fontsize: 8rem;
+
+    --app-landing-appbar-desc-fontsize: 1.8rem;
+}
+
+@media screen and (max-width: 1024px) {
+    :root {
+        --app-landingContainer-section-width: 100%;
+        --app-landingContainer-section-min-width: 500px;
+        --app-landing-text-section-height: 144vh;
+        --app-landing-text-title-fontsize: 7rem;
+        --app-landing-appbar-desc-fontsize: 1.4rem;
+    }
+}
+
+@media screen and (max-width: 600px){
+    :root {
+        --app-landingContainer-section-width: 100%;
+        --app-landingContainer-section-min-width: 300px;
+        --app-landing-text-section-height: 144vh;
+        --app-landing-text-title-fontsize: 6rem;
+        --app-landing-appbar-desc-fontsize: 1rem;
+    }
+}
+
+@media screen and (max-width: 320px){
+    :root {
+        --app-landingContainer-section-width: 100%;
+        --app-landingContainer-section-min-width: 300px;
+        --app-landing-text-section-height: 144vh;
+        --app-landing-text-title-fontsize: 4rem;
+        --app-landing-appbar-desc-fontsize: .8rem;
+    }
+}
+
+/* @media screen and (max-width: 440px){
+    :root {
+        --app-dash-width: 96%;
+        --app-dash-margin-left: 2%;
+        --app-dash-margin-right: 2%;
+    }
+} */
+
+.landingContainer {
+    display: flex;
+    flex-flow: wrap;
+    width: 100%;
+    font-family: "Open Sans", sans-serif;
+    color: #F9F9F9;
+    background: linear-gradient(to bottom, #041620 0%, #1C2936 51%, #324a5e 100%);
+}
+
+.landingSection {
+    display: flex;
+    flex-flow: wrap;
+    width: 100%;
+    height: var(--app-landing-text-section-height);
+    flex-direction: row;
+}
+
+.landingSectionRev {
+    display: flex;
+    width: 100%;
+    height: var(--app-landing-text-section-height);
+    flex-flow: row-reverse wrap;
+    /* flex-direction: row-reverse; */
+}
+
+.landingSectionImage{
+    width: var(--app-landingContainer-section-width);
+    /* min-width: var(--app-landingContainer-section-min-width); */
+    padding: 4%;
+}
+.landingSectionImage:hover{
+    background: #04162060;
+    filter: saturate(1.4);
+    box-shadow: 0px 2px 2px #00000080;
+}
+
+.landingSectionTextContainer{
+    width: var(--app-landingContainer-section-width);
+    /* min-width: var(--app-landingContainer-section-min-width); */
+    flex-flow: column;
+    padding: 12vh 8vh;
+    justify-content: space-around;
+    /* background: #041620; */
+    color: #F9F9F9;
+}
+
+.landingSectionTextContainer:hover{
+    background: #04162060;
+    filter: contrast(140%);
+    box-shadow: 1px 1px 2px #00000080;
+}
+
+.landingSectionHeroTitle{
+    font-size: var(--app-landing-text-title-fontsize);
+    font-weight: 700;
+    margin-bottom: 4%;
+    width: 100%;
+}
+
+.landingSectionHeroDescription {
+    font-size: 1.6rem;
+    margin-bottom: 4%;
+}
+
+.landingSectionHeroButtonContainer {
+    display: flex;
+    flex-flow: wrap;
+    min-width: 200px;
+    width: 28%;
+    max-width: 320px;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.landingSectionHeroButton {
+    width: 100%;
+    height: 20%;
+    text-align: center;
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    /* text-transform: uppercase; */
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: #32485e;
+   /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+    border-radius: 5px;
+    padding: 2%;
+    background-image: linear-gradient(to right, #16DF82 0%, #82FD61 51%, #16DF84 100%);
+}
+.landingSectionHeroButton:hover { background-position: right center; }
+
+.landingSectionHeroButtonHelper{
+    font-variant: small-caps;
+    margin: .5vh;
+    font-size: 1.2rem;
+}
+
+.landingSectionTextTitle{
+    width: 100%;
+    font-size: var(--app-landing-text-title-fontsize);
+    font-weight: 600;
+    margin-bottom: 4vh;
+}
+
+.landingSectionTextQuote{
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: 400;
+    margin-bottom: 2vh;
+}
+
+.landingSectionTextDescription{
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
+.appBar.container{
+    display: flex;
+    width: 100%;
+    min-width: 100%;
+    height: 10vh;
+    min-height: 108px;
+    margin-top: 4px;
+    align-items: center;
+    z-index: 1;
+    background: #162432;
+}
+
+.appBar.logo{
+    width: 32%;
+    height: 88%;
+}
+
+.appBar.description{
+    width: 36%;
+    flex-grow: 1;
+    margin: 0px 2%;
+    font-size: var(--app-landing-appbar-desc-fontsize);
+}
+
+.appBar.buttonContainer{
+    display: flex;
+    align-items: center;
+    justify-items: space-around;
+    width: 24%;
+    height: 80%;
+    margin-right: 4%;
+    padding: 36% 8px;
+    text-align: center;
+    color: #F9F9F9;
+    font-size: 1.2rem;
+    font-weight: 600;
+    /* font-variant: small-caps; */
+    /* text-transform: uppercase; */
+    
+   /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+    border-radius: 5px;
+    
+    transition: 0.5s;
+    background-size: 200% auto;
+    background-image: linear-gradient(to right, #16DF82 0%, #82FD61F0 51%, #16DF84 100%);
+}
+.appBar.button{
+    width: 24%;
+    height: 80%;
+    margin-right: 4%;
+    cursor: pointer;
+}
+
+.appBar.container:hover { filter:saturate(1.3); }

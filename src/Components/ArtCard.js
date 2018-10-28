@@ -38,11 +38,12 @@ const card = (props) => {
 					<div onClick={props.onclick} className="grad"> </div></a>
 
 				<section className="cardContent">
-					<a href={props.url} target="_blank" rel="noopener noreferrer">
+					<a className="conttext" href={props.url} target="_blank" rel="noopener noreferrer">
 						<div className="cont" onClick={props.onclick}>
-							<h2>{props.title}</h2>
+							<h2 className="conttitle">{props.title}</h2>
 							<h3>{props.length} | #{props.category}</h3>
-						</div></a>
+						</div>
+					</a>
 
 					<div className="icons">
 						<IconButton onClick={props.favHandle} style={styles.colorFav}>
