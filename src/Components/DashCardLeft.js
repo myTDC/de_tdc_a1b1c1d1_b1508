@@ -8,7 +8,7 @@ const styles = ({
         paddingTop: 50,
     },
     num: {
-        fontSize: '60pt',
+        // fontSize: '60pt',
         fontWeight: '600',
         color: '#4e4e4e',
         paddingTop: 0,
@@ -34,7 +34,7 @@ const DashCardLeft = (props) => {
     return(
         <div style={styles.columnLeft}>
             <h4 style={styles.txt}>{props.header}</h4>
-            <h2 style={styles.num}>{props.stat}</h2>
+            <h2 className={"dashCardLeftStat"} style={styles.num}>{props.stat}</h2>
             <h4 style={styles.txt}>{props.footer}</h4>
         </div>
     );

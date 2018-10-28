@@ -50,9 +50,9 @@
   border-radius: 2px;
 }
 
-::-webkit-scrollbar-button {
+/* ::-webkit-scrollbar-button {
   width: 12px;
   height: 16px;
   background: rgba(0, 0, 235, 0.5);
   border-radius: 2px;
-}
+} */

@@ -30,8 +30,8 @@ class Dashboard extends Component {
 							firstName={this.props.userNameGiven}
 							lastName={this.props.userNameFamily} 
 							pic={this.props.userPic}
-							post="post" 
-							company="company"/>
+							post="learner" 
+							company="TDC"/>
 						<UserTodo
 							type="userTodos"
 							list={this.props.uTodo}>

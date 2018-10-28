@@ -1,11 +1,10 @@
 import React from 'react';
 import './SignupHeroNeo.css';
 //import logo from '../logo_min.svg';
-import logov2 from '../imgs/plane_grad.svg';
 import learn from  '../imgs/l-learn.svg';
 import domi from '../imgs/l-dominate.svg';
 import mat from '../imgs/l-mature.svg';
-import logoDE from '../imgs/tdc-de.svg';
+// import logoDE from '../imgs/tdc-de.svg';
 import logoTDCEdu from '../imgs/tdc-logo-wm-ondark.svg';
 import logoTDCWM from '../imgs/tdc-logo-wm-long-ondark.svg';
 import signupButton from '../imgs/tdc-hero-signup-button.svg';

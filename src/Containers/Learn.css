@@ -7,7 +7,7 @@
     visibility: hidden;
 }
 .learnSection {
-    max-height: 90vh;
+    /* max-height: 90vh; */
     max-width: 46%;
     margin-top: 2vh;
     margin-left: 27%;
