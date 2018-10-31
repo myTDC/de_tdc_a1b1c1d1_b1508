@@ -74,7 +74,7 @@ const reducer = ( state = initState, action ) => {
     switch ( action.type ) {
         case CONT_COMMIT_ARTICLES:  return articlesCommiter(state, action);
         case CONT_FETCH_ARTICLES:   {
-            console.log('[Red/Switch]');
+            //console.log('[Red/Content] setting state on Fetch');
             return setStateonFetch(state, action);}
         case CONT_SET_FILTER: {
             console.log('Inside Reducer. State Val is', state);

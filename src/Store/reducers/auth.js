@@ -19,7 +19,7 @@ const initState = {
 const updateObject = (baseObject, updater) => { return{...baseObject ,...updater}; };
 
 const authSuccess = (state, action) => {
-    console.log('[Red/Auth] Authentication Successful');
+    //console.log('[Red/Auth] Authentication Successful');
     // //Extracting Values from User Object
     // const uPhNum = action.authUser.phoneNumber;
     // //Extracting Values from UserInfo Object
@@ -65,12 +65,12 @@ const authSuccess = (state, action) => {
         FamilyName: action.authUserInfo.profile.family_name,
         PicUrl: action.authUserInfo.profile.picture,
         Email: action.authUserInfo.profile.email,
-        PhoneNumber: action.authUser.phoneNumber || 'No Number Provided',
+        PhoneNumber: action.authUser.phoneNumber || 'No Number Provided'
     }});
 };
 
 const logoutInit = (state) => {
-    console.log('[Red/Auth] Logout Initiated');
+    //console.log('[Red/Auth] Logout Initiated');
     return updateObject(state, initState);
     // return updateObject(state, {
     //     token: null, 
@@ -78,12 +78,26 @@ const logoutInit = (state) => {
     //     userInfo: null});
 };
 
+const mapUserData = (state, action) => {
+    //console.log("[Red/User] User Data Payload Is:", action.obj);
+    return updateObject(state, {
+      userId: action.obj.uID,
+      givenName: action.obj.gname,
+      familyName: action.obj.fname,
+      eMail: action.obj.email,
+      dPic: action.obj.dp,
+      mobNum: action.obj.mobile || 'No Number Provided'
+    });
+  };
+
 export default (state = initState, action) => {
     switch (action.type) {
         case actionTypes.AUTH_LOGIN:
             return authSuccess(state, action);
         case actionTypes.AUTH_LOGOUT:
             return logoutInit(state);
+        case actionTypes.AUTH_SET_USERDATA:
+            return mapUserData(state, action);
         default:
             return state;
     }

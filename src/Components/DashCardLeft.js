@@ -18,7 +18,7 @@ const styles = ({
         textAlign: 'center',
     },
     txt :{
-        fontSize: '10pt',
+        fontSize: '1.2vh',
         fontWeight: '600',
         textTransform: 'uppercase',
         color: '#4e4e4e',

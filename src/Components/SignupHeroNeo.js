@@ -19,7 +19,7 @@ const SignupHero = (props) =>{
                     <p className={"landingSectionHeroDescription"}> is the quickest way to increase the odds of your startup success. </p>
                     <section className={"landingSectionHeroButtonContainer"}>
                         <div className={"landingSectionHeroButton"} onClick={props.clicked}>
-                            <p>Signup with gmail</p>
+                            <p className={"landingSectionHeroButtonText"} onClick={props.clicked}>Signup with gmail</p>
                         </div>
                         <p className={"landingSectionHeroButtonHelper"}> (to launch your dreams) </p>
                     </section>
@@ -47,7 +47,7 @@ const SignupHero = (props) =>{
                 <img className={"landingSectionImage"} src={domi} alt="Take Flight with the TDC Logo PaperPlane™"/>
                 <div className={"landingSectionTextContainer"}>
                     <h1 className={"landingSectionTextTitle"}> Test. </h1>
-                    <p className={"landingSectionTextQuote"}> "Preparation to face the challenge is not worth much until you face it head-on."</p>
+                    <p className={"landingSectionTextQuote"}> "Preparation to face the challenge is not worth much until you dare to face it head-on."</p>
                     <p className={"landingSectionTextDescription"}>Put your skills to the test in an all out nation wide 
                     pitching event at TDC Elevate.</p>
                 </div>
@@ -63,7 +63,8 @@ const SignupHero = (props) =>{
 
 export default SignupHero;
 
-// <div className={"appBar buttonContainer"} onClick={props.clicked}>
-                
-// <p className={"appBar button"}>Signup with gMail</p>
+// <div className={"appBar button"} onClick={props.clicked}>
+//     <p className={"appBar buttonText"} onClick={props.clicked}>Signup with gmail</p>
 // </div>
+
+// <img className={"appBar button"} onClick={props.clicked} src={signupButton} alt="Signup using gMail to Take flight with TDC™"/>

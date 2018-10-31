@@ -34,7 +34,7 @@ const fbDBUpdater = (ref, id, data) => {
 };
 
 const readSuccess = (source, data, actType) => {
-	console.log("[Act/User] [readSuccess] " + source + " read succesfuly! :)  :", data);
+	//console.log("[Act/User] [readSuccess] " + source + " read succesfuly! :)  :", data);
 	return {
 		type: actType,
 		val: data
@@ -49,7 +49,7 @@ const readFailure = (source, error) => {
 };
 
 export const writeSuccess = (source, data, actType) => {
-	console.log("[Act/User] [writeSuccess] " + source + " read succesfuly! :)  :", data);
+	//console.log("[Act/User] [writeSuccess] " + source + " read succesfuly! :)  :", data);
 	return {
 		type: actType,
 		val: data
@@ -64,41 +64,6 @@ const writeFailure = (source, error) => {
 };
 //################ End of Common Helper Functions ################
 
-export const writeUserPersonalInfo = (
-	uID,
-	uGname,
-	uFname,
-	uEmail,
-	uPic,
-	uPhone
-) => {
-	return (dispatch, getState) => {
-		//console.log("[Act/User] [writeUserPersonalInfo] State is:", getState());
-		const usersRef = getUserRef(uID);
-
-		usersRef.set({
-			gname: uGname,
-			fname: uFname,
-			email: uEmail,
-			dp: uPic,
-			mobile: uPhone
-		});
-		// usersRef.push({[uID]: {
-		//     'Given_Name': uName
-		// }});
-		const userInfo = {
-			uID,
-			uGname,
-			uFname,
-			uEmail,
-			uPic,
-			uPhone
-		};
-
-		dispatch(asyncTriggerReducer(actionType.DASH_SET_USERDATA, userInfo));
-	};
-};
-
 export const writeUserCompanyInfo = (
 	uID,
 	cName,
@@ -112,7 +77,7 @@ export const writeUserCompanyInfo = (
 	leanCanvas,
 	founderObj
 ) => {
-	console.log("[Act/User] [writeUserPersonalInfo]");
+	console.log("[Act/User/writeUserCompanyInfo]");
 	return dispatch => {
 		const usersRef = getUserRef(uID);
 
@@ -481,7 +446,7 @@ export const setupAnal = (uID, userHistory) => {
 	let readArticlesList = [];
 
 	readArticles.forEach(element => {
-		readArticlesList.push(artList[element]);
+		readArticlesList.push(artList[element-1]);
 	});
 
 	//console.log('[Act/Drawer][Tester] readArticlesList: ', readArticlesList);
@@ -510,7 +475,7 @@ const updateFavArtList = (favList, arts) => {
 		let favArticlesList = [];
 
 		favList.forEach(element => {
-			favArticlesList.push(artList[element]);
+			favArticlesList.push(artList[element-1]);
 		});
 		return favArticlesList;
 //	};
@@ -530,7 +495,7 @@ export const fetchFavorite = (uID, artList) => {
 				//console.log('[Act/User] [fetchFavorite] favorites are: ', uID, userFav);
 				
 				let userFavArtList = updateFavArtList(userFav, artList);
-				console.log('[Act/User] [fetchFavorite] favorite Articles are (List): ', userFavArtList);
+				//console.log('[Act/User] [fetchFavorite] favorite Articles are (List): ', userFavArtList);
 				dispatch(asyncTriggerReducer(actionType.DASH_SET_USERFAV, {userFav, userFavArtList}/*{ ...userTodos }*/));
 			}).then(() => dispatch(readSuccess('readFavs', userFav, null)));
 		} catch (err) {

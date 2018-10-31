@@ -1,6 +1,6 @@
 import {
   DASH_SET_TODO,
-  DASH_SET_USERDATA,
+  //DASH_SET_USERDATA,
   DASH_SET_COMPDATA,
   DASH_FETCH_DATA,
   DASH_WRITE_PROGRESS,
@@ -108,17 +108,17 @@ const updateObject = (baseObject, updater) => {
 };
 //#################### End of Helper Function ####################
 
-const mapUserData = (state, action) => {
-  console.log("[Red/User] Payload Is:", action.obj);
-  return updateObject(state, {
-    userId: action.obj.uID,
-    givenName: action.obj.gname,
-    familyName: action.obj.fname,
-    eMail: action.obj.email,
-    dPic: action.obj.dp,
-    mobNum: action.obj.mobile
-  });
-};
+// const mapUserData = (state, action) => {
+//   console.log("[Red/User] User Data Payload Is:", action.obj);
+//   return updateObject(state, {
+//     userId: action.obj.uID,
+//     givenName: action.obj.gname,
+//     familyName: action.obj.fname,
+//     eMail: action.obj.email,
+//     dPic: action.obj.dp,
+//     mobNum: action.obj.mobile
+//   });
+// };
 
 const mapCompData = (state, action) => {
   console.log("[Red/User] Payload Is:", action.obj);
@@ -133,14 +133,14 @@ const mapCompData = (state, action) => {
 };
 
 const mapTodoData = (state, action) => {
-  console.log("[Red/User] Todos Added:", action.obj);
+  //console.log("[Red/User] Todos Added:", action.obj);
   return updateObject(state, {
     todolist: { ...action.obj }
   });
 };
 
 const mapFavData = (state, action) => {
-  console.log("[Red/User] Favs Added:", action.obj);
+  //console.log("[Red/User] Favs Added:", action.obj);
   return updateObject(state, {
     favList: [...action.obj.userFav],
     favArtList: action.obj.userFavArtList
@@ -159,8 +159,8 @@ const setUserHistonFetch = (state, action) => {
 
 const reducer = (state = initState, action) => {
   switch (action.type) {
-    case DASH_SET_USERDATA:
-      return mapUserData(state, action);
+    // case DASH_SET_USERDATA:
+    //   return mapUserData(state, action);
     case DASH_SET_COMPDATA:
       return mapCompData(state, action);
     case DASH_SET_TODO:
@@ -182,15 +182,15 @@ const reducer = (state = initState, action) => {
        })
     }      
     case DASH_SET_USERHISTORY: 
-      console.log('[Red/User] User data set in state *thumbs up*')
+      //console.log('[Red/User] User data set in state *thumbs up*')
       return setUserHistonFetch(state, action);
   
     case DASH_UPDATE_PROGRESS: 
-      console.log('[Red/User] progress updated');
+      //console.log('[Red/User] progress updated');
       return updateObject(state, { history: action.val })
     
     case DASH_WRITE_PROGRESS: 
-      console.log('[Red/User] progress updated');
+      //console.log('[Red/User] progress updated');
       return updateObject(state, { history: action.val })
     
     case DASH_SET_USERFAV:

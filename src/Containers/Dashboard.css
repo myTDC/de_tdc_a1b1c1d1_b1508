@@ -27,7 +27,7 @@
     --app-card-back-color-user:rgba(55, 71, 79, 1);
     --app-card-shadow-user:2px 4px 8px 1px rgba(55, 71, 79, 0.20);
 
-    --app-card-left-stat-fontsize: 6rem;
+    --app-card-left-stat-fontsize: 8vh;
     --app-card-back-color: #fff8e7;
 }
 
@@ -52,7 +52,7 @@
         --app-dash-width: 68%;
         --app-dash-margin-left: 16%;
         --app-dash-margin-right: 16%;
-        --app-card-left-stat-fontsize: 5rem;
+        --app-card-left-stat-fontsize: 6vh;
     }
 }
 
@@ -69,7 +69,7 @@
         --app-dash-width: 92%;
         --app-dash-margin-left: 4%;
         --app-dash-margin-right: 4%;
-        --app-card-left-stat-fontsize: 4rem;
+        --app-card-left-stat-fontsize: 4vh;
     }
 }
 
@@ -78,7 +78,7 @@
         --app-dash-width: 96%;
         --app-dash-margin-left: 2%;
         --app-dash-margin-right: 2%;
-        --app-card-left-stat-fontsize: 3rem;
+        --app-card-left-stat-fontsize: 3vh;
     }
 }
 

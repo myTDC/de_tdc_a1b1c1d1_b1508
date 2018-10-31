@@ -2,44 +2,41 @@
     --app-back-color: #1C2936;
     --app-fore-color: #273549;
 
-    --app-container-first-width: 40%;
-    --app-container-back-height: 64vh;
-    --app-container-fore-height: 70%;
-    --app-container-rest-width: 20%;
-
-    --app-container-margin: 2px;
-    --app-container-padding: 4%;
-
-    --app-herobtn-back: linear-gradient(#16df82, #82fd61, 45deg);
-
-    --app-text-button-size: 1em;
-    --app-text-btnhelper-size: 0.6em;
-    --app-text-heading-size: 1em;
-    --app-text-description-size: 0.6em;
-
-    --app-text-heading-color: #FEFEFE;
-    --app-text-description-color: #F1F1F1;
-
-    --app-fore-container-corner-radius: 4px;
-    --app-fore-container-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.1); /* box-shadow: offset-x | offset-y | blur-radius | spread-radius | color */
-    --app-back-container-shadow: 1px 1px 4px 1px rgb(40, 40, 40, 0.1);
-
     --app-landingContainer-section-width: 50%;
     --app-landingContainer-section-min-width: 600px;
 
-    --app-landing-text-section-height: 72vh;
-    --app-landing-text-title-fontsize: 8rem;
+    --app-landing-section-height: 72vh;
+    --app-landing-image-section-height: 72vh;
+    --app-landing-text-section-height: 60vh;
 
-    --app-landing-appbar-desc-fontsize: 1.8rem;
+    --app-landing-text-section-padding: 12vw 8vw;
+
+    --app-landing-hero-text-title-fontsize: 10vh;
+    --app-landing-hero-text-desc-fontsize: 2vh;
+    --app-landing-hero-button-text-fontsize: 2vh;
+    --app-landing-hero-button-helpertext-fontsize: 1.8vh;
+
+    --app-landing-text-title-fontsize: 10vh;
+    --app-landing-text-quote-fontsize: 1.8vh;
+    --app-landing-text-desc-fontsize: 2vh;
+
+    --app-landing-appbar-desc-fontsize: 3vh;
 }
 
 @media screen and (max-width: 1024px) {
     :root {
         --app-landingContainer-section-width: 100%;
         --app-landingContainer-section-min-width: 500px;
-        --app-landing-text-section-height: 144vh;
-        --app-landing-text-title-fontsize: 7rem;
-        --app-landing-appbar-desc-fontsize: 1.4rem;
+        --app-landing-section-height: 100vh;/* --app-landing-section-height: 144vh; */
+        --app-landing-image-section-height: 64vh;
+        --app-landing-text-section-height: 36vh;
+        --app-landing-text-section-padding: 8vw 6vw;
+        --app-landing-hero-text-title-fontsize: 7vh;
+        --app-landing-hero-text-desc-fontsize: 2.8vh;
+        --app-landing-text-title-fontsize: 7vh;
+        --app-landing-text-quote-fontsize: 2vh;
+        --app-landing-text-desc-fontsize: 2.8vh;
+        --app-landing-appbar-desc-fontsize: 2vh;
     }
 }
 
@@ -47,9 +44,18 @@
     :root {
         --app-landingContainer-section-width: 100%;
         --app-landingContainer-section-min-width: 300px;
-        --app-landing-text-section-height: 144vh;
-        --app-landing-text-title-fontsize: 6rem;
-        --app-landing-appbar-desc-fontsize: 1rem;
+        --app-landing-section-height: 90vh;/* --app-landing-section-height: 144vh; */
+        --app-landing-image-section-height: 56vh;
+        --app-landing-text-section-height: 34vh;
+        --app-landing-text-section-padding: 6vw 6vw;
+        --app-landing-hero-text-title-fontsize: 6vh;
+        --app-landing-hero-text-desc-fontsize: 3vh;
+        --app-landing-text-title-fontsize: 6vh;
+        --app-landing-text-quote-fontsize: 2vh;
+        --app-landing-text-desc-fontsize: 2.8vh;
+        --app-landing-appbar-desc-fontsize: 1.4vh;
+        --app-landing-hero-button-text-fontsize: 2.2vh;
+        --app-landing-hero-button-helpertext-fontsize: 2.2vh;
     }
 }
 
@@ -57,9 +63,18 @@
     :root {
         --app-landingContainer-section-width: 100%;
         --app-landingContainer-section-min-width: 300px;
-        --app-landing-text-section-height: 144vh;
-        --app-landing-text-title-fontsize: 4rem;
-        --app-landing-appbar-desc-fontsize: .8rem;
+        --app-landing-section-height: 90vh;/* --app-landing-section-height: 144vh; */
+        --app-landing-image-section-height: 56vh;
+        --app-landing-text-section-height: 34vh;
+        --app-landing-text-section-padding: 4vw 4vw;
+        --app-landing-hero-text-title-fontsize: 8vh;
+        --app-landing-hero-text-desc-fontsize: 3.2vh;
+        --app-landing-text-title-fontsize: 8vh;
+        --app-landing-text-quote-fontsize: 2vh;
+        --app-landing-text-desc-fontsize: 2.8vh;
+        --app-landing-appbar-desc-fontsize: 1.4vh;
+        --app-landing-hero-button-text-fontsize: 2.8vh;
+        --app-landing-hero-button-helpertext-fontsize: 2.4vh;
     }
 }
 
@@ -71,6 +86,8 @@
     }
 } */
 
+
+/*################ Landing Section Basic sizes and dimensions ################*/
 .landingContainer {
     display: flex;
     flex-flow: wrap;
@@ -84,20 +101,23 @@
     display: flex;
     flex-flow: wrap;
     width: 100%;
-    height: var(--app-landing-text-section-height);
+    height: var(--app-landing-section-height);
     flex-direction: row;
+    margin-bottom: 8vh;
 }
 
 .landingSectionRev {
     display: flex;
     width: 100%;
-    height: var(--app-landing-text-section-height);
+    height: var(--app-landing-section-height);
     flex-flow: row-reverse wrap;
+    margin-bottom: 8vh;
     /* flex-direction: row-reverse; */
 }
 
 .landingSectionImage{
     width: var(--app-landingContainer-section-width);
+    height: var(--app-landing-image-section-height);
     /* min-width: var(--app-landingContainer-section-min-width); */
     padding: 4%;
 }
@@ -109,29 +129,33 @@
 
 .landingSectionTextContainer{
     width: var(--app-landingContainer-section-width);
+    height: var(--app-landing-text-section-height);
     /* min-width: var(--app-landingContainer-section-min-width); */
     flex-flow: column;
-    padding: 12vh 8vh;
+    padding: var(--app-landing-text-section-padding);
     justify-content: space-around;
     /* background: #041620; */
     color: #F9F9F9;
+    margin-top: -16vh;
 }
 
 .landingSectionTextContainer:hover{
-    background: #04162060;
+    /* background: #04162060; */
     filter: contrast(140%);
-    box-shadow: 1px 1px 2px #00000080;
+    /* box-shadow: 1px 1px 2px #00000080; */
 }
 
+
+/*################ Hero Section Basic sizes and dimensions ################*/
 .landingSectionHeroTitle{
-    font-size: var(--app-landing-text-title-fontsize);
-    font-weight: 700;
+    font-size: var(--app-landing-hero-text-title-fontsize);
+    font-weight: 600;
     margin-bottom: 4%;
     width: 100%;
 }
 
 .landingSectionHeroDescription {
-    font-size: 1.6rem;
+    font-size: var(--app-landing-hero-text-desc-fontsize);
     margin-bottom: 4%;
 }
 
@@ -147,15 +171,11 @@
 
 .landingSectionHeroButton {
     width: 100%;
-    height: 20%;
+    height: 30%;
     text-align: center;
-    font-family: "Raleway", sans-serif;
-    font-weight: 600;
-    font-size: 1.2rem;
     /* text-transform: uppercase; */
     transition: 0.5s;
     background-size: 200% auto;
-    color: #32485e;
    /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
     border-radius: 5px;
     padding: 2%;
@@ -163,12 +183,21 @@
 }
 .landingSectionHeroButton:hover { background-position: right center; }
 
+.landingSectionHeroButtonText{
+    font-family: "Raleway", sans-serif;
+    color: #32485e;
+    font-weight: 600;
+    font-size: var(--app-landing-hero-button-text-fontsize);
+}
+
 .landingSectionHeroButtonHelper{
     font-variant: small-caps;
     margin: .5vh;
-    font-size: 1.2rem;
+    font-size: var(--app-landing-hero-button-helpertext-fontsize);
 }
 
+
+/*################ Landing Section Normal Text sizes and dimensions ################*/
 .landingSectionTextTitle{
     width: 100%;
     font-size: var(--app-landing-text-title-fontsize);
@@ -177,17 +206,20 @@
 }
 
 .landingSectionTextQuote{
-    font-size: 1rem;
+    font-size: var(--app-landing-text-quote-fontsize);
     font-style: italic;
     font-weight: 400;
     margin-bottom: 2vh;
 }
 
 .landingSectionTextDescription{
-    font-size: 1.4rem;
+    font-size: var(--app-landing-text-desc-fontsize);
     font-weight: 400;
 }
 
+
+
+/*################ Bottom Appbar sizes and dimensions ################*/
 .appBar.container{
     display: flex;
     width: 100%;
@@ -222,7 +254,6 @@
     padding: 36% 8px;
     text-align: center;
     color: #F9F9F9;
-    font-size: 1.2rem;
     font-weight: 600;
     /* font-variant: small-caps; */
     /* text-transform: uppercase; */

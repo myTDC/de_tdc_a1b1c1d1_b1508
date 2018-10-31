@@ -124,7 +124,7 @@ class Drawer extends Component {
 	state = {};
 
     componentDidMount(){
-        console.log('[Comp/Drawer] userHistory is: ', Object.values(this.props.userReadList));
+        //console.log('[Comp/Drawer] userHistory is: ', Object.values(this.props.userReadList));
         //getReadHistory();
     };
 

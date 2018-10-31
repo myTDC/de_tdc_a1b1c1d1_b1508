@@ -105,7 +105,7 @@ const mapDispactchToProps = dispatch => {
 		// onAuth: () => dispatch(acts.fbSignIn()),
 		OnLoad: (uID, userRHistory) => dispatch(acts.setupAnal(uID, userRHistory)),
 		loadTodo: uID => dispatch(acts.readTodo(uID)),
-		writeTest: (uID, uGname, uFname, uEmail, uPic, uPhone) => dispatch(acts.writeUserPersonalInfo(uID, uGname, uFname, uEmail, uPic, uPhone)),
+		//writeTest: (uID, uGname, uFname, uEmail, uPic, uPhone) => dispatch(acts.writeUserPersonalInfo(uID, uGname, uFname, uEmail, uPic, uPhone)),
 		ReadUser: (uID) => dispatch(acts.readUserHistory(uID)),
 		updateHistory: (found, uID, id, art) => dispatch(acts.updateUserReadHistory(found, uID, id, art))
 	};

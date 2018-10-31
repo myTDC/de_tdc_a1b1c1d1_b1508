@@ -1,9 +1,46 @@
 import * as actionTypes from './actionTypes';
-import {authRef, provider} from '../config/fb';
+import {authRef, getUserRef, provider} from '../config/fb';
 
 //Actions
 import * as acts from "../actions";
 // import localforage from 'localforage';
+
+const asyncTriggerReducer = (type, object) => {
+	//console.log('[Act/User][asyncTrigger] Action Dispatched: ', type, ' with data: ', object);
+	return {
+		type: type,
+		obj: object
+	};
+};
+
+const writeUserPersonalInfo = (uID, uGname, uFname, uEmail, uPic, uPhone) => {
+    const userInfo = {
+        uID,
+        uGname,
+        uFname,
+        uEmail,
+        uPic,
+        uPhone
+    };
+	return dispatch => {/*(dispatch, getState)*/
+		//console.log("[Act/User] [writeUserPersonalInfo] State is:", getState());
+		const usersRef = getUserRef(uID);
+		
+		usersRef.set({
+			gname: uGname,
+			fname: uFname,
+			email: uEmail,
+			dp: uPic,
+			mobile: uPhone
+		});
+		// usersRef.push({[uID]: {
+		//     'Given_Name': uName
+		// }});
+		
+		//console.log("[Act/Auth/writeUserPersonalInfo] uInfo is:", userInfo);
+		dispatch(asyncTriggerReducer(actionTypes.AUTH_SET_USERDATA, userInfo));
+	};
+};
 
 export const fbSignIn = (/*Takes Payload of the associated Action*/) => {
     return dispatch => {
@@ -20,9 +57,12 @@ export const fbSignIn = (/*Takes Payload of the associated Action*/) => {
             localStorage.setItem('userID', userId);
 
             dispatch(logIn(token, user, uInfo, userId));
-            dispatch(acts.writeUserPersonalInfo(userId, uInfo.profile.given_name, uInfo.profile.family_name, uInfo.profile.email, uInfo.profile.picture, uInfo.phoneNumber));
+            //console.log('[Act/Auth/FBSignin] user Info is: ', uInfo);
+            //console.log('[Act/Auth/FBSignin] user Data is: ', user);
+            dispatch(writeUserPersonalInfo(userId, uInfo.profile.given_name, uInfo.profile.family_name, uInfo.profile.email, uInfo.profile.picture, user.phoneNumber)); //FIXME
             //console.log("[Act/Auth] Trying Multi Dispatcher");
-            dispatch(acts.addTodo(userId));
+            if(uInfo.isNewUser)
+                dispatch(acts.addTodo(userId));
 
             // ...
           }).catch(error => {
