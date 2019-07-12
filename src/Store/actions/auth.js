@@ -51,7 +51,6 @@ export const fbSignIn = (/*Takes Payload of the associated Action*/) => {
             const user = result.user;
             const userId = result.user.uid;
             const uInfo = result.additionalUserInfo;
-            
 
             localStorage.setItem('token', token);
             localStorage.setItem('userID', userId);

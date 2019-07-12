@@ -41,12 +41,12 @@
 } */
 
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 8px;
   
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(22, 223, 133, 1);/* linear-gradient(#16df84, #162432); */
+  background: royalblue;/* linear-gradient(#16df84, #162432); */
   border-radius: 2px;
 }
 
